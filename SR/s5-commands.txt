@@ -1,0 +1,8 @@
+table_set_default ipv4_lpm drop
+
+// Normal forwarding
+
+// Source Routing
+table_add device_to_port ipv4_forward 4 => ff:ff:ff:ff:ff:ff 3
+table_add device_to_port ipv4_forward 6 => ff:ff:ff:ff:ff:ff 2
+table_add device_to_port ipv4_forward 7 => ff:ff:ff:ff:ff:ff 1

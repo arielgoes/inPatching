@@ -1,0 +1,31 @@
+{
+  "p4_src": "p4src/source_routing.p4",
+  "cli": true,
+  "pcap_dump": true,
+  "enable_log": true,
+  "topology": {
+    "assignment_strategy": "mixed",
+    "links": [["h1", "s1"], ["s1", "s2"], ["s1", "s3"], ["s2", "s4"], ["s3", "s4"], ["s4", "h2"]],
+    "hosts": {
+      "h1": {
+      },
+      "h2": {
+      }
+    },
+    "switches": {
+      "s1": {
+        "cli_input": "s1-commands.txt"
+      },
+      "s2": {
+        "cli_input": "s2-commands.txt"
+      },
+      "s3": {
+        "cli_input": "s3-commands.txt"
+      },
+      "s4": {
+        "cli_input": "s4-commands.txt"
+      }
+    }
+  }
+}
+
