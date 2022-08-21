@@ -7,7 +7,11 @@
         ["tmp", 1, false],
         ["tmp_0", 1, false],
         ["key_0", 7, false],
-        ["_padding_0", 7, false]
+        ["userMetadata.meter_color", 2, false],
+        ["userMetadata.linkState", 1, false],
+        ["userMetadata.nextHop", 32, false],
+        ["userMetadata.index", 32, false],
+        ["_padding_0", 4, false]
       ]
     },
     {
@@ -1138,14 +1142,51 @@
   ],
   "meter_arrays" : [],
   "counter_arrays" : [],
-  "register_arrays" : [],
+  "register_arrays" : [
+    {
+      "name" : "MyIngress.primaryNH",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
+        "line" : 28,
+        "column" : 28,
+        "source_fragment" : "primaryNH"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.alternativeNH",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
+        "line" : 29,
+        "column" : 28,
+        "source_fragment" : "alternativeNH"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.linkState",
+      "id" : 2,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
+        "line" : 33,
+        "column" : 26,
+        "source_fragment" : "linkState"
+      },
+      "size" : 512,
+      "bitwidth" : 1
+    }
+  ],
   "calculations" : [
     {
       "name" : "calc",
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-        "line" : 123,
+        "line" : 131,
         "column" : 1,
         "source_fragment" : "update_checksum( ..."
       },
@@ -1231,7 +1272,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 28,
+            "line" : 36,
             "column" : 8,
             "source_fragment" : "mark_to_drop(standard_metadata)"
           }
@@ -1257,7 +1298,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/include/headers.p4",
-            "line" : 7,
+            "line" : 10,
             "column" : 26,
             "source_fragment" : "0x800; ..."
           }
@@ -1283,7 +1324,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/include/headers.p4",
-            "line" : 7,
+            "line" : 10,
             "column" : 26,
             "source_fragment" : "0x800; ..."
           }
@@ -1318,7 +1359,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 38,
+            "line" : 46,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
           }
@@ -1337,7 +1378,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 41,
+            "line" : 49,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
           }
@@ -1356,7 +1397,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 44,
+            "line" : 52,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
           }
@@ -1398,7 +1439,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 47,
+            "line" : 55,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
           }
@@ -1433,7 +1474,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 38,
+            "line" : 46,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
           }
@@ -1452,7 +1493,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 41,
+            "line" : 49,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
           }
@@ -1471,7 +1512,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 44,
+            "line" : 52,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
           }
@@ -1513,7 +1554,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 47,
+            "line" : 55,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
           }
@@ -1521,7 +1562,7 @@
       ]
     },
     {
-      "name" : "source_routing82",
+      "name" : "source_routing90",
       "id" : 7,
       "runtime_data" : [],
       "primitives" : [
@@ -1549,7 +1590,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 82,
+            "line" : 90,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].isValid() && device_to_port.apply().hit"
           }
@@ -1617,7 +1658,7 @@
       ]
     },
     {
-      "name" : "source_routing67",
+      "name" : "source_routing75",
       "id" : 10,
       "runtime_data" : [],
       "primitives" : [
@@ -1635,7 +1676,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 67,
+            "line" : 75,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].switch_id"
           }
@@ -1643,7 +1684,7 @@
       ]
     },
     {
-      "name" : "source_routing82_0",
+      "name" : "source_routing90_0",
       "id" : 11,
       "runtime_data" : [],
       "primitives" : [
@@ -1678,7 +1719,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 82,
+            "line" : 90,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].isValid() && device_to_port.apply().hit"
           }
@@ -1686,7 +1727,7 @@
       ]
     },
     {
-      "name" : "source_routing87",
+      "name" : "source_routing95",
       "id" : 12,
       "runtime_data" : [],
       "primitives" : [
@@ -1704,7 +1745,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 87,
+            "line" : 95,
             "column" : 12,
             "source_fragment" : "hdr.source_routes.pop_front(1)"
           }
@@ -1712,7 +1753,7 @@
       ]
     },
     {
-      "name" : "source_routing98",
+      "name" : "source_routing106",
       "id" : 13,
       "runtime_data" : [],
       "primitives" : [
@@ -1730,7 +1771,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 98,
+            "line" : 106,
             "column" : 16,
             "source_fragment" : "hdr.source_routes.pop_front(1)"
           }
@@ -1751,11 +1792,11 @@
       "init_table" : "node_2",
       "tables" : [
         {
-          "name" : "tbl_source_routing82",
+          "name" : "tbl_source_routing90",
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 82,
+            "line" : 90,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].isValid() && device_to_port.apply().hit"
           },
@@ -1767,10 +1808,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [7],
-          "actions" : ["source_routing82"],
+          "actions" : ["source_routing90"],
           "base_default_next" : "node_9",
           "next_tables" : {
-            "source_routing82" : "node_9"
+            "source_routing90" : "node_9"
           },
           "default_entry" : {
             "action_id" : 7,
@@ -1780,11 +1821,11 @@
           }
         },
         {
-          "name" : "tbl_source_routing67",
+          "name" : "tbl_source_routing75",
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 67,
+            "line" : 75,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].switch_id"
           },
@@ -1796,10 +1837,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [10],
-          "actions" : ["source_routing67"],
+          "actions" : ["source_routing75"],
           "base_default_next" : "MyIngress.device_to_port",
           "next_tables" : {
-            "source_routing67" : "MyIngress.device_to_port"
+            "source_routing75" : "MyIngress.device_to_port"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -1813,7 +1854,7 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 64,
+            "line" : 72,
             "column" : 10,
             "source_fragment" : "device_to_port"
           },
@@ -1857,9 +1898,9 @@
           "direct_meters" : null,
           "action_ids" : [8],
           "actions" : ["act"],
-          "base_default_next" : "tbl_source_routing82_0",
+          "base_default_next" : "tbl_source_routing90_0",
           "next_tables" : {
-            "act" : "tbl_source_routing82_0"
+            "act" : "tbl_source_routing90_0"
           },
           "default_entry" : {
             "action_id" : 8,
@@ -1880,9 +1921,9 @@
           "direct_meters" : null,
           "action_ids" : [9],
           "actions" : ["act_0"],
-          "base_default_next" : "tbl_source_routing82_0",
+          "base_default_next" : "tbl_source_routing90_0",
           "next_tables" : {
-            "act_0" : "tbl_source_routing82_0"
+            "act_0" : "tbl_source_routing90_0"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -1892,11 +1933,11 @@
           }
         },
         {
-          "name" : "tbl_source_routing82_0",
+          "name" : "tbl_source_routing90_0",
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 82,
+            "line" : 90,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].isValid() && device_to_port.apply().hit"
           },
@@ -1908,10 +1949,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [11],
-          "actions" : ["source_routing82_0"],
+          "actions" : ["source_routing90_0"],
           "base_default_next" : "node_9",
           "next_tables" : {
-            "source_routing82_0" : "node_9"
+            "source_routing90_0" : "node_9"
           },
           "default_entry" : {
             "action_id" : 11,
@@ -1925,7 +1966,7 @@
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 85,
+            "line" : 93,
             "column" : 15,
             "source_fragment" : "set_normal_ethernet()"
           },
@@ -1938,9 +1979,9 @@
           "direct_meters" : null,
           "action_ids" : [3],
           "actions" : ["MyIngress.set_normal_ethernet"],
-          "base_default_next" : "tbl_source_routing87",
+          "base_default_next" : "tbl_source_routing95",
           "next_tables" : {
-            "MyIngress.set_normal_ethernet" : "tbl_source_routing87"
+            "MyIngress.set_normal_ethernet" : "tbl_source_routing95"
           },
           "default_entry" : {
             "action_id" : 3,
@@ -1950,11 +1991,11 @@
           }
         },
         {
-          "name" : "tbl_source_routing87",
+          "name" : "tbl_source_routing95",
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 87,
+            "line" : 95,
             "column" : 12,
             "source_fragment" : "hdr.source_routes.pop_front(1)"
           },
@@ -1966,10 +2007,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [12],
-          "actions" : ["source_routing87"],
+          "actions" : ["source_routing95"],
           "base_default_next" : null,
           "next_tables" : {
-            "source_routing87" : null
+            "source_routing95" : null
           },
           "default_entry" : {
             "action_id" : 12,
@@ -1983,7 +2024,7 @@
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 51,
+            "line" : 59,
             "column" : 10,
             "source_fragment" : "ipv4_lpm"
           },
@@ -2021,7 +2062,7 @@
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 96,
+            "line" : 104,
             "column" : 19,
             "source_fragment" : "set_normal_ethernet()"
           },
@@ -2034,9 +2075,9 @@
           "direct_meters" : null,
           "action_ids" : [4],
           "actions" : ["MyIngress.set_normal_ethernet"],
-          "base_default_next" : "tbl_source_routing98",
+          "base_default_next" : "tbl_source_routing106",
           "next_tables" : {
-            "MyIngress.set_normal_ethernet" : "tbl_source_routing98"
+            "MyIngress.set_normal_ethernet" : "tbl_source_routing106"
           },
           "default_entry" : {
             "action_id" : 4,
@@ -2046,11 +2087,11 @@
           }
         },
         {
-          "name" : "tbl_source_routing98",
+          "name" : "tbl_source_routing106",
           "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 98,
+            "line" : 106,
             "column" : 16,
             "source_fragment" : "hdr.source_routes.pop_front(1)"
           },
@@ -2062,10 +2103,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [13],
-          "actions" : ["source_routing98"],
+          "actions" : ["source_routing106"],
           "base_default_next" : null,
           "next_tables" : {
-            "source_routing98" : null
+            "source_routing106" : null
           },
           "default_entry" : {
             "action_id" : 13,
@@ -2082,7 +2123,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 82,
+            "line" : 90,
             "column" : 12,
             "source_fragment" : "hdr.source_routes[0].isValid()"
           },
@@ -2104,8 +2145,8 @@
               }
             }
           },
-          "true_next" : "tbl_source_routing82",
-          "false_next" : "tbl_source_routing67"
+          "true_next" : "tbl_source_routing90",
+          "false_next" : "tbl_source_routing75"
         },
         {
           "name" : "node_9",
@@ -2129,7 +2170,7 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 84,
+            "line" : 92,
             "column" : 16,
             "source_fragment" : "hdr.source_routes[0].last_header == 1"
           },
@@ -2148,14 +2189,14 @@
             }
           },
           "true_next" : "tbl_set_normal_ethernet",
-          "false_next" : "tbl_source_routing87"
+          "false_next" : "tbl_source_routing95"
         },
         {
           "name" : "node_13",
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 90,
+            "line" : 98,
             "column" : 17,
             "source_fragment" : "hdr.ipv4.isValid()"
           },
@@ -2178,7 +2219,7 @@
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 93,
+            "line" : 101,
             "column" : 16,
             "source_fragment" : "hdr.source_routes[0].isValid()"
           },
@@ -2201,7 +2242,7 @@
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-            "line" : 95,
+            "line" : 103,
             "column" : 20,
             "source_fragment" : "hdr.source_routes[0].last_header == 1"
           },
@@ -2220,7 +2261,7 @@
             }
           },
           "true_next" : "tbl_set_normal_ethernet_0",
-          "false_next" : "tbl_source_routing98"
+          "false_next" : "tbl_source_routing106"
         }
       ]
     },
@@ -2229,7 +2270,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-        "line" : 109,
+        "line" : 117,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -2245,7 +2286,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4",
-        "line" : 123,
+        "line" : 131,
         "column" : 1,
         "source_fragment" : "update_checksum( ..."
       },

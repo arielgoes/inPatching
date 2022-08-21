@@ -1,0 +1,1323 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["tmp", 32, false],
+        ["userMetadata.linkState", 1, false],
+        ["userMetadata.nextHop", 32, false],
+        ["userMetadata.index", 32, false],
+        ["userMetadata.indexPath", 32, false],
+        ["userMetadata.numHopsCycle", 32, false],
+        ["userMetadata.depotPort", 32, false],
+        ["userMetadata.currPathSize", 32, false],
+        ["userMetadata.maxPathSize", 32, false],
+        ["_padding_0", 7, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["instance_type", 32, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["mcast_grp", 16, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["priority", 3, false],
+        ["_padding", 3, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 2,
+      "fields" : [
+        ["dstAddr", 48, false],
+        ["srcAddr", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 3,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["ecn", 2, false],
+        ["dscp", 6, false],
+        ["totalLen", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["fragOffset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdrChecksum", 16, false],
+        ["srcAddr", 32, false],
+        ["dstAddr", 32, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 2,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 3,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 0],
+    ["PacketTooShort", 1],
+    ["NoMatch", 2],
+    ["StackOutOfBounds", 3],
+    ["HeaderTooShort", 4],
+    ["ParserTimeout", 5],
+    ["ParserInvalidArgument", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/include/parsers.p4",
+        "line" : 36,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["ethernet", "ipv4"],
+      "primitives" : []
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [
+    {
+      "name" : "MyIngress.primaryNH",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 32,
+        "column" : 27,
+        "source_fragment" : "primaryNH"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.alternativeNH",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 33,
+        "column" : 27,
+        "source_fragment" : "alternativeNH"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.linkState",
+      "id" : 2,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 37,
+        "column" : 26,
+        "source_fragment" : "linkState"
+      },
+      "size" : 512,
+      "bitwidth" : 1
+    },
+    {
+      "name" : "MyIngress.currPathSize",
+      "id" : 3,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 40,
+        "column" : 27,
+        "source_fragment" : "currPathSize"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.maxPathSize",
+      "id" : 4,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 43,
+        "column" : 27,
+        "source_fragment" : "maxPathSize"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyIngress.depotPort",
+      "id" : 5,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 46,
+        "column" : 25,
+        "source_fragment" : "depotPort"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    }
+  ],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 176,
+        "column" : 2,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ihl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dscp"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ecn"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "totalLen"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "flags"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "fragOffset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ttl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "srcAddr"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dstAddr"]
+        }
+      ]
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.rewriteMac",
+      "id" : 1,
+      "runtime_data" : [
+        {
+          "name" : "dstAddr",
+          "bitwidth" : 48
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "srcAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 51,
+            "column" : 5,
+            "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 52,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 56,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 56,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.read_port",
+      "id" : 4,
+      "runtime_data" : [
+        {
+          "name" : "index",
+          "bitwidth" : 32
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.index"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 60,
+            "column" : 8,
+            "source_fragment" : "meta.index = index"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.nextHop"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.primaryNH"
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 62,
+            "column" : 8,
+            "source_fragment" : "primaryNH.read(meta.nextHop, meta.index)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.linkState"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.linkState"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.nextHop"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 65,
+            "column" : 8,
+            "source_fragment" : "linkState.read(meta.linkState, meta.nextHop)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.read_alternativePort",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.nextHop"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.alternativeNH"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.index"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 70,
+            "column" : 8,
+            "source_fragment" : "alternativeNH.read(meta.nextHop, meta.index)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.read_max_curr_path_size",
+      "id" : 6,
+      "runtime_data" : [
+        {
+          "name" : "indexPath",
+          "bitwidth" : 32
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.indexPath"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 74,
+            "column" : 8,
+            "source_fragment" : "meta.indexPath = indexPath"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.maxPathSize"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.maxPathSize"
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 75,
+            "column" : 8,
+            "source_fragment" : "maxPathSize.read(meta.maxPathSize, meta.indexPath)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.update_curr_path_size",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.currPathSize"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.currPathSize"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.indexPath"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 79,
+            "column" : 8,
+            "source_fragment" : "currPathSize.read(meta.currPathSize, meta.indexPath)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "userMetadata.currPathSize"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 80,
+            "column" : 43,
+            "source_fragment" : "meta.currPathSize + 1"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.currPathSize"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.indexPath"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 80,
+            "column" : 8,
+            "source_fragment" : "currPathSize.write(meta.indexPath, meta.currPathSize + 1)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.currPathSize"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.currPathSize"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.indexPath"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 81,
+            "column" : 8,
+            "source_fragment" : "currPathSize.read(meta.currPathSize, meta.indexPath)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.reset_curr_path_size",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.currPathSize"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.indexPath"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 85,
+            "column" : 8,
+            "source_fragment" : "currPathSize.write(meta.indexPath, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.read_depot_port",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "userMetadata.depotPort"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.depotPort"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 90,
+            "column" : 8,
+            "source_fragment" : "depotPort.read(meta.depotPort, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute141",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "userMetadata.nextHop"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01ff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 141,
+            "column" : 12,
+            "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute149",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "userMetadata.depotPort"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01ff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 149,
+            "column" : 16,
+            "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 27,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "node_2",
+      "tables" : [
+        {
+          "name" : "MyIngress.ipv4_lpm",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 94,
+            "column" : 10,
+            "source_fragment" : "ipv4_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv4.dstAddr",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 512,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4, 2],
+          "actions" : ["MyIngress.read_port", "MyIngress.drop"],
+          "base_default_next" : "node_4",
+          "next_tables" : {
+            "MyIngress.read_port" : "node_4",
+            "MyIngress.drop" : "node_4"
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_read_alternativePort",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 136,
+            "column" : 16,
+            "source_fragment" : "read_alternativePort()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["MyIngress.read_alternativePort"],
+          "base_default_next" : "tbl_fast_reroute141",
+          "next_tables" : {
+            "MyIngress.read_alternativePort" : "tbl_fast_reroute141"
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute141",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 141,
+            "column" : 42,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10],
+          "actions" : ["fast_reroute141"],
+          "base_default_next" : "MyIngress.rewrite_mac",
+          "next_tables" : {
+            "fast_reroute141" : "MyIngress.rewrite_mac"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyIngress.rewrite_mac",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 106,
+            "column" : 10,
+            "source_fragment" : "rewrite_mac"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.nextHop",
+              "target" : ["scalars", "userMetadata.nextHop"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 512,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [1, 3],
+          "actions" : ["MyIngress.rewriteMac", "MyIngress.drop"],
+          "base_default_next" : "MyIngress.max_path_size",
+          "next_tables" : {
+            "MyIngress.rewriteMac" : "MyIngress.max_path_size",
+            "MyIngress.drop" : "MyIngress.max_path_size"
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.max_path_size",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 118,
+            "column" : 10,
+            "source_fragment" : "max_path_size"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv4.dstAddr",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 512,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6, 0],
+          "actions" : ["MyIngress.read_max_curr_path_size", "NoAction"],
+          "base_default_next" : "tbl_update_curr_path_size",
+          "next_tables" : {
+            "MyIngress.read_max_curr_path_size" : "tbl_update_curr_path_size",
+            "NoAction" : "tbl_update_curr_path_size"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_update_curr_path_size",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 146,
+            "column" : 12,
+            "source_fragment" : "update_curr_path_size()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7],
+          "actions" : ["MyIngress.update_curr_path_size"],
+          "base_default_next" : "node_10",
+          "next_tables" : {
+            "MyIngress.update_curr_path_size" : "node_10"
+          },
+          "default_entry" : {
+            "action_id" : 7,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_read_depot_port",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 148,
+            "column" : 16,
+            "source_fragment" : "read_depot_port()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [9],
+          "actions" : ["MyIngress.read_depot_port"],
+          "base_default_next" : "tbl_fast_reroute149",
+          "next_tables" : {
+            "MyIngress.read_depot_port" : "tbl_fast_reroute149"
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute149",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 149,
+            "column" : 46,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [11],
+          "actions" : ["fast_reroute149"],
+          "base_default_next" : "tbl_reset_curr_path_size",
+          "next_tables" : {
+            "fast_reroute149" : "tbl_reset_curr_path_size"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_reset_curr_path_size",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 151,
+            "column" : 16,
+            "source_fragment" : "reset_curr_path_size()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [8],
+          "actions" : ["MyIngress.reset_curr_path_size"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.reset_curr_path_size" : null
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_2",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 132,
+            "column" : 12,
+            "source_fragment" : "hdr.ipv4.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["ipv4", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "MyIngress.ipv4_lpm"
+        },
+        {
+          "name" : "node_4",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 135,
+            "column" : 16,
+            "source_fragment" : "meta.linkState > 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : ">",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "userMetadata.linkState"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "tbl_read_alternativePort",
+          "false_next" : "tbl_fast_reroute141"
+        },
+        {
+          "name" : "node_10",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+            "line" : 147,
+            "column" : 15,
+            "source_fragment" : "meta.currPathSize == meta.maxPathSize"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "userMetadata.currPathSize"]
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "userMetadata.maxPathSize"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_read_depot_port"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 160,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : null,
+      "tables" : [],
+      "action_profiles" : [],
+      "conditionals" : []
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4",
+        "line" : 176,
+        "column" : 2,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "target" : ["ipv4", "hdrChecksum"],
+      "type" : "generic",
+      "calculation" : "calc",
+      "verify" : false,
+      "update" : true,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      }
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.priority",
+      ["standard_metadata", "priority"]
+    ]
+  ],
+  "program" : "/home/p4/git/master_degree_p4_unipampa/FRR_SR/p4src/fast_reroute.p4i",
+  "__meta__" : {
+    "version" : [2, 23],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}

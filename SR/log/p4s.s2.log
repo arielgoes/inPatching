@@ -1,2360 +1,347 @@
 Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
 Calling target program-options parser
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_source_routing82': source_routing82 - 
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_source_routing67': source_routing67 - 
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'MyIngress.device_to_port': NoAction - 
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_act': act - 
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_act_0': act_0 - 
-[22:54:27.628] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_source_routing82_0': source_routing82_0 - 
-[22:54:27.629] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_set_normal_ethernet': MyIngress.set_normal_ethernet - 
-[22:54:27.629] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_source_routing87': source_routing87 - 
-[22:54:27.629] [bmv2] [D] [thread 11455] Set default default entry for table 'MyIngress.ipv4_lpm': NoAction - 
-[22:54:27.629] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_set_normal_ethernet_0': MyIngress.set_normal_ethernet - 
-[22:54:27.629] [bmv2] [D] [thread 11455] Set default default entry for table 'tbl_source_routing98': source_routing98 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_source_routing90': source_routing90 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_source_routing75': source_routing75 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'MyIngress.device_to_port': NoAction - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_act': act - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_act_0': act_0 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_source_routing90_0': source_routing90_0 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_set_normal_ethernet': MyIngress.set_normal_ethernet - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_source_routing95': source_routing95 - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'MyIngress.ipv4_lpm': NoAction - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_set_normal_ethernet_0': MyIngress.set_normal_ethernet - 
+[14:14:55.643] [bmv2] [D] [thread 3019] Set default default entry for table 'tbl_source_routing106': source_routing106 - 
 Adding interface s2-eth1 as port 1
-[22:54:27.631] [bmv2] [D] [thread 11455] Adding interface s2-eth1 as port 1
+[14:14:55.667] [bmv2] [D] [thread 3019] Adding interface s2-eth1 as port 1
 Adding interface s2-eth2 as port 2
-[22:54:27.689] [bmv2] [D] [thread 11455] Adding interface s2-eth2 as port 2
+[14:14:55.698] [bmv2] [D] [thread 3019] Adding interface s2-eth2 as port 2
 Adding interface s2-eth3 as port 3
-[22:54:27.805] [bmv2] [D] [thread 11455] Adding interface s2-eth3 as port 3
-[22:54:27.877] [bmv2] [I] [thread 11455] Starting Thrift server on port 9091
-[22:54:27.877] [bmv2] [I] [thread 11455] Thrift server was started
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Processing packet received on port 2
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Parser 'parser': start
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Extracting header 'ethernet'
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:27.898] [bmv2] [T] [thread 11461] [0.0] [cxt 0] Bytes parsed: 14
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Parser 'parser': end
-[22:54:27.898] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Pipeline 'ingress': start
-[22:54:27.898] [bmv2] [T] [thread 11461] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:27.898] [bmv2] [T] [thread 11461] [0.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:27.899] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Looking up key:
-
-[22:54:27.899] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:27.899] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:27.899] [bmv2] [T] [thread 11461] [0.0] [cxt 0] Action source_routing82
-[22:54:27.899] [bmv2] [T] [thread 11461] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:27.899] [bmv2] [T] [thread 11461] [0.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:27.899] [bmv2] [T] [thread 11461] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:27.899] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Pipeline 'ingress': end
-[22:54:27.899] [bmv2] [D] [thread 11461] [0.0] [cxt 0] Egress port is 0
-[22:54:27.899] [bmv2] [D] [thread 11462] [0.0] [cxt 0] Pipeline 'egress': start
-[22:54:27.899] [bmv2] [D] [thread 11462] [0.0] [cxt 0] Pipeline 'egress': end
-[22:54:27.899] [bmv2] [D] [thread 11462] [0.0] [cxt 0] Deparser 'deparser': start
-[22:54:27.899] [bmv2] [T] [thread 11462] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:27.899] [bmv2] [D] [thread 11462] [0.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:27.899] [bmv2] [D] [thread 11462] [0.0] [cxt 0] Deparser 'deparser': end
-[22:54:27.899] [bmv2] [D] [thread 11466] [0.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Processing packet received on port 1
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Parser 'parser': start
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Extracting header 'ethernet'
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] Bytes parsed: 14
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Parser 'parser': end
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Pipeline 'ingress': start
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Looking up key:
-
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] Action source_routing82
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:27.962] [bmv2] [T] [thread 11461] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Pipeline 'ingress': end
-[22:54:27.962] [bmv2] [D] [thread 11461] [1.0] [cxt 0] Egress port is 0
-[22:54:27.962] [bmv2] [D] [thread 11462] [1.0] [cxt 0] Pipeline 'egress': start
-[22:54:27.962] [bmv2] [D] [thread 11462] [1.0] [cxt 0] Pipeline 'egress': end
-[22:54:27.962] [bmv2] [D] [thread 11462] [1.0] [cxt 0] Deparser 'deparser': start
-[22:54:27.962] [bmv2] [T] [thread 11462] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:27.962] [bmv2] [D] [thread 11462] [1.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:27.962] [bmv2] [D] [thread 11462] [1.0] [cxt 0] Deparser 'deparser': end
-[22:54:27.962] [bmv2] [D] [thread 11466] [1.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Processing packet received on port 1
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Parser 'parser': start
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Extracting header 'ethernet'
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] Bytes parsed: 14
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Parser 'parser': end
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Pipeline 'ingress': start
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Looking up key:
-
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] Action source_routing82
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:27.963] [bmv2] [T] [thread 11461] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Pipeline 'ingress': end
-[22:54:27.963] [bmv2] [D] [thread 11461] [2.0] [cxt 0] Egress port is 0
-[22:54:27.963] [bmv2] [D] [thread 11462] [2.0] [cxt 0] Pipeline 'egress': start
-[22:54:27.963] [bmv2] [D] [thread 11462] [2.0] [cxt 0] Pipeline 'egress': end
-[22:54:27.963] [bmv2] [D] [thread 11462] [2.0] [cxt 0] Deparser 'deparser': start
-[22:54:27.963] [bmv2] [T] [thread 11462] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:27.963] [bmv2] [D] [thread 11462] [2.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:27.963] [bmv2] [D] [thread 11462] [2.0] [cxt 0] Deparser 'deparser': end
-[22:54:27.963] [bmv2] [D] [thread 11466] [2.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[22:54:27.993] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Processing packet received on port 1
-[22:54:27.993] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Parser 'parser': start
-[22:54:27.993] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:27.993] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Extracting header 'ethernet'
-[22:54:27.993] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] Bytes parsed: 14
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Parser 'parser': end
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Pipeline 'ingress': start
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Looking up key:
-
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] Action source_routing82
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:27.994] [bmv2] [T] [thread 11461] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Pipeline 'ingress': end
-[22:54:27.994] [bmv2] [D] [thread 11461] [3.0] [cxt 0] Egress port is 0
-[22:54:27.994] [bmv2] [D] [thread 11462] [3.0] [cxt 0] Pipeline 'egress': start
-[22:54:27.994] [bmv2] [D] [thread 11462] [3.0] [cxt 0] Pipeline 'egress': end
-[22:54:27.994] [bmv2] [D] [thread 11462] [3.0] [cxt 0] Deparser 'deparser': start
-[22:54:27.994] [bmv2] [T] [thread 11462] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:27.994] [bmv2] [D] [thread 11462] [3.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:27.994] [bmv2] [D] [thread 11462] [3.0] [cxt 0] Deparser 'deparser': end
-[22:54:27.994] [bmv2] [D] [thread 11466] [3.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Processing packet received on port 2
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Parser 'parser': start
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.091] [bmv2] [T] [thread 11461] [4.0] [cxt 0] Bytes parsed: 14
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Parser 'parser': end
-[22:54:28.091] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.092] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Looking up key:
-
-[22:54:28.092] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.092] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] Action source_routing82
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.092] [bmv2] [T] [thread 11461] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.092] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.092] [bmv2] [D] [thread 11461] [4.0] [cxt 0] Egress port is 0
-[22:54:28.092] [bmv2] [D] [thread 11462] [4.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.092] [bmv2] [D] [thread 11462] [4.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.092] [bmv2] [D] [thread 11462] [4.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.092] [bmv2] [T] [thread 11462] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.092] [bmv2] [D] [thread 11462] [4.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.092] [bmv2] [D] [thread 11462] [4.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.092] [bmv2] [D] [thread 11466] [4.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Processing packet received on port 3
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Parser 'parser': start
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] Bytes parsed: 14
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Parser 'parser': end
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Looking up key:
-
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] Action source_routing82
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.281] [bmv2] [T] [thread 11461] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.281] [bmv2] [D] [thread 11461] [5.0] [cxt 0] Egress port is 0
-[22:54:28.282] [bmv2] [D] [thread 11462] [5.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.282] [bmv2] [D] [thread 11462] [5.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.282] [bmv2] [D] [thread 11462] [5.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.282] [bmv2] [T] [thread 11462] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.282] [bmv2] [D] [thread 11462] [5.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.282] [bmv2] [D] [thread 11462] [5.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.282] [bmv2] [D] [thread 11466] [5.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Processing packet received on port 2
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Parser 'parser': start
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] Bytes parsed: 14
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Parser 'parser': end
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Looking up key:
-
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] Action source_routing82
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.381] [bmv2] [T] [thread 11461] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.381] [bmv2] [D] [thread 11461] [6.0] [cxt 0] Egress port is 0
-[22:54:28.382] [bmv2] [D] [thread 11462] [6.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.382] [bmv2] [D] [thread 11462] [6.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.382] [bmv2] [D] [thread 11462] [6.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.382] [bmv2] [T] [thread 11462] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.382] [bmv2] [D] [thread 11462] [6.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.382] [bmv2] [D] [thread 11462] [6.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.382] [bmv2] [D] [thread 11466] [6.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Processing packet received on port 3
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Parser 'parser': start
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] Bytes parsed: 14
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Parser 'parser': end
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Looking up key:
-
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] Action source_routing82
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.638] [bmv2] [T] [thread 11461] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.638] [bmv2] [D] [thread 11461] [7.0] [cxt 0] Egress port is 0
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Processing packet received on port 3
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Parser 'parser': start
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] Bytes parsed: 14
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Parser 'parser': end
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Looking up key:
-
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] Action source_routing82
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.638] [bmv2] [T] [thread 11461] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.638] [bmv2] [D] [thread 11461] [8.0] [cxt 0] Egress port is 0
-[22:54:28.638] [bmv2] [D] [thread 11462] [7.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.638] [bmv2] [D] [thread 11462] [7.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.638] [bmv2] [D] [thread 11462] [7.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.638] [bmv2] [T] [thread 11462] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.638] [bmv2] [D] [thread 11462] [7.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.638] [bmv2] [D] [thread 11462] [7.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.638] [bmv2] [D] [thread 11462] [8.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.638] [bmv2] [D] [thread 11462] [8.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.638] [bmv2] [D] [thread 11462] [8.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.638] [bmv2] [T] [thread 11462] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.638] [bmv2] [D] [thread 11462] [8.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.638] [bmv2] [D] [thread 11462] [8.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.638] [bmv2] [D] [thread 11466] [7.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[22:54:28.639] [bmv2] [D] [thread 11466] [8.0] [cxt 0] Transmitting packet of size 70 out of port 0
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Processing packet received on port 3
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Parser 'parser': start
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Parser 'parser' entering state 'start'
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Extracting header 'ethernet'
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Parser state 'start': key is 86dd
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] Bytes parsed: 14
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Parser 'parser': end
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Pipeline 'ingress': start
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is true
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] Applying table 'tbl_source_routing82'
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Looking up key:
-
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Table 'tbl_source_routing82': miss
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Action entry is source_routing82 - 
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] Action source_routing82
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] Condition "node_9" (node_9) is false
-[22:54:28.649] [bmv2] [T] [thread 11461] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.ipv4.isValid()" (node_13) is false
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Pipeline 'ingress': end
-[22:54:28.649] [bmv2] [D] [thread 11461] [9.0] [cxt 0] Egress port is 0
-[22:54:28.650] [bmv2] [D] [thread 11462] [9.0] [cxt 0] Pipeline 'egress': start
-[22:54:28.650] [bmv2] [D] [thread 11462] [9.0] [cxt 0] Pipeline 'egress': end
-[22:54:28.650] [bmv2] [D] [thread 11462] [9.0] [cxt 0] Deparser 'deparser': start
-[22:54:28.650] [bmv2] [T] [thread 11462] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[22:54:28.650] [bmv2] [D] [thread 11462] [9.0] [cxt 0] Deparsing header 'ethernet'
-[22:54:28.650] [bmv2] [D] [thread 11462] [9.0] [cxt 0] Deparser 'deparser': end
-[22:54:28.650] [bmv2] [D] [thread 11466] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[22:54:59.713] [bmv2] [T] [thread 11644] bm_get_config
-[22:54:59.714] [bmv2] [T] [thread 11644] bm_mt_get_entries
-[22:54:59.714] [bmv2] [T] [thread 11644] bm_mt_get_entries
-[22:54:59.728] [bmv2] [T] [thread 11644] bm_reset_state
-[22:54:59.732] [bmv2] [D] [thread 11644] Resetting simple_switch target-specific state
-[22:54:59.732] [bmv2] [D] [thread 11644] resetting PRE state
-[22:59:51.579] [bmv2] [T] [thread 11728] bm_get_config
-[22:59:51.580] [bmv2] [T] [thread 11728] bm_mt_get_entries
-[22:59:51.580] [bmv2] [T] [thread 11728] bm_mt_get_entries
-[22:59:51.590] [bmv2] [T] [thread 11728] bm_reset_state
-[22:59:51.593] [bmv2] [D] [thread 11728] Resetting simple_switch target-specific state
-[22:59:51.593] [bmv2] [D] [thread 11728] resetting PRE state
-[23:00:00.459] [bmv2] [T] [thread 11746] bm_get_config
-[23:00:00.460] [bmv2] [T] [thread 11746] bm_mt_get_entries
-[23:00:00.460] [bmv2] [T] [thread 11746] bm_mt_get_entries
-[23:00:00.470] [bmv2] [T] [thread 11746] bm_reset_state
-[23:00:00.472] [bmv2] [D] [thread 11746] Resetting simple_switch target-specific state
-[23:00:00.472] [bmv2] [D] [thread 11746] resetting PRE state
-[23:00:14.176] [bmv2] [T] [thread 11784] bm_get_config
-[23:00:14.177] [bmv2] [T] [thread 11784] bm_mt_get_entries
-[23:00:14.177] [bmv2] [T] [thread 11784] bm_mt_get_entries
-[23:00:14.186] [bmv2] [T] [thread 11784] bm_reset_state
-[23:00:14.188] [bmv2] [D] [thread 11784] Resetting simple_switch target-specific state
-[23:00:14.188] [bmv2] [D] [thread 11784] resetting PRE state
-[23:03:39.984] [bmv2] [T] [thread 11832] bm_get_config
-[23:03:39.985] [bmv2] [T] [thread 11832] bm_mt_get_entries
-[23:03:39.985] [bmv2] [T] [thread 11832] bm_mt_get_entries
-[23:03:39.996] [bmv2] [T] [thread 11832] bm_reset_state
-[23:03:40.001] [bmv2] [D] [thread 11832] Resetting simple_switch target-specific state
-[23:03:40.001] [bmv2] [D] [thread 11832] resetting PRE state
-[23:04:00.194] [bmv2] [T] [thread 11871] bm_get_config
-[23:04:00.195] [bmv2] [T] [thread 11871] bm_mt_get_entries
-[23:04:00.195] [bmv2] [T] [thread 11871] bm_mt_get_entries
-[23:04:00.209] [bmv2] [T] [thread 11871] bm_reset_state
-[23:04:00.213] [bmv2] [D] [thread 11871] Resetting simple_switch target-specific state
-[23:04:00.213] [bmv2] [D] [thread 11871] resetting PRE state
-[23:04:26.773] [bmv2] [T] [thread 11934] bm_get_config
-[23:04:26.774] [bmv2] [T] [thread 11934] bm_mt_get_entries
-[23:04:26.774] [bmv2] [T] [thread 11934] bm_mt_get_entries
-[23:04:26.784] [bmv2] [T] [thread 11934] bm_reset_state
-[23:04:26.789] [bmv2] [D] [thread 11934] Resetting simple_switch target-specific state
-[23:04:26.789] [bmv2] [D] [thread 11934] resetting PRE state
-[10:54:50.702] [bmv2] [T] [thread 12460] bm_get_config
-[10:54:50.703] [bmv2] [T] [thread 12460] bm_mt_get_entries
-[10:54:50.703] [bmv2] [T] [thread 12460] bm_mt_get_entries
-[10:54:50.716] [bmv2] [T] [thread 12460] bm_reset_state
-[10:54:50.720] [bmv2] [D] [thread 12460] Resetting simple_switch target-specific state
-[10:54:50.720] [bmv2] [D] [thread 12460] resetting PRE state
-[10:57:13.868] [bmv2] [T] [thread 12484] bm_get_config
-[10:57:13.869] [bmv2] [T] [thread 12484] bm_mt_get_entries
-[10:57:13.869] [bmv2] [T] [thread 12484] bm_mt_get_entries
-[10:57:13.885] [bmv2] [T] [thread 12484] bm_reset_state
-[10:57:13.887] [bmv2] [D] [thread 12484] Resetting simple_switch target-specific state
-[10:57:13.887] [bmv2] [D] [thread 12484] resetting PRE state
-[10:57:50.120] [bmv2] [T] [thread 12522] bm_get_config
-[10:57:50.121] [bmv2] [T] [thread 12522] bm_mt_get_entries
-[10:57:50.121] [bmv2] [T] [thread 12522] bm_mt_get_entries
-[10:57:50.131] [bmv2] [T] [thread 12522] bm_reset_state
-[10:57:50.133] [bmv2] [D] [thread 12522] Resetting simple_switch target-specific state
-[10:57:50.133] [bmv2] [D] [thread 12522] resetting PRE state
-[10:58:29.880] [bmv2] [T] [thread 12558] bm_get_config
-[10:58:36.009] [bmv2] [T] [thread 12558] bm_mt_get_entries
-[10:58:36.010] [bmv2] [T] [thread 12558] bm_mt_get_default_entry
-[10:59:32.068] [bmv2] [T] [thread 12608] bm_get_config
-[10:59:32.069] [bmv2] [T] [thread 12608] bm_mt_get_entries
-[10:59:32.069] [bmv2] [T] [thread 12608] bm_mt_get_entries
-[10:59:32.084] [bmv2] [T] [thread 12608] bm_reset_state
-[10:59:32.088] [bmv2] [D] [thread 12608] Resetting simple_switch target-specific state
-[10:59:32.088] [bmv2] [D] [thread 12608] resetting PRE state
-[11:05:19.059] [bmv2] [T] [thread 12690] bm_get_config
-[11:05:19.060] [bmv2] [T] [thread 12690] bm_mt_get_entries
-[11:05:19.060] [bmv2] [T] [thread 12690] bm_mt_get_entries
-[11:05:19.069] [bmv2] [T] [thread 12690] bm_reset_state
-[11:05:19.071] [bmv2] [D] [thread 12690] Resetting simple_switch target-specific state
-[11:05:19.071] [bmv2] [D] [thread 12690] resetting PRE state
-[11:06:47.329] [bmv2] [T] [thread 12730] bm_get_config
-[11:06:47.330] [bmv2] [T] [thread 12730] bm_mt_get_entries
-[11:06:47.330] [bmv2] [T] [thread 12730] bm_mt_get_entries
-[11:06:47.338] [bmv2] [T] [thread 12730] bm_reset_state
-[11:06:47.341] [bmv2] [D] [thread 12730] Resetting simple_switch target-specific state
-[11:06:47.341] [bmv2] [D] [thread 12730] resetting PRE state
-[11:07:17.307] [bmv2] [T] [thread 12750] bm_get_config
-[11:07:17.309] [bmv2] [T] [thread 12750] bm_mt_get_entries
-[11:07:17.309] [bmv2] [T] [thread 12750] bm_mt_get_entries
-[11:07:17.331] [bmv2] [T] [thread 12750] bm_reset_state
-[11:07:17.333] [bmv2] [D] [thread 12750] Resetting simple_switch target-specific state
-[11:07:17.333] [bmv2] [D] [thread 12750] resetting PRE state
-[11:07:46.770] [bmv2] [T] [thread 12789] bm_get_config
-[11:07:46.771] [bmv2] [T] [thread 12789] bm_mt_get_entries
-[11:07:46.771] [bmv2] [T] [thread 12789] bm_mt_get_entries
-[11:07:46.780] [bmv2] [T] [thread 12789] bm_reset_state
-[11:07:46.782] [bmv2] [D] [thread 12789] Resetting simple_switch target-specific state
-[11:07:46.782] [bmv2] [D] [thread 12789] resetting PRE state
-[11:08:20.602] [bmv2] [T] [thread 12829] bm_get_config
-[11:08:20.603] [bmv2] [T] [thread 12829] bm_mt_get_entries
-[11:08:20.604] [bmv2] [T] [thread 12829] bm_mt_get_entries
-[11:08:20.614] [bmv2] [T] [thread 12829] bm_reset_state
-[11:08:20.617] [bmv2] [D] [thread 12829] Resetting simple_switch target-specific state
-[11:08:20.617] [bmv2] [D] [thread 12829] resetting PRE state
-[11:08:35.446] [bmv2] [T] [thread 12847] bm_get_config
-[11:08:35.447] [bmv2] [T] [thread 12847] bm_mt_get_entries
-[11:08:35.447] [bmv2] [T] [thread 12847] bm_mt_get_entries
-[11:08:35.456] [bmv2] [T] [thread 12847] bm_reset_state
-[11:08:35.458] [bmv2] [D] [thread 12847] Resetting simple_switch target-specific state
-[11:08:35.458] [bmv2] [D] [thread 12847] resetting PRE state
-[11:09:45.797] [bmv2] [T] [thread 12868] bm_get_config
-[11:09:45.797] [bmv2] [T] [thread 12868] bm_mt_get_entries
-[11:09:45.798] [bmv2] [T] [thread 12868] bm_mt_get_entries
-[11:09:45.808] [bmv2] [T] [thread 12868] bm_reset_state
-[11:09:45.810] [bmv2] [D] [thread 12868] Resetting simple_switch target-specific state
-[11:09:45.810] [bmv2] [D] [thread 12868] resetting PRE state
-[11:10:11.690] [bmv2] [T] [thread 12906] bm_get_config
-[11:10:11.691] [bmv2] [T] [thread 12906] bm_mt_get_entries
-[11:10:11.691] [bmv2] [T] [thread 12906] bm_mt_get_entries
-[11:10:11.700] [bmv2] [T] [thread 12906] bm_reset_state
-[11:10:11.702] [bmv2] [D] [thread 12906] Resetting simple_switch target-specific state
-[11:10:11.702] [bmv2] [D] [thread 12906] resetting PRE state
-[11:21:26.619] [bmv2] [T] [thread 12975] bm_get_config
-[11:21:26.620] [bmv2] [T] [thread 12975] bm_mt_get_entries
-[11:21:26.620] [bmv2] [T] [thread 12975] bm_mt_get_entries
-[11:21:26.633] [bmv2] [T] [thread 12975] bm_reset_state
-[11:21:26.635] [bmv2] [D] [thread 12975] Resetting simple_switch target-specific state
-[11:21:26.635] [bmv2] [D] [thread 12975] resetting PRE state
-[11:21:35.409] [bmv2] [T] [thread 13015] bm_get_config
-[11:21:35.409] [bmv2] [T] [thread 13015] bm_mt_get_entries
-[11:21:35.410] [bmv2] [T] [thread 13015] bm_mt_get_entries
-[11:21:35.422] [bmv2] [T] [thread 13015] bm_reset_state
-[11:21:35.425] [bmv2] [D] [thread 13015] Resetting simple_switch target-specific state
-[11:21:35.425] [bmv2] [D] [thread 13015] resetting PRE state
-[11:22:13.007] [bmv2] [T] [thread 13055] bm_get_config
-[11:22:13.008] [bmv2] [T] [thread 13055] bm_mt_get_entries
-[11:22:13.008] [bmv2] [T] [thread 13055] bm_mt_get_entries
-[11:22:13.022] [bmv2] [T] [thread 13055] bm_reset_state
-[11:22:13.023] [bmv2] [D] [thread 13055] Resetting simple_switch target-specific state
-[11:22:13.023] [bmv2] [D] [thread 13055] resetting PRE state
-[11:24:10.756] [bmv2] [T] [thread 13094] bm_get_config
-[11:24:10.757] [bmv2] [T] [thread 13094] bm_mt_get_entries
-[11:24:10.757] [bmv2] [T] [thread 13094] bm_mt_get_entries
-[11:24:10.766] [bmv2] [T] [thread 13094] bm_reset_state
-[11:24:10.768] [bmv2] [D] [thread 13094] Resetting simple_switch target-specific state
-[11:24:10.768] [bmv2] [D] [thread 13094] resetting PRE state
-[11:25:07.841] [bmv2] [T] [thread 13133] bm_get_config
-[11:25:07.842] [bmv2] [T] [thread 13133] bm_mt_get_entries
-[11:25:07.842] [bmv2] [T] [thread 13133] bm_mt_get_entries
-[11:25:07.850] [bmv2] [T] [thread 13133] bm_reset_state
-[11:25:07.852] [bmv2] [D] [thread 13133] Resetting simple_switch target-specific state
-[11:25:07.852] [bmv2] [D] [thread 13133] resetting PRE state
-[11:25:19.519] [bmv2] [T] [thread 13171] bm_get_config
-[11:25:19.520] [bmv2] [T] [thread 13171] bm_mt_get_entries
-[11:25:19.520] [bmv2] [T] [thread 13171] bm_mt_get_entries
-[11:25:19.529] [bmv2] [T] [thread 13171] bm_reset_state
-[11:25:19.530] [bmv2] [D] [thread 13171] Resetting simple_switch target-specific state
-[11:25:19.530] [bmv2] [D] [thread 13171] resetting PRE state
-[11:29:25.085] [bmv2] [T] [thread 13229] bm_get_config
-[11:29:25.086] [bmv2] [T] [thread 13229] bm_mt_get_entries
-[11:29:25.086] [bmv2] [T] [thread 13229] bm_mt_get_entries
-[11:29:25.102] [bmv2] [T] [thread 13229] bm_reset_state
-[11:29:25.109] [bmv2] [D] [thread 13229] Resetting simple_switch target-specific state
-[11:29:25.109] [bmv2] [D] [thread 13229] resetting PRE state
-[11:29:39.250] [bmv2] [T] [thread 13247] bm_get_config
-[11:29:39.251] [bmv2] [T] [thread 13247] bm_mt_get_entries
-[11:29:39.251] [bmv2] [T] [thread 13247] bm_mt_get_entries
-[11:29:39.264] [bmv2] [T] [thread 13247] bm_reset_state
-[11:29:39.266] [bmv2] [D] [thread 13247] Resetting simple_switch target-specific state
-[11:29:39.266] [bmv2] [D] [thread 13247] resetting PRE state
-[11:30:04.251] [bmv2] [T] [thread 13265] bm_get_config
-[11:30:04.252] [bmv2] [T] [thread 13265] bm_mt_get_entries
-[11:30:04.252] [bmv2] [T] [thread 13265] bm_mt_get_entries
-[11:30:04.262] [bmv2] [T] [thread 13265] bm_reset_state
-[11:30:04.264] [bmv2] [D] [thread 13265] Resetting simple_switch target-specific state
-[11:30:04.264] [bmv2] [D] [thread 13265] resetting PRE state
-[11:31:48.838] [bmv2] [T] [thread 13319] bm_get_config
-[11:31:48.839] [bmv2] [T] [thread 13319] bm_mt_get_entries
-[11:31:48.839] [bmv2] [T] [thread 13319] bm_mt_get_entries
-[11:31:48.849] [bmv2] [T] [thread 13319] bm_reset_state
-[11:31:48.856] [bmv2] [D] [thread 13319] Resetting simple_switch target-specific state
-[11:31:48.856] [bmv2] [D] [thread 13319] resetting PRE state
-[11:32:27.071] [bmv2] [T] [thread 13337] bm_get_config
-[11:32:27.072] [bmv2] [T] [thread 13337] bm_mt_get_entries
-[11:32:27.072] [bmv2] [T] [thread 13337] bm_mt_get_entries
-[11:32:27.081] [bmv2] [T] [thread 13337] bm_reset_state
-[11:32:27.085] [bmv2] [D] [thread 13337] Resetting simple_switch target-specific state
-[11:32:27.085] [bmv2] [D] [thread 13337] resetting PRE state
-[11:33:18.637] [bmv2] [T] [thread 13359] bm_get_config
-[11:33:18.638] [bmv2] [T] [thread 13359] bm_mt_get_entries
-[11:33:18.638] [bmv2] [T] [thread 13359] bm_mt_get_entries
-[11:33:18.648] [bmv2] [T] [thread 13359] bm_reset_state
-[11:33:18.653] [bmv2] [D] [thread 13359] Resetting simple_switch target-specific state
-[11:33:18.653] [bmv2] [D] [thread 13359] resetting PRE state
-[11:33:18.671] [bmv2] [T] [thread 13359] bm_table_add_entry
-[11:33:18.671] [bmv2] [D] [thread 13359] Entry 0 added to table 'MyIngress.device_to_port'
-[11:33:18.671] [bmv2] [D] [thread 13359] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:33:18.675] [bmv2] [T] [thread 13359] bm_table_add_entry
-[11:33:18.675] [bmv2] [D] [thread 13359] Entry 1 added to table 'MyIngress.device_to_port'
-[11:33:18.675] [bmv2] [D] [thread 13359] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:34:28.896] [bmv2] [T] [thread 13401] bm_get_config
-[11:34:28.897] [bmv2] [T] [thread 13401] bm_mt_get_entries
-[11:34:28.897] [bmv2] [T] [thread 13401] bm_mt_get_entries
-[11:34:28.910] [bmv2] [T] [thread 13401] bm_reset_state
-[11:34:28.914] [bmv2] [D] [thread 13401] Resetting simple_switch target-specific state
-[11:34:28.914] [bmv2] [D] [thread 13401] resetting PRE state
-[11:34:28.934] [bmv2] [T] [thread 13401] bm_table_add_entry
-[11:34:28.934] [bmv2] [D] [thread 13401] Entry 0 added to table 'MyIngress.device_to_port'
-[11:34:28.934] [bmv2] [D] [thread 13401] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:34:28.938] [bmv2] [T] [thread 13401] bm_table_add_entry
-[11:34:28.938] [bmv2] [D] [thread 13401] Entry 1 added to table 'MyIngress.device_to_port'
-[11:34:28.938] [bmv2] [D] [thread 13401] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:34:42.627] [bmv2] [T] [thread 13439] bm_get_config
-[11:34:42.627] [bmv2] [T] [thread 13439] bm_mt_get_entries
-[11:34:42.628] [bmv2] [T] [thread 13439] bm_mt_get_entries
-[11:34:42.647] [bmv2] [T] [thread 13439] bm_reset_state
-[11:34:42.652] [bmv2] [D] [thread 13439] Resetting simple_switch target-specific state
-[11:34:42.652] [bmv2] [D] [thread 13439] resetting PRE state
-[11:34:42.682] [bmv2] [T] [thread 13439] bm_table_add_entry
-[11:34:42.683] [bmv2] [D] [thread 13439] Entry 0 added to table 'MyIngress.device_to_port'
-[11:34:42.683] [bmv2] [D] [thread 13439] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:34:42.686] [bmv2] [T] [thread 13439] bm_table_add_entry
-[11:34:42.686] [bmv2] [D] [thread 13439] Entry 1 added to table 'MyIngress.device_to_port'
-[11:34:42.686] [bmv2] [D] [thread 13439] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:35:17.812] [bmv2] [T] [thread 13478] bm_get_config
-[11:35:17.812] [bmv2] [T] [thread 13478] bm_mt_get_entries
-[11:35:17.813] [bmv2] [T] [thread 13478] bm_mt_get_entries
-[11:35:17.823] [bmv2] [T] [thread 13478] bm_reset_state
-[11:35:17.826] [bmv2] [D] [thread 13478] Resetting simple_switch target-specific state
-[11:35:17.826] [bmv2] [D] [thread 13478] resetting PRE state
-[11:35:17.843] [bmv2] [T] [thread 13478] bm_table_add_entry
-[11:35:17.843] [bmv2] [D] [thread 13478] Entry 0 added to table 'MyIngress.device_to_port'
-[11:35:17.843] [bmv2] [D] [thread 13478] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:35:17.845] [bmv2] [T] [thread 13478] bm_table_add_entry
-[11:35:17.845] [bmv2] [D] [thread 13478] Entry 1 added to table 'MyIngress.device_to_port'
-[11:35:17.845] [bmv2] [D] [thread 13478] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:36:00.277] [bmv2] [T] [thread 13519] bm_get_config
-[11:36:00.278] [bmv2] [T] [thread 13519] bm_mt_get_entries
-[11:36:00.278] [bmv2] [T] [thread 13519] bm_mt_get_entries
-[11:36:00.288] [bmv2] [T] [thread 13519] bm_reset_state
-[11:36:00.292] [bmv2] [D] [thread 13519] Resetting simple_switch target-specific state
-[11:36:00.292] [bmv2] [D] [thread 13519] resetting PRE state
-[11:36:00.306] [bmv2] [T] [thread 13519] bm_table_add_entry
-[11:36:00.306] [bmv2] [D] [thread 13519] Entry 0 added to table 'MyIngress.device_to_port'
-[11:36:00.306] [bmv2] [D] [thread 13519] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:36:00.309] [bmv2] [T] [thread 13519] bm_table_add_entry
-[11:36:00.309] [bmv2] [D] [thread 13519] Entry 1 added to table 'MyIngress.device_to_port'
-[11:36:00.309] [bmv2] [D] [thread 13519] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:36:10.187] [bmv2] [T] [thread 13557] bm_get_config
-[11:36:10.188] [bmv2] [T] [thread 13557] bm_mt_get_entries
-[11:36:10.189] [bmv2] [T] [thread 13557] bm_mt_get_entries
-[11:36:10.201] [bmv2] [T] [thread 13557] bm_reset_state
-[11:36:10.203] [bmv2] [D] [thread 13557] Resetting simple_switch target-specific state
-[11:36:10.203] [bmv2] [D] [thread 13557] resetting PRE state
-[11:36:10.216] [bmv2] [T] [thread 13557] bm_table_add_entry
-[11:36:10.216] [bmv2] [D] [thread 13557] Entry 0 added to table 'MyIngress.device_to_port'
-[11:36:10.216] [bmv2] [D] [thread 13557] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:36:10.219] [bmv2] [T] [thread 13557] bm_table_add_entry
-[11:36:10.219] [bmv2] [D] [thread 13557] Entry 1 added to table 'MyIngress.device_to_port'
-[11:36:10.219] [bmv2] [D] [thread 13557] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:50:16.961] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Processing packet received on port 1
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser': start
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'start'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting header 'ethernet'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'start': key is 1111
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 14
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting to header stack 0, next header is 4
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 15
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting to header stack 0, next header is 5
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 16
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting to header stack 0, next header is 6
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 17
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting to header stack 0, next header is 7
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 18
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting to header stack 0, next header is 8
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 19
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Extracting header 'ipv4'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Bytes parsed: 39
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Parser 'parser': end
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Pipeline 'ingress': start
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Applying table 'tbl_source_routing67'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Looking up key:
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Table 'tbl_source_routing67': miss
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Action entry is source_routing67 - 
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Action source_routing67
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 03
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 0
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,2,
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Action MyIngress.ipv4_forward
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Applying table 'tbl_act'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Looking up key:
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Table 'tbl_act': miss
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Action entry is act - 
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Action act
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Primitive (no source info)
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Looking up key:
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Action entry is source_routing82_0 - 
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Action source_routing82_0
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Condition "node_9" (node_9) is true
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Applying table 'tbl_source_routing87'
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Looking up key:
-
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Table 'tbl_source_routing87': miss
-[11:50:16.962] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Action entry is source_routing87 - 
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] Action source_routing87
-[11:50:16.962] [bmv2] [T] [thread 11461] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[11:50:16.963] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Pipeline 'ingress': end
-[11:50:16.963] [bmv2] [D] [thread 11461] [10.0] [cxt 0] Egress port is 2
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Pipeline 'egress': start
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Pipeline 'egress': end
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparser 'deparser': start
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Updating checksum 'cksum'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'ethernet'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'source_routes[0]'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'source_routes[1]'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'source_routes[2]'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'source_routes[3]'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparsing header 'ipv4'
-[11:50:16.963] [bmv2] [D] [thread 11464] [10.0] [cxt 0] Deparser 'deparser': end
-[11:50:16.963] [bmv2] [D] [thread 11466] [10.0] [cxt 0] Transmitting packet of size 46 out of port 2
-[11:51:26.488] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Processing packet received on port 1
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser': start
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'start'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting header 'ethernet'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'start': key is 1111
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 14
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting to header stack 0, next header is 4
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 15
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting to header stack 0, next header is 5
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 16
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting to header stack 0, next header is 6
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 17
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting to header stack 0, next header is 7
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 18
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting to header stack 0, next header is 8
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 19
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Extracting header 'ipv4'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Bytes parsed: 39
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Parser 'parser': end
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Pipeline 'ingress': start
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Applying table 'tbl_source_routing67'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Looking up key:
-
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Table 'tbl_source_routing67': miss
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Action entry is source_routing67 - 
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Action source_routing67
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 06
-
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 1
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:51:26.489] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,3,
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Action MyIngress.ipv4_forward
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[11:51:26.489] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Applying table 'tbl_act'
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Looking up key:
-
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Table 'tbl_act': miss
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Action entry is act - 
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Action act
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Primitive (no source info)
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Looking up key:
-
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Action entry is source_routing82_0 - 
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Action source_routing82_0
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Condition "node_9" (node_9) is true
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Applying table 'tbl_source_routing87'
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Looking up key:
-
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Table 'tbl_source_routing87': miss
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Action entry is source_routing87 - 
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] Action source_routing87
-[11:51:26.490] [bmv2] [T] [thread 11461] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Pipeline 'ingress': end
-[11:51:26.490] [bmv2] [D] [thread 11461] [11.0] [cxt 0] Egress port is 3
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Pipeline 'egress': start
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Pipeline 'egress': end
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparser 'deparser': start
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Updating checksum 'cksum'
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'ethernet'
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'source_routes[0]'
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'source_routes[1]'
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'source_routes[2]'
-[11:51:26.490] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'source_routes[3]'
-[11:51:26.491] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparsing header 'ipv4'
-[11:51:26.491] [bmv2] [D] [thread 11465] [11.0] [cxt 0] Deparser 'deparser': end
-[11:51:26.491] [bmv2] [D] [thread 11466] [11.0] [cxt 0] Transmitting packet of size 46 out of port 3
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Processing packet received on port 1
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser': start
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'start'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting header 'ethernet'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'start': key is 1111
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 14
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting to header stack 0, next header is 4
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 15
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting to header stack 0, next header is 5
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 16
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting to header stack 0, next header is 6
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 17
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting to header stack 0, next header is 7
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 18
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting to header stack 0, next header is 8
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 19
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Extracting header 'ipv4'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Bytes parsed: 39
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Parser 'parser': end
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Pipeline 'ingress': start
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Applying table 'tbl_source_routing67'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Looking up key:
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Table 'tbl_source_routing67': miss
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Action entry is source_routing67 - 
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Action source_routing67
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 06
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 1
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,3,
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Action MyIngress.ipv4_forward
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Applying table 'tbl_act'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Looking up key:
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Table 'tbl_act': miss
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Action entry is act - 
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Action act
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Primitive (no source info)
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Looking up key:
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Action entry is source_routing82_0 - 
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Action source_routing82_0
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Condition "node_9" (node_9) is true
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Applying table 'tbl_source_routing87'
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Looking up key:
-
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Table 'tbl_source_routing87': miss
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Action entry is source_routing87 - 
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] Action source_routing87
-[11:51:28.929] [bmv2] [T] [thread 11461] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[11:51:28.929] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Pipeline 'ingress': end
-[11:51:28.930] [bmv2] [D] [thread 11461] [12.0] [cxt 0] Egress port is 3
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Pipeline 'egress': start
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Pipeline 'egress': end
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparser 'deparser': start
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Updating checksum 'cksum'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'ethernet'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'source_routes[0]'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'source_routes[1]'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'source_routes[2]'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'source_routes[3]'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparsing header 'ipv4'
-[11:51:28.930] [bmv2] [D] [thread 11465] [12.0] [cxt 0] Deparser 'deparser': end
-[11:51:28.930] [bmv2] [D] [thread 11466] [12.0] [cxt 0] Transmitting packet of size 46 out of port 3
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Processing packet received on port 1
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser': start
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'start'
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting header 'ethernet'
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'start': key is 1111
-[11:51:40.628] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 14
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:40.628] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting to header stack 0, next header is 4
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 15
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting to header stack 0, next header is 5
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 16
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting to header stack 0, next header is 6
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 17
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting to header stack 0, next header is 7
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 18
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting to header stack 0, next header is 8
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 19
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Extracting header 'ipv4'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Bytes parsed: 39
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Parser 'parser': end
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Pipeline 'ingress': start
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Applying table 'tbl_source_routing67'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Looking up key:
-
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Table 'tbl_source_routing67': miss
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Action entry is source_routing67 - 
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Action source_routing67
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 06
-
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 1
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,3,
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Action MyIngress.ipv4_forward
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Applying table 'tbl_act'
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Looking up key:
-
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Table 'tbl_act': miss
-[11:51:40.629] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Action entry is act - 
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Action act
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Primitive (no source info)
-[11:51:40.629] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Looking up key:
-
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Action entry is source_routing82_0 - 
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Action source_routing82_0
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Condition "node_9" (node_9) is true
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Applying table 'tbl_source_routing87'
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Looking up key:
-
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Table 'tbl_source_routing87': miss
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Action entry is source_routing87 - 
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] Action source_routing87
-[11:51:40.630] [bmv2] [T] [thread 11461] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Pipeline 'ingress': end
-[11:51:40.630] [bmv2] [D] [thread 11461] [13.0] [cxt 0] Egress port is 3
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Pipeline 'egress': start
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Pipeline 'egress': end
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparser 'deparser': start
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Updating checksum 'cksum'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'ethernet'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'source_routes[0]'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'source_routes[1]'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'source_routes[2]'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'source_routes[3]'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparsing header 'ipv4'
-[11:51:40.630] [bmv2] [D] [thread 11465] [13.0] [cxt 0] Deparser 'deparser': end
-[11:51:40.630] [bmv2] [D] [thread 11466] [13.0] [cxt 0] Transmitting packet of size 46 out of port 3
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Processing packet received on port 1
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser': start
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'start'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting header 'ethernet'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'start': key is 1111
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 14
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting to header stack 0, next header is 4
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 15
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting to header stack 0, next header is 5
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 16
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting to header stack 0, next header is 6
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 17
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting to header stack 0, next header is 7
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 18
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting to header stack 0, next header is 8
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 19
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Extracting header 'ipv4'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Bytes parsed: 39
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Parser 'parser': end
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Pipeline 'ingress': start
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[11:51:47.623] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Applying table 'tbl_source_routing67'
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Looking up key:
-
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Table 'tbl_source_routing67': miss
-[11:51:47.623] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Action entry is source_routing67 - 
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Action source_routing67
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 06
-
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 1
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,3,
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Action MyIngress.ipv4_forward
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Applying table 'tbl_act'
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Looking up key:
-
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Table 'tbl_act': miss
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Action entry is act - 
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Action act
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Primitive (no source info)
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Looking up key:
-
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Action entry is source_routing82_0 - 
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Action source_routing82_0
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Condition "node_9" (node_9) is true
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Applying table 'tbl_source_routing87'
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Looking up key:
-
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Table 'tbl_source_routing87': miss
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Action entry is source_routing87 - 
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] Action source_routing87
-[11:51:47.624] [bmv2] [T] [thread 11461] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Pipeline 'ingress': end
-[11:51:47.624] [bmv2] [D] [thread 11461] [14.0] [cxt 0] Egress port is 3
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Pipeline 'egress': start
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Pipeline 'egress': end
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparser 'deparser': start
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Updating checksum 'cksum'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'ethernet'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'source_routes[0]'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'source_routes[1]'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'source_routes[2]'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'source_routes[3]'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparsing header 'ipv4'
-[11:51:47.625] [bmv2] [D] [thread 11465] [14.0] [cxt 0] Deparser 'deparser': end
-[11:51:47.625] [bmv2] [D] [thread 11466] [14.0] [cxt 0] Transmitting packet of size 46 out of port 3
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Processing packet received on port 1
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser': start
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'start'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting header 'ethernet'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'start': key is 1111
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 14
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting to header stack 0, next header is 4
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 15
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting to header stack 0, next header is 5
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 16
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting to header stack 0, next header is 6
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 17
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting to header stack 0, next header is 7
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 18
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting to header stack 0, next header is 8
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 19
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Extracting header 'ipv4'
-[16:10:29.300] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[16:10:29.300] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Bytes parsed: 39
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Parser 'parser': end
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Pipeline 'ingress': start
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Applying table 'tbl_source_routing67'
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Looking up key:
-
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Table 'tbl_source_routing67': miss
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Action entry is source_routing67 - 
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Action source_routing67
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 06
-
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 1
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,3,
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Action MyIngress.ipv4_forward
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Applying table 'tbl_act'
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Looking up key:
-
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Table 'tbl_act': miss
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Action entry is act - 
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Action act
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Primitive (no source info)
-[16:10:29.301] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Looking up key:
-
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[16:10:29.301] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Action entry is source_routing82_0 - 
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Action source_routing82_0
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Condition "node_9" (node_9) is true
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Applying table 'tbl_source_routing87'
-[16:10:29.302] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Looking up key:
-
-[16:10:29.302] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Table 'tbl_source_routing87': miss
-[16:10:29.302] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Action entry is source_routing87 - 
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] Action source_routing87
-[16:10:29.302] [bmv2] [T] [thread 11461] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[16:10:29.302] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Pipeline 'ingress': end
-[16:10:29.302] [bmv2] [D] [thread 11461] [15.0] [cxt 0] Egress port is 3
-[16:10:29.302] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Pipeline 'egress': start
-[16:10:29.302] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Pipeline 'egress': end
-[16:10:29.302] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparser 'deparser': start
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Updating checksum 'cksum'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'ethernet'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'source_routes[0]'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'source_routes[1]'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'source_routes[2]'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'source_routes[3]'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparsing header 'ipv4'
-[16:10:29.303] [bmv2] [D] [thread 11465] [15.0] [cxt 0] Deparser 'deparser': end
-[16:10:29.303] [bmv2] [D] [thread 11466] [15.0] [cxt 0] Transmitting packet of size 46 out of port 3
-[17:06:09.388] [bmv2] [T] [thread 14015] bm_get_config
-[17:06:09.389] [bmv2] [T] [thread 14015] bm_mt_get_entries
-[17:06:09.389] [bmv2] [T] [thread 14015] bm_mt_get_entries
-[17:06:09.402] [bmv2] [T] [thread 14015] bm_reset_state
-[17:06:09.404] [bmv2] [D] [thread 14015] Resetting simple_switch target-specific state
-[17:06:09.404] [bmv2] [D] [thread 14015] resetting PRE state
-[17:06:23.098] [bmv2] [T] [thread 14037] bm_get_config
-[17:06:23.099] [bmv2] [T] [thread 14037] bm_mt_get_entries
-[17:06:23.099] [bmv2] [T] [thread 14037] bm_mt_get_entries
-[17:06:23.109] [bmv2] [T] [thread 14037] bm_reset_state
-[17:06:23.113] [bmv2] [D] [thread 14037] Resetting simple_switch target-specific state
-[17:06:23.114] [bmv2] [D] [thread 14037] resetting PRE state
-[17:06:52.813] [bmv2] [T] [thread 14056] bm_get_config
-[17:06:52.814] [bmv2] [T] [thread 14056] bm_mt_get_entries
-[17:06:52.814] [bmv2] [T] [thread 14056] bm_mt_get_entries
-[17:06:52.823] [bmv2] [T] [thread 14056] bm_reset_state
-[17:06:52.825] [bmv2] [D] [thread 14056] Resetting simple_switch target-specific state
-[17:06:52.825] [bmv2] [D] [thread 14056] resetting PRE state
-[17:06:52.838] [bmv2] [T] [thread 14056] bm_table_add_entry
-[17:06:52.838] [bmv2] [D] [thread 14056] Entry 0 added to table 'MyIngress.device_to_port'
-[17:06:52.838] [bmv2] [D] [thread 14056] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:06:52.840] [bmv2] [T] [thread 14056] bm_table_add_entry
-[17:06:52.840] [bmv2] [D] [thread 14056] Entry 1 added to table 'MyIngress.device_to_port'
-[17:06:52.840] [bmv2] [D] [thread 14056] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:07:57.272] [bmv2] [T] [thread 14079] bm_get_config
-[17:07:57.274] [bmv2] [T] [thread 14079] bm_mt_get_entries
-[17:07:57.275] [bmv2] [T] [thread 14079] bm_mt_get_entries
-[17:07:57.295] [bmv2] [T] [thread 14079] bm_reset_state
-[17:07:57.300] [bmv2] [D] [thread 14079] Resetting simple_switch target-specific state
-[17:07:57.300] [bmv2] [D] [thread 14079] resetting PRE state
-[17:07:57.335] [bmv2] [T] [thread 14079] bm_table_add_entry
-[17:07:57.335] [bmv2] [D] [thread 14079] Entry 0 added to table 'MyIngress.device_to_port'
-[17:07:57.335] [bmv2] [D] [thread 14079] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:07:57.342] [bmv2] [T] [thread 14079] bm_table_add_entry
-[17:07:57.342] [bmv2] [D] [thread 14079] Entry 1 added to table 'MyIngress.device_to_port'
-[17:07:57.342] [bmv2] [D] [thread 14079] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:09:50.442] [bmv2] [T] [thread 14199] bm_get_config
-[17:09:50.443] [bmv2] [T] [thread 14199] bm_mt_get_entries
-[17:09:50.444] [bmv2] [T] [thread 14199] bm_mt_get_entries
-[17:09:50.455] [bmv2] [T] [thread 14199] bm_reset_state
-[17:09:50.457] [bmv2] [D] [thread 14199] Resetting simple_switch target-specific state
-[17:09:50.457] [bmv2] [D] [thread 14199] resetting PRE state
-[17:09:50.470] [bmv2] [T] [thread 14199] bm_table_add_entry
-[17:09:50.470] [bmv2] [D] [thread 14199] Entry 0 added to table 'MyIngress.device_to_port'
-[17:09:50.470] [bmv2] [D] [thread 14199] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:09:50.474] [bmv2] [T] [thread 14199] bm_table_add_entry
-[17:09:50.474] [bmv2] [D] [thread 14199] Entry 1 added to table 'MyIngress.device_to_port'
-[17:09:50.474] [bmv2] [D] [thread 14199] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:10:21.708] [bmv2] [T] [thread 14266] bm_get_config
-[17:10:21.709] [bmv2] [T] [thread 14266] bm_mt_get_entries
-[17:10:21.710] [bmv2] [T] [thread 14266] bm_mt_get_entries
-[17:10:21.721] [bmv2] [T] [thread 14266] bm_reset_state
-[17:10:21.722] [bmv2] [D] [thread 14266] Resetting simple_switch target-specific state
-[17:10:21.722] [bmv2] [D] [thread 14266] resetting PRE state
-[17:10:21.742] [bmv2] [T] [thread 14266] bm_table_add_entry
-[17:10:21.742] [bmv2] [D] [thread 14266] Entry 0 added to table 'MyIngress.device_to_port'
-[17:10:21.742] [bmv2] [D] [thread 14266] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:10:21.745] [bmv2] [T] [thread 14266] bm_table_add_entry
-[17:10:21.745] [bmv2] [D] [thread 14266] Entry 1 added to table 'MyIngress.device_to_port'
-[17:10:21.746] [bmv2] [D] [thread 14266] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:11:02.952] [bmv2] [T] [thread 14334] bm_get_config
-[17:11:02.953] [bmv2] [T] [thread 14334] bm_mt_get_entries
-[17:11:02.953] [bmv2] [T] [thread 14334] bm_mt_get_entries
-[17:11:02.969] [bmv2] [T] [thread 14334] bm_reset_state
-[17:11:02.971] [bmv2] [D] [thread 14334] Resetting simple_switch target-specific state
-[17:11:02.971] [bmv2] [D] [thread 14334] resetting PRE state
-[17:11:02.984] [bmv2] [T] [thread 14334] bm_table_add_entry
-[17:11:02.984] [bmv2] [D] [thread 14334] Entry 0 added to table 'MyIngress.device_to_port'
-[17:11:02.984] [bmv2] [D] [thread 14334] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:11:02.988] [bmv2] [T] [thread 14334] bm_table_add_entry
-[17:11:02.988] [bmv2] [D] [thread 14334] Entry 1 added to table 'MyIngress.device_to_port'
-[17:11:02.988] [bmv2] [D] [thread 14334] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:23:30.063] [bmv2] [T] [thread 14424] bm_get_config
-[17:23:30.064] [bmv2] [T] [thread 14424] bm_mt_get_entries
-[17:23:30.064] [bmv2] [T] [thread 14424] bm_mt_get_entries
-[17:23:30.078] [bmv2] [T] [thread 14424] bm_reset_state
-[17:23:30.080] [bmv2] [D] [thread 14424] Resetting simple_switch target-specific state
-[17:23:30.080] [bmv2] [D] [thread 14424] resetting PRE state
-[17:23:30.103] [bmv2] [T] [thread 14424] bm_table_add_entry
-[17:23:30.103] [bmv2] [D] [thread 14424] Entry 0 added to table 'MyIngress.device_to_port'
-[17:23:30.103] [bmv2] [D] [thread 14424] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:23:30.106] [bmv2] [T] [thread 14424] bm_table_add_entry
-[17:23:30.106] [bmv2] [D] [thread 14424] Entry 1 added to table 'MyIngress.device_to_port'
-[17:23:30.106] [bmv2] [D] [thread 14424] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:23:42.380] [bmv2] [T] [thread 14490] bm_get_config
-[17:23:42.381] [bmv2] [T] [thread 14490] bm_mt_get_entries
-[17:23:42.381] [bmv2] [T] [thread 14490] bm_mt_get_entries
-[17:23:42.395] [bmv2] [T] [thread 14490] bm_reset_state
-[17:23:42.397] [bmv2] [D] [thread 14490] Resetting simple_switch target-specific state
-[17:23:42.397] [bmv2] [D] [thread 14490] resetting PRE state
-[17:23:42.410] [bmv2] [T] [thread 14490] bm_table_add_entry
-[17:23:42.410] [bmv2] [D] [thread 14490] Entry 0 added to table 'MyIngress.device_to_port'
-[17:23:42.410] [bmv2] [D] [thread 14490] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:23:42.415] [bmv2] [T] [thread 14490] bm_table_add_entry
-[17:23:42.415] [bmv2] [D] [thread 14490] Entry 1 added to table 'MyIngress.device_to_port'
-[17:23:42.415] [bmv2] [D] [thread 14490] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:24:10.229] [bmv2] [T] [thread 14556] bm_get_config
-[17:24:10.229] [bmv2] [T] [thread 14556] bm_mt_get_entries
-[17:24:10.230] [bmv2] [T] [thread 14556] bm_mt_get_entries
-[17:24:10.245] [bmv2] [T] [thread 14556] bm_reset_state
-[17:24:10.251] [bmv2] [D] [thread 14556] Resetting simple_switch target-specific state
-[17:24:10.251] [bmv2] [D] [thread 14556] resetting PRE state
-[17:24:10.282] [bmv2] [T] [thread 14556] bm_table_add_entry
-[17:24:10.282] [bmv2] [D] [thread 14556] Entry 0 added to table 'MyIngress.device_to_port'
-[17:24:10.282] [bmv2] [D] [thread 14556] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:24:10.290] [bmv2] [T] [thread 14556] bm_table_add_entry
-[17:24:10.291] [bmv2] [D] [thread 14556] Entry 1 added to table 'MyIngress.device_to_port'
-[17:24:10.291] [bmv2] [D] [thread 14556] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:24:20.470] [bmv2] [T] [thread 14622] bm_get_config
-[17:24:20.471] [bmv2] [T] [thread 14622] bm_mt_get_entries
-[17:24:20.472] [bmv2] [T] [thread 14622] bm_mt_get_entries
-[17:24:20.493] [bmv2] [T] [thread 14622] bm_reset_state
-[17:24:20.499] [bmv2] [D] [thread 14622] Resetting simple_switch target-specific state
-[17:24:20.500] [bmv2] [D] [thread 14622] resetting PRE state
-[17:24:20.523] [bmv2] [T] [thread 14622] bm_table_add_entry
-[17:24:20.523] [bmv2] [D] [thread 14622] Entry 0 added to table 'MyIngress.device_to_port'
-[17:24:20.523] [bmv2] [D] [thread 14622] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:24:20.528] [bmv2] [T] [thread 14622] bm_table_add_entry
-[17:24:20.528] [bmv2] [D] [thread 14622] Entry 1 added to table 'MyIngress.device_to_port'
-[17:24:20.528] [bmv2] [D] [thread 14622] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:24:34.787] [bmv2] [T] [thread 14689] bm_get_config
-[17:24:34.788] [bmv2] [T] [thread 14689] bm_mt_get_entries
-[17:24:34.789] [bmv2] [T] [thread 14689] bm_mt_get_entries
-[17:24:34.803] [bmv2] [T] [thread 14689] bm_reset_state
-[17:24:34.805] [bmv2] [D] [thread 14689] Resetting simple_switch target-specific state
-[17:24:34.805] [bmv2] [D] [thread 14689] resetting PRE state
-[17:24:34.820] [bmv2] [T] [thread 14689] bm_table_add_entry
-[17:24:34.820] [bmv2] [D] [thread 14689] Entry 0 added to table 'MyIngress.device_to_port'
-[17:24:34.820] [bmv2] [D] [thread 14689] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:24:34.822] [bmv2] [T] [thread 14689] bm_table_add_entry
-[17:24:34.822] [bmv2] [D] [thread 14689] Entry 1 added to table 'MyIngress.device_to_port'
-[17:24:34.822] [bmv2] [D] [thread 14689] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:24:48.357] [bmv2] [T] [thread 14754] bm_get_config
-[17:24:48.358] [bmv2] [T] [thread 14754] bm_mt_get_entries
-[17:24:48.358] [bmv2] [T] [thread 14754] bm_mt_get_entries
-[17:24:48.381] [bmv2] [T] [thread 14754] bm_reset_state
-[17:24:48.383] [bmv2] [D] [thread 14754] Resetting simple_switch target-specific state
-[17:24:48.384] [bmv2] [D] [thread 14754] resetting PRE state
-[17:24:48.402] [bmv2] [T] [thread 14754] bm_table_add_entry
-[17:24:48.402] [bmv2] [D] [thread 14754] Entry 0 added to table 'MyIngress.device_to_port'
-[17:24:48.402] [bmv2] [D] [thread 14754] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:24:48.407] [bmv2] [T] [thread 14754] bm_table_add_entry
-[17:24:48.407] [bmv2] [D] [thread 14754] Entry 1 added to table 'MyIngress.device_to_port'
-[17:24:48.407] [bmv2] [D] [thread 14754] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:25:16.765] [bmv2] [T] [thread 14823] bm_get_config
-[17:25:16.765] [bmv2] [T] [thread 14823] bm_mt_get_entries
-[17:25:16.766] [bmv2] [T] [thread 14823] bm_mt_get_entries
-[17:25:16.776] [bmv2] [T] [thread 14823] bm_reset_state
-[17:25:16.779] [bmv2] [D] [thread 14823] Resetting simple_switch target-specific state
-[17:25:16.779] [bmv2] [D] [thread 14823] resetting PRE state
-[17:25:16.795] [bmv2] [T] [thread 14823] bm_table_add_entry
-[17:25:16.795] [bmv2] [D] [thread 14823] Entry 0 added to table 'MyIngress.device_to_port'
-[17:25:16.795] [bmv2] [D] [thread 14823] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:25:16.797] [bmv2] [T] [thread 14823] bm_table_add_entry
-[17:25:16.797] [bmv2] [D] [thread 14823] Entry 1 added to table 'MyIngress.device_to_port'
-[17:25:16.797] [bmv2] [D] [thread 14823] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:30:01.737] [bmv2] [T] [thread 14919] bm_get_config
-[17:30:01.738] [bmv2] [T] [thread 14919] bm_mt_get_entries
-[17:30:01.738] [bmv2] [T] [thread 14919] bm_mt_get_entries
-[17:30:01.752] [bmv2] [T] [thread 14919] bm_reset_state
-[17:30:01.754] [bmv2] [D] [thread 14919] Resetting simple_switch target-specific state
-[17:30:01.754] [bmv2] [D] [thread 14919] resetting PRE state
-[17:30:01.780] [bmv2] [T] [thread 14919] bm_table_add_entry
-[17:30:01.780] [bmv2] [D] [thread 14919] Entry 0 added to table 'MyIngress.device_to_port'
-[17:30:01.780] [bmv2] [D] [thread 14919] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:30:01.786] [bmv2] [T] [thread 14919] bm_table_add_entry
-[17:30:01.786] [bmv2] [D] [thread 14919] Entry 1 added to table 'MyIngress.device_to_port'
-[17:30:01.786] [bmv2] [D] [thread 14919] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:30:34.048] [bmv2] [T] [thread 14985] bm_get_config
-[17:30:34.049] [bmv2] [T] [thread 14985] bm_mt_get_entries
-[17:30:34.050] [bmv2] [T] [thread 14985] bm_mt_get_entries
-[17:30:34.062] [bmv2] [T] [thread 14985] bm_reset_state
-[17:30:34.063] [bmv2] [D] [thread 14985] Resetting simple_switch target-specific state
-[17:30:34.063] [bmv2] [D] [thread 14985] resetting PRE state
-[17:30:34.078] [bmv2] [T] [thread 14985] bm_table_add_entry
-[17:30:34.078] [bmv2] [D] [thread 14985] Entry 0 added to table 'MyIngress.device_to_port'
-[17:30:34.078] [bmv2] [D] [thread 14985] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:30:34.081] [bmv2] [T] [thread 14985] bm_table_add_entry
-[17:30:34.081] [bmv2] [D] [thread 14985] Entry 1 added to table 'MyIngress.device_to_port'
-[17:30:34.081] [bmv2] [D] [thread 14985] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:37:18.212] [bmv2] [T] [thread 15057] bm_get_config
-[17:37:18.213] [bmv2] [T] [thread 15057] bm_mt_get_entries
-[17:37:18.213] [bmv2] [T] [thread 15057] bm_mt_get_entries
-[17:37:18.223] [bmv2] [T] [thread 15057] bm_reset_state
-[17:37:18.225] [bmv2] [D] [thread 15057] Resetting simple_switch target-specific state
-[17:37:18.225] [bmv2] [D] [thread 15057] resetting PRE state
-[17:37:18.237] [bmv2] [T] [thread 15057] bm_table_add_entry
-[17:37:18.237] [bmv2] [D] [thread 15057] Entry 0 added to table 'MyIngress.device_to_port'
-[17:37:18.237] [bmv2] [D] [thread 15057] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:37:18.239] [bmv2] [T] [thread 15057] bm_table_add_entry
-[17:37:18.239] [bmv2] [D] [thread 15057] Entry 1 added to table 'MyIngress.device_to_port'
-[17:37:18.239] [bmv2] [D] [thread 15057] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:38:04.791] [bmv2] [T] [thread 15132] bm_get_config
-[17:38:04.791] [bmv2] [T] [thread 15132] bm_mt_get_entries
-[17:38:04.792] [bmv2] [T] [thread 15132] bm_mt_get_entries
-[17:38:04.807] [bmv2] [T] [thread 15132] bm_reset_state
-[17:38:04.808] [bmv2] [D] [thread 15132] Resetting simple_switch target-specific state
-[17:38:04.808] [bmv2] [D] [thread 15132] resetting PRE state
-[17:38:04.820] [bmv2] [T] [thread 15132] bm_table_add_entry
-[17:38:04.820] [bmv2] [D] [thread 15132] Entry 0 added to table 'MyIngress.device_to_port'
-[17:38:04.820] [bmv2] [D] [thread 15132] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:38:04.824] [bmv2] [T] [thread 15132] bm_table_add_entry
-[17:38:04.824] [bmv2] [D] [thread 15132] Entry 1 added to table 'MyIngress.device_to_port'
-[17:38:04.824] [bmv2] [D] [thread 15132] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:41:22.369] [bmv2] [T] [thread 15205] bm_get_config
-[17:41:22.370] [bmv2] [T] [thread 15205] bm_mt_get_entries
-[17:41:22.371] [bmv2] [T] [thread 15205] bm_mt_get_entries
-[17:41:22.383] [bmv2] [T] [thread 15205] bm_reset_state
-[17:41:22.385] [bmv2] [D] [thread 15205] Resetting simple_switch target-specific state
-[17:41:22.385] [bmv2] [D] [thread 15205] resetting PRE state
-[17:41:22.410] [bmv2] [T] [thread 15205] bm_table_add_entry
-[17:41:22.410] [bmv2] [D] [thread 15205] Entry 0 added to table 'MyIngress.device_to_port'
-[17:41:22.410] [bmv2] [D] [thread 15205] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:41:22.413] [bmv2] [T] [thread 15205] bm_table_add_entry
-[17:41:22.413] [bmv2] [D] [thread 15205] Entry 1 added to table 'MyIngress.device_to_port'
-[17:41:22.413] [bmv2] [D] [thread 15205] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:42:03.426] [bmv2] [T] [thread 15278] bm_get_config
-[17:42:03.427] [bmv2] [T] [thread 15278] bm_mt_get_entries
-[17:42:03.427] [bmv2] [T] [thread 15278] bm_mt_get_entries
-[17:42:03.448] [bmv2] [T] [thread 15278] bm_reset_state
-[17:42:03.451] [bmv2] [D] [thread 15278] Resetting simple_switch target-specific state
-[17:42:03.451] [bmv2] [D] [thread 15278] resetting PRE state
-[17:42:03.474] [bmv2] [T] [thread 15278] bm_table_add_entry
-[17:42:03.474] [bmv2] [D] [thread 15278] Entry 0 added to table 'MyIngress.device_to_port'
-[17:42:03.474] [bmv2] [D] [thread 15278] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:42:03.480] [bmv2] [T] [thread 15278] bm_table_add_entry
-[17:42:03.480] [bmv2] [D] [thread 15278] Entry 1 added to table 'MyIngress.device_to_port'
-[17:42:03.480] [bmv2] [D] [thread 15278] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:52:25.047] [bmv2] [T] [thread 15356] bm_get_config
-[17:52:25.048] [bmv2] [T] [thread 15356] bm_mt_get_entries
-[17:52:25.048] [bmv2] [T] [thread 15356] bm_mt_get_entries
-[17:52:25.059] [bmv2] [T] [thread 15356] bm_reset_state
-[17:52:25.061] [bmv2] [D] [thread 15356] Resetting simple_switch target-specific state
-[17:52:25.061] [bmv2] [D] [thread 15356] resetting PRE state
-[17:52:25.087] [bmv2] [T] [thread 15356] bm_table_add_entry
-[17:52:25.087] [bmv2] [D] [thread 15356] Entry 0 added to table 'MyIngress.device_to_port'
-[17:52:25.087] [bmv2] [D] [thread 15356] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:52:25.090] [bmv2] [T] [thread 15356] bm_table_add_entry
-[17:52:25.090] [bmv2] [D] [thread 15356] Entry 1 added to table 'MyIngress.device_to_port'
-[17:52:25.090] [bmv2] [D] [thread 15356] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:52:48.909] [bmv2] [T] [thread 15425] bm_get_config
-[17:52:48.910] [bmv2] [T] [thread 15425] bm_mt_get_entries
-[17:52:48.910] [bmv2] [T] [thread 15425] bm_mt_get_entries
-[17:52:48.922] [bmv2] [T] [thread 15425] bm_reset_state
-[17:52:48.924] [bmv2] [D] [thread 15425] Resetting simple_switch target-specific state
-[17:52:48.924] [bmv2] [D] [thread 15425] resetting PRE state
-[17:52:48.937] [bmv2] [T] [thread 15425] bm_table_add_entry
-[17:52:48.938] [bmv2] [D] [thread 15425] Entry 0 added to table 'MyIngress.device_to_port'
-[17:52:48.938] [bmv2] [D] [thread 15425] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:52:48.940] [bmv2] [T] [thread 15425] bm_table_add_entry
-[17:52:48.940] [bmv2] [D] [thread 15425] Entry 1 added to table 'MyIngress.device_to_port'
-[17:52:48.940] [bmv2] [D] [thread 15425] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:52:57.144] [bmv2] [T] [thread 15443] bm_get_config
-[17:52:57.145] [bmv2] [T] [thread 15443] bm_mt_get_entries
-[17:52:57.145] [bmv2] [T] [thread 15443] bm_mt_get_entries
-[17:52:57.160] [bmv2] [T] [thread 15443] bm_reset_state
-[17:52:57.162] [bmv2] [D] [thread 15443] Resetting simple_switch target-specific state
-[17:52:57.162] [bmv2] [D] [thread 15443] resetting PRE state
-[17:52:57.178] [bmv2] [T] [thread 15443] bm_table_add_entry
-[17:52:57.178] [bmv2] [D] [thread 15443] Entry 0 added to table 'MyIngress.device_to_port'
-[17:52:57.178] [bmv2] [D] [thread 15443] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:52:57.182] [bmv2] [T] [thread 15443] bm_table_add_entry
-[17:52:57.182] [bmv2] [D] [thread 15443] Entry 1 added to table 'MyIngress.device_to_port'
-[17:52:57.182] [bmv2] [D] [thread 15443] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:53:05.608] [bmv2] [T] [thread 15509] bm_get_config
-[17:53:05.608] [bmv2] [T] [thread 15509] bm_mt_get_entries
-[17:53:05.609] [bmv2] [T] [thread 15509] bm_mt_get_entries
-[17:53:05.618] [bmv2] [T] [thread 15509] bm_reset_state
-[17:53:05.620] [bmv2] [D] [thread 15509] Resetting simple_switch target-specific state
-[17:53:05.620] [bmv2] [D] [thread 15509] resetting PRE state
-[17:53:05.632] [bmv2] [T] [thread 15509] bm_table_add_entry
-[17:53:05.632] [bmv2] [D] [thread 15509] Entry 0 added to table 'MyIngress.device_to_port'
-[17:53:05.632] [bmv2] [D] [thread 15509] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:53:05.635] [bmv2] [T] [thread 15509] bm_table_add_entry
-[17:53:05.635] [bmv2] [D] [thread 15509] Entry 1 added to table 'MyIngress.device_to_port'
-[17:53:05.635] [bmv2] [D] [thread 15509] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:53:32.587] [bmv2] [T] [thread 15578] bm_get_config
-[17:53:32.588] [bmv2] [T] [thread 15578] bm_mt_get_entries
-[17:53:32.589] [bmv2] [T] [thread 15578] bm_mt_get_entries
-[17:53:32.599] [bmv2] [T] [thread 15578] bm_reset_state
-[17:53:32.601] [bmv2] [D] [thread 15578] Resetting simple_switch target-specific state
-[17:53:32.601] [bmv2] [D] [thread 15578] resetting PRE state
-[17:53:32.612] [bmv2] [T] [thread 15578] bm_table_add_entry
-[17:53:32.612] [bmv2] [D] [thread 15578] Entry 0 added to table 'MyIngress.device_to_port'
-[17:53:32.612] [bmv2] [D] [thread 15578] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:53:32.614] [bmv2] [T] [thread 15578] bm_table_add_entry
-[17:53:32.614] [bmv2] [D] [thread 15578] Entry 1 added to table 'MyIngress.device_to_port'
-[17:53:32.614] [bmv2] [D] [thread 15578] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:53:42.188] [bmv2] [T] [thread 15643] bm_get_config
-[17:53:42.190] [bmv2] [T] [thread 15643] bm_mt_get_entries
-[17:53:42.191] [bmv2] [T] [thread 15643] bm_mt_get_entries
-[17:53:42.208] [bmv2] [T] [thread 15643] bm_reset_state
-[17:53:42.210] [bmv2] [D] [thread 15643] Resetting simple_switch target-specific state
-[17:53:42.210] [bmv2] [D] [thread 15643] resetting PRE state
-[17:53:42.230] [bmv2] [T] [thread 15643] bm_table_add_entry
-[17:53:42.230] [bmv2] [D] [thread 15643] Entry 0 added to table 'MyIngress.device_to_port'
-[17:53:42.230] [bmv2] [D] [thread 15643] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:53:42.235] [bmv2] [T] [thread 15643] bm_table_add_entry
-[17:53:42.235] [bmv2] [D] [thread 15643] Entry 1 added to table 'MyIngress.device_to_port'
-[17:53:42.235] [bmv2] [D] [thread 15643] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:53:57.810] [bmv2] [T] [thread 15710] bm_get_config
-[17:53:57.811] [bmv2] [T] [thread 15710] bm_mt_get_entries
-[17:53:57.812] [bmv2] [T] [thread 15710] bm_mt_get_entries
-[17:53:57.822] [bmv2] [T] [thread 15710] bm_reset_state
-[17:53:57.824] [bmv2] [D] [thread 15710] Resetting simple_switch target-specific state
-[17:53:57.824] [bmv2] [D] [thread 15710] resetting PRE state
-[17:53:57.841] [bmv2] [T] [thread 15710] bm_table_add_entry
-[17:53:57.841] [bmv2] [D] [thread 15710] Entry 0 added to table 'MyIngress.device_to_port'
-[17:53:57.841] [bmv2] [D] [thread 15710] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:53:57.843] [bmv2] [T] [thread 15710] bm_table_add_entry
-[17:53:57.843] [bmv2] [D] [thread 15710] Entry 1 added to table 'MyIngress.device_to_port'
-[17:53:57.843] [bmv2] [D] [thread 15710] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:54:10.527] [bmv2] [T] [thread 15775] bm_get_config
-[17:54:10.528] [bmv2] [T] [thread 15775] bm_mt_get_entries
-[17:54:10.528] [bmv2] [T] [thread 15775] bm_mt_get_entries
-[17:54:10.538] [bmv2] [T] [thread 15775] bm_reset_state
-[17:54:10.540] [bmv2] [D] [thread 15775] Resetting simple_switch target-specific state
-[17:54:10.540] [bmv2] [D] [thread 15775] resetting PRE state
-[17:54:10.551] [bmv2] [T] [thread 15775] bm_table_add_entry
-[17:54:10.551] [bmv2] [D] [thread 15775] Entry 0 added to table 'MyIngress.device_to_port'
-[17:54:10.551] [bmv2] [D] [thread 15775] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:54:10.553] [bmv2] [T] [thread 15775] bm_table_add_entry
-[17:54:10.554] [bmv2] [D] [thread 15775] Entry 1 added to table 'MyIngress.device_to_port'
-[17:54:10.554] [bmv2] [D] [thread 15775] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:54:18.312] [bmv2] [T] [thread 15840] bm_get_config
-[17:54:18.313] [bmv2] [T] [thread 15840] bm_mt_get_entries
-[17:54:18.313] [bmv2] [T] [thread 15840] bm_mt_get_entries
-[17:54:18.325] [bmv2] [T] [thread 15840] bm_reset_state
-[17:54:18.327] [bmv2] [D] [thread 15840] Resetting simple_switch target-specific state
-[17:54:18.327] [bmv2] [D] [thread 15840] resetting PRE state
-[17:54:18.339] [bmv2] [T] [thread 15840] bm_table_add_entry
-[17:54:18.339] [bmv2] [D] [thread 15840] Entry 0 added to table 'MyIngress.device_to_port'
-[17:54:18.339] [bmv2] [D] [thread 15840] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:54:18.343] [bmv2] [T] [thread 15840] bm_table_add_entry
-[17:54:18.343] [bmv2] [D] [thread 15840] Entry 1 added to table 'MyIngress.device_to_port'
-[17:54:18.343] [bmv2] [D] [thread 15840] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:57:40.045] [bmv2] [T] [thread 15916] bm_get_config
-[17:57:40.045] [bmv2] [T] [thread 15916] bm_mt_get_entries
-[17:57:40.046] [bmv2] [T] [thread 15916] bm_mt_get_entries
-[17:57:40.057] [bmv2] [T] [thread 15916] bm_reset_state
-[17:57:40.061] [bmv2] [D] [thread 15916] Resetting simple_switch target-specific state
-[17:57:40.061] [bmv2] [D] [thread 15916] resetting PRE state
-[17:57:40.075] [bmv2] [T] [thread 15916] bm_table_add_entry
-[17:57:40.076] [bmv2] [D] [thread 15916] Entry 0 added to table 'MyIngress.device_to_port'
-[17:57:40.076] [bmv2] [D] [thread 15916] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:57:40.078] [bmv2] [T] [thread 15916] bm_table_add_entry
-[17:57:40.079] [bmv2] [D] [thread 15916] Entry 1 added to table 'MyIngress.device_to_port'
-[17:57:40.079] [bmv2] [D] [thread 15916] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:59:12.082] [bmv2] [T] [thread 15982] bm_get_config
-[17:59:12.082] [bmv2] [T] [thread 15982] bm_mt_get_entries
-[17:59:12.083] [bmv2] [T] [thread 15982] bm_mt_get_entries
-[17:59:12.093] [bmv2] [T] [thread 15982] bm_reset_state
-[17:59:12.095] [bmv2] [D] [thread 15982] Resetting simple_switch target-specific state
-[17:59:12.095] [bmv2] [D] [thread 15982] resetting PRE state
-[17:59:12.107] [bmv2] [T] [thread 15982] bm_table_add_entry
-[17:59:12.107] [bmv2] [D] [thread 15982] Entry 0 added to table 'MyIngress.device_to_port'
-[17:59:12.108] [bmv2] [D] [thread 15982] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:59:12.110] [bmv2] [T] [thread 15982] bm_table_add_entry
-[17:59:12.110] [bmv2] [D] [thread 15982] Entry 1 added to table 'MyIngress.device_to_port'
-[17:59:12.110] [bmv2] [D] [thread 15982] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[17:59:21.541] [bmv2] [T] [thread 16048] bm_get_config
-[17:59:21.542] [bmv2] [T] [thread 16048] bm_mt_get_entries
-[17:59:21.542] [bmv2] [T] [thread 16048] bm_mt_get_entries
-[17:59:21.552] [bmv2] [T] [thread 16048] bm_reset_state
-[17:59:21.554] [bmv2] [D] [thread 16048] Resetting simple_switch target-specific state
-[17:59:21.554] [bmv2] [D] [thread 16048] resetting PRE state
-[17:59:21.569] [bmv2] [T] [thread 16048] bm_table_add_entry
-[17:59:21.569] [bmv2] [D] [thread 16048] Entry 0 added to table 'MyIngress.device_to_port'
-[17:59:21.569] [bmv2] [D] [thread 16048] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[17:59:21.572] [bmv2] [T] [thread 16048] bm_table_add_entry
-[17:59:21.572] [bmv2] [D] [thread 16048] Entry 1 added to table 'MyIngress.device_to_port'
-[17:59:21.572] [bmv2] [D] [thread 16048] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:00:38.563] [bmv2] [T] [thread 16116] bm_get_config
-[18:00:38.563] [bmv2] [T] [thread 16116] bm_mt_get_entries
-[18:00:38.564] [bmv2] [T] [thread 16116] bm_mt_get_entries
-[18:00:38.576] [bmv2] [T] [thread 16116] bm_reset_state
-[18:00:38.581] [bmv2] [D] [thread 16116] Resetting simple_switch target-specific state
-[18:00:38.581] [bmv2] [D] [thread 16116] resetting PRE state
-[18:00:38.600] [bmv2] [T] [thread 16116] bm_table_add_entry
-[18:00:38.600] [bmv2] [D] [thread 16116] Entry 0 added to table 'MyIngress.device_to_port'
-[18:00:38.600] [bmv2] [D] [thread 16116] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:00:38.603] [bmv2] [T] [thread 16116] bm_table_add_entry
-[18:00:38.603] [bmv2] [D] [thread 16116] Entry 1 added to table 'MyIngress.device_to_port'
-[18:00:38.603] [bmv2] [D] [thread 16116] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:01:52.476] [bmv2] [T] [thread 16205] bm_get_config
-[18:01:52.477] [bmv2] [T] [thread 16205] bm_mt_get_entries
-[18:01:52.477] [bmv2] [T] [thread 16205] bm_mt_get_entries
-[18:01:52.492] [bmv2] [T] [thread 16205] bm_reset_state
-[18:01:52.495] [bmv2] [D] [thread 16205] Resetting simple_switch target-specific state
-[18:01:52.495] [bmv2] [D] [thread 16205] resetting PRE state
-[18:01:52.516] [bmv2] [T] [thread 16205] bm_table_add_entry
-[18:01:52.516] [bmv2] [D] [thread 16205] Entry 0 added to table 'MyIngress.device_to_port'
-[18:01:52.516] [bmv2] [D] [thread 16205] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:01:52.521] [bmv2] [T] [thread 16205] bm_table_add_entry
-[18:01:52.521] [bmv2] [D] [thread 16205] Entry 1 added to table 'MyIngress.device_to_port'
-[18:01:52.521] [bmv2] [D] [thread 16205] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:02:58.921] [bmv2] [T] [thread 16274] bm_get_config
-[18:02:58.922] [bmv2] [T] [thread 16274] bm_mt_get_entries
-[18:02:58.922] [bmv2] [T] [thread 16274] bm_mt_get_entries
-[18:02:58.933] [bmv2] [T] [thread 16274] bm_reset_state
-[18:02:58.938] [bmv2] [D] [thread 16274] Resetting simple_switch target-specific state
-[18:02:58.938] [bmv2] [D] [thread 16274] resetting PRE state
-[18:02:58.957] [bmv2] [T] [thread 16274] bm_table_add_entry
-[18:02:58.957] [bmv2] [D] [thread 16274] Entry 0 added to table 'MyIngress.device_to_port'
-[18:02:58.957] [bmv2] [D] [thread 16274] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:02:58.960] [bmv2] [T] [thread 16274] bm_table_add_entry
-[18:02:58.960] [bmv2] [D] [thread 16274] Entry 1 added to table 'MyIngress.device_to_port'
-[18:02:58.960] [bmv2] [D] [thread 16274] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:03:29.610] [bmv2] [T] [thread 16342] bm_get_config
-[18:03:29.611] [bmv2] [T] [thread 16342] bm_mt_get_entries
-[18:03:29.611] [bmv2] [T] [thread 16342] bm_mt_get_entries
-[18:03:29.622] [bmv2] [T] [thread 16342] bm_reset_state
-[18:03:29.624] [bmv2] [D] [thread 16342] Resetting simple_switch target-specific state
-[18:03:29.624] [bmv2] [D] [thread 16342] resetting PRE state
-[18:03:29.636] [bmv2] [T] [thread 16342] bm_table_add_entry
-[18:03:29.636] [bmv2] [D] [thread 16342] Entry 0 added to table 'MyIngress.device_to_port'
-[18:03:29.636] [bmv2] [D] [thread 16342] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:03:29.638] [bmv2] [T] [thread 16342] bm_table_add_entry
-[18:03:29.638] [bmv2] [D] [thread 16342] Entry 1 added to table 'MyIngress.device_to_port'
-[18:03:29.638] [bmv2] [D] [thread 16342] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:03:42.746] [bmv2] [T] [thread 16407] bm_get_config
-[18:03:42.746] [bmv2] [T] [thread 16407] bm_mt_get_entries
-[18:03:42.747] [bmv2] [T] [thread 16407] bm_mt_get_entries
-[18:03:42.765] [bmv2] [T] [thread 16407] bm_reset_state
-[18:03:42.767] [bmv2] [D] [thread 16407] Resetting simple_switch target-specific state
-[18:03:42.767] [bmv2] [D] [thread 16407] resetting PRE state
-[18:03:42.794] [bmv2] [T] [thread 16407] bm_table_add_entry
-[18:03:42.794] [bmv2] [D] [thread 16407] Entry 0 added to table 'MyIngress.device_to_port'
-[18:03:42.794] [bmv2] [D] [thread 16407] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:03:42.799] [bmv2] [T] [thread 16407] bm_table_add_entry
-[18:03:42.799] [bmv2] [D] [thread 16407] Entry 1 added to table 'MyIngress.device_to_port'
-[18:03:42.799] [bmv2] [D] [thread 16407] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:03:56.304] [bmv2] [T] [thread 16474] bm_get_config
-[18:03:56.304] [bmv2] [T] [thread 16474] bm_mt_get_entries
-[18:03:56.305] [bmv2] [T] [thread 16474] bm_mt_get_entries
-[18:03:56.314] [bmv2] [T] [thread 16474] bm_reset_state
-[18:03:56.318] [bmv2] [D] [thread 16474] Resetting simple_switch target-specific state
-[18:03:56.318] [bmv2] [D] [thread 16474] resetting PRE state
-[18:03:56.332] [bmv2] [T] [thread 16474] bm_table_add_entry
-[18:03:56.332] [bmv2] [D] [thread 16474] Entry 0 added to table 'MyIngress.device_to_port'
-[18:03:56.332] [bmv2] [D] [thread 16474] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:03:56.334] [bmv2] [T] [thread 16474] bm_table_add_entry
-[18:03:56.334] [bmv2] [D] [thread 16474] Entry 1 added to table 'MyIngress.device_to_port'
-[18:03:56.334] [bmv2] [D] [thread 16474] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:04:04.969] [bmv2] [T] [thread 16539] bm_get_config
-[18:04:04.970] [bmv2] [T] [thread 16539] bm_mt_get_entries
-[18:04:04.970] [bmv2] [T] [thread 16539] bm_mt_get_entries
-[18:04:04.981] [bmv2] [T] [thread 16539] bm_reset_state
-[18:04:04.982] [bmv2] [D] [thread 16539] Resetting simple_switch target-specific state
-[18:04:04.982] [bmv2] [D] [thread 16539] resetting PRE state
-[18:04:04.995] [bmv2] [T] [thread 16539] bm_table_add_entry
-[18:04:04.995] [bmv2] [D] [thread 16539] Entry 0 added to table 'MyIngress.device_to_port'
-[18:04:04.995] [bmv2] [D] [thread 16539] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:04:04.997] [bmv2] [T] [thread 16539] bm_table_add_entry
-[18:04:04.997] [bmv2] [D] [thread 16539] Entry 1 added to table 'MyIngress.device_to_port'
-[18:04:04.997] [bmv2] [D] [thread 16539] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:06:43.736] [bmv2] [T] [thread 16619] bm_get_config
-[18:06:43.737] [bmv2] [T] [thread 16619] bm_mt_get_entries
-[18:06:43.737] [bmv2] [T] [thread 16619] bm_mt_get_entries
-[18:06:43.754] [bmv2] [T] [thread 16619] bm_reset_state
-[18:06:43.756] [bmv2] [D] [thread 16619] Resetting simple_switch target-specific state
-[18:06:43.756] [bmv2] [D] [thread 16619] resetting PRE state
-[18:06:43.769] [bmv2] [T] [thread 16619] bm_table_add_entry
-[18:06:43.769] [bmv2] [D] [thread 16619] Entry 0 added to table 'MyIngress.device_to_port'
-[18:06:43.769] [bmv2] [D] [thread 16619] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:06:43.773] [bmv2] [T] [thread 16619] bm_table_add_entry
-[18:06:43.773] [bmv2] [D] [thread 16619] Entry 1 added to table 'MyIngress.device_to_port'
-[18:06:43.773] [bmv2] [D] [thread 16619] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:07:12.721] [bmv2] [T] [thread 16644] bm_get_config
-[18:07:12.722] [bmv2] [T] [thread 16644] bm_mt_get_entries
-[18:07:12.722] [bmv2] [T] [thread 16644] bm_mt_get_entries
-[18:07:12.733] [bmv2] [T] [thread 16644] bm_reset_state
-[18:07:12.735] [bmv2] [D] [thread 16644] Resetting simple_switch target-specific state
-[18:07:12.735] [bmv2] [D] [thread 16644] resetting PRE state
-[18:07:12.749] [bmv2] [T] [thread 16644] bm_table_add_entry
-[18:07:12.749] [bmv2] [D] [thread 16644] Entry 0 added to table 'MyIngress.device_to_port'
-[18:07:12.749] [bmv2] [D] [thread 16644] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:07:12.753] [bmv2] [T] [thread 16644] bm_table_add_entry
-[18:07:12.753] [bmv2] [D] [thread 16644] Entry 1 added to table 'MyIngress.device_to_port'
-[18:07:12.753] [bmv2] [D] [thread 16644] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:07:24.165] [bmv2] [T] [thread 16662] bm_get_config
-[18:07:24.166] [bmv2] [T] [thread 16662] bm_mt_get_entries
-[18:07:24.167] [bmv2] [T] [thread 16662] bm_mt_get_entries
-[18:07:24.180] [bmv2] [T] [thread 16662] bm_reset_state
-[18:07:24.182] [bmv2] [D] [thread 16662] Resetting simple_switch target-specific state
-[18:07:24.182] [bmv2] [D] [thread 16662] resetting PRE state
-[18:07:24.194] [bmv2] [T] [thread 16662] bm_table_add_entry
-[18:07:24.194] [bmv2] [D] [thread 16662] Entry 0 added to table 'MyIngress.device_to_port'
-[18:07:24.194] [bmv2] [D] [thread 16662] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:07:24.198] [bmv2] [T] [thread 16662] bm_table_add_entry
-[18:07:24.198] [bmv2] [D] [thread 16662] Entry 1 added to table 'MyIngress.device_to_port'
-[18:07:24.198] [bmv2] [D] [thread 16662] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:07:29.854] [bmv2] [T] [thread 16680] bm_get_config
-[18:07:29.855] [bmv2] [T] [thread 16680] bm_mt_get_entries
-[18:07:29.856] [bmv2] [T] [thread 16680] bm_mt_get_entries
-[18:07:29.872] [bmv2] [T] [thread 16680] bm_reset_state
-[18:07:29.878] [bmv2] [D] [thread 16680] Resetting simple_switch target-specific state
-[18:07:29.879] [bmv2] [D] [thread 16680] resetting PRE state
-[18:07:29.907] [bmv2] [T] [thread 16680] bm_table_add_entry
-[18:07:29.907] [bmv2] [D] [thread 16680] Entry 0 added to table 'MyIngress.device_to_port'
-[18:07:29.907] [bmv2] [D] [thread 16680] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:07:29.913] [bmv2] [T] [thread 16680] bm_table_add_entry
-[18:07:29.913] [bmv2] [D] [thread 16680] Entry 1 added to table 'MyIngress.device_to_port'
-[18:07:29.913] [bmv2] [D] [thread 16680] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:07:44.638] [bmv2] [T] [thread 16745] bm_get_config
-[18:07:44.638] [bmv2] [T] [thread 16745] bm_mt_get_entries
-[18:07:44.639] [bmv2] [T] [thread 16745] bm_mt_get_entries
-[18:07:44.652] [bmv2] [T] [thread 16745] bm_reset_state
-[18:07:44.654] [bmv2] [D] [thread 16745] Resetting simple_switch target-specific state
-[18:07:44.654] [bmv2] [D] [thread 16745] resetting PRE state
-[18:07:44.670] [bmv2] [T] [thread 16745] bm_table_add_entry
-[18:07:44.670] [bmv2] [D] [thread 16745] Entry 0 added to table 'MyIngress.device_to_port'
-[18:07:44.670] [bmv2] [D] [thread 16745] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:07:44.673] [bmv2] [T] [thread 16745] bm_table_add_entry
-[18:07:44.673] [bmv2] [D] [thread 16745] Entry 1 added to table 'MyIngress.device_to_port'
-[18:07:44.673] [bmv2] [D] [thread 16745] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:13:38.697] [bmv2] [T] [thread 16840] bm_get_config
-[18:13:38.698] [bmv2] [T] [thread 16840] bm_mt_get_entries
-[18:13:38.699] [bmv2] [T] [thread 16840] bm_mt_get_entries
-[18:13:38.710] [bmv2] [T] [thread 16840] bm_reset_state
-[18:13:38.711] [bmv2] [D] [thread 16840] Resetting simple_switch target-specific state
-[18:13:38.711] [bmv2] [D] [thread 16840] resetting PRE state
-[18:13:38.724] [bmv2] [T] [thread 16840] bm_table_add_entry
-[18:13:38.724] [bmv2] [D] [thread 16840] Entry 0 added to table 'MyIngress.device_to_port'
-[18:13:38.724] [bmv2] [D] [thread 16840] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:13:38.726] [bmv2] [T] [thread 16840] bm_table_add_entry
-[18:13:38.727] [bmv2] [D] [thread 16840] Entry 1 added to table 'MyIngress.device_to_port'
-[18:13:38.727] [bmv2] [D] [thread 16840] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:14:24.185] [bmv2] [T] [thread 16914] bm_get_config
-[18:14:24.186] [bmv2] [T] [thread 16914] bm_mt_get_entries
-[18:14:24.186] [bmv2] [T] [thread 16914] bm_mt_get_entries
-[18:14:24.198] [bmv2] [T] [thread 16914] bm_reset_state
-[18:14:24.203] [bmv2] [D] [thread 16914] Resetting simple_switch target-specific state
-[18:14:24.203] [bmv2] [D] [thread 16914] resetting PRE state
-[18:14:24.220] [bmv2] [T] [thread 16914] bm_table_add_entry
-[18:14:24.221] [bmv2] [D] [thread 16914] Entry 0 added to table 'MyIngress.device_to_port'
-[18:14:24.221] [bmv2] [D] [thread 16914] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:14:24.223] [bmv2] [T] [thread 16914] bm_table_add_entry
-[18:14:24.223] [bmv2] [D] [thread 16914] Entry 1 added to table 'MyIngress.device_to_port'
-[18:14:24.223] [bmv2] [D] [thread 16914] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:14:37.809] [bmv2] [T] [thread 16980] bm_get_config
-[18:14:37.811] [bmv2] [T] [thread 16980] bm_mt_get_entries
-[18:14:37.812] [bmv2] [T] [thread 16980] bm_mt_get_entries
-[18:14:37.827] [bmv2] [T] [thread 16980] bm_reset_state
-[18:14:37.829] [bmv2] [D] [thread 16980] Resetting simple_switch target-specific state
-[18:14:37.829] [bmv2] [D] [thread 16980] resetting PRE state
-[18:14:37.841] [bmv2] [T] [thread 16980] bm_table_add_entry
-[18:14:37.841] [bmv2] [D] [thread 16980] Entry 0 added to table 'MyIngress.device_to_port'
-[18:14:37.841] [bmv2] [D] [thread 16980] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:14:37.844] [bmv2] [T] [thread 16980] bm_table_add_entry
-[18:14:37.845] [bmv2] [D] [thread 16980] Entry 1 added to table 'MyIngress.device_to_port'
-[18:14:37.845] [bmv2] [D] [thread 16980] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:15:02.938] [bmv2] [T] [thread 17046] bm_get_config
-[18:15:02.939] [bmv2] [T] [thread 17046] bm_mt_get_entries
-[18:15:02.939] [bmv2] [T] [thread 17046] bm_mt_get_entries
-[18:15:02.952] [bmv2] [T] [thread 17046] bm_reset_state
-[18:15:02.954] [bmv2] [D] [thread 17046] Resetting simple_switch target-specific state
-[18:15:02.954] [bmv2] [D] [thread 17046] resetting PRE state
-[18:15:02.970] [bmv2] [T] [thread 17046] bm_table_add_entry
-[18:15:02.970] [bmv2] [D] [thread 17046] Entry 0 added to table 'MyIngress.device_to_port'
-[18:15:02.970] [bmv2] [D] [thread 17046] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:15:02.973] [bmv2] [T] [thread 17046] bm_table_add_entry
-[18:15:02.973] [bmv2] [D] [thread 17046] Entry 1 added to table 'MyIngress.device_to_port'
-[18:15:02.973] [bmv2] [D] [thread 17046] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:15:58.913] [bmv2] [T] [thread 17116] bm_get_config
-[18:15:58.915] [bmv2] [T] [thread 17116] bm_mt_get_entries
-[18:15:58.915] [bmv2] [T] [thread 17116] bm_mt_get_entries
-[18:15:58.932] [bmv2] [T] [thread 17116] bm_reset_state
-[18:15:58.934] [bmv2] [D] [thread 17116] Resetting simple_switch target-specific state
-[18:15:58.934] [bmv2] [D] [thread 17116] resetting PRE state
-[18:15:58.951] [bmv2] [T] [thread 17116] bm_table_add_entry
-[18:15:58.951] [bmv2] [D] [thread 17116] Entry 0 added to table 'MyIngress.device_to_port'
-[18:15:58.951] [bmv2] [D] [thread 17116] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:15:58.955] [bmv2] [T] [thread 17116] bm_table_add_entry
-[18:15:58.955] [bmv2] [D] [thread 17116] Entry 1 added to table 'MyIngress.device_to_port'
-[18:15:58.955] [bmv2] [D] [thread 17116] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:16:54.376] [bmv2] [T] [thread 17191] bm_get_config
-[18:16:54.377] [bmv2] [T] [thread 17191] bm_mt_get_entries
-[18:16:54.377] [bmv2] [T] [thread 17191] bm_mt_get_entries
-[18:16:54.393] [bmv2] [T] [thread 17191] bm_reset_state
-[18:16:54.395] [bmv2] [D] [thread 17191] Resetting simple_switch target-specific state
-[18:16:54.395] [bmv2] [D] [thread 17191] resetting PRE state
-[18:16:54.413] [bmv2] [T] [thread 17191] bm_table_add_entry
-[18:16:54.413] [bmv2] [D] [thread 17191] Entry 0 added to table 'MyIngress.device_to_port'
-[18:16:54.413] [bmv2] [D] [thread 17191] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:16:54.418] [bmv2] [T] [thread 17191] bm_table_add_entry
-[18:16:54.418] [bmv2] [D] [thread 17191] Entry 1 added to table 'MyIngress.device_to_port'
-[18:16:54.418] [bmv2] [D] [thread 17191] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:16:59.934] [bmv2] [T] [thread 17209] bm_get_config
-[18:16:59.935] [bmv2] [T] [thread 17209] bm_mt_get_entries
-[18:16:59.936] [bmv2] [T] [thread 17209] bm_mt_get_entries
-[18:16:59.946] [bmv2] [T] [thread 17209] bm_reset_state
-[18:16:59.950] [bmv2] [D] [thread 17209] Resetting simple_switch target-specific state
-[18:16:59.950] [bmv2] [D] [thread 17209] resetting PRE state
-[18:16:59.967] [bmv2] [T] [thread 17209] bm_table_add_entry
-[18:16:59.967] [bmv2] [D] [thread 17209] Entry 0 added to table 'MyIngress.device_to_port'
-[18:16:59.967] [bmv2] [D] [thread 17209] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:16:59.970] [bmv2] [T] [thread 17209] bm_table_add_entry
-[18:16:59.970] [bmv2] [D] [thread 17209] Entry 1 added to table 'MyIngress.device_to_port'
-[18:16:59.970] [bmv2] [D] [thread 17209] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:17:37.829] [bmv2] [T] [thread 17278] bm_get_config
-[18:17:37.829] [bmv2] [T] [thread 17278] bm_mt_get_entries
-[18:17:37.830] [bmv2] [T] [thread 17278] bm_mt_get_entries
-[18:17:37.846] [bmv2] [T] [thread 17278] bm_reset_state
-[18:17:37.848] [bmv2] [D] [thread 17278] Resetting simple_switch target-specific state
-[18:17:37.848] [bmv2] [D] [thread 17278] resetting PRE state
-[18:17:37.862] [bmv2] [T] [thread 17278] bm_table_add_entry
-[18:17:37.862] [bmv2] [D] [thread 17278] Entry 0 added to table 'MyIngress.device_to_port'
-[18:17:37.862] [bmv2] [D] [thread 17278] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:17:37.866] [bmv2] [T] [thread 17278] bm_table_add_entry
-[18:17:37.866] [bmv2] [D] [thread 17278] Entry 1 added to table 'MyIngress.device_to_port'
-[18:17:37.866] [bmv2] [D] [thread 17278] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:17:54.454] [bmv2] [T] [thread 17343] bm_get_config
-[18:17:54.455] [bmv2] [T] [thread 17343] bm_mt_get_entries
-[18:17:54.455] [bmv2] [T] [thread 17343] bm_mt_get_entries
-[18:17:54.472] [bmv2] [T] [thread 17343] bm_reset_state
-[18:17:54.477] [bmv2] [D] [thread 17343] Resetting simple_switch target-specific state
-[18:17:54.477] [bmv2] [D] [thread 17343] resetting PRE state
-[18:17:54.503] [bmv2] [T] [thread 17343] bm_table_add_entry
-[18:17:54.503] [bmv2] [D] [thread 17343] Entry 0 added to table 'MyIngress.device_to_port'
-[18:17:54.503] [bmv2] [D] [thread 17343] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:17:54.506] [bmv2] [T] [thread 17343] bm_table_add_entry
-[18:17:54.506] [bmv2] [D] [thread 17343] Entry 1 added to table 'MyIngress.device_to_port'
-[18:17:54.506] [bmv2] [D] [thread 17343] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:20:36.810] [bmv2] [T] [thread 17412] bm_get_config
-[18:20:36.811] [bmv2] [T] [thread 17412] bm_mt_get_entries
-[18:20:36.812] [bmv2] [T] [thread 17412] bm_mt_get_entries
-[18:20:36.829] [bmv2] [T] [thread 17412] bm_reset_state
-[18:20:36.834] [bmv2] [D] [thread 17412] Resetting simple_switch target-specific state
-[18:20:36.834] [bmv2] [D] [thread 17412] resetting PRE state
-[18:20:36.860] [bmv2] [T] [thread 17412] bm_table_add_entry
-[18:20:36.860] [bmv2] [D] [thread 17412] Entry 0 added to table 'MyIngress.device_to_port'
-[18:20:36.860] [bmv2] [D] [thread 17412] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:20:36.866] [bmv2] [T] [thread 17412] bm_table_add_entry
-[18:20:36.866] [bmv2] [D] [thread 17412] Entry 1 added to table 'MyIngress.device_to_port'
-[18:20:36.866] [bmv2] [D] [thread 17412] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:21:05.183] [bmv2] [T] [thread 17430] bm_get_config
-[18:21:05.183] [bmv2] [T] [thread 17430] bm_mt_get_entries
-[18:21:05.184] [bmv2] [T] [thread 17430] bm_mt_get_entries
-[18:21:05.197] [bmv2] [T] [thread 17430] bm_reset_state
-[18:21:05.199] [bmv2] [D] [thread 17430] Resetting simple_switch target-specific state
-[18:21:05.199] [bmv2] [D] [thread 17430] resetting PRE state
-[18:21:05.211] [bmv2] [T] [thread 17430] bm_table_add_entry
-[18:21:05.211] [bmv2] [D] [thread 17430] Entry 0 added to table 'MyIngress.device_to_port'
-[18:21:05.212] [bmv2] [D] [thread 17430] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:21:05.216] [bmv2] [T] [thread 17430] bm_table_add_entry
-[18:21:05.216] [bmv2] [D] [thread 17430] Entry 1 added to table 'MyIngress.device_to_port'
-[18:21:05.216] [bmv2] [D] [thread 17430] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:21:18.998] [bmv2] [T] [thread 17464] bm_get_config
-[18:21:19.000] [bmv2] [T] [thread 17464] bm_mt_get_entries
-[18:21:19.001] [bmv2] [T] [thread 17464] bm_mt_get_entries
-[18:21:19.017] [bmv2] [T] [thread 17464] bm_reset_state
-[18:21:19.019] [bmv2] [D] [thread 17464] Resetting simple_switch target-specific state
-[18:21:19.019] [bmv2] [D] [thread 17464] resetting PRE state
-[18:21:19.041] [bmv2] [T] [thread 17464] bm_table_add_entry
-[18:21:19.041] [bmv2] [D] [thread 17464] Entry 0 added to table 'MyIngress.device_to_port'
-[18:21:19.041] [bmv2] [D] [thread 17464] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:21:19.043] [bmv2] [T] [thread 17464] bm_table_add_entry
-[18:21:19.043] [bmv2] [D] [thread 17464] Entry 1 added to table 'MyIngress.device_to_port'
-[18:21:19.044] [bmv2] [D] [thread 17464] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:21:49.261] [bmv2] [T] [thread 17533] bm_get_config
-[18:21:49.262] [bmv2] [T] [thread 17533] bm_mt_get_entries
-[18:21:49.263] [bmv2] [T] [thread 17533] bm_mt_get_entries
-[18:21:49.277] [bmv2] [T] [thread 17533] bm_reset_state
-[18:21:49.279] [bmv2] [D] [thread 17533] Resetting simple_switch target-specific state
-[18:21:49.279] [bmv2] [D] [thread 17533] resetting PRE state
-[18:21:49.302] [bmv2] [T] [thread 17533] bm_table_add_entry
-[18:21:49.302] [bmv2] [D] [thread 17533] Entry 0 added to table 'MyIngress.device_to_port'
-[18:21:49.302] [bmv2] [D] [thread 17533] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:21:49.305] [bmv2] [T] [thread 17533] bm_table_add_entry
-[18:21:49.305] [bmv2] [D] [thread 17533] Entry 1 added to table 'MyIngress.device_to_port'
-[18:21:49.305] [bmv2] [D] [thread 17533] Dumping entry 1
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     06
-Action entry: MyIngress.ipv4_forward - ffffffffffff,3,
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Processing packet received on port 3
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser': start
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting header 'ethernet'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'start': key is 1111
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 14
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting to header stack 0, next header is 4
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 15
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting to header stack 0, next header is 5
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 16
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting to header stack 0, next header is 6
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 17
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting to header stack 0, next header is 7
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_source_routing': key is 00
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 18
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_source_routing'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting to header stack 0, next header is 8
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_source_routing': key is 01
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 19
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Extracting header 'ipv4'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Bytes parsed: 39
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Parser 'parser': end
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Pipeline 'ingress': start
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Condition "hdr.source_routes[0].isValid()" (node_2) is false
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Applying table 'tbl_source_routing67'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Looking up key:
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Table 'tbl_source_routing67': miss
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Action entry is source_routing67 - 
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Action source_routing67
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(67) Primitive hdr.source_routes[0].switch_id
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Applying table 'MyIngress.device_to_port'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Looking up key:
-* hdr.source_routes[0].switch_id: 03
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Table 'MyIngress.device_to_port': hit with handle 0
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.source_routes[0].switch_id: EXACT     03
-Action entry: MyIngress.ipv4_forward - ffffffffffff,2,
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Action entry is MyIngress.ipv4_forward - ffffffffffff,2,
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Action MyIngress.ipv4_forward
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(38) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(41) Primitive hdr.ethernet.dstAddr = dstAddr
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(44) Primitive standard_metadata.egress_spec = port
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(47) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl - 1
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Applying table 'tbl_act'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Looking up key:
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Table 'tbl_act': miss
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Action entry is act - 
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Action act
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Primitive (no source info)
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Applying table 'tbl_source_routing82_0'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Looking up key:
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Table 'tbl_source_routing82_0': miss
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Action entry is source_routing82_0 - 
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Action source_routing82_0
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(82) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Condition "node_9" (node_9) is true
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(84) Condition "hdr.source_routes[0].last_header == 1" (node_10) is false
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Applying table 'tbl_source_routing87'
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Looking up key:
-
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Table 'tbl_source_routing87': miss
-[18:23:57.870] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Action entry is source_routing87 - 
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] Action source_routing87
-[18:23:57.870] [bmv2] [T] [thread 11461] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(87) Primitive hdr.source_routes.pop_front(1)
-[18:23:57.871] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Pipeline 'ingress': end
-[18:23:57.871] [bmv2] [D] [thread 11461] [16.0] [cxt 0] Egress port is 2
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Pipeline 'egress': start
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Pipeline 'egress': end
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparser 'deparser': start
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Updating checksum 'cksum'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'source_routes[0]'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'source_routes[1]'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'source_routes[2]'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'source_routes[3]'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparsing header 'ipv4'
-[18:23:57.871] [bmv2] [D] [thread 11464] [16.0] [cxt 0] Deparser 'deparser': end
-[18:23:57.871] [bmv2] [D] [thread 11466] [16.0] [cxt 0] Transmitting packet of size 46 out of port 2
-open: No such file or directory
+[14:14:55.711] [bmv2] [D] [thread 3019] Adding interface s2-eth3 as port 3
+[14:14:55.730] [bmv2] [I] [thread 3019] Starting Thrift server on port 9091
+[14:14:55.730] [bmv2] [I] [thread 3019] Thrift server was started
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Processing packet received on port 2
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Parser 'parser': start
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] Bytes parsed: 14
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Parser 'parser': end
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Looking up key:
+
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] Action source_routing90
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.768] [bmv2] [T] [thread 3101] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.768] [bmv2] [D] [thread 3101] [0.0] [cxt 0] Egress port is 0
+[14:14:55.768] [bmv2] [D] [thread 3102] [0.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.768] [bmv2] [D] [thread 3102] [0.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.768] [bmv2] [D] [thread 3102] [0.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.768] [bmv2] [T] [thread 3102] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.768] [bmv2] [D] [thread 3102] [0.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.768] [bmv2] [D] [thread 3102] [0.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.769] [bmv2] [D] [thread 3106] [0.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Processing packet received on port 3
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Parser 'parser': start
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] Bytes parsed: 14
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Parser 'parser': end
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Looking up key:
+
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] Action source_routing90
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.830] [bmv2] [T] [thread 3101] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.830] [bmv2] [D] [thread 3101] [1.0] [cxt 0] Egress port is 0
+[14:14:55.830] [bmv2] [D] [thread 3102] [1.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.830] [bmv2] [D] [thread 3102] [1.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.830] [bmv2] [D] [thread 3102] [1.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.830] [bmv2] [T] [thread 3102] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.830] [bmv2] [D] [thread 3102] [1.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.830] [bmv2] [D] [thread 3102] [1.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.830] [bmv2] [D] [thread 3106] [1.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Processing packet received on port 3
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Parser 'parser': start
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] Bytes parsed: 14
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Parser 'parser': end
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Looking up key:
+
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] Action source_routing90
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.864] [bmv2] [T] [thread 3101] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.864] [bmv2] [D] [thread 3101] [2.0] [cxt 0] Egress port is 0
+[14:14:55.864] [bmv2] [D] [thread 3102] [2.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.864] [bmv2] [D] [thread 3102] [2.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.864] [bmv2] [D] [thread 3102] [2.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.864] [bmv2] [T] [thread 3102] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.864] [bmv2] [D] [thread 3102] [2.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.864] [bmv2] [D] [thread 3102] [2.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.864] [bmv2] [D] [thread 3106] [2.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Processing packet received on port 3
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Parser 'parser': start
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] Bytes parsed: 14
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Parser 'parser': end
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Looking up key:
+
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] Action source_routing90
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.894] [bmv2] [T] [thread 3101] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.894] [bmv2] [D] [thread 3101] [3.0] [cxt 0] Egress port is 0
+[14:14:55.894] [bmv2] [D] [thread 3102] [3.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.894] [bmv2] [D] [thread 3102] [3.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.894] [bmv2] [D] [thread 3102] [3.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.895] [bmv2] [T] [thread 3102] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.895] [bmv2] [D] [thread 3102] [3.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.895] [bmv2] [D] [thread 3102] [3.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.895] [bmv2] [D] [thread 3106] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Processing packet received on port 1
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Parser 'parser': start
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] Bytes parsed: 14
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Parser 'parser': end
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Looking up key:
+
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] Action source_routing90
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.926] [bmv2] [T] [thread 3101] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.926] [bmv2] [D] [thread 3101] [4.0] [cxt 0] Egress port is 0
+[14:14:55.927] [bmv2] [D] [thread 3102] [4.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.927] [bmv2] [D] [thread 3102] [4.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.927] [bmv2] [D] [thread 3102] [4.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.927] [bmv2] [T] [thread 3102] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.927] [bmv2] [D] [thread 3102] [4.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.927] [bmv2] [D] [thread 3102] [4.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.927] [bmv2] [D] [thread 3106] [4.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Processing packet received on port 1
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Parser 'parser': start
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Extracting header 'ethernet'
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] Bytes parsed: 14
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Parser 'parser': end
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Pipeline 'ingress': start
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Looking up key:
+
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] Action source_routing90
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:55.958] [bmv2] [T] [thread 3101] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Pipeline 'ingress': end
+[14:14:55.958] [bmv2] [D] [thread 3101] [5.0] [cxt 0] Egress port is 0
+[14:14:55.958] [bmv2] [D] [thread 3102] [5.0] [cxt 0] Pipeline 'egress': start
+[14:14:55.958] [bmv2] [D] [thread 3102] [5.0] [cxt 0] Pipeline 'egress': end
+[14:14:55.958] [bmv2] [D] [thread 3102] [5.0] [cxt 0] Deparser 'deparser': start
+[14:14:55.958] [bmv2] [T] [thread 3102] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:55.958] [bmv2] [D] [thread 3102] [5.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:55.958] [bmv2] [D] [thread 3102] [5.0] [cxt 0] Deparser 'deparser': end
+[14:14:55.958] [bmv2] [D] [thread 3106] [5.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Processing packet received on port 2
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Parser 'parser': start
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] Bytes parsed: 14
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Parser 'parser': end
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Looking up key:
+
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] Action source_routing90
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.119] [bmv2] [T] [thread 3101] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.119] [bmv2] [D] [thread 3101] [6.0] [cxt 0] Egress port is 0
+[14:14:56.119] [bmv2] [D] [thread 3102] [6.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.119] [bmv2] [D] [thread 3102] [6.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.119] [bmv2] [D] [thread 3102] [6.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.119] [bmv2] [T] [thread 3102] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.119] [bmv2] [D] [thread 3102] [6.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.119] [bmv2] [D] [thread 3102] [6.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.119] [bmv2] [D] [thread 3106] [6.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Processing packet received on port 1
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Parser 'parser': start
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] Bytes parsed: 14
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Parser 'parser': end
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Looking up key:
+
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] Action source_routing90
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.344] [bmv2] [T] [thread 3101] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.344] [bmv2] [D] [thread 3101] [7.0] [cxt 0] Egress port is 0
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Processing packet received on port 3
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Parser 'parser': start
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] Bytes parsed: 14
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Parser 'parser': end
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Looking up key:
+
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] Action source_routing90
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.344] [bmv2] [T] [thread 3101] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.344] [bmv2] [D] [thread 3101] [8.0] [cxt 0] Egress port is 0
+[14:14:56.346] [bmv2] [D] [thread 3102] [7.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.346] [bmv2] [D] [thread 3102] [7.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.346] [bmv2] [D] [thread 3102] [7.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.346] [bmv2] [T] [thread 3102] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.346] [bmv2] [D] [thread 3102] [7.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.346] [bmv2] [D] [thread 3102] [7.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.346] [bmv2] [D] [thread 3106] [7.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[14:14:56.346] [bmv2] [D] [thread 3102] [8.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.346] [bmv2] [D] [thread 3102] [8.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.346] [bmv2] [D] [thread 3102] [8.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.346] [bmv2] [T] [thread 3102] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.346] [bmv2] [D] [thread 3102] [8.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.346] [bmv2] [D] [thread 3102] [8.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.346] [bmv2] [D] [thread 3106] [8.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Processing packet received on port 2
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Parser 'parser': start
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] Bytes parsed: 14
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Parser 'parser': end
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Looking up key:
+
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] Action source_routing90
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.439] [bmv2] [T] [thread 3101] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.439] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.440] [bmv2] [D] [thread 3101] [9.0] [cxt 0] Egress port is 0
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Processing packet received on port 2
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Parser 'parser': start
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] Bytes parsed: 14
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Parser 'parser': end
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Looking up key:
+
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] Action source_routing90
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.440] [bmv2] [T] [thread 3101] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.440] [bmv2] [D] [thread 3101] [10.0] [cxt 0] Egress port is 0
+[14:14:56.446] [bmv2] [D] [thread 3102] [9.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.446] [bmv2] [D] [thread 3102] [9.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.446] [bmv2] [D] [thread 3102] [9.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.446] [bmv2] [T] [thread 3102] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.446] [bmv2] [D] [thread 3102] [9.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.446] [bmv2] [D] [thread 3102] [9.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.446] [bmv2] [D] [thread 3102] [10.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.446] [bmv2] [D] [thread 3102] [10.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.446] [bmv2] [D] [thread 3102] [10.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.446] [bmv2] [T] [thread 3102] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.446] [bmv2] [D] [thread 3102] [10.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.446] [bmv2] [D] [thread 3102] [10.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.447] [bmv2] [D] [thread 3106] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:14:56.447] [bmv2] [D] [thread 3106] [10.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Processing packet received on port 2
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Parser 'parser': start
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Extracting header 'ethernet'
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] Bytes parsed: 14
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Parser 'parser': end
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Pipeline 'ingress': start
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Condition "hdr.source_routes[0].isValid()" (node_2) is true
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] Applying table 'tbl_source_routing90'
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Looking up key:
+
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Table 'tbl_source_routing90': miss
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Action entry is source_routing90 - 
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] Action source_routing90
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(90) Primitive hdr.source_routes[0].isValid() && device_to_port.apply().hit
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] Condition "node_9" (node_9) is false
+[14:14:56.450] [bmv2] [T] [thread 3101] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/SR/p4src/source_routing.p4(98) Condition "hdr.ipv4.isValid()" (node_13) is false
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Pipeline 'ingress': end
+[14:14:56.450] [bmv2] [D] [thread 3101] [11.0] [cxt 0] Egress port is 0
+[14:14:56.450] [bmv2] [D] [thread 3102] [11.0] [cxt 0] Pipeline 'egress': start
+[14:14:56.450] [bmv2] [D] [thread 3102] [11.0] [cxt 0] Pipeline 'egress': end
+[14:14:56.450] [bmv2] [D] [thread 3102] [11.0] [cxt 0] Deparser 'deparser': start
+[14:14:56.450] [bmv2] [T] [thread 3102] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:14:56.450] [bmv2] [D] [thread 3102] [11.0] [cxt 0] Deparsing header 'ethernet'
+[14:14:56.450] [bmv2] [D] [thread 3102] [11.0] [cxt 0] Deparser 'deparser': end
+[14:14:56.451] [bmv2] [D] [thread 3106] [11.0] [cxt 0] Transmitting packet of size 90 out of port 0
 open: No such file or directory
 open: No such file or directory
