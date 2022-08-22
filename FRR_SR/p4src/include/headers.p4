@@ -34,9 +34,7 @@ header ipv4_t {
 struct metadata {
     bit<1> linkState;
     bit<32> nextHop;
-    bit<32> index;
     bit<32> indexPath;
-    bit<32> numHopsCycle;
     bit<32> depotPort;
     bit<32> currPathSize;
     bit<32> maxPathSize;

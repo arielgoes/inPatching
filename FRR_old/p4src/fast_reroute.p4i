@@ -1,7 +1,7 @@
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4"
 /* -*- P4_16 -*- */
 # 1 "/usr/local/share/p4c/p4include/core.p4" 1
 /*
@@ -86,7 +86,7 @@ match_kind {
     /// Longest-prefix match.
     lpm
 }
-# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 3 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -865,10 +865,10 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 4 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4" 2
 
 //My includes
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/headers.p4" 1
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/include/headers.p4" 1
 /* -*- P4_16 -*- */
 # 1 "/usr/local/share/p4c/p4include/core.p4" 1
 /*
@@ -888,7 +888,7 @@ limitations under the License.
 */
 
 /* This is the P4-16 core library, which declares some built-in P4 constructs using P4 */
-# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/headers.p4" 2
+# 3 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/include/headers.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -937,7 +937,7 @@ limitations under the License.
  * program expecting the behavior described above is compiled using
  * p4c, it may behave differently.
  */
-# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/headers.p4" 2
+# 4 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/include/headers.p4" 2
 
 
 
@@ -969,17 +969,17 @@ header ipv4_t {
     ip4Addr_t dstAddr;
 }
 struct metadata {
-    bit<2> meter_color;
     bit<1> linkState;
     bit<32> nextHop;
     bit<32> index;
+    bit<1> finishCycle;
 }
 struct headers {
     ethernet_t ethernet;
     ipv4_t ipv4;
 }
-# 7 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/parsers.p4" 1
+# 7 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4" 2
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/include/parsers.p4" 1
 /*************************************************************************
 *********************** P A R S E R  *******************************
 *************************************************************************/
@@ -1023,7 +1023,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
 
     }
 }
-# 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 8 "/home/p4/git/master_degree_p4_unipampa/FRR_old/p4src/fast_reroute.p4" 2
 
 
 

@@ -11,8 +11,10 @@ from time import sleep
 
 
 def main():
-    addr = "10.1.1.2"
-    iface = "h1-eth1"
+    #addr = "10.1.1.2" # l3 - 1 host
+    #addr = "10.1.2.2" # l3 - 2 hosts
+    addr = "10.0.1.2" # mixed - 2 hosts
+    iface = "h1-eth1" 
 
     print("sending on interface %s to %s" % (iface, str(addr)))
 

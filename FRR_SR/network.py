@@ -22,6 +22,7 @@ net.addP4Switch('s7')
 
 #add hosts
 net.addHost('h1')
+net.addHost('h2')
 
 #add P4 source file into the P4 switches
 net.setP4SourceAll('p4src/fast_reroute.p4')
@@ -38,6 +39,8 @@ net.addLink('s4', 's5')
 net.addLink('s4', 's6')
 net.addLink('s5', 's6')
 net.addLink('s5', 's7')
+
+net.addLink('h2', 's1')
 
 
 #set interface port numbers
@@ -60,9 +63,12 @@ net.setIntfPort('s6', 's5', 3)  # ...
 net.setIntfPort('s5', 's7', 1)  # ...
 net.setIntfPort('s7', 's5', 2)  # ...
 
+net.setIntfPort('h2', 's1', 5)  # Set the number of the port on h1 facing s1
+net.setIntfPort('s1', 'h2', 5)  # Set the number of the port on s1 facing h1
+
 
 #set IPs - e.g., using 'net.l2()', which is an automated strategy
-net.l3()
+net.mixed()
 
 #set interface MAC address
 net.setIntfMac('h1', 's1', '00:00:0a:00:00:11')  # Set the MAC address on h1 interface facing s1
@@ -88,9 +94,13 @@ net.setIntfMac('s6', 's5', '00:00:0b:00:66:55')
 net.setIntfMac('s5', 's7', '00:00:0b:00:55:77')
 net.setIntfMac('s7', 's5', '00:00:0b:00:77:55')
 
+net.setIntfMac('h1', 's1', '00:00:0a:00:00:22')  # Set the MAC address on h2 interface facing s1
+net.setIntfMac('s1', 'h1', '00:00:0b:00:22:00')
+
 #Instead of switch table entries, these entries will be held by a controller (e.g., controller.py)
 
-
+net.auto_gw_arp = True
+net.auto_arp_tables = True
 
 # Nodes general options
 net.disablePcapDumpAll()

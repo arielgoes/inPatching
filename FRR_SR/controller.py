@@ -4,6 +4,7 @@ In case of a link failure, paths are recomputed.
 """
 
 import os
+import sys
 #from cli import CLI
 from re import search
 from random import random
@@ -81,10 +82,11 @@ class RerouteController(object):
         #set depot (it only one for all paths - for now)
         neighbors_intfs = self.topo.get_interfaces_to_node(self.depot)
         #print("neighbors_intfs (host) ==> ", neighbors_intfs)
-        if 'h1' in neighbors_intfs.values(): #if the switch is connect to the host, the switch is the depot
-            depot_port = self.topo.node_to_node_port_num('h1', self.depot)
+        if 'h2' in neighbors_intfs.values(): #if the switch is connect to the host, the switch is the depot
+            depot_port = self.topo.node_to_node_port_num('h2', self.depot)
             control = self.controllers[self.depot]
             control.register_write('depotPort', 0, depot_port) #register_write(register_name, index, value)
+            #sys.exit() # force exit (debugging)
 
 
         curr_path_index = 0
@@ -99,9 +101,10 @@ class RerouteController(object):
                 control = self.controllers[switch]
                 control.register_write('maxPathSize', curr_path_index, len(lst))
                 # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:
-                subnet = self.get_host_net('h1') #depot (static code - may need to be changed later - in the case of more hosts are added)
+                subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
                 control.table_add('max_path_size', 'read_max_curr_path_size', match_keys=[subnet], action_params=[str(curr_path_index)])
             
+            print("..... route rules")
             for index, switch in enumerate(lst):
                 # install route rules at the registers            
                 if index + 1 < len(lst):
@@ -119,9 +122,11 @@ class RerouteController(object):
                         neighbor_port = self.topo.node_to_node_port_num(switch, next_switch) #Gets the number of the port of *node1* that is connected to *node2*.
                         print("neighbor_port ==> ", neighbor_port)
                         control = self.controllers[curr_switch]
-                        subnet = self.get_host_net('h1') #depot (static code - may need to be changed later - in the case of more hosts are added)
-                        control.table_add('ipv4_lpm', 'read_port', match_keys=[subnet], action_params=[str(neighbor_port)])
-                        control.register_write('primaryNH', next_switch[1:], neighbor_port)
+                        subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
+                        control.register_write('primaryNH', curr_path_index, neighbor_port)
+                        control.table_add('ipv4_lpm', 'read_port', match_keys=[subnet], action_params=[str(curr_path_index)])
+                        
+            break
             curr_path_index += 1
 
         #reset curent path index - in case I need to manipulate it later

@@ -4,13 +4,21 @@ net = NetworkAPI()
 net.setLogLevel('info')
 
 #add P4 switches
-net.addP4Switch('s1', cli_input='s1-commands.txt')
-net.addP4Switch('s2', cli_input='s2-commands.txt')
-net.addP4Switch('s3', cli_input='s3-commands.txt')
-net.addP4Switch('s4', cli_input='s4-commands.txt')
-net.addP4Switch('s5', cli_input='s5-commands.txt')
-net.addP4Switch('s6', cli_input='s6-commands.txt')
-net.addP4Switch('s7', cli_input='s7-commands.txt')
+#net.addP4Switch('s1', cli_input='s1-commands.txt')
+#net.addP4Switch('s2', cli_input='s2-commands.txt')
+#net.addP4Switch('s3', cli_input='s3-commands.txt')
+#net.addP4Switch('s4', cli_input='s4-commands.txt')
+#net.addP4Switch('s5', cli_input='s5-commands.txt')
+#net.addP4Switch('s6', cli_input='s6-commands.txt')
+#net.addP4Switch('s7', cli_input='s7-commands.txt')
+
+net.addP4Switch('s1')
+net.addP4Switch('s2')
+net.addP4Switch('s3')
+net.addP4Switch('s4')
+net.addP4Switch('s5')
+net.addP4Switch('s6')
+net.addP4Switch('s7')
 
 #add hosts
 net.addHost('h1')

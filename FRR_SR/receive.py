@@ -9,18 +9,6 @@ from scapy.layers.inet import _IPOption_HDR
 from scapy.fields import *
 
 
-def get_if():
-    ifs=get_if_list()
-    iface=None
-    for i in get_if_list():
-        if "eth1" in i:
-            iface=i
-            break
-    if not iface:
-        print("Cannot find eth0 interface")
-        exit(1)
-    return iface
-
 
 def handle_pkt(pkt):
     print("got a packet")
@@ -30,7 +18,8 @@ def handle_pkt(pkt):
 
 
 def main():
-    iface = 'h1-eth1'
+    #iface = 'h1-eth1'
+    iface = 'h2-eth5'
     print("sniffing on %s" % iface)
     sys.stdout.flush()
     sniff(iface = iface,

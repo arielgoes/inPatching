@@ -47,19 +47,15 @@ control MyIngress(inout headers hdr,
 
     bit<32> aux;
 
-    action rewriteMac(macAddr_t dstAddr){
-	    hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-        hdr.ethernet.dstAddr = dstAddr;
-	}
 
     action drop() {
         mark_to_drop(standard_metadata);
     }
 
-    action read_port(bit<32> index){
-        meta.index = index;
+    action read_port(bit<32> indexPath){
+        meta.indexPath = indexPath;
         // Read primary next hop and write result into meta.nextHop.
-        primaryNH.read(meta.nextHop,  meta.index);
+        primaryNH.read(meta.nextHop,  meta.indexPath);
         
         //Read linkState of default next hop.
         linkState.read(meta.linkState, meta.nextHop);
@@ -67,7 +63,7 @@ control MyIngress(inout headers hdr,
 
     action read_alternativePort(){
         //Read alternative next hop into metadata
-        alternativeNH.read(meta.nextHop, meta.index);
+        alternativeNH.read(meta.nextHop, meta.indexPath);
     }
 
     action read_max_curr_path_size(bit<32> indexPath){
@@ -103,17 +99,6 @@ control MyIngress(inout headers hdr,
         default_action = drop;
     }
 
-    table rewrite_mac {
-        key = {
-             meta.nextHop: exact;
-        }
-        actions = {
-            rewriteMac;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
 
     table max_path_size {
         key = {
@@ -139,7 +124,6 @@ control MyIngress(inout headers hdr,
             // Do not change the following lines: They set the egress port
             // and update the MAC address.
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
-		    rewrite_mac.apply();
 
             //Check if this is the last cycle hop and force to send the package to the host insted of "next switch"
             max_path_size.apply();
