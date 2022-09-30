@@ -1,0 +1,42 @@
+Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
+Calling target program-options parser
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_update_curr_path_size': MyIngress.update_curr_path_size - 
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.primary_path_exact_1': MyIngress.drop - 
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.primary_path_exact_2': MyIngress.drop - 
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute195': fast_reroute195 - 
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute211': fast_reroute211 - 
+[18:23:45.202] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute213': fast_reroute213 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute216': fast_reroute216 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute218': fast_reroute218 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute224': fast_reroute224 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute227': fast_reroute227 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute232': fast_reroute232 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute236': fast_reroute236 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.alternative_path_exact_1': MyIngress.drop - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.alternative_path_exact_2': MyIngress.drop - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute248': fast_reroute248 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.len_primary_path': NoAction - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'MyIngress.len_alternative_path': NoAction - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_read_depot_port': MyIngress.read_depot_port - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute260': fast_reroute260 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_reset_curr_path_size': MyIngress.reset_curr_path_size - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_read_depot_port_0': MyIngress.read_depot_port - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_fast_reroute265': fast_reroute265 - 
+[18:23:45.203] [bmv2] [D] [thread 19290] Set default default entry for table 'tbl_reset_curr_path_size_0': MyIngress.reset_curr_path_size - 
+Adding interface s7-eth1 as port 1
+[18:23:45.208] [bmv2] [D] [thread 19290] Adding interface s7-eth1 as port 1
+Adding interface s7-eth2 as port 2
+[18:23:45.236] [bmv2] [D] [thread 19290] Adding interface s7-eth2 as port 2
+[18:23:45.276] [bmv2] [I] [thread 19290] Starting Thrift server on port 9096
+[18:23:45.276] [bmv2] [I] [thread 19290] Thrift server was started
+[18:23:49.846] [bmv2] [T] [thread 19423] bm_get_config
+[18:23:49.847] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.847] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.847] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.847] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.847] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.848] [bmv2] [T] [thread 19423] bm_mt_get_entries
+[18:23:49.895] [bmv2] [T] [thread 19423] bm_reset_state
+[18:23:49.901] [bmv2] [D] [thread 19423] Resetting simple_switch target-specific state
+[18:23:49.901] [bmv2] [D] [thread 19423] resetting PRE state
+open: No such file or directory
