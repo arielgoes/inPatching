@@ -1,979 +1,521 @@
 Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
 Calling target program-options parser
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_update_curr_path_size': MyIngress.update_curr_path_size - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.primary_path_exact_1': MyIngress.drop - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.primary_path_exact_2': MyIngress.drop - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute195': fast_reroute195 - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute211': fast_reroute211 - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute213': fast_reroute213 - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute216': fast_reroute216 - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute218': fast_reroute218 - 
-[18:23:44.809] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute224': fast_reroute224 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute227': fast_reroute227 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute232': fast_reroute232 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute236': fast_reroute236 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.alternative_path_exact_1': MyIngress.drop - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.alternative_path_exact_2': MyIngress.drop - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute248': fast_reroute248 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.len_primary_path': NoAction - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'MyIngress.len_alternative_path': NoAction - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_read_depot_port': MyIngress.read_depot_port - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute260': fast_reroute260 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_reset_curr_path_size': MyIngress.reset_curr_path_size - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_read_depot_port_0': MyIngress.read_depot_port - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_fast_reroute265': fast_reroute265 - 
-[18:23:44.810] [bmv2] [D] [thread 19251] Set default default entry for table 'tbl_reset_curr_path_size_0': MyIngress.reset_curr_path_size - 
+[15:02:44.319] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_update_curr_path_size': MyIngress.update_curr_path_size - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute187': fast_reroute187 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute212': fast_reroute212 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute214': fast_reroute214 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute217': fast_reroute217 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute219': fast_reroute219 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute225': fast_reroute225 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute228': fast_reroute228 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute233': fast_reroute233 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute237': fast_reroute237 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute243': fast_reroute243 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.primary_path_exact_1': MyIngress.drop - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute246': fast_reroute246 - 
+[15:02:44.320] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.primary_path_exact_2': MyIngress.drop - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.alternative_path_exact_1': MyIngress.drop - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute258': fast_reroute258 - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.alternative_path_exact_2': MyIngress.drop - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute265': fast_reroute265 - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.len_primary_path': NoAction - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'MyIngress.len_alternative_path': NoAction - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_read_depot_port': MyIngress.read_depot_port - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute277': fast_reroute277 - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_reset_curr_path_size': MyIngress.reset_curr_path_size - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_read_depot_port_0': MyIngress.read_depot_port - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_fast_reroute282': fast_reroute282 - 
+[15:02:44.321] [bmv2] [D] [thread 18900] Set default default entry for table 'tbl_reset_curr_path_size_0': MyIngress.reset_curr_path_size - 
 Adding interface s4-eth1 as port 1
-[18:23:44.814] [bmv2] [D] [thread 19251] Adding interface s4-eth1 as port 1
+[15:02:44.334] [bmv2] [D] [thread 18900] Adding interface s4-eth1 as port 1
 Adding interface s4-eth2 as port 2
-[18:23:44.848] [bmv2] [D] [thread 19251] Adding interface s4-eth2 as port 2
+[15:02:44.363] [bmv2] [D] [thread 18900] Adding interface s4-eth2 as port 2
 Adding interface s4-eth3 as port 3
-[18:23:44.876] [bmv2] [D] [thread 19251] Adding interface s4-eth3 as port 3
-[18:23:44.908] [bmv2] [I] [thread 19251] Starting Thrift server on port 9093
-[18:23:44.908] [bmv2] [I] [thread 19251] Thrift server was started
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Processing packet received on port 1
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Parser 'parser': start
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Extracting header 'ethernet'
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:44.909] [bmv2] [T] [thread 19257] [0.0] [cxt 0] Bytes parsed: 14
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Parser 'parser': end
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Pipeline 'ingress': start
-[18:23:44.909] [bmv2] [T] [thread 19257] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Pipeline 'ingress': end
-[18:23:44.909] [bmv2] [D] [thread 19257] [0.0] [cxt 0] Egress port is 0
-[18:23:44.909] [bmv2] [D] [thread 19258] [0.0] [cxt 0] Pipeline 'egress': start
-[18:23:44.909] [bmv2] [D] [thread 19258] [0.0] [cxt 0] Pipeline 'egress': end
-[18:23:44.909] [bmv2] [D] [thread 19258] [0.0] [cxt 0] Deparser 'deparser': start
-[18:23:44.909] [bmv2] [T] [thread 19258] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:44.909] [bmv2] [D] [thread 19258] [0.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:44.909] [bmv2] [D] [thread 19258] [0.0] [cxt 0] Deparser 'deparser': end
-[18:23:44.909] [bmv2] [D] [thread 19262] [0.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Processing packet received on port 1
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Parser 'parser': start
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Extracting header 'ethernet'
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:44.952] [bmv2] [T] [thread 19257] [1.0] [cxt 0] Bytes parsed: 14
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Parser 'parser': end
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Pipeline 'ingress': start
-[18:23:44.952] [bmv2] [T] [thread 19257] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Pipeline 'ingress': end
-[18:23:44.952] [bmv2] [D] [thread 19257] [1.0] [cxt 0] Egress port is 0
-[18:23:44.952] [bmv2] [D] [thread 19258] [1.0] [cxt 0] Pipeline 'egress': start
-[18:23:44.952] [bmv2] [D] [thread 19258] [1.0] [cxt 0] Pipeline 'egress': end
-[18:23:44.952] [bmv2] [D] [thread 19258] [1.0] [cxt 0] Deparser 'deparser': start
-[18:23:44.952] [bmv2] [T] [thread 19258] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:44.952] [bmv2] [D] [thread 19258] [1.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:44.952] [bmv2] [D] [thread 19258] [1.0] [cxt 0] Deparser 'deparser': end
-[18:23:44.952] [bmv2] [D] [thread 19262] [1.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Processing packet received on port 3
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Parser 'parser': start
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Extracting header 'ethernet'
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:45.140] [bmv2] [T] [thread 19257] [2.0] [cxt 0] Bytes parsed: 14
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Parser 'parser': end
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Pipeline 'ingress': start
-[18:23:45.140] [bmv2] [T] [thread 19257] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Pipeline 'ingress': end
-[18:23:45.140] [bmv2] [D] [thread 19257] [2.0] [cxt 0] Egress port is 0
-[18:23:45.140] [bmv2] [D] [thread 19258] [2.0] [cxt 0] Pipeline 'egress': start
-[18:23:45.140] [bmv2] [D] [thread 19258] [2.0] [cxt 0] Pipeline 'egress': end
-[18:23:45.140] [bmv2] [D] [thread 19258] [2.0] [cxt 0] Deparser 'deparser': start
-[18:23:45.140] [bmv2] [T] [thread 19258] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:45.140] [bmv2] [D] [thread 19258] [2.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:45.140] [bmv2] [D] [thread 19258] [2.0] [cxt 0] Deparser 'deparser': end
-[18:23:45.140] [bmv2] [D] [thread 19262] [2.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Processing packet received on port 3
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Parser 'parser': start
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Extracting header 'ethernet'
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:45.204] [bmv2] [T] [thread 19257] [3.0] [cxt 0] Bytes parsed: 14
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Parser 'parser': end
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Pipeline 'ingress': start
-[18:23:45.204] [bmv2] [T] [thread 19257] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Pipeline 'ingress': end
-[18:23:45.204] [bmv2] [D] [thread 19257] [3.0] [cxt 0] Egress port is 0
-[18:23:45.204] [bmv2] [D] [thread 19258] [3.0] [cxt 0] Pipeline 'egress': start
-[18:23:45.204] [bmv2] [D] [thread 19258] [3.0] [cxt 0] Pipeline 'egress': end
-[18:23:45.204] [bmv2] [D] [thread 19258] [3.0] [cxt 0] Deparser 'deparser': start
-[18:23:45.204] [bmv2] [T] [thread 19258] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:45.204] [bmv2] [D] [thread 19258] [3.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:45.204] [bmv2] [D] [thread 19258] [3.0] [cxt 0] Deparser 'deparser': end
-[18:23:45.204] [bmv2] [D] [thread 19262] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Processing packet received on port 1
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Parser 'parser': start
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Extracting header 'ethernet'
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:45.332] [bmv2] [T] [thread 19257] [4.0] [cxt 0] Bytes parsed: 14
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Parser 'parser': end
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Pipeline 'ingress': start
-[18:23:45.332] [bmv2] [T] [thread 19257] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Pipeline 'ingress': end
-[18:23:45.332] [bmv2] [D] [thread 19257] [4.0] [cxt 0] Egress port is 0
-[18:23:45.332] [bmv2] [D] [thread 19258] [4.0] [cxt 0] Pipeline 'egress': start
-[18:23:45.332] [bmv2] [D] [thread 19258] [4.0] [cxt 0] Pipeline 'egress': end
-[18:23:45.332] [bmv2] [D] [thread 19258] [4.0] [cxt 0] Deparser 'deparser': start
-[18:23:45.332] [bmv2] [T] [thread 19258] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:45.332] [bmv2] [D] [thread 19258] [4.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:45.332] [bmv2] [D] [thread 19258] [4.0] [cxt 0] Deparser 'deparser': end
-[18:23:45.332] [bmv2] [D] [thread 19262] [4.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Processing packet received on port 2
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Parser 'parser': start
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Extracting header 'ethernet'
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:45.333] [bmv2] [T] [thread 19257] [5.0] [cxt 0] Bytes parsed: 14
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Parser 'parser': end
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Pipeline 'ingress': start
-[18:23:45.333] [bmv2] [T] [thread 19257] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Pipeline 'ingress': end
-[18:23:45.333] [bmv2] [D] [thread 19257] [5.0] [cxt 0] Egress port is 0
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Processing packet received on port 3
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Parser 'parser': start
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Extracting header 'ethernet'
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Parser state 'start': key is 86dd
-[18:23:45.333] [bmv2] [T] [thread 19257] [6.0] [cxt 0] Bytes parsed: 14
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Parser 'parser': end
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Pipeline 'ingress': start
-[18:23:45.333] [bmv2] [T] [thread 19257] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is false
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Pipeline 'ingress': end
-[18:23:45.333] [bmv2] [D] [thread 19257] [6.0] [cxt 0] Egress port is 0
-[18:23:45.333] [bmv2] [D] [thread 19258] [5.0] [cxt 0] Pipeline 'egress': start
-[18:23:45.333] [bmv2] [D] [thread 19258] [5.0] [cxt 0] Pipeline 'egress': end
-[18:23:45.333] [bmv2] [D] [thread 19258] [5.0] [cxt 0] Deparser 'deparser': start
-[18:23:45.333] [bmv2] [T] [thread 19258] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:45.333] [bmv2] [D] [thread 19258] [5.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:45.333] [bmv2] [D] [thread 19258] [5.0] [cxt 0] Deparser 'deparser': end
-[18:23:45.333] [bmv2] [D] [thread 19258] [6.0] [cxt 0] Pipeline 'egress': start
-[18:23:45.333] [bmv2] [D] [thread 19258] [6.0] [cxt 0] Pipeline 'egress': end
-[18:23:45.333] [bmv2] [D] [thread 19258] [6.0] [cxt 0] Deparser 'deparser': start
-[18:23:45.333] [bmv2] [T] [thread 19258] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
-[18:23:45.333] [bmv2] [D] [thread 19258] [6.0] [cxt 0] Deparsing header 'ethernet'
-[18:23:45.333] [bmv2] [D] [thread 19258] [6.0] [cxt 0] Deparser 'deparser': end
-[18:23:45.333] [bmv2] [D] [thread 19262] [5.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[18:23:45.333] [bmv2] [D] [thread 19262] [6.0] [cxt 0] Transmitting packet of size 86 out of port 0
-[18:23:49.838] [bmv2] [T] [thread 19420] bm_get_config
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.839] [bmv2] [T] [thread 19420] bm_mt_get_entries
-[18:23:49.866] [bmv2] [T] [thread 19420] bm_reset_state
-[18:23:49.881] [bmv2] [D] [thread 19420] Resetting simple_switch target-specific state
-[18:23:49.881] [bmv2] [D] [thread 19420] resetting PRE state
-[18:23:49.907] [bmv2] [T] [thread 19420] bm_register_write
-[18:23:49.908] [bmv2] [T] [thread 19420] bm_table_add_entry
-[18:23:49.908] [bmv2] [D] [thread 19420] Entry 0 added to table 'MyIngress.len_primary_path'
-[18:23:49.908] [bmv2] [D] [thread 19420] Dumping entry 0
+[15:02:44.395] [bmv2] [D] [thread 18900] Adding interface s4-eth3 as port 3
+[15:02:44.427] [bmv2] [I] [thread 18900] Starting Thrift server on port 9093
+[15:02:44.427] [bmv2] [I] [thread 18900] Thrift server was started
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Processing packet received on port 2
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Parser 'parser': start
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.429] [bmv2] [T] [thread 18906] [0.0] [cxt 0] Bytes parsed: 14
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Parser 'parser': end
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.429] [bmv2] [T] [thread 18906] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.429] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.430] [bmv2] [D] [thread 18906] [0.0] [cxt 0] Egress port is 0
+[15:02:44.430] [bmv2] [D] [thread 18907] [0.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.430] [bmv2] [D] [thread 18907] [0.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.430] [bmv2] [D] [thread 18907] [0.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.430] [bmv2] [T] [thread 18907] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.430] [bmv2] [D] [thread 18907] [0.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.430] [bmv2] [D] [thread 18907] [0.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.430] [bmv2] [D] [thread 18911] [0.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Processing packet received on port 3
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Parser 'parser': start
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.471] [bmv2] [T] [thread 18906] [1.0] [cxt 0] Bytes parsed: 14
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Parser 'parser': end
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.471] [bmv2] [T] [thread 18906] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.471] [bmv2] [D] [thread 18906] [1.0] [cxt 0] Egress port is 0
+[15:02:44.471] [bmv2] [D] [thread 18907] [1.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.471] [bmv2] [D] [thread 18907] [1.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.471] [bmv2] [D] [thread 18907] [1.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.471] [bmv2] [T] [thread 18907] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.471] [bmv2] [D] [thread 18907] [1.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.471] [bmv2] [D] [thread 18907] [1.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.471] [bmv2] [D] [thread 18911] [1.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Processing packet received on port 1
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Parser 'parser': start
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.503] [bmv2] [T] [thread 18906] [2.0] [cxt 0] Bytes parsed: 14
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Parser 'parser': end
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.503] [bmv2] [T] [thread 18906] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.503] [bmv2] [D] [thread 18906] [2.0] [cxt 0] Egress port is 0
+[15:02:44.503] [bmv2] [D] [thread 18907] [2.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.503] [bmv2] [D] [thread 18907] [2.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.503] [bmv2] [D] [thread 18907] [2.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.503] [bmv2] [T] [thread 18907] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.503] [bmv2] [D] [thread 18907] [2.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.503] [bmv2] [D] [thread 18907] [2.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.503] [bmv2] [D] [thread 18911] [2.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Processing packet received on port 2
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Parser 'parser': start
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.826] [bmv2] [T] [thread 18906] [3.0] [cxt 0] Bytes parsed: 14
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Parser 'parser': end
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.826] [bmv2] [T] [thread 18906] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.826] [bmv2] [D] [thread 18906] [3.0] [cxt 0] Egress port is 0
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Processing packet received on port 2
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Parser 'parser': start
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.826] [bmv2] [T] [thread 18906] [4.0] [cxt 0] Bytes parsed: 14
+[15:02:44.826] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Parser 'parser': end
+[15:02:44.827] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.827] [bmv2] [T] [thread 18906] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.827] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.827] [bmv2] [D] [thread 18906] [4.0] [cxt 0] Egress port is 0
+[15:02:44.827] [bmv2] [D] [thread 18907] [3.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.827] [bmv2] [D] [thread 18907] [3.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.827] [bmv2] [D] [thread 18907] [3.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.827] [bmv2] [T] [thread 18907] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.827] [bmv2] [D] [thread 18907] [3.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.827] [bmv2] [D] [thread 18907] [3.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.827] [bmv2] [D] [thread 18907] [4.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.827] [bmv2] [D] [thread 18907] [4.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.827] [bmv2] [D] [thread 18907] [4.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.827] [bmv2] [T] [thread 18907] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.827] [bmv2] [D] [thread 18907] [4.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.827] [bmv2] [D] [thread 18907] [4.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.827] [bmv2] [D] [thread 18911] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.827] [bmv2] [D] [thread 18911] [4.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Processing packet received on port 2
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Parser 'parser': start
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.836] [bmv2] [T] [thread 18906] [5.0] [cxt 0] Bytes parsed: 14
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Parser 'parser': end
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.836] [bmv2] [T] [thread 18906] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.836] [bmv2] [D] [thread 18906] [5.0] [cxt 0] Egress port is 0
+[15:02:44.836] [bmv2] [D] [thread 18907] [5.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.836] [bmv2] [D] [thread 18907] [5.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.836] [bmv2] [D] [thread 18907] [5.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.836] [bmv2] [T] [thread 18907] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.836] [bmv2] [D] [thread 18907] [5.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.836] [bmv2] [D] [thread 18907] [5.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.836] [bmv2] [D] [thread 18911] [5.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Processing packet received on port 1
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Parser 'parser': start
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.888] [bmv2] [T] [thread 18906] [6.0] [cxt 0] Bytes parsed: 14
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Parser 'parser': end
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.888] [bmv2] [T] [thread 18906] [6.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.888] [bmv2] [D] [thread 18906] [6.0] [cxt 0] Egress port is 0
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Processing packet received on port 1
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Parser 'parser': start
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.888] [bmv2] [T] [thread 18906] [7.0] [cxt 0] Bytes parsed: 14
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Parser 'parser': end
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.888] [bmv2] [T] [thread 18906] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.888] [bmv2] [D] [thread 18906] [7.0] [cxt 0] Egress port is 0
+[15:02:44.888] [bmv2] [D] [thread 18907] [6.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.888] [bmv2] [D] [thread 18907] [6.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.888] [bmv2] [D] [thread 18907] [6.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.888] [bmv2] [T] [thread 18907] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.888] [bmv2] [D] [thread 18907] [6.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.888] [bmv2] [D] [thread 18907] [6.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.888] [bmv2] [D] [thread 18907] [7.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.888] [bmv2] [D] [thread 18907] [7.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.888] [bmv2] [D] [thread 18907] [7.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.888] [bmv2] [T] [thread 18907] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.888] [bmv2] [D] [thread 18907] [7.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.888] [bmv2] [D] [thread 18907] [7.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.888] [bmv2] [D] [thread 18911] [6.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.888] [bmv2] [D] [thread 18911] [7.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Processing packet received on port 1
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Parser 'parser': start
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.899] [bmv2] [T] [thread 18906] [8.0] [cxt 0] Bytes parsed: 14
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Parser 'parser': end
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.899] [bmv2] [T] [thread 18906] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.899] [bmv2] [D] [thread 18906] [8.0] [cxt 0] Egress port is 0
+[15:02:44.899] [bmv2] [D] [thread 18907] [8.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.899] [bmv2] [D] [thread 18907] [8.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.899] [bmv2] [D] [thread 18907] [8.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.899] [bmv2] [T] [thread 18907] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.899] [bmv2] [D] [thread 18907] [8.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.899] [bmv2] [D] [thread 18907] [8.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.899] [bmv2] [D] [thread 18911] [8.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Processing packet received on port 2
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Parser 'parser': start
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.920] [bmv2] [T] [thread 18906] [9.0] [cxt 0] Bytes parsed: 14
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Parser 'parser': end
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.920] [bmv2] [T] [thread 18906] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.920] [bmv2] [D] [thread 18906] [9.0] [cxt 0] Egress port is 0
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Processing packet received on port 2
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Parser 'parser': start
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.920] [bmv2] [T] [thread 18906] [10.0] [cxt 0] Bytes parsed: 14
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Parser 'parser': end
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.920] [bmv2] [T] [thread 18906] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.920] [bmv2] [D] [thread 18906] [10.0] [cxt 0] Egress port is 0
+[15:02:44.920] [bmv2] [D] [thread 18907] [9.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.920] [bmv2] [D] [thread 18907] [9.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.920] [bmv2] [D] [thread 18907] [9.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.920] [bmv2] [T] [thread 18907] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.920] [bmv2] [D] [thread 18907] [9.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.920] [bmv2] [D] [thread 18907] [9.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.920] [bmv2] [D] [thread 18907] [10.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.920] [bmv2] [D] [thread 18907] [10.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.920] [bmv2] [D] [thread 18907] [10.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.920] [bmv2] [T] [thread 18907] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.920] [bmv2] [D] [thread 18907] [10.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.920] [bmv2] [D] [thread 18907] [10.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.920] [bmv2] [D] [thread 18911] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.920] [bmv2] [D] [thread 18911] [10.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Processing packet received on port 2
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Parser 'parser': start
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.925] [bmv2] [T] [thread 18906] [11.0] [cxt 0] Bytes parsed: 14
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Parser 'parser': end
+[15:02:44.925] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.926] [bmv2] [T] [thread 18906] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.926] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.926] [bmv2] [D] [thread 18906] [11.0] [cxt 0] Egress port is 0
+[15:02:44.926] [bmv2] [D] [thread 18907] [11.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.926] [bmv2] [D] [thread 18907] [11.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.926] [bmv2] [D] [thread 18907] [11.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.926] [bmv2] [T] [thread 18907] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.926] [bmv2] [D] [thread 18907] [11.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.926] [bmv2] [D] [thread 18907] [11.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.926] [bmv2] [D] [thread 18911] [11.0] [cxt 0] Transmitting packet of size 203 out of port 0
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Processing packet received on port 2
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Parser 'parser': start
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.931] [bmv2] [T] [thread 18906] [12.0] [cxt 0] Bytes parsed: 14
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Parser 'parser': end
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.931] [bmv2] [T] [thread 18906] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.931] [bmv2] [D] [thread 18906] [12.0] [cxt 0] Egress port is 0
+[15:02:44.931] [bmv2] [D] [thread 18907] [12.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.931] [bmv2] [D] [thread 18907] [12.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.931] [bmv2] [D] [thread 18907] [12.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.931] [bmv2] [T] [thread 18907] [12.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.931] [bmv2] [D] [thread 18907] [12.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.931] [bmv2] [D] [thread 18907] [12.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.931] [bmv2] [D] [thread 18911] [12.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Processing packet received on port 2
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Parser 'parser': start
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.955] [bmv2] [T] [thread 18906] [13.0] [cxt 0] Bytes parsed: 14
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Parser 'parser': end
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.955] [bmv2] [T] [thread 18906] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.955] [bmv2] [D] [thread 18906] [13.0] [cxt 0] Egress port is 0
+[15:02:44.955] [bmv2] [D] [thread 18907] [13.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.955] [bmv2] [D] [thread 18907] [13.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.955] [bmv2] [D] [thread 18907] [13.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.955] [bmv2] [T] [thread 18907] [13.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.955] [bmv2] [D] [thread 18907] [13.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.955] [bmv2] [D] [thread 18907] [13.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.955] [bmv2] [D] [thread 18911] [13.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.985] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Processing packet received on port 3
+[15:02:44.985] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Parser 'parser': start
+[15:02:44.985] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.985] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.986] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.986] [bmv2] [T] [thread 18906] [14.0] [cxt 0] Bytes parsed: 14
+[15:02:44.986] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Parser 'parser': end
+[15:02:44.986] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.986] [bmv2] [T] [thread 18906] [14.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.986] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.986] [bmv2] [D] [thread 18906] [14.0] [cxt 0] Egress port is 0
+[15:02:44.986] [bmv2] [D] [thread 18907] [14.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.986] [bmv2] [D] [thread 18907] [14.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.986] [bmv2] [D] [thread 18907] [14.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.986] [bmv2] [T] [thread 18907] [14.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.986] [bmv2] [D] [thread 18907] [14.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.986] [bmv2] [D] [thread 18907] [14.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.986] [bmv2] [D] [thread 18911] [14.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Processing packet received on port 3
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Parser 'parser': start
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.986] [bmv2] [T] [thread 18906] [15.0] [cxt 0] Bytes parsed: 14
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Parser 'parser': end
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.986] [bmv2] [T] [thread 18906] [15.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.986] [bmv2] [D] [thread 18906] [15.0] [cxt 0] Egress port is 0
+[15:02:44.986] [bmv2] [D] [thread 18907] [15.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.986] [bmv2] [D] [thread 18907] [15.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.986] [bmv2] [D] [thread 18907] [15.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.986] [bmv2] [T] [thread 18907] [15.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.986] [bmv2] [D] [thread 18907] [15.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.986] [bmv2] [D] [thread 18907] [15.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.986] [bmv2] [D] [thread 18911] [15.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Processing packet received on port 1
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Parser 'parser': start
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Extracting header 'ethernet'
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[15:02:44.990] [bmv2] [T] [thread 18906] [16.0] [cxt 0] Bytes parsed: 14
+[15:02:44.990] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Parser 'parser': end
+[15:02:44.991] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Pipeline 'ingress': start
+[15:02:44.991] [bmv2] [T] [thread 18906] [16.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is false
+[15:02:44.991] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Pipeline 'ingress': end
+[15:02:44.991] [bmv2] [D] [thread 18906] [16.0] [cxt 0] Egress port is 0
+[15:02:44.991] [bmv2] [D] [thread 18907] [16.0] [cxt 0] Pipeline 'egress': start
+[15:02:44.991] [bmv2] [D] [thread 18907] [16.0] [cxt 0] Pipeline 'egress': end
+[15:02:44.991] [bmv2] [D] [thread 18907] [16.0] [cxt 0] Deparser 'deparser': start
+[15:02:44.991] [bmv2] [T] [thread 18907] [16.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[15:02:44.991] [bmv2] [D] [thread 18907] [16.0] [cxt 0] Deparsing header 'ethernet'
+[15:02:44.991] [bmv2] [D] [thread 18907] [16.0] [cxt 0] Deparser 'deparser': end
+[15:02:44.991] [bmv2] [D] [thread 18911] [16.0] [cxt 0] Transmitting packet of size 203 out of port 0
+[15:02:52.715] [bmv2] [T] [thread 19068] bm_get_config
+[15:02:52.718] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.718] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.719] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.719] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.719] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.719] [bmv2] [T] [thread 19068] bm_mt_get_entries
+[15:02:52.793] [bmv2] [T] [thread 19068] bm_reset_state
+[15:02:52.812] [bmv2] [D] [thread 19068] Resetting simple_switch target-specific state
+[15:02:52.812] [bmv2] [D] [thread 19068] resetting PRE state
+[15:02:52.896] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.897] [bmv2] [T] [thread 19068] bm_table_add_entry
+[15:02:52.898] [bmv2] [D] [thread 19068] Entry 0 added to table 'MyIngress.len_primary_path'
+[15:02:52.898] [bmv2] [D] [thread 19068] Dumping entry 0
 Match key:
 * hdr.pathHops.path_id: EXACT     00000000
 Action entry: MyIngress.read_len_primary_path - 0,
 
-[18:23:49.909] [bmv2] [T] [thread 19420] bm_register_write
-[18:23:49.909] [bmv2] [T] [thread 19420] bm_register_write
-[18:23:49.926] [bmv2] [T] [thread 19420] bm_register_write
-[18:23:49.927] [bmv2] [T] [thread 19420] bm_table_add_entry
-[18:23:49.927] [bmv2] [D] [thread 19420] Entry 0 added to table 'MyIngress.primary_path_exact_1'
-[18:23:49.927] [bmv2] [D] [thread 19420] Dumping entry 0
+[15:02:52.898] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.899] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.918] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.919] [bmv2] [T] [thread 19068] bm_table_add_entry
+[15:02:52.919] [bmv2] [D] [thread 19068] Entry 0 added to table 'MyIngress.primary_path_exact_1'
+[15:02:52.920] [bmv2] [D] [thread 19068] Dumping entry 0
 Match key:
 * hdr.pathHops.numHop : EXACT     00000004
 Action entry: MyIngress.read_primary_port_1 - 0,
 
-[18:23:49.927] [bmv2] [T] [thread 19420] bm_register_write
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Processing packet received on port 2
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser 'parser': start
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Extracting header 'ethernet'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Bytes parsed: 14
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Extracting header 'ipv4'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Extracting header 'pathHops'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Bytes parsed: 50
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Parser 'parser': end
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Pipeline 'ingress': start
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
-
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Dumping entry 0
+[15:02:52.921] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.939] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.940] [bmv2] [T] [thread 19068] bm_table_add_entry
+[15:02:52.940] [bmv2] [D] [thread 19068] Entry 0 added to table 'MyIngress.len_alternative_path'
+[15:02:52.940] [bmv2] [D] [thread 19068] Dumping entry 0
 Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
+* hdr.pathHops.path_id: EXACT     00000000
+Action entry: MyIngress.read_len_alternative_path - 0,
 
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
+[15:02:52.941] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.941] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.959] [bmv2] [T] [thread 19068] bm_register_write
+[15:02:52.960] [bmv2] [T] [thread 19068] bm_table_add_entry
+[15:02:52.960] [bmv2] [D] [thread 19068] Entry 0 added to table 'MyIngress.alternative_path_exact_1'
+[15:02:52.960] [bmv2] [D] [thread 19068] Dumping entry 0
+Match key:
+* hdr.pathHops.numHop : EXACT     00000005
+Action entry: MyIngress.read_alternative_port_1 - 0,
 
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action fast_reroute195
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Processing packet received on port 2
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser 'parser': start
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Extracting header 'ethernet'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser state 'start': key is 0800
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Bytes parsed: 14
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Extracting header 'ipv4'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Extracting header 'pathHops'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Bytes parsed: 58
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Parser 'parser': end
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Pipeline 'ingress': start
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(180) Condition "hdr.ipv4.isValid()" (node_2) is true
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
 
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:14.426] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action fast_reroute218
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:14.426] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is false
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action MyIngress.update_curr_path_size
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'tbl_fast_reroute187'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
 
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action fast_reroute248
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 0
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'tbl_fast_reroute187': miss
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is fast_reroute187 - 
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action fast_reroute187
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(187) Primitive swIdReg.read(swId, 0)
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive mask << swId
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(192) Primitive debugReg.write(0, mask)
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Wrote register 'MyIngress.debugReg' at index 0 with value 16
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(200) Primitive depotIdReg.read(depotId, 0)
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(204) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(208) Primitive maxTimeOutDepotReg.read(threshold, 0)
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(211) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_5) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'tbl_fast_reroute219'
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
+
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'tbl_fast_reroute219': miss
+[15:03:04.516] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is fast_reroute219 - 
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action fast_reroute219
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(196) Primitive standard_metadata.ingress_global_timestamp; ...
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(223) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_11) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(227) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_13) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(231) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_15) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(235) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_17) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(242) Condition "hdr.pathHops.is_alt == 0" (node_19) is false
+[15:03:04.516] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(255) Condition "hdr.pathHops.is_alt > 0" (node_25) is true
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(256) Condition "(hdr.pathHops.num_times_curr_switch_alternative & mask == 0) && (meta.nextHop != 9999)" (node_26) is true
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'MyIngress.alternative_path_exact_1'
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
+* hdr.pathHops.numHop : 00000005
+
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'MyIngress.alternative_path_exact_1': hit with handle 0
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.pathHops.numHop : EXACT     00000005
+Action entry: MyIngress.read_alternative_port_1 - 0,
+
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is MyIngress.read_alternative_port_1 - 0,
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action MyIngress.read_alternative_port_1
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(66) Primitive meta.indexPath = indexPath
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(67) Primitive alternativeNH_1.read(meta.nextHop, meta.indexPath)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.alternativeNH_1' at index 0 read value 3
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'tbl_fast_reroute258'
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
+
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'tbl_fast_reroute258': miss
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is fast_reroute258 - 
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action fast_reroute258
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Primitive hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<32>)1 << swId)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'tbl_fast_reroute265'
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
+
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'tbl_fast_reroute265': miss
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is fast_reroute265 - 
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action fast_reroute265
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(265) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(268) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 1
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(269) Primitive numHopReg.write(0, hdr.pathHops.numHop)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 5
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
 * hdr.pathHops.path_id: 00000000
 
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Dumping entry 0
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Dumping entry 0
 Match key:
 * hdr.pathHops.path_id: EXACT     00000000
 Action entry: MyIngress.read_len_primary_path - 0,
 
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Looking up key:
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action MyIngress.read_len_primary_path
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Looking up key:
 * hdr.pathHops.path_id: 00000000
 
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Action entry is NoAction - 
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] Action NoAction
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:14.427] [bmv2] [T] [thread 19257] [7.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Pipeline 'ingress': end
-[18:24:14.427] [bmv2] [D] [thread 19257] [7.0] [cxt 0] Egress port is 3
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Pipeline 'egress': start
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Pipeline 'egress': end
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Deparser 'deparser': start
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Updating checksum 'cksum'
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:14.427] [bmv2] [D] [thread 19261] [7.0] [cxt 0] Deparser 'deparser': end
-[18:24:14.427] [bmv2] [D] [thread 19262] [7.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Processing packet received on port 2
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser 'parser': start
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Extracting header 'ethernet'
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:20.956] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Bytes parsed: 14
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Extracting header 'ipv4'
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Extracting header 'pathHops'
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:20.956] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Bytes parsed: 50
-[18:24:20.956] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Parser 'parser': end
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Pipeline 'ingress': start
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action fast_reroute195
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action fast_reroute218
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is true
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'MyIngress.alternative_path_exact_1'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'MyIngress.alternative_path_exact_1': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is MyIngress.drop - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action MyIngress.drop
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(57) Primitive mark_to_drop(standard_metadata)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(242) Condition "meta.nextHop == 9999" (node_24) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action fast_reroute248
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 1
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Dumping entry 0
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Table 'MyIngress.len_alternative_path': hit with handle 0
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Dumping entry 0
 Match key:
 * hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
+Action entry: MyIngress.read_len_alternative_path - 0,
 
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Action entry is NoAction - 
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] Action NoAction
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:20.957] [bmv2] [T] [thread 19257] [8.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Pipeline 'ingress': end
-[18:24:20.957] [bmv2] [D] [thread 19257] [8.0] [cxt 0] Egress port is 3
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Pipeline 'egress': start
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Pipeline 'egress': end
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Deparser 'deparser': start
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Updating checksum 'cksum'
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:20.957] [bmv2] [D] [thread 19261] [8.0] [cxt 0] Deparser 'deparser': end
-[18:24:20.957] [bmv2] [D] [thread 19262] [8.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Processing packet received on port 2
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser 'parser': start
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Extracting header 'ethernet'
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:32.745] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Bytes parsed: 14
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Extracting header 'ipv4'
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Extracting header 'pathHops'
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:32.745] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Bytes parsed: 50
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Parser 'parser': end
-[18:24:32.745] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Pipeline 'ingress': start
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action fast_reroute195
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action fast_reroute218
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is true
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'MyIngress.alternative_path_exact_1'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'MyIngress.alternative_path_exact_1': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is MyIngress.drop - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action MyIngress.drop
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(57) Primitive mark_to_drop(standard_metadata)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(242) Condition "meta.nextHop == 9999" (node_24) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action fast_reroute248
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 1
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Action entry is NoAction - 
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] Action NoAction
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:32.746] [bmv2] [T] [thread 19257] [9.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Pipeline 'ingress': end
-[18:24:32.746] [bmv2] [D] [thread 19257] [9.0] [cxt 0] Egress port is 3
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Pipeline 'egress': start
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Pipeline 'egress': end
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Deparser 'deparser': start
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Updating checksum 'cksum'
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:32.746] [bmv2] [D] [thread 19261] [9.0] [cxt 0] Deparser 'deparser': end
-[18:24:32.746] [bmv2] [D] [thread 19262] [9.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Processing packet received on port 2
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser 'parser': start
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Extracting header 'ethernet'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Bytes parsed: 14
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Extracting header 'ipv4'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Extracting header 'pathHops'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Bytes parsed: 50
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Parser 'parser': end
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Pipeline 'ingress': start
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:33.318] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:33.318] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action fast_reroute195
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action fast_reroute218
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is false
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action fast_reroute248
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 0
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:33.319] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:33.319] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
-
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Action entry is NoAction - 
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] Action NoAction
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:33.320] [bmv2] [T] [thread 19257] [10.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Pipeline 'ingress': end
-[18:24:33.320] [bmv2] [D] [thread 19257] [10.0] [cxt 0] Egress port is 3
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Pipeline 'egress': start
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Pipeline 'egress': end
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Deparser 'deparser': start
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Updating checksum 'cksum'
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:33.320] [bmv2] [D] [thread 19261] [10.0] [cxt 0] Deparser 'deparser': end
-[18:24:33.320] [bmv2] [D] [thread 19262] [10.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Processing packet received on port 2
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser 'parser': start
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Extracting header 'ethernet'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Bytes parsed: 14
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Extracting header 'ipv4'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Extracting header 'pathHops'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Bytes parsed: 50
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Parser 'parser': end
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Pipeline 'ingress': start
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action fast_reroute195
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action fast_reroute218
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action fast_reroute248
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 0
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Action entry is NoAction - 
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] Action NoAction
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:33.912] [bmv2] [T] [thread 19257] [11.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Pipeline 'ingress': end
-[18:24:33.912] [bmv2] [D] [thread 19257] [11.0] [cxt 0] Egress port is 3
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Pipeline 'egress': start
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Pipeline 'egress': end
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Deparser 'deparser': start
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Updating checksum 'cksum'
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:33.912] [bmv2] [D] [thread 19261] [11.0] [cxt 0] Deparser 'deparser': end
-[18:24:33.912] [bmv2] [D] [thread 19262] [11.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Processing packet received on port 2
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser 'parser': start
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Extracting header 'ethernet'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Bytes parsed: 14
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Extracting header 'ipv4'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Extracting header 'pathHops'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Bytes parsed: 50
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Parser 'parser': end
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Pipeline 'ingress': start
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:34.386] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:34.386] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action fast_reroute195
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action fast_reroute218
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is false
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:34.387] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action fast_reroute248
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 0
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:34.387] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
-
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Action entry is NoAction - 
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] Action NoAction
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:34.388] [bmv2] [T] [thread 19257] [12.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Pipeline 'ingress': end
-[18:24:34.388] [bmv2] [D] [thread 19257] [12.0] [cxt 0] Egress port is 3
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Pipeline 'egress': start
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Pipeline 'egress': end
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Deparser 'deparser': start
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Updating checksum 'cksum'
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:34.388] [bmv2] [D] [thread 19261] [12.0] [cxt 0] Deparser 'deparser': end
-[18:24:34.388] [bmv2] [D] [thread 19262] [12.0] [cxt 0] Transmitting packet of size 50 out of port 3
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Processing packet received on port 2
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser 'parser': start
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser 'parser' entering state 'start'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Extracting header 'ethernet'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser state 'start': key is 0800
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Bytes parsed: 14
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser 'parser' entering state 'parse_ipv4'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Extracting header 'ipv4'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Extracting header 'pathHops'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser state 'parse_ipv4' has no switch, going to default next state
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Bytes parsed: 50
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Parser 'parser': end
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Pipeline 'ingress': start
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(178) Condition "hdr.ipv4.isValid()" (node_2) is true
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'tbl_update_curr_path_size'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'tbl_update_curr_path_size': miss
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is MyIngress.update_curr_path_size - 
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action MyIngress.update_curr_path_size
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(91) Primitive hdr.pathHops.numHop = hdr.pathHops.numHop + 1
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'MyIngress.primary_path_exact_1'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-* hdr.pathHops.numHop : 00000004
-
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'MyIngress.primary_path_exact_1': hit with handle 0
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.numHop : EXACT     00000004
-Action entry: MyIngress.read_primary_port_1 - 0,
-
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is MyIngress.read_primary_port_1 - 0,
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action MyIngress.read_primary_port_1
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(61) Primitive meta.indexPath = indexPath
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(62) Primitive primaryNH_1.read(meta.nextHop, meta.indexPath)
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.primaryNH_1' at index 0 read value 3
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(185) Condition "meta.nextHop == 9999" (node_5) is false
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'tbl_fast_reroute195'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'tbl_fast_reroute195': miss
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is fast_reroute195 - 
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action fast_reroute195
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(195) Primitive swIdReg.read(swId, 0)
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.swIdReg' at index 0 read value 4
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(199) Primitive depotIdReg.read(depotId, 0)
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.depotIdReg' at index 0 read value 0
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(203) Primitive last_seen_pkt_timestamp.read(last_seen, 0)
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.last_seen_pkt_timestamp' at index 0 read value 0
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(207) Primitive maxTimeOutDepotReg.read(threshold, 0)
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.maxTimeOutDepotReg' at index 0 read value 0
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(210) Condition "swId == depotId && hdr.pathHops.has_visited_depot == 0" (node_8) is false
-[18:24:34.799] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'tbl_fast_reroute218'
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-
-[18:24:34.799] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'tbl_fast_reroute218': miss
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is fast_reroute218 - 
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action fast_reroute218
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(191) Primitive standard_metadata.ingress_global_timestamp; ...
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(222) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_14) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(226) Condition "swId == depotId && hdr.pathHops.is_alt == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_16) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(230) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0" (node_18) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(234) Condition "swId == depotId && hdr.pathHops.is_alt == 1 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0" (node_20) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(240) Condition "hdr.pathHops.is_alt > 0" (node_22) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'tbl_fast_reroute248'
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'tbl_fast_reroute248': miss
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is fast_reroute248 - 
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action fast_reroute248
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(248) Primitive standard_metadata.egress_spec = (bit<9>) meta.nextHop
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(251) Primitive isAltReg.write(0, hdr.pathHops.is_alt)
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Wrote register 'MyIngress.isAltReg' at index 0 with value 0
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(252) Primitive numHopReg.write(0, hdr.pathHops.numHop)
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Wrote register 'MyIngress.numHopReg' at index 0 with value 4
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'MyIngress.len_primary_path'
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'MyIngress.len_primary_path': hit with handle 0
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Dumping entry 0
-Match key:
-* hdr.pathHops.path_id: EXACT     00000000
-Action entry: MyIngress.read_len_primary_path - 0,
-
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is MyIngress.read_len_primary_path - 0,
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action MyIngress.read_len_primary_path
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(81) Primitive meta.indexPath = indexPath
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(82) Primitive lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Read register 'MyIngress.lenPrimaryPathSize' at index 0 read value 7
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Applying table 'MyIngress.len_alternative_path'
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Looking up key:
-* hdr.pathHops.path_id: 00000000
-
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Table 'MyIngress.len_alternative_path': miss
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Action entry is NoAction - 
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] Action NoAction
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(258) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_29) is false
-[18:24:34.800] [bmv2] [T] [thread 19257] [13.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(263) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Pipeline 'ingress': end
-[18:24:34.800] [bmv2] [D] [thread 19257] [13.0] [cxt 0] Egress port is 3
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Pipeline 'egress': start
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Pipeline 'egress': end
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Deparser 'deparser': start
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Updating checksum 'cksum'
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Deparsing header 'ethernet'
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Deparsing header 'ipv4'
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Deparsing header 'pathHops'
-[18:24:34.800] [bmv2] [D] [thread 19261] [13.0] [cxt 0] Deparser 'deparser': end
-[18:24:34.800] [bmv2] [D] [thread 19262] [13.0] [cxt 0] Transmitting packet of size 50 out of port 3
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Action entry is MyIngress.read_len_alternative_path - 0,
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Action MyIngress.read_len_alternative_path
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(86) Primitive meta.indexPath = indexPath
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(87) Primitive lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath)
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] Read register 'MyIngress.lenAlternativePathSize' at index 0 read value 8
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(275) Condition "hdr.pathHops.is_alt == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0" (node_33) is false
+[15:03:04.517] [bmv2] [T] [thread 18906] [17.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4(280) Condition "hdr.pathHops.is_alt == 1 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0" (node_37) is false
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Pipeline 'ingress': end
+[15:03:04.517] [bmv2] [D] [thread 18906] [17.0] [cxt 0] Egress port is 3
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Pipeline 'egress': start
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Pipeline 'egress': end
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Deparser 'deparser': start
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Updating checksum 'cksum'
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Deparsing header 'ethernet'
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Deparsing header 'ipv4'
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Deparsing header 'pathHops'
+[15:03:04.517] [bmv2] [D] [thread 18910] [17.0] [cxt 0] Deparser 'deparser': end
+[15:03:04.517] [bmv2] [D] [thread 18911] [17.0] [cxt 0] Transmitting packet of size 58 out of port 3
 open: No such file or directory
 open: No such file or directory
 open: No such file or directory

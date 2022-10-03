@@ -31,10 +31,12 @@ class RerouteController(object):
             print("Could not find topology object!\n")
             raise Exception
 
-        #self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's6', 's1'], ['s1', 's2', 's6', 's4', 's5', 's7', 's1']] # manual path for now... (to send packets, one must specify the switch IDs - not the ports)
+        # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
         self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's6', 's1']]
+
+        #link failures order: [[s1-s2], [s2,s3], ...]
         self.alternative_paths = [['s1', 's6', 's2', 's3', 's4', 's5', 's6', 's1']]
-        self.maxTimeOut = 3000000 #3000000us = 3000ms = 3sec
+        self.maxTimeOut = 2000000 #2000000us = 2000ms = 2sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
         #print("depot ==>", self.depot)
@@ -43,18 +45,18 @@ class RerouteController(object):
         self.controllers = {}
         self.connect_to_switches()
         self.reset_states()
-        print("PRIMARY ENTRIES")
+        print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        #self.failed_links = [['s1', 's2']]
-        #print("ALTERNATIVE ENTRIES")
-        #self.install_alternative_entries(failed_links=self.failed_links)
+        self.failed_links = [['s1', 's2']]
+        print("=======================> ALTERNATIVE ENTRIES <=======================")
+        self.install_alternative_entries(failed_links=self.failed_links)
         
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
         self.do_reset(line="s1 s2")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
+        self.do_fail(line="s1 s2")
 
 
     #def do_reset(self, line=""):  # pylint: disable=unused-argument
@@ -102,7 +104,7 @@ class RerouteController(object):
 
         curr_path_index = 0
         for lst in self.primary_paths:
-            print("-------------------- Current Path (PRIMARY) --------------------")
+            print("-------------------- Path " + str(curr_path_index) + " --------------------")
             #print("curr_path_index ==> ", curr_path_index)
             #print("len curr path ==> ", len(lst))
 
@@ -131,6 +133,7 @@ class RerouteController(object):
             switch_dict = defaultdict()
             curr_hop = 1
             for index, switch in enumerate(lst):
+                print("curr_path_index ==> " + str(curr_path_index))
 
                 # install route rules at the registers            
                 if index + 1 < len(lst):
@@ -144,12 +147,12 @@ class RerouteController(object):
                     #print("neighbors_intfs =>", neighbors_intfs) # print output: intf => {'s1-eth1': 'h1', 's1-eth2': 's2', 's1-eth3': 's6', 's1-eth4': 's7'}
 
                     #hash the switch ids and see its frequency along the path: e.g., {'s1': 1, 's6': 2, 's2': 1, 's3': 1, 's4': 1, 's5': 1})
-                    print("key ==> " + str(switch))
+                    #print("key ==> " + str(switch))
                     if switch in switch_dict:
                         switch_dict[switch] += 1
                     else:
                         switch_dict[switch] = 1
-                    print("value ==> " + str(switch_dict[switch]))
+                    #print("value ==> " + str(switch_dict[switch]))
 
                     if(switch_dict[switch] > self.max_num_repeated_switch_hops):
                         print("ERROR: A switch is more visited than the maximum allowed !")
@@ -163,16 +166,16 @@ class RerouteController(object):
                         subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
 
                         register_name = "primaryNH_" + str(switch_dict[switch])
-                        print('register_name ==> ' + str(register_name))
+                        #print('register_name ==> ' + str(register_name))
                         #control.register_write('primaryNH', curr_path_index, neighbor_port)
                         control.register_write(register_name, curr_path_index, neighbor_port)
 
                         #print('curr_hop: ==> ', curr_hop)
                         
                         table_name = "primary_path_exact_" + str(switch_dict[switch])
-                        print("table name ==> " + str(table_name))
+                        #print("table name ==> " + str(table_name))
                         action_name = "read_primary_port_" + str(switch_dict[switch])
-                        print("action_name ==> " + str(action_name))
+                        #print("action_name ==> " + str(action_name))
                         #control.table_add('primary_path_exact', 'read_primary_port', match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
                         control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
                 # set switch id register
@@ -213,7 +216,7 @@ class RerouteController(object):
 
         curr_path_index = 0
         for lst in self.alternative_paths:
-            print("-------------------- Current Path (ALTERNATIVE) --------------------")
+            print("-------------------- Path " + str(curr_path_index) + " --------------------")
             #print("curr_path_index ==> ", curr_path_index)
             #print("len curr path ==> ", len(lst))
 

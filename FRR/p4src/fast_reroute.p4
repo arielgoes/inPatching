@@ -30,8 +30,9 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(1) last_seen_pkt_timestamp;
 
     // Registers to look up the port of the default next hop.
-    register<bit<PORT_WIDTH>>(N_PATHS) primaryNH_1;
-    register<bit<PORT_WIDTH>>(N_PATHS) primaryNH_2;
+    //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
+    register<bit<PORT_WIDTH>>(N_PATHS) primaryNH_1_s1_s2;
+    register<bit<PORT_WIDTH>>(N_PATHS) primaryNH_2_s1_s2;
     register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH_1;
     register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH_2;
 
@@ -43,9 +44,9 @@ control MyIngress(inout headers hdr,
     register<bit<32>>(1) depotPort;
 
     //Contains the switch id (populated by the control plane)
-    register<bit<16>>(1) swIdReg;
+    register<bit<N_SW_ID>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
 
-    //register<bit<N_SW_ID>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
+    //Contains the depot id (populated by the control plane)
     register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
 
 
@@ -172,6 +173,8 @@ control MyIngress(inout headers hdr,
         size = 512;
         default_action = NoAction();
     }
+
+    register<bit<32>>(1) debugReg; //(debugging)
     
 
     apply {
@@ -179,23 +182,22 @@ control MyIngress(inout headers hdr,
 
             //update hop counter
             update_curr_path_size();
-            //debug into a register
 
-            primary_path_exact_1.apply();
-            if(meta.nextHop == 9999){
-                primary_path_exact_2.apply();
-            }
+            //get switch id
+            bit<8> swId;
+            swIdReg.read(swId, 0);
+
+            //shift-left idea... (testing)
+            bit<32> mask = 1; //00000000000000000000000000000001 (first position is just a filler) - IT IS ACTUALLY INDEXING "N_SW_ID - 1"
+            mask = mask << swId; //shift operations are limited to variables of size up to 8 bits (bit<8>)
+            debugReg.write(0, mask); //(debugging)
 
             //get current timestamp
             bit<48> curr_time;
             curr_time = standard_metadata.ingress_global_timestamp;
 
-            //get switch id
-            bit<16> swId;
-            swIdReg.read(swId, 0);
-
             //get depot id
-            bit<16> depotId;
+            bit<N_SW_ID> depotId;
             depotIdReg.read(depotId, 0);
 
             //last seen timestamp
@@ -237,9 +239,25 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.read(last_seen, 0);
             }
 
-            if(hdr.pathHops.is_alt > 0){
-                alternative_path_exact_1.apply();
-                if(meta.nextHop == 9999){
+            //primary path cases
+            if(hdr.pathHops.is_alt == 0){
+                primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                if((hdr.pathHops.num_times_curr_switch_primary & mask == 0) && (meta.nextHop != 9999)){ //bit is zero, so this is the first time we are visiting this hop in the current path
+                    primary_path_exact_1.apply();
+                    hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<32>)1 << swId);
+                    //debugReg.write(0, hdr.pathHops.num_times_curr_switch_primary); //(debugging)
+                    //try to find the next hop by applying the first primary hop. 
+                }else{ //if the next hop is not valid (i.e., nextHop == 9999), apply the second primary table.
+                    //try the second position - i.e., the second primary table which encompasses the second primary register
+                    primary_path_exact_2.apply();
+                }
+            }
+            //alternative path cases
+            else if(hdr.pathHops.is_alt > 0){
+                if((hdr.pathHops.num_times_curr_switch_alternative & mask == 0) && (meta.nextHop != 9999)){
+                    alternative_path_exact_1.apply();
+                     hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<32>)1 << swId);
+                }else{
                     alternative_path_exact_2.apply();
                 }
             }

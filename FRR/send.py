@@ -19,7 +19,9 @@ class PathHops(Packet):
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0), 
                    ByteField("is_alt", 0),
-                   ByteField("has_visited_depot", 0)] 
+                   ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
+                   BitField("num_times_curr_switch_primary", 0, 32), # 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one)
+                   BitField("num_times_curr_switch_alternative", 0, 32)] # 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one)
 bind_layers(IP, PathHops, proto=0x45)
 
 
@@ -34,7 +36,7 @@ def main():
 
     #for _ in range(1): #number of random packets
     #while True:
-    pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops()
+    pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops(path_id=0)
     sendp(pkt, iface=iface, verbose=False)
     #sleep(0.5)
 
