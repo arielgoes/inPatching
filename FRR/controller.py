@@ -15,7 +15,6 @@ from p4utils.utils.topology import *
 from p4utils.utils.sswitch_thrift_API import SimpleSwitchThriftAPI
 from collections import defaultdict
 
-
 # this function will be held by the CLI later...
 import subprocess
 
@@ -32,10 +31,10 @@ class RerouteController(object):
             raise Exception
 
         # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
-        self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's6', 's1']]
+        self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1']]
 
-        #link failures order: [[s1-s2], [s2,s3], ...]
-        self.alternative_paths = [['s1', 's6', 's2', 's3', 's4', 's5', 's6', 's1']]
+        #link failure order: [[s1-s2], [s2-s3], ...]
+        self.alternative_hops = [['s12', 's23', 's34', 's45', 's51']] #fix 'curr_path_index' to zero
         self.maxTimeOut = 2000000 #2000000us = 2000ms = 2sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
@@ -48,15 +47,15 @@ class RerouteController(object):
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
         self.failed_links = [['s1', 's2']]
-        print("=======================> ALTERNATIVE ENTRIES <=======================")
-        self.install_alternative_entries(failed_links=self.failed_links)
+        #print("=======================> ALTERNATIVE ENTRIES <=======================")
+        #self.install_alternative_entries(failed_links=self.failed_links)
         
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
         self.do_reset(line="s1 s2")
 
         #Fail link
-        self.do_fail(line="s1 s2")
+        #self.do_fail(line="s1 s2")
 
 
     #def do_reset(self, line=""):  # pylint: disable=unused-argument
@@ -92,13 +91,28 @@ class RerouteController(object):
         #set the max time out for further operations
         control.register_write('maxTimeOutDepotReg', 0, self.maxTimeOut)
 
+        #Also, save the primary path hops (switch ids) sequentially into a register
+        #visited = [] #NOTE: The last hop must not be visited, because in the P4 code, we already rotate the "switch attemptives"
+                     #and the first and last switches are always the same in a cycle. Also, we visit each node only once.
+        for lst in self.primary_paths:
+            sw_id = 1
+            for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
+                #if switch not in visited:
+                    #control.register_write('path_id_0_path_reg', sw_id, switch[1:])
+                control.register_write('path_id_0_path_reg', sw_id, switch[1:])
+                #visited.append(switch)
+                sw_id += 1
+        #sys.exit() # force exit (debugging)
+
+
         #set depot (only one port for all the probe paths - for now)
         neighbors_intfs = self.topo.get_interfaces_to_node(self.depot)
         #print("neighbors_intfs (host) ==> ", neighbors_intfs)
         if 'h2' in neighbors_intfs.values(): #if the switch is connect to the host, the switch is the depot
-            depot_port = self.topo.node_to_node_port_num('h2', self.depot)
+            depot_port = self.topo.node_to_node_port_num(self.depot, 'h2')
+            #print("depot_port ==> " + str(depot_port))
             control = self.controllers[self.depot]
-            control.register_write('depotPort', 0, depot_port) #register_write(register_name, index, value)
+            control.register_write('depotPortReg', 0, depot_port) #register_write(register_name, index, value)
             #sys.exit() # force exit (debugging)
 
 
@@ -108,32 +122,34 @@ class RerouteController(object):
             #print("curr_path_index ==> ", curr_path_index)
             #print("len curr path ==> ", len(lst))
 
-            #store the max length of the current path in a register for logic operations (in the P4 code)
-            print("..... primary path max size:")
+            #store the length of the current path in a register for logic operations (in the P4 code)
+            print("..... primary path length:")
             visited = []
             for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
-                print('--' + str(switch) + '--')
+                
                 control = self.controllers[switch]
                 control.register_write('lenPrimaryPathSize', curr_path_index, len(lst))
                 # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:
                 subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
                 if switch not in visited:
+                    print('--' + str(switch) + '--')
                     control.table_add('len_primary_path', 'read_len_primary_path', match_keys=[str(curr_path_index)], action_params=[str(curr_path_index)]) #match_keys=[str(0)] -> is.alt == 0, i.e., PRIMARY PATH
                 visited.append(switch)
 
-                #reset all 'alternativeNH' entries to -1 (because 0 may be used for loop ports and we don't want this misunderstanding)
+                #reset all 'primaryNH_' entries to 9999 (because 0 may be used for loop ports and we don't want this misunderstanding)
                 for i in range(self.max_num_repeated_switch_hops):
                     register_name = "primaryNH_" + str(i+1)
-                    print("register_name (reseting) ==> " + str(register_name))
+                    #print("register_name (reseting) ==> " + str(register_name))
                     control.register_write(register_name, curr_path_index, 9999)
 
             print()
+
 
             print("..... route rules")
             switch_dict = defaultdict()
             curr_hop = 1
             for index, switch in enumerate(lst):
-                print("curr_path_index ==> " + str(curr_path_index))
+                #print("curr_path_index ==> " + str(curr_path_index))
 
                 # install route rules at the registers            
                 if index + 1 < len(lst):
@@ -177,7 +193,7 @@ class RerouteController(object):
                         action_name = "read_primary_port_" + str(switch_dict[switch])
                         #print("action_name ==> " + str(action_name))
                         #control.table_add('primary_path_exact', 'read_primary_port', match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
-                        control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
+                        control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[])
                 # set switch id register
                 control = self.controllers[curr_switch]
                 swId=curr_switch[1:]
@@ -188,116 +204,38 @@ class RerouteController(object):
             curr_hop = 0
             curr_path_index += 1
             
-
         #reset curent path index - in case I need to manipulate it later
         curr_path_index = 0
-
 
 
 
     def install_alternative_entries(self, failed_links):
-        """Install the mapping from prefix to nexthop ids for all switches."""
 
-        #save the depot switch id into a register for further operations
-        #control = self.controllers[self.depot]
-        #control.register_write('depotIdReg', 0, self.depot[1:])
+        control = self.controllers['s1']
+        neighbor_port = self.topo.node_to_node_port_num('s1', 's12')
+        control.register_write("alternativeNH_1", 0, neighbor_port)
+        control.register_write("alternativeNH_2", 0, 9999)
+        control.table_add('alternative_path_exact_1', 'read_alternative_port_1', match_keys=[str(6)], action_params=[]) 
+        control.table_add('alternative_path_exact_2', 'read_alternative_port_2', match_keys=[str(6)], action_params=[])
 
-        #set the max time out for further operations
-        #control.register_write('maxTimeOutDepotReg', 0, self.maxTimeOut)
+        control = self.controllers['s12']
+        neighbor_port = self.topo.node_to_node_port_num('s12', 's2') #Gets the number of the port of *node1* that is connected to *node2*.
+        #print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", 0, neighbor_port)
+        control.register_write("primaryNH_2", 0, 9999)
+        control.table_add('primary_path_exact_1', 'read_primary_port_1', match_keys=[str(1)], action_params=[]) 
+        control.table_add('primary_path_exact_2', 'read_primary_port_2', match_keys=[str(1)], action_params=[])
 
-        #set depot (only one port for all the probe paths - for now)
-        #neighbors_intfs = self.topo.get_interfaces_to_node(self.depot)
-        #print("neighbors_intfs (host) ==> ", neighbors_intfs)
-        #if 'h2' in neighbors_intfs.values(): #if the switch is connect to the host, the switch is the depot
-        #    depot_port = self.topo.node_to_node_port_num('h2', self.depot)
-        #    control = self.controllers[self.depot]
-        #    control.register_write('depotPort', 0, depot_port) #register_write(register_name, index, value)
-            #sys.exit() # force exit (debugging)
+        control = self.controllers['s12']
+        swId='s12'[1:]
+        print('swId ==> ' + swId)
+        control.register_write('swIdReg', 0, swId)
 
-        curr_path_index = 0
-        for lst in self.alternative_paths:
-            print("-------------------- Path " + str(curr_path_index) + " --------------------")
-            #print("curr_path_index ==> ", curr_path_index)
-            #print("len curr path ==> ", len(lst))
+                
+    
 
-            #store the max length of the current path in a register for logic operations (in the P4 code)
-            print("..... alternative path max size:")
-            visited = []
-            for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
-                print('--' + str(switch) + '--')
-                control = self.controllers[switch]
-                control.register_write('lenAlternativePathSize', curr_path_index, len(lst))
-                # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:
-                subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
-                if switch not in visited:
-                    control.table_add('len_alternative_path', 'read_len_alternative_path', match_keys=[str(curr_path_index)], action_params=[str(curr_path_index)]) #match_keys=[str(1)] -> is.alt == 1, i.e., ALTERNATIVE PATH
-                visited.append(switch)
 
-                #reset all 'alternativeNH' entries to -1 (because 0 may be used for loop ports and we don't want this misunderstanding)
-                for i in range(self.max_num_repeated_switch_hops):
-                    register_name = "alternativeNH_" + str(i+1)
-                    print("register_name (reseting) ==> " + str(register_name))
-                    control.register_write(register_name, curr_path_index, 9999)
 
-            print()
-
-            print("..... route rules")
-            switch_dict = defaultdict()
-            curr_hop = 1
-            for index, switch in enumerate(lst):
-                # install route rules at the registers
-                if index + 1 < len(lst):
-                    curr_switch = lst[index]
-                    next_switch = lst[index+1]
-                    print("(",curr_switch, "Next ->", next_switch, ")")
-                    #print("index ==> ", index)
-
-                    # get neighbors
-                    neighbors_intfs = self.topo.get_interfaces_to_node(curr_switch)
-                    #print("neighbors_intfs =>", neighbors_intfs) # print output: intf => {'s1-eth1': 'h1', 's1-eth2': 's2', 's1-eth3': 's6', 's1-eth4': 's7'}
-
-                    #hash the switch ids and see its frequency along the path: e.g., {'s1': 1, 's6': 2, 's2': 1, 's3': 1, 's4': 1, 's5': 1})
-                    if switch in switch_dict:
-                        switch_dict[switch] += 1
-                    else:
-                        switch_dict[switch] = 1
-                    print(switch_dict)
-
-                    if(switch_dict[switch] > self.max_num_repeated_switch_hops):
-                        print("ERROR: A switch is more visited than the maximum allowed !")
-                        sys.exit()
-
-                    # check vicinity's next hop (next_switch)
-                    if next_switch in neighbors_intfs.values():
-                        neighbor_port = self.topo.node_to_node_port_num(switch, next_switch) #Gets the number of the port of *node1* that is connected to *node2*.
-                        print("neighbor_port ==> ", neighbor_port)
-                        control = self.controllers[curr_switch]
-                        subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
-                        
-                        register_name = "alternativeNH_" + str(switch_dict[switch])
-                        print('register_name ==> ' + str(register_name))
-                        #control.register_write('alternativeNH', curr_path_index, neighbor_port)
-                        control.register_write(register_name, curr_path_index, neighbor_port)
-
-                        #print('curr_hop: ==> ', curr_hop)
-                        
-                        table_name = "alternative_path_exact_" + str(switch_dict[switch])
-                        print("table name ==> " + str(table_name))
-                        action_name = "read_alternative_port_" + str(switch_dict[switch])
-                        print("action_name ==> " + str(action_name))
-                        #control.table_add('alternative_path_exact', 'read_alternative_port', match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
-                        control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
-                curr_hop += 1
-                # set switch id register
-                #control = self.controllers[curr_switch]
-                #swId=curr_switch[1:]
-                #print('swId ==> ' + swId)
-                #control.register_write('swIdReg', 0, swId)
-            curr_hop = 0
-            curr_path_index += 1
-            
-        #reset curent path index - in case I need to manipulate it later
-        curr_path_index = 0
 
 
 

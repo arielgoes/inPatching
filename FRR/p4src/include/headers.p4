@@ -42,14 +42,13 @@ header pathHops_t{
     bit<32> numHop; //counts the current hop position (switch by switch)
     bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
     bit<32> path_id; //same as "meta.indexPath"
-    bit<8> is_alt; //is alternative path? (0 = NO; 1 = YES)
+    bit<32> which_alt_switch; //tells at which switch ID the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
     bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)
-    bit<32> num_times_curr_switch_primary; // 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one). 
-    bit<32> num_times_curr_switch_alternative; // 31 switches + 1 filler ... Current limitation: As each switch ID is represent by a switch bit. Each switch may be traversed twice (state 0 and state 1) in each path
+    bit<64> num_times_curr_switch_primary; // 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one). 
+    bit<64> num_times_curr_switch_alternative; // 31 switches + 1 filler ... Current limitation: As each switch ID is represent by a switch bit. Each switch may be traversed twice (state 0 and state 1) in each path
 }
 
 struct metadata {
-    bit<1> linkState; //link state (UP = 0, DOWN = 1)
     bit<32> indexPath; //used for both "primaryNH" and "alternativeNH" registers
     bit<32> depotPort; //universal (for now)
     bit<32> nextHop; //next hop of the current path
