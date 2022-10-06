@@ -115,54 +115,6 @@ control MyIngress(inout headers hdr,
     }
 
 
-    table primary_path_exact_1 {
-        key = {
-            hdr.pathHops.numHop: exact;
-        }
-        actions = {
-            read_primary_port_1;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
-
-    table primary_path_exact_2 {
-        key = {
-            hdr.pathHops.which_alt_switch: exact;
-        }
-        actions = {
-            read_primary_port_2;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
-
-    table alternative_path_exact_1 {
-        key = {
-            hdr.pathHops.which_alt_switch: exact;
-        }
-        actions = {
-            read_alternative_port_1;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
-
-    table alternative_path_exact_2 {
-        key = {
-            hdr.pathHops.which_alt_switch: exact;
-        }
-        actions = {
-            read_alternative_port_2;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
-
     table len_primary_path {
         key = {
             hdr.pathHops.path_id: exact;
@@ -188,7 +140,8 @@ control MyIngress(inout headers hdr,
     }
 
     register<bit<32>>(1) debugReg; //(debug)
-    register<bit<32>>(1) debugReg2; //(debug)
+    register<bit<32>>(1) switchTryDebugReg; //(debug)
+    register<bit<32>>(1) numHopDebugReg; //(debug)
     
 
     apply {
@@ -196,6 +149,7 @@ control MyIngress(inout headers hdr,
 
             //update hop counter
             update_curr_path_size();
+            numHopDebugReg.write(0, hdr.pathHops.numHop);
 
             //get switch id
             bit<8> swId;
@@ -208,7 +162,7 @@ control MyIngress(inout headers hdr,
 
             //get current timestamp
             bit<48> curr_time;
-            curr_time = standard_metadata.ingress_global_timestamp;
+            curr_time = standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register)
 
             //get depot id
             bit<N_SW_ID> depotId;
@@ -244,7 +198,6 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.write(0, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, 0);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
-                //hdr.pathHops.is_alt = 1;
                 if(hdr.pathHops.path_id == 0){
                     //gets the index into a variable
                     bit<32> path_id_0_pointer_var;
@@ -265,7 +218,7 @@ control MyIngress(inout headers hdr,
                     bit<32> swIdTry;
                     path_id_0_path_reg.read(swIdTry, path_id_0_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
-                    debugReg2.write(0, swIdTry); //(debug)
+                    switchTryDebugReg.write(0, swIdTry); //(debug)
                 }/*else if(hdr.pathHops.path_id == 1){
                     bit<32> path_id_1_pointer_var;
                     path_id_1_pointer_reg.read(path_id_1_pointer_var);
@@ -274,57 +227,41 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.write(0, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, 0);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                //hdr.pathHops.is_alt = 0;
                 last_seen_pkt_timestamp.write(0, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, 0);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
-                //hdr.pathHops.is_alt = 1;
                 last_seen_pkt_timestamp.write(0, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, 0);
             }
 
             //primary path cases
             if(hdr.pathHops.which_alt_switch == 0){
-                
                 //update hop counter
                 //update_curr_path_size();
-
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((hdr.pathHops.num_times_curr_switch_primary & mask == 0) && (meta.nextHop != 9999)){ //bit is zero, so this is the first time we are visiting this hop in the current path
-                    primary_path_exact_1.apply(); //try to find the next hop by applying the first primary hop
                     hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId); 
                 }else{ //if the next hop is not valid (i.e., nextHop == 9999), apply the second primary table.
-                    primary_path_exact_2.apply(); //try the second position - i.e., the second primary table which encompasses the second primary register
+                    primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
                 }
             }
             //alternative path cases
             else if(hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch){ //this line may overflow
-                //alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((hdr.pathHops.num_times_curr_switch_alternative & mask == 0) && (meta.nextHop != 9999)){
-                    alternative_path_exact_1.apply();
                     hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId); //change the bit representing the switch ID from 0 to 1, as it was visited once now. 
                 }else{
-                    alternative_path_exact_2.apply();
+                    alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id); //(debug, but may be for real)
                 }
 
-                /*bit<32> back_to_trails;
-                path_id_0_path_reg.read(back_to_trails, hdr.pathHops.numHop+1); //if the current switch id is the following in line in the primary path, reset the flag to primary path again
-                if(hdr.pathHops.numHop == back_to_trails){
-                    hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
-                }*/
+                hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
             }
 
             // Do not change the following lines: They set the egress port
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
-
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
-            if(hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.numHop == meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
-                read_depot_port();
-                standard_metadata.egress_spec = (bit<9>) meta.depotPort;
-                //Reset curr path size
-                reset_curr_path_size();
-            }else if(hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.numHop == meta.lenAlternativePathSize && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 //Reset curr path size

@@ -44,8 +44,8 @@ header pathHops_t{
     bit<32> path_id; //same as "meta.indexPath"
     bit<32> which_alt_switch; //tells at which switch ID the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
     bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)
-    bit<64> num_times_curr_switch_primary; // 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one). 
-    bit<64> num_times_curr_switch_alternative; // 31 switches + 1 filler ... Current limitation: As each switch ID is represent by a switch bit. Each switch may be traversed twice (state 0 and state 1) in each path
+    bit<64> num_times_curr_switch_primary; // 63 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one). 
+    bit<64> num_times_curr_switch_alternative; // 63 switches + 1 filler ... Current limitation: As each switch ID is represent by a switch bit. Each switch may be traversed twice (state 0 and state 1) in each path
 }
 
 struct metadata {

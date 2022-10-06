@@ -47,8 +47,8 @@ class RerouteController(object):
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
         self.failed_links = [['s1', 's2']]
-        #print("=======================> ALTERNATIVE ENTRIES <=======================")
-        #self.install_alternative_entries(failed_links=self.failed_links)
+        print("=======================> ALTERNATIVE ENTRIES <=======================")
+        self.install_alternative_entries(failed_links=self.failed_links)
         
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
@@ -144,7 +144,6 @@ class RerouteController(object):
 
             print()
 
-
             print("..... route rules")
             switch_dict = defaultdict()
             curr_hop = 1
@@ -193,7 +192,7 @@ class RerouteController(object):
                         action_name = "read_primary_port_" + str(switch_dict[switch])
                         #print("action_name ==> " + str(action_name))
                         #control.table_add('primary_path_exact', 'read_primary_port', match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
-                        control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[])
+                        #control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[])
                 # set switch id register
                 control = self.controllers[curr_switch]
                 swId=curr_switch[1:]
@@ -211,29 +210,49 @@ class RerouteController(object):
 
     def install_alternative_entries(self, failed_links):
 
+        print("--------------------------------s1 entries--------------------------------")
         control = self.controllers['s1']
         neighbor_port = self.topo.node_to_node_port_num('s1', 's12')
         control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, 9999)
-        control.table_add('alternative_path_exact_1', 'read_alternative_port_1', match_keys=[str(6)], action_params=[]) 
-        control.table_add('alternative_path_exact_2', 'read_alternative_port_2', match_keys=[str(6)], action_params=[])
+        control.register_write("alternativeNH_2", 0, neighbor_port)
 
+        print("--------------------------------s2 entries--------------------------------")
+        control = self.controllers['s2']
+        neighbor_port = self.topo.node_to_node_port_num('s2', 's23')
+        control.register_write("alternativeNH_1", 0, neighbor_port)
+        control.register_write("alternativeNH_2", 0, neighbor_port)
+
+
+
+
+        print("--------------------------------s12 entries--------------------------------")
         control = self.controllers['s12']
         neighbor_port = self.topo.node_to_node_port_num('s12', 's2') #Gets the number of the port of *node1* that is connected to *node2*.
         #print("neighbor_port ==> " + str(neighbor_port))
         control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, 9999)
-        control.table_add('primary_path_exact_1', 'read_primary_port_1', match_keys=[str(1)], action_params=[]) 
-        control.table_add('primary_path_exact_2', 'read_primary_port_2', match_keys=[str(1)], action_params=[])
+        control.register_write("primaryNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", 0, neighbor_port)
+        control.register_write("alternativeNH_2", 0, neighbor_port)
 
         control = self.controllers['s12']
         swId='s12'[1:]
         print('swId ==> ' + swId)
         control.register_write('swIdReg', 0, swId)
 
-                
-    
 
+        print("--------------------------------s23 entries--------------------------------")
+        control = self.controllers['s23']
+        #neighbor_port = self.topo.node_to_node_port_num('s23', 's3') #Gets the number of the port of *node1* that is connected to *node2*.
+        #print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", 0, neighbor_port)
+        control.register_write("primaryNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", 0, neighbor_port)
+        control.register_write("alternativeNH_2", 0, neighbor_port)
+
+        control = self.controllers['s23']
+        swId='s23'[1:]
+        print('swId ==> ' + swId)
+        control.register_write('swIdReg', 0, swId)
 
 
 
