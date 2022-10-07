@@ -54,6 +54,7 @@ struct metadata {
     bit<32> nextHop; //next hop of the current path
     bit<32> lenPrimaryPathSize; //length of the provided primary path (by the control plane)
     bit<32> lenAlternativePathSize; //length of the provided alternative path (by the control plane)
+    bit<32> lenHashPrimaryPathSize;
 }
 struct headers {
     ethernet_t                      ethernet;
