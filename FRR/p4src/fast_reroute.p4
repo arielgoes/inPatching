@@ -38,6 +38,9 @@ control MyIngress(inout headers hdr,
 
     //The flow logic to access/update alternative paths: path_id_X_pointer_reg -> whichAltSwitchReg -> path_id_X_path_reg
 
+    //Ensures the next packets keep using the alternative path
+    register<bit<32>>(N_PATHS) whichSwitchAltReg;
+
     //Path 0
     register<bit<32>>(128) path_id_0_path_reg; // flow (path) 0: ['s1', 's2', 's3', 's4', 's5', 's1']. //NOTE: First position must NOT be used. Start by index 1, because whichAltSwitchReg reserves the first position for the primary path hops
     register<bit<32>>(1) path_id_0_pointer_reg; //points to the next swId where the depot must try to reroute
@@ -57,7 +60,7 @@ control MyIngress(inout headers hdr,
     register<bit<32>>(N_PATHS) lenAlternativePathSize;
 
     //Special len primary switch: stores unique switch ids
-    register<bit<32>>(N_PATHS) lenHashPrimaryPathSize; 
+    register<bit<32>>(N_PATHS) lenHashPrimaryPathSize;
 
     //Stores the depot port to host (special case - last hop no failures - i.e., max timestamp not exceeded)
     register<bit<32>>(1) depotPortReg;
@@ -122,7 +125,6 @@ control MyIngress(inout headers hdr,
     }
 
     register<bit<32>>(1) debugReg; //(debug)
-    register<bit<32>>(1) switchTryDebugReg; //(debug)
     register<bit<32>>(1) numHopDebugReg; //(debug)
     register<bit<9>>(1) whatIsSpecEgress; //(debug)
     
@@ -177,9 +179,8 @@ control MyIngress(inout headers hdr,
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, 0);
 
-            //FRR control
+            //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                //hdr.pathHops.is_alt = 0;
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
@@ -203,7 +204,7 @@ control MyIngress(inout headers hdr,
                     bit<32> swIdTry;
                     path_id_0_path_reg.read(swIdTry, path_id_0_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
-                    switchTryDebugReg.write(0, swIdTry); //(debug)
+                    whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry); //terminar essa logica nas outras condicoes para forçar os proximos pacotes a continuarem utilizando o caminho alternativo.
                 }/*else if(hdr.pathHops.path_id == 1){
                     bit<32> path_id_1_pointer_var;
                     path_id_1_pointer_reg.read(path_id_1_pointer_var);
@@ -212,6 +213,7 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
+
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
@@ -246,8 +248,12 @@ control MyIngress(inout headers hdr,
             }
             else{
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
-                hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId);
-                //hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId);
+                if((meta.nextHop == 9999)){
+                    hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId);
+                    primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
+                }else{  
+                    hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId);
+                }
             }
 
             
