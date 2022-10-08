@@ -126,8 +126,7 @@ control MyIngress(inout headers hdr,
 
     register<bit<32>>(1) debugReg; //(debug)
     register<bit<32>>(1) numHopDebugReg; //(debug)
-    register<bit<9>>(1) whatIsSpecEgress; //(debug)
-    
+    register<bit<9>>(1) whatIsSpecEgress; //(debug)   
     
 
     apply {
@@ -213,7 +212,6 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
@@ -228,31 +226,33 @@ control MyIngress(inout headers hdr,
                 //update_curr_path_size();
 
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
-                if((hdr.pathHops.num_times_curr_switch_primary & mask == 0) && (meta.nextHop != 9999)){ //bit is zero, so this is the first time we are visiting this hop in the current path
-                    hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId); 
+                if((hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)){ //bit is zero, so this is the first time we are visiting this hop in the current path
+                    hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); 
                 }else{ //if the next hop is not valid (i.e., nextHop == 9999), apply the second primary table.
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                    hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId);
+                    hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 }
             }
             //alternative path cases
             else if(hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch){ //this line may overflow
                 alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
-                if((hdr.pathHops.num_times_curr_switch_alternative & mask == 0) && (meta.nextHop != 9999)){
-                    hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId); //change the bit representing the switch ID from 0 to 1, as it was visited once now. 
+                if((hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)){
+                    hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); //change the bit representing the switch ID from 0 to 1, as it was visited once now. 
                 }else{
                     alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                    hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId);
+                    hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 }
                 hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
             }
             else{
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((meta.nextHop == 9999)){
-                    hdr.pathHops.num_times_curr_switch_alternative = (hdr.pathHops.num_times_curr_switch_alternative & ~mask) | ((bit<64>)1 << swId);
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                }else{  
-                    hdr.pathHops.num_times_curr_switch_primary = (hdr.pathHops.num_times_curr_switch_primary & ~mask) | ((bit<64>)1 << swId);
+                }if(meta.nextHop == 9999){
+                    alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                }else{
+                    alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id);
+
                 }
             }
 
