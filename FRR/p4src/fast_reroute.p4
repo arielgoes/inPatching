@@ -71,7 +71,10 @@ control MyIngress(inout headers hdr,
     //Contains the depot id (populated by the control plane)
     register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
 
-    register<bit<8>>(1) isAltReg;
+    register<bit<8>>(1) isAltReg; //register that forces the use of alternative paths for subsequent packets,
+    //until a timeout occurs or a tracker packet (is_track == 1) is sent through the primary path and prooves it is working again
+
+    register<bit<8>>(1) forcePrimaryPathReg; //if a tracker packet prooved the primary path is working, force all packets in a given flow to use the primary path until a new timeout occurs
 
 
     action drop() {
@@ -127,8 +130,7 @@ control MyIngress(inout headers hdr,
     }
 
     register<bit<32>>(1) debugReg; //(debug)
-    register<bit<32>>(1) numHopDebugReg; //(debug)
-    register<bit<9>>(1) whatIsSpecEgress; //(debug)   
+    register<bit<32>>(1) numHopDebugReg; //(debug)  
     
 
     apply {
@@ -166,7 +168,10 @@ control MyIngress(inout headers hdr,
             maxTimeOutDepotReg.read(threshold, 0);
 
             bit<32> path_id_0_pointer_var = 0;
+            bit<8> forcePrimaryPathVar = 0;
+            forcePrimaryPathReg.read(forcePrimaryPathVar, 0);
 
+            //once a alternative path is take, maintain it until a tracker packet or a "new" timeout occurs
             bit<8> isAltVar = 0;
             isAltReg.read(isAltVar, 0);
 
@@ -189,10 +194,7 @@ control MyIngress(inout headers hdr,
 
 
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
                 if(hdr.pathHops.path_id == 0){
                     //gets the index into a variable
                     path_id_0_pointer_reg.read(path_id_0_pointer_var, 0);
@@ -216,23 +218,30 @@ control MyIngress(inout headers hdr,
                     hdr.pathHops.is_alt = 1;
                     isAltReg.write(0, 1);
                     isAltReg.read(isAltVar, 0);
+                    forcePrimaryPathReg.write(0, 0); //stop forcing packets using primary path in a given flow
                 }/*else if(hdr.pathHops.path_id == 1){
                     bit<32> path_id_1_pointer_var;
                     path_id_1_pointer_reg.read(path_id_1_pointer_var);
                     ...
                 }*/
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+            }else if(swId == depotId && hdr.pathHops.is_tracker > 0 && hdr.pathHops.has_visited_depot > 0){ //special case (is_tracker) probe
+                isAltReg.write(0, 0); //reset isAltReg
+                isAltReg.read(isAltVar, 0);
+                //path_id_0_pointer_reg.write(0, 0);
+                whichSwitchAltReg.write(hdr.pathHops.path_id, 0);
+                hdr.pathHops.which_alt_switch = 0;
+
+                //force packets to use the primary path
+                forcePrimaryPathReg.write(0, 1);
             }
 
+            last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+            last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
 
+
+            //force the packet to keep using the alternative path as long as a "new" timeout occurs, then it selects the next candidate switch in round-robin fashion
             if(swId == depotId && isAltVar > 0){
+                forcePrimaryPathReg.write(0, 0); //stop forcing primary path (if it is somehow)
                 path_id_0_pointer_reg.read(path_id_0_pointer_var, 0);
                 hdr.pathHops.which_alt_switch = swIdTry;
                 whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
@@ -274,14 +283,21 @@ control MyIngress(inout headers hdr,
                     alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 }else{
                     alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id);
+                }
+            }
 
+            forcePrimaryPathReg.read(forcePrimaryPathVar, 0);
+            if(hdr.pathHops.is_tracker > 0 || forcePrimaryPathVar > 0){ //if is_tracker: it is a special probe (is_tracker), force it into the primary path
+                hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
+                primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                if((meta.nextHop == 9999)){
+                    primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
                 }
             }
 
             
             // Do not change the following lines: They set the egress port
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
-            whatIsSpecEgress.write(0, standard_metadata.egress_spec);
 
 
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
