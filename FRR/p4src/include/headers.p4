@@ -44,7 +44,8 @@ header pathHops_t{
     bit<32> path_id; //same as "meta.indexPath"
     bit<32> which_alt_switch; //tells at which switch ID the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
     bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)
-    bit<64> num_times_curr_switch; // 63 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one). 
+    bit<64> num_times_curr_switch; // 63 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one).
+    bit<8> is_alt; //
 }
 
 struct metadata {
@@ -53,7 +54,7 @@ struct metadata {
     bit<32> nextHop; //next hop of the current path
     bit<32> lenPrimaryPathSize; //length of the provided primary path (by the control plane)
     bit<32> lenAlternativePathSize; //length of the provided alternative path (by the control plane)
-    bit<32> lenHashPrimaryPathSize;
+    bit<32> lenHashPrimaryPathSize; //force packet to go by the alternative path
 }
 struct headers {
     ethernet_t                      ethernet;

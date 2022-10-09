@@ -71,6 +71,8 @@ control MyIngress(inout headers hdr,
     //Contains the depot id (populated by the control plane)
     register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
 
+    register<bit<8>>(1) isAltReg;
+
 
     action drop() {
         mark_to_drop(standard_metadata);
@@ -140,6 +142,8 @@ control MyIngress(inout headers hdr,
             bit<8> swId;
             swIdReg.read(swId, 0);
 
+            bit<32> swIdTry = 0;
+
             //shift-left idea... (testing)
             bit<64> mask = 1; //00000000000000000000000000000001 (first position is just a filler) - IT IS ACTUALLY INDEXING "N_SW_ID - 1"
             mask = mask << swId; //shift operations are limited to variables of size up to 8 bits (bit<8>)
@@ -161,6 +165,11 @@ control MyIngress(inout headers hdr,
             bit<48> threshold;
             maxTimeOutDepotReg.read(threshold, 0);
 
+            bit<32> path_id_0_pointer_var = 0;
+
+            bit<8> isAltVar = 0;
+            isAltReg.read(isAltVar, 0);
+
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 hdr.pathHops.pkt_timestamp = curr_time;
@@ -178,6 +187,7 @@ control MyIngress(inout headers hdr,
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, 0);
 
+
             //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
@@ -185,7 +195,6 @@ control MyIngress(inout headers hdr,
             }else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
                 if(hdr.pathHops.path_id == 0){
                     //gets the index into a variable
-                    bit<32> path_id_0_pointer_var;
                     path_id_0_pointer_reg.read(path_id_0_pointer_var, 0);
 
                     //rotate index of the next switch attemptive (swIdTry)
@@ -200,10 +209,13 @@ control MyIngress(inout headers hdr,
                         path_id_0_pointer_reg.read(path_id_0_pointer_var, 0); //... and read again for the updated pointer value
                     }
 
-                    bit<32> swIdTry;
+
                     path_id_0_path_reg.read(swIdTry, path_id_0_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
-                    whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry); //terminar essa logica nas outras condicoes para forçar os proximos pacotes a continuarem utilizando o caminho alternativo.
+                    whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
+                    hdr.pathHops.is_alt = 1;
+                    isAltReg.write(0, 1);
+                    isAltReg.read(isAltVar, 0);
                 }/*else if(hdr.pathHops.path_id == 1){
                     bit<32> path_id_1_pointer_var;
                     path_id_1_pointer_reg.read(path_id_1_pointer_var);
@@ -219,7 +231,13 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }
 
-            
+
+            if(swId == depotId && isAltVar > 0){
+                path_id_0_pointer_reg.read(path_id_0_pointer_var, 0);
+                hdr.pathHops.which_alt_switch = swIdTry;
+                whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
+                hdr.pathHops.which_alt_switch = swIdTry;
+            }
 
 
             //primary path cases
@@ -248,6 +266,7 @@ control MyIngress(inout headers hdr,
             }
             //default
             else{
+                hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((meta.nextHop == 9999)){
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
