@@ -219,6 +219,8 @@ control MyIngress(inout headers hdr,
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }
 
+            
+
 
             //primary path cases
             if(hdr.pathHops.which_alt_switch == 0){
@@ -244,6 +246,7 @@ control MyIngress(inout headers hdr,
                 }
                 hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
             }
+            //default
             else{
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((meta.nextHop == 9999)){

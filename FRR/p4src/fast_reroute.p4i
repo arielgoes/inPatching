@@ -1210,11 +1210,13 @@ control MyIngress(inout headers hdr,
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, 0);
 
+            bit<32> swIdTry = 0;
+
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && swIdTry > 0 && hdr.pathHops.has_visited_depot == 0){
+                hdr.pathHops.which_alt_switch = swIdTry;
+            }
+            else if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
                 if(hdr.pathHops.path_id == 0){
                     //gets the index into a variable
                     bit<32> path_id_0_pointer_var;
@@ -1232,24 +1234,24 @@ control MyIngress(inout headers hdr,
                         path_id_0_pointer_reg.read(path_id_0_pointer_var, 0); //... and read again for the updated pointer value
                     }
 
-                    bit<32> swIdTry;
                     path_id_0_path_reg.read(swIdTry, path_id_0_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
                     whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry); //terminar essa logica nas outras condicoes para forçar os proximos pacotes a continuarem utilizando o caminho alternativo.
+                    whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id); //read again, just to be sure...
                 }/*else if(hdr.pathHops.path_id == 1){
                     bit<32> path_id_1_pointer_var;
                     path_id_1_pointer_reg.read(path_id_1_pointer_var);
                     ...
                 }*/
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-            }else if(swId == depotId && hdr.pathHops.which_alt_switch > 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
+            }
+
+
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }
+
+
 
 
             //primary path cases
@@ -1276,8 +1278,8 @@ control MyIngress(inout headers hdr,
                 }
                 hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
             }
+            //default
             else{
-                //hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                 if((meta.nextHop == 9999)){
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
