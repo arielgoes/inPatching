@@ -31,10 +31,10 @@ class RerouteController(object):
             raise Exception
 
         # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
-        self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1']]
+        self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1'], ['s1', 's5', 's4', 's3', 's2', 's1']]
 
         #link failure order: [[s1-s2], [s2-s3], ...]
-        self.alternative_hops = [['s12', 's23', 's34', 's45', 's51']] #fix 'curr_path_index' to zero
+        self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
         self.maxTimeOut = 2000000 #2000000us = 2000ms = 2sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
@@ -96,18 +96,28 @@ class RerouteController(object):
         #Also, save the primary path hops (switch ids) sequentially into a register
         #visited = [] #NOTE: The last hop must not be visited, because in the P4 code, we already rotate the "switch attemptives"
                      #and the first and last switches are always the same in a cycle. Also, we visit each node only once.
-        visited = []
+        curr_path_index = 0
         for lst in self.primary_paths:
-            sw_id = 1
-            for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
-                if switch not in visited:
-                    control.register_write('path_id_0_path_reg', sw_id, switch[1:])
-                #control.register_write('path_id_0_path_reg', sw_id, switch[1:])
-                visited.append(switch)
-                sw_id += 1
-        #sys.exit() # force exit (debugging)
+            sw_id = 1 # start at position 1, since 0 is reserved
 
-        control.register_write('lenHashPrimaryPathSize', 0, len(visited))
+            if curr_path_index == 0:
+                visited = []
+                for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
+                    if switch not in visited:
+                        control.register_write('path_id_0_path_reg', sw_id, switch[1:])
+                    visited.append(switch)
+                    sw_id += 1
+                control.register_write('lenHashPrimaryPathSize', curr_path_index, len(visited))
+            elif curr_path_index == 1:
+                visited = []
+                for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
+                    if switch not in visited:
+                        control.register_write('path_id_1_path_reg', sw_id, switch[1:])
+                    visited.append(switch)
+                    sw_id += 1
+                control.register_write('lenHashPrimaryPathSize', curr_path_index, len(visited))
+            curr_path_index += 1
+        #sys.exit() # force exit (debugging)
 
 
         #set depot (only one port for all the probe paths - for now)
@@ -215,35 +225,37 @@ class RerouteController(object):
 
     def install_alternative_entries(self, failed_links):
 
+
+        curr_path_index = 0
         print("--------------------------------s1 entries--------------------------------")
         control = self.controllers['s1']
         neighbor_port = self.topo.node_to_node_port_num('s1', 's12')
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         print("--------------------------------s2 entries--------------------------------")
         control = self.controllers['s2']
         neighbor_port = self.topo.node_to_node_port_num('s2', 's23')
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         print("--------------------------------s3 entries--------------------------------")
         control = self.controllers['s3']
         neighbor_port = self.topo.node_to_node_port_num('s3', 's34')
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         print("--------------------------------s4 entries--------------------------------")
         control = self.controllers['s4']
         neighbor_port = self.topo.node_to_node_port_num('s4', 's45')
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         print("--------------------------------s5 entries--------------------------------")
         control = self.controllers['s5']
         neighbor_port = self.topo.node_to_node_port_num('s5', 's51')
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         print()
 
@@ -251,10 +263,10 @@ class RerouteController(object):
         control = self.controllers['s12']
         neighbor_port = self.topo.node_to_node_port_num('s12', 's2') #Gets the number of the port of *node1* that is connected to *node2*.
         print("neighbor_port ==> " + str(neighbor_port))
-        control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, neighbor_port)
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         control = self.controllers['s12']
         swId='s12'[1:]
@@ -266,10 +278,10 @@ class RerouteController(object):
         control = self.controllers['s23']
         neighbor_port = self.topo.node_to_node_port_num('s23', 's3') #Gets the number of the port of *node1* that is connected to *node2*.
         print("neighbor_port ==> " + str(neighbor_port))
-        control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, neighbor_port)
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         control = self.controllers['s23']
         swId='s23'[1:]
@@ -281,10 +293,10 @@ class RerouteController(object):
         control = self.controllers['s34']
         neighbor_port = self.topo.node_to_node_port_num('s34', 's4') #Gets the number of the port of *node1* that is connected to *node2*.
         print("neighbor_port ==> " + str(neighbor_port))
-        control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, neighbor_port)
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         control = self.controllers['s34']
         swId='s34'[1:]
@@ -296,10 +308,10 @@ class RerouteController(object):
         control = self.controllers['s45']
         neighbor_port = self.topo.node_to_node_port_num('s45', 's5') #Gets the number of the port of *node1* that is connected to *node2*.
         print("neighbor_port ==> " + str(neighbor_port))
-        control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, neighbor_port)
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         control = self.controllers['s45']
         swId='s45'[1:]
@@ -311,10 +323,10 @@ class RerouteController(object):
         control = self.controllers['s51']
         neighbor_port = self.topo.node_to_node_port_num('s51', 's1') #Gets the number of the port of *node1* that is connected to *node2*.
         print("neighbor_port ==> " + str(neighbor_port))
-        control.register_write("primaryNH_1", 0, neighbor_port)
-        control.register_write("primaryNH_2", 0, neighbor_port)
-        control.register_write("alternativeNH_1", 0, neighbor_port)
-        control.register_write("alternativeNH_2", 0, neighbor_port)
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
         control = self.controllers['s51']
         swId='s51'[1:]
@@ -322,6 +334,84 @@ class RerouteController(object):
         control.register_write('swIdReg', 0, swId)
 
 
+        # second path:
+        curr_path_index = 1
+        print("--------------------------------s1 entries--------------------------------")
+        control = self.controllers['s1']
+        neighbor_port = self.topo.node_to_node_port_num('s1', 's51')
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s5 entries--------------------------------")
+        control = self.controllers['s5']
+        neighbor_port = self.topo.node_to_node_port_num('s5', 's45')
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s4 entries--------------------------------")
+        control = self.controllers['s4']
+        neighbor_port = self.topo.node_to_node_port_num('s4', 's34')
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s3 entries--------------------------------")
+        control = self.controllers['s3']
+        neighbor_port = self.topo.node_to_node_port_num('s3', 's23')
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s2 entries--------------------------------")
+        control = self.controllers['s2']
+        neighbor_port = self.topo.node_to_node_port_num('s2', 's12')
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print()
+
+        print("--------------------------------s51 entries--------------------------------")
+        control = self.controllers['s51']
+        neighbor_port = self.topo.node_to_node_port_num('s51', 's5') #Gets the number of the port of *node1* that is connected to *node2*.
+        print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s45 entries--------------------------------")
+        control = self.controllers['s45']
+        neighbor_port = self.topo.node_to_node_port_num('s45', 's4') #Gets the number of the port of *node1* that is connected to *node2*.
+        print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s34 entries--------------------------------")
+        control = self.controllers['s34']
+        neighbor_port = self.topo.node_to_node_port_num('s34', 's3') #Gets the number of the port of *node1* that is connected to *node2*.
+        print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s23 entries--------------------------------")
+        control = self.controllers['s23']
+        neighbor_port = self.topo.node_to_node_port_num('s23', 's2') #Gets the number of the port of *node1* that is connected to *node2*.
+        print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
+
+        print("--------------------------------s12 entries--------------------------------")
+        control = self.controllers['s12']
+        neighbor_port = self.topo.node_to_node_port_num('s12', 's1') #Gets the number of the port of *node1* that is connected to *node2*.
+        print("neighbor_port ==> " + str(neighbor_port))
+        control.register_write("primaryNH_1", curr_path_index, neighbor_port)
+        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
+        control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
 
 
 
