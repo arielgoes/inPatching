@@ -5,6 +5,7 @@
 #define N_PREFS 1024
 #define PORT_WIDTH 32
 #define N_PORTS 512
+#define N_SW_ID 8
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -36,17 +37,21 @@ header ipv4_t {
 }
 
 header pathHops_t{
-    bit<32> currHop;
+    bit<32> numHop;
+    bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
+    bit<32> path_id; //same as "meta.indexPath"
+    bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)
 }
 
 struct metadata {
+    bit<32> indexPath; //used for both "primaryNH" and "alternativeNH" registers
     bit<1> linkState;
-    bit<32> nextHop;
-    bit<32> indexPath;
-    bit<32> depotPort;
-    bit<32> currPathSize;
-    bit<32> maxPathSize;
+    bit<32> depotPort; //universal (for now)
+    bit<32> nextHop; //next hop of the current path
+    bit<32> lenPrimaryPathSize; //length of the provided primary path (by the control plane)
+    bit<32> lenAlternativePathSize; //length of the provided alternative path (by the control plane)
 }
+
 struct headers {
     ethernet_t                      ethernet;
     ipv4_t                          ipv4;

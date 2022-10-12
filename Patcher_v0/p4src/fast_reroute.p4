@@ -28,57 +28,51 @@ control MyIngress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
 
+    //time management
+    register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
+    register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
+
     // Register to look up the port of the default next hop.
-    register<bit<PORT_WIDTH>>(N_PATHS) primaryNH;
-    register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH; 
+    register<bit<PORT_WIDTH>>(N_PATHS) NH; //When a failure occurs, rewrite the next hop positions in this register
 
     // Register containing link states. 0: No Problems. 1: Link failure.
     // This register is updated by CLI.py, you only need to read from it.
     register<bit<1>>(N_PORTS) linkState;
 
-    //Store the number of switches in the path, for each path (N_PATHS)
-    register<bit<32>>(N_PATHS) currPathSize;
-
     //This register is used to mantain the size of each path - used to compare whether the current size is equal to the max size
-    register<bit<32>>(N_PATHS) maxPathSize;
+    register<bit<32>>(N_PATHS) lenPrimaryPathSize;
+    register<bit<32>>(N_PATHS) lenAlternativePathSize;
 
     //Stores the depot port to host
     register<bit<32>>(1) depotPort;
+
+    //Contains the depot id (populated by the control plane)
+    register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
+
+    //Contains the switch id (populated by the control plane)
+    register<bit<N_SW_ID>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
 
 
     action drop() {
         mark_to_drop(standard_metadata);
     }
 
-    action read_port(bit<32> indexPath){
+    action read_len_primary_path(bit<32> indexPath){
         meta.indexPath = indexPath;
-        // Read primary next hop and write result into meta.nextHop.
-        primaryNH.read(meta.nextHop,  meta.indexPath);
-        
-        //Read linkState of default next hop.
-        linkState.read(meta.linkState, meta.nextHop);
+        lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath);
     }
 
-    action read_alternativePort(){
-        //Read alternative next hop into metadata
-        alternativeNH.read(meta.nextHop, meta.indexPath);
-    }
-
-    action read_max_curr_path_size(bit<32> indexPath){
+    action read_len_alternative_path(bit<32> indexPath){
         meta.indexPath = indexPath;
-        maxPathSize.read(meta.maxPathSize, meta.indexPath);
+        lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath);
     }
 
     action update_curr_path_size(){
-        currPathSize.read(meta.currPathSize, meta.indexPath);
-        currPathSize.write(meta.indexPath, meta.currPathSize + 1);
-        currPathSize.read(meta.currPathSize, meta.indexPath);
-        hdr.pathHops.currHop = hdr.pathHops.currHop + 1;
+        hdr.pathHops.numHop = hdr.pathHops.numHop + 1;
     }
 
     action reset_curr_path_size(){
-        currPathSize.write(meta.indexPath, 0);
-        hdr.pathHops.currHop = 0;
+        hdr.pathHops.numHop = 0;
     }
 
     action read_depot_port(){
@@ -87,61 +81,75 @@ control MyIngress(inout headers hdr,
     }
 
 
-    table ipv4_lpm {
+    table len_primary_path {
         key = {
-            hdr.ipv4.dstAddr: lpm;
+            hdr.pathHops.path_id: exact;
         }
         actions = {
-            read_port;
-            drop;
-        }
-        size = 512;
-        default_action = drop;
-    }
-
-
-    table max_path_size {
-        key = {
-            hdr.ipv4.dstAddr: lpm;
-        }
-        actions = {
-            read_max_curr_path_size;
+            read_len_primary_path;
             NoAction();
         }
-        size = 512;
+        size = N_PATHS;
+        default_action = NoAction();
+    }
+
+    table len_alternative_path {
+        key = {
+            hdr.pathHops.path_id: exact;
+        }
+        actions = {
+            read_len_alternative_path;
+            NoAction();
+        }
+        size = N_PATHS;
         default_action = NoAction();
     }
     
 
     apply {
         if (hdr.ipv4.isValid()){
-            ipv4_lpm.apply();
 
-            //increment hop number
+            //update hop counter
             update_curr_path_size();
 
-            // Do not change the following lines: They set the egress port
-            // and update the MAC address.
-            //First, we try the primary path
+            //read path size
+            len_primary_path.apply();
+            len_alternative_path.apply();
+
+            //get switch id
+            bit<8> swId;
+            swIdReg.read(swId, 0);
+
+            //get current timestamp
+            bit<48> curr_time;
+            curr_time = standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register)
+
+            //get depot id
+            bit<N_SW_ID> depotId;
+            depotIdReg.read(depotId, 0);
+
+            //last seen timestamp
+            bit<48> last_seen;
+            last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+
+
+            /*if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
+
+            }*/
+
+            //Set egress port
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
-            //Then, if the link is DOWN, we try an alternative port
-            if (meta.linkState > 0){ //1 = link is DOWN, 0 = link is UP
-                read_alternativePort();
-            }
-
             
 
-            //Finally, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
-            max_path_size.apply();
-            
-            //if(meta.currPathSize == meta.maxPathSize){
-            if(hdr.pathHops.currHop == meta.maxPathSize){
+            //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
+            if(swId == depotId && hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 //Reset curr path size
                 reset_curr_path_size();
-            }    
+            }
+                
         }
     }
 }

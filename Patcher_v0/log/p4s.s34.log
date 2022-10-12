@@ -1,0 +1,261 @@
+Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
+Calling target program-options parser
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'tbl_update_curr_path_size': MyIngress.update_curr_path_size - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'MyIngress.len_primary_path': NoAction - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'MyIngress.len_alternative_path': NoAction - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'tbl_fast_reroute121': fast_reroute121 - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'tbl_read_depot_port': MyIngress.read_depot_port - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'tbl_fast_reroute148': fast_reroute148 - 
+[14:15:20.318] [bmv2] [D] [thread 2948] Set default default entry for table 'tbl_reset_curr_path_size': MyIngress.reset_curr_path_size - 
+Adding interface s34-eth1 as port 1
+[14:15:20.320] [bmv2] [D] [thread 2948] Adding interface s34-eth1 as port 1
+Adding interface s34-eth2 as port 2
+[14:15:20.355] [bmv2] [D] [thread 2948] Adding interface s34-eth2 as port 2
+[14:15:20.387] [bmv2] [I] [thread 2948] Starting Thrift server on port 9097
+[14:15:20.387] [bmv2] [I] [thread 2948] Thrift server was started
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Processing packet received on port 1
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Parser 'parser': start
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.388] [bmv2] [T] [thread 2954] [0.0] [cxt 0] Bytes parsed: 14
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Parser 'parser': end
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.388] [bmv2] [T] [thread 2954] [0.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.388] [bmv2] [D] [thread 2954] [0.0] [cxt 0] Egress port is 0
+[14:15:20.388] [bmv2] [D] [thread 2955] [0.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.388] [bmv2] [D] [thread 2955] [0.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.388] [bmv2] [D] [thread 2955] [0.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.388] [bmv2] [T] [thread 2955] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.388] [bmv2] [D] [thread 2955] [0.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.388] [bmv2] [D] [thread 2955] [0.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.388] [bmv2] [D] [thread 2959] [0.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Processing packet received on port 1
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Parser 'parser': start
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.452] [bmv2] [T] [thread 2954] [1.0] [cxt 0] Bytes parsed: 14
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Parser 'parser': end
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.452] [bmv2] [T] [thread 2954] [1.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.452] [bmv2] [D] [thread 2954] [1.0] [cxt 0] Egress port is 0
+[14:15:20.452] [bmv2] [D] [thread 2955] [1.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.452] [bmv2] [D] [thread 2955] [1.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.452] [bmv2] [D] [thread 2955] [1.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.452] [bmv2] [T] [thread 2955] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.452] [bmv2] [D] [thread 2955] [1.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.452] [bmv2] [D] [thread 2955] [1.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.452] [bmv2] [D] [thread 2959] [1.0] [cxt 0] Transmitting packet of size 125 out of port 0
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Processing packet received on port 2
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Parser 'parser': start
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.576] [bmv2] [T] [thread 2954] [2.0] [cxt 0] Bytes parsed: 14
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Parser 'parser': end
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.576] [bmv2] [T] [thread 2954] [2.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.576] [bmv2] [D] [thread 2954] [2.0] [cxt 0] Egress port is 0
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Processing packet received on port 2
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Parser 'parser': start
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.576] [bmv2] [T] [thread 2954] [3.0] [cxt 0] Bytes parsed: 14
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Parser 'parser': end
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.576] [bmv2] [T] [thread 2954] [3.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.576] [bmv2] [D] [thread 2954] [3.0] [cxt 0] Egress port is 0
+[14:15:20.576] [bmv2] [D] [thread 2955] [2.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.576] [bmv2] [D] [thread 2955] [2.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.576] [bmv2] [D] [thread 2955] [2.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.576] [bmv2] [T] [thread 2955] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.576] [bmv2] [D] [thread 2955] [2.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.576] [bmv2] [D] [thread 2955] [2.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.576] [bmv2] [D] [thread 2955] [3.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.576] [bmv2] [D] [thread 2955] [3.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.576] [bmv2] [D] [thread 2955] [3.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.576] [bmv2] [T] [thread 2955] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.576] [bmv2] [D] [thread 2955] [3.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.576] [bmv2] [D] [thread 2955] [3.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.576] [bmv2] [D] [thread 2959] [2.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:15:20.576] [bmv2] [D] [thread 2959] [3.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Processing packet received on port 1
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Parser 'parser': start
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.580] [bmv2] [T] [thread 2954] [4.0] [cxt 0] Bytes parsed: 14
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Parser 'parser': end
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.580] [bmv2] [T] [thread 2954] [4.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.580] [bmv2] [D] [thread 2954] [4.0] [cxt 0] Egress port is 0
+[14:15:20.580] [bmv2] [D] [thread 2955] [4.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.580] [bmv2] [D] [thread 2955] [4.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.580] [bmv2] [D] [thread 2955] [4.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.580] [bmv2] [T] [thread 2955] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.580] [bmv2] [D] [thread 2955] [4.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.580] [bmv2] [D] [thread 2955] [4.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.580] [bmv2] [D] [thread 2959] [4.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Processing packet received on port 2
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Parser 'parser': start
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Extracting header 'ethernet'
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[14:15:20.587] [bmv2] [T] [thread 2954] [5.0] [cxt 0] Bytes parsed: 14
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Parser 'parser': end
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Pipeline 'ingress': start
+[14:15:20.587] [bmv2] [T] [thread 2954] [5.0] [cxt 0] /home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4(110) Condition "hdr.ipv4.isValid()" (node_2) is false
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Pipeline 'ingress': end
+[14:15:20.587] [bmv2] [D] [thread 2954] [5.0] [cxt 0] Egress port is 0
+[14:15:20.587] [bmv2] [D] [thread 2955] [5.0] [cxt 0] Pipeline 'egress': start
+[14:15:20.587] [bmv2] [D] [thread 2955] [5.0] [cxt 0] Pipeline 'egress': end
+[14:15:20.587] [bmv2] [D] [thread 2955] [5.0] [cxt 0] Deparser 'deparser': start
+[14:15:20.587] [bmv2] [T] [thread 2955] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[14:15:20.587] [bmv2] [D] [thread 2955] [5.0] [cxt 0] Deparsing header 'ethernet'
+[14:15:20.587] [bmv2] [D] [thread 2955] [5.0] [cxt 0] Deparser 'deparser': end
+[14:15:20.587] [bmv2] [D] [thread 2959] [5.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[14:15:24.393] [bmv2] [T] [thread 3154] bm_get_config
+[14:15:24.394] [bmv2] [T] [thread 3154] bm_mt_get_entries
+[14:15:24.394] [bmv2] [T] [thread 3154] bm_mt_get_entries
+[14:15:24.440] [bmv2] [T] [thread 3154] bm_reset_state
+[14:15:24.447] [bmv2] [D] [thread 3154] Resetting simple_switch target-specific state
+[14:15:24.447] [bmv2] [D] [thread 3154] resetting PRE state
+[14:15:42.292] [bmv2] [T] [thread 3241] bm_get_config
+[14:15:42.293] [bmv2] [T] [thread 3241] bm_mt_get_entries
+[14:15:42.293] [bmv2] [T] [thread 3241] bm_mt_get_entries
+[14:15:42.331] [bmv2] [T] [thread 3241] bm_reset_state
+[14:15:42.337] [bmv2] [D] [thread 3241] Resetting simple_switch target-specific state
+[14:15:42.337] [bmv2] [D] [thread 3241] resetting PRE state
+[14:17:51.409] [bmv2] [T] [thread 3286] bm_get_config
+[14:17:51.410] [bmv2] [T] [thread 3286] bm_mt_get_entries
+[14:17:51.410] [bmv2] [T] [thread 3286] bm_mt_get_entries
+[14:17:51.455] [bmv2] [T] [thread 3286] bm_reset_state
+[14:17:51.461] [bmv2] [D] [thread 3286] Resetting simple_switch target-specific state
+[14:17:51.461] [bmv2] [D] [thread 3286] resetting PRE state
+[14:46:35.808] [bmv2] [T] [thread 6704] bm_get_config
+[14:46:35.809] [bmv2] [T] [thread 6704] bm_mt_get_entries
+[14:46:35.809] [bmv2] [T] [thread 6704] bm_mt_get_entries
+[14:46:35.845] [bmv2] [T] [thread 6704] bm_reset_state
+[14:46:35.851] [bmv2] [D] [thread 6704] Resetting simple_switch target-specific state
+[14:46:35.851] [bmv2] [D] [thread 6704] resetting PRE state
+[14:47:19.014] [bmv2] [T] [thread 6796] bm_get_config
+[14:47:19.015] [bmv2] [T] [thread 6796] bm_mt_get_entries
+[14:47:19.015] [bmv2] [T] [thread 6796] bm_mt_get_entries
+[14:47:19.060] [bmv2] [T] [thread 6796] bm_reset_state
+[14:47:19.066] [bmv2] [D] [thread 6796] Resetting simple_switch target-specific state
+[14:47:19.066] [bmv2] [D] [thread 6796] resetting PRE state
+[14:57:03.089] [bmv2] [T] [thread 6884] bm_get_config
+[14:57:03.090] [bmv2] [T] [thread 6884] bm_mt_get_entries
+[14:57:03.090] [bmv2] [T] [thread 6884] bm_mt_get_entries
+[14:57:03.130] [bmv2] [T] [thread 6884] bm_reset_state
+[14:57:03.135] [bmv2] [D] [thread 6884] Resetting simple_switch target-specific state
+[14:57:03.135] [bmv2] [D] [thread 6884] resetting PRE state
+[14:57:24.357] [bmv2] [T] [thread 6910] bm_get_config
+[14:57:24.358] [bmv2] [T] [thread 6910] bm_mt_get_entries
+[14:57:24.358] [bmv2] [T] [thread 6910] bm_mt_get_entries
+[14:57:24.401] [bmv2] [T] [thread 6910] bm_reset_state
+[14:57:24.407] [bmv2] [D] [thread 6910] Resetting simple_switch target-specific state
+[14:57:24.407] [bmv2] [D] [thread 6910] resetting PRE state
+[14:57:33.850] [bmv2] [T] [thread 6996] bm_get_config
+[14:57:33.850] [bmv2] [T] [thread 6996] bm_mt_get_entries
+[14:57:33.851] [bmv2] [T] [thread 6996] bm_mt_get_entries
+[14:57:33.888] [bmv2] [T] [thread 6996] bm_reset_state
+[14:57:33.894] [bmv2] [D] [thread 6996] Resetting simple_switch target-specific state
+[14:57:33.894] [bmv2] [D] [thread 6996] resetting PRE state
+[14:57:53.629] [bmv2] [T] [thread 7080] bm_get_config
+[14:57:53.630] [bmv2] [T] [thread 7080] bm_mt_get_entries
+[14:57:53.630] [bmv2] [T] [thread 7080] bm_mt_get_entries
+[14:57:53.672] [bmv2] [T] [thread 7080] bm_reset_state
+[14:57:53.677] [bmv2] [D] [thread 7080] Resetting simple_switch target-specific state
+[14:57:53.677] [bmv2] [D] [thread 7080] resetting PRE state
+[14:58:25.899] [bmv2] [T] [thread 7165] bm_get_config
+[14:58:25.900] [bmv2] [T] [thread 7165] bm_mt_get_entries
+[14:58:25.900] [bmv2] [T] [thread 7165] bm_mt_get_entries
+[14:58:25.946] [bmv2] [T] [thread 7165] bm_reset_state
+[14:58:25.952] [bmv2] [D] [thread 7165] Resetting simple_switch target-specific state
+[14:58:25.952] [bmv2] [D] [thread 7165] resetting PRE state
+[14:59:46.620] [bmv2] [T] [thread 7250] bm_get_config
+[14:59:46.621] [bmv2] [T] [thread 7250] bm_mt_get_entries
+[14:59:46.621] [bmv2] [T] [thread 7250] bm_mt_get_entries
+[14:59:46.661] [bmv2] [T] [thread 7250] bm_reset_state
+[14:59:46.666] [bmv2] [D] [thread 7250] Resetting simple_switch target-specific state
+[14:59:46.666] [bmv2] [D] [thread 7250] resetting PRE state
+[15:00:19.016] [bmv2] [T] [thread 7340] bm_get_config
+[15:00:19.016] [bmv2] [T] [thread 7340] bm_mt_get_entries
+[15:00:19.016] [bmv2] [T] [thread 7340] bm_mt_get_entries
+[15:00:19.052] [bmv2] [T] [thread 7340] bm_reset_state
+[15:00:19.058] [bmv2] [D] [thread 7340] Resetting simple_switch target-specific state
+[15:00:19.058] [bmv2] [D] [thread 7340] resetting PRE state
+[15:00:33.763] [bmv2] [T] [thread 7459] bm_get_config
+[15:00:33.763] [bmv2] [T] [thread 7459] bm_mt_get_entries
+[15:00:33.764] [bmv2] [T] [thread 7459] bm_mt_get_entries
+[15:00:33.795] [bmv2] [T] [thread 7459] bm_reset_state
+[15:00:33.797] [bmv2] [D] [thread 7459] Resetting simple_switch target-specific state
+[15:00:33.797] [bmv2] [D] [thread 7459] resetting PRE state
+[15:00:46.022] [bmv2] [T] [thread 7581] bm_get_config
+[15:00:46.022] [bmv2] [T] [thread 7581] bm_mt_get_entries
+[15:00:46.023] [bmv2] [T] [thread 7581] bm_mt_get_entries
+[15:00:46.068] [bmv2] [T] [thread 7581] bm_reset_state
+[15:00:46.074] [bmv2] [D] [thread 7581] Resetting simple_switch target-specific state
+[15:00:46.074] [bmv2] [D] [thread 7581] resetting PRE state
+[15:00:56.093] [bmv2] [T] [thread 7702] bm_get_config
+[15:00:56.094] [bmv2] [T] [thread 7702] bm_mt_get_entries
+[15:00:56.094] [bmv2] [T] [thread 7702] bm_mt_get_entries
+[15:00:56.140] [bmv2] [T] [thread 7702] bm_reset_state
+[15:00:56.145] [bmv2] [D] [thread 7702] Resetting simple_switch target-specific state
+[15:00:56.145] [bmv2] [D] [thread 7702] resetting PRE state
+[15:10:05.315] [bmv2] [T] [thread 7903] bm_get_config
+[15:10:05.316] [bmv2] [T] [thread 7903] bm_mt_get_entries
+[15:10:05.316] [bmv2] [T] [thread 7903] bm_mt_get_entries
+[15:10:05.350] [bmv2] [T] [thread 7903] bm_reset_state
+[15:10:05.356] [bmv2] [D] [thread 7903] Resetting simple_switch target-specific state
+[15:10:05.356] [bmv2] [D] [thread 7903] resetting PRE state
+[15:11:36.808] [bmv2] [T] [thread 8086] bm_get_config
+[15:11:36.809] [bmv2] [T] [thread 8086] bm_mt_get_entries
+[15:11:36.809] [bmv2] [T] [thread 8086] bm_mt_get_entries
+[15:11:36.852] [bmv2] [T] [thread 8086] bm_reset_state
+[15:11:36.857] [bmv2] [D] [thread 8086] Resetting simple_switch target-specific state
+[15:11:36.857] [bmv2] [D] [thread 8086] resetting PRE state
+[15:12:17.355] [bmv2] [T] [thread 8179] bm_get_config
+[15:12:17.356] [bmv2] [T] [thread 8179] bm_mt_get_entries
+[15:12:17.356] [bmv2] [T] [thread 8179] bm_mt_get_entries
+[15:12:17.391] [bmv2] [T] [thread 8179] bm_reset_state
+[15:12:17.397] [bmv2] [D] [thread 8179] Resetting simple_switch target-specific state
+[15:12:17.397] [bmv2] [D] [thread 8179] resetting PRE state
+[15:13:15.246] [bmv2] [T] [thread 8271] bm_get_config
+[15:13:15.247] [bmv2] [T] [thread 8271] bm_mt_get_entries
+[15:13:15.247] [bmv2] [T] [thread 8271] bm_mt_get_entries
+[15:13:15.283] [bmv2] [T] [thread 8271] bm_reset_state
+[15:13:15.289] [bmv2] [D] [thread 8271] Resetting simple_switch target-specific state
+[15:13:15.289] [bmv2] [D] [thread 8271] resetting PRE state
+[15:15:06.245] [bmv2] [T] [thread 8378] bm_get_config
+[15:15:06.245] [bmv2] [T] [thread 8378] bm_mt_get_entries
+[15:15:06.245] [bmv2] [T] [thread 8378] bm_mt_get_entries
+[15:15:06.287] [bmv2] [T] [thread 8378] bm_reset_state
+[15:15:06.292] [bmv2] [D] [thread 8378] Resetting simple_switch target-specific state
+[15:15:06.292] [bmv2] [D] [thread 8378] resetting PRE state
+[15:15:38.962] [bmv2] [T] [thread 8469] bm_get_config
+[15:15:38.963] [bmv2] [T] [thread 8469] bm_mt_get_entries
+[15:15:38.963] [bmv2] [T] [thread 8469] bm_mt_get_entries
+[15:15:39.005] [bmv2] [T] [thread 8469] bm_reset_state
+[15:15:39.010] [bmv2] [D] [thread 8469] Resetting simple_switch target-specific state
+[15:15:39.011] [bmv2] [D] [thread 8469] resetting PRE state
+[15:20:28.081] [bmv2] [T] [thread 8566] bm_get_config
+[15:20:28.081] [bmv2] [T] [thread 8566] bm_mt_get_entries
+[15:20:28.082] [bmv2] [T] [thread 8566] bm_mt_get_entries
+[15:20:28.128] [bmv2] [T] [thread 8566] bm_reset_state
+[15:20:28.135] [bmv2] [D] [thread 8566] Resetting simple_switch target-specific state
+[15:20:28.135] [bmv2] [D] [thread 8566] resetting PRE state
+[15:21:13.486] [bmv2] [T] [thread 8661] bm_get_config
+[15:21:13.486] [bmv2] [T] [thread 8661] bm_mt_get_entries
+[15:21:13.487] [bmv2] [T] [thread 8661] bm_mt_get_entries
+[15:21:13.531] [bmv2] [T] [thread 8661] bm_reset_state
+[15:21:13.537] [bmv2] [D] [thread 8661] Resetting simple_switch target-specific state
+[15:21:13.537] [bmv2] [D] [thread 8661] resetting PRE state
