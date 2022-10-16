@@ -1146,7 +1146,7 @@ control MyIngress(inout headers hdr,
             read_len_primary_path;
             NoAction();
         }
-        size = 512;
+        size = 128;
         default_action = NoAction();
     }
 
@@ -1158,7 +1158,7 @@ control MyIngress(inout headers hdr,
             read_len_alternative_path;
             NoAction();
         }
-        size = 512;
+        size = 128;
         default_action = NoAction();
     }
 

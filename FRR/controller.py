@@ -46,7 +46,7 @@ class RerouteController(object):
         self.reset_states()
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        self.failed_links = [['s1', 's2']]
+        self.failed_links = [['s1', 's2'], ['s2', 's3']]
         print("=======================> ALTERNATIVE ENTRIES <=======================")
         self.install_alternative_entries(failed_links=self.failed_links)
         
@@ -199,15 +199,7 @@ class RerouteController(object):
                         #print('register_name ==> ' + str(register_name))
                         #control.register_write('primaryNH', curr_path_index, neighbor_port)
                         control.register_write(register_name, curr_path_index, neighbor_port)
-
-                        #print('curr_hop: ==> ', curr_hop)
                         
-                        table_name = "primary_path_exact_" + str(switch_dict[switch])
-                        #print("table name ==> " + str(table_name))
-                        action_name = "read_primary_port_" + str(switch_dict[switch])
-                        #print("action_name ==> " + str(action_name))
-                        #control.table_add('primary_path_exact', 'read_primary_port', match_keys=[str(curr_hop)], action_params=[str(curr_path_index)])
-                        #control.table_add(table_name, action_name, match_keys=[str(curr_hop)], action_params=[])
                 # set switch id register
                 control = self.controllers[curr_switch]
                 swId=curr_switch[1:]

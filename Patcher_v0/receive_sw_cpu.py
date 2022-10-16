@@ -12,12 +12,11 @@ from scapy.fields import *
 #BitField("name", default_value, size)
 class PathHops(Packet):
     fields_desc = [IntField("numHop", 0),
-                   ByteField("prev_sw_id", 0), # 0: no prev switch.
+                   BitField("num_pkts", 0, 64),
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0),
                    ByteField("has_visited_depot", 0)] #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
 bind_layers(IP, PathHops, proto=0x45)
-
 
 def handle_pkt(pkt):
     print("got a packet")
@@ -29,7 +28,7 @@ def handle_pkt(pkt):
 def main():
     #iface = 'h1-eth1'
     #iface = 'h2-eth5'
-    iface = 'h2-eth1'
+    iface = 's1-cpu-eth1'
     print("sniffing on %s" % iface)
     sys.stdout.flush()
     sniff(iface = iface,

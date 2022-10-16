@@ -1,24 +1,38 @@
-"""A central controller computing and installing shortest paths.
-
-In case of a link failure, paths are recomputed.
-"""
-
 import os
 import sys
 #from cli import CLI
 from re import search
 from random import random
 from networkx.algorithms import all_pairs_dijkstra
+from networkx import shortest_simple_paths
 
 from p4utils.utils.helper import load_topo
 from p4utils.utils.topology import *
 from p4utils.utils.sswitch_thrift_API import SimpleSwitchThriftAPI
 from collections import defaultdict
+from scapy.all import Packet
+from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr, bind_layers
+from scapy.all import Packet, IPOption
+from scapy.all import IP, UDP, Raw, Ether
+from scapy.layers.inet import _IPOption_HDR
+from scapy.fields import *
+
+#time elapse
+from datetime import datetime
+from datetime import timedelta 
 
 # this function will be held by the CLI later...
 import subprocess
 
-
+# path_id == 0 <-> path 0 (first path). Each path has a primary NH and alternative NH
+#BitField("name", default_value, size)
+class PathHops(Packet):
+    fields_desc = [IntField("numHop", 0),
+                   BitField("num_pkts", 0, 64),
+                   BitField("pkt_timestamp", 0, 48),
+                   IntField("path_id", 0),
+                   ByteField("has_visited_depot", 0)] #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
+bind_layers(IP, PathHops, proto=0x45)
 
 class RerouteController(object):
     """Controller for the fast rerouting exercise."""
@@ -33,28 +47,28 @@ class RerouteController(object):
         self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1']]
         self.alternative_paths = [[]]
         self.depot = self.primary_paths[0][0]
-        #print("depot ==>", self.depot)
+        print("depot ==>", self.depot)
 
 
         self.topo = load_topo('topology.json')
         self.controllers = {}
         self.connect_to_switches()
         self.reset_states()
-        self.maxTimeOut = 2000000 #2000000us = 2000ms = 2sec
+        self.maxTimeOut = 1000000 #1000000us = 1000ms = 1sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        self.failed_links = [('s2', 's3')]
+        #self.failed_links = [('s3', 's4')]
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
-        self.do_reset(line="s1 s2")
+        self.do_reset(line="s3 s4")
         
         #Fail link
-        self.do_fail(line="s1 s2")
+        self.do_fail(line="s3 s4")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
-        self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
-        #self.install_rerouting_rules(failures=None) #calculate new routes on the control plane
+        #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
+        self.install_rerouting_rules(failures=None) #calculate new routes on the control plane
 
 
 
@@ -82,17 +96,16 @@ class RerouteController(object):
 
 
     def install_primary_entries(self):
-        #control = self.controllers['s1']
-        #print(self.topo.get_ctl_cpu_intf('s1'))
 
+        #reset states (resgisters, tables, etc.)
+        self.reset_states()
+        
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
         control.register_write('depotIdReg', 0, self.depot[1:])
 
         #set the max time out for further operations
         control.register_write('maxTimeOutDepotReg', 0, self.maxTimeOut)
-
-        switches = {sw_name:{} for sw_name in self.topo.get_p4switches().keys()}
 
         #set depot (only one port for all the probe paths - for now)
         neighbors_intfs = self.topo.get_interfaces_to_node(self.depot)
@@ -108,19 +121,25 @@ class RerouteController(object):
         curr_path_index = 0
         for lst in self.primary_paths:
             print("-------------------- Path " + str(curr_path_index) + " --------------------")
+            #print("curr_path_index ==> ", curr_path_index)
+            #print("len curr path ==> ", len(lst))
+
+            #print("..... clear len path table")
+            #for dummy, switch in enumerate(lst):
+                #control = self.controllers[switch]
+                #control.table_clear('len_path_size')
+
 
             #store the length of the current path in a register for logic operations (in the P4 code)
             print("..... primary path length:")
             visited = []
             for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
-                
                 control = self.controllers[switch]
-                control.register_write('lenPrimaryPathSize', curr_path_index, len(lst))
-                # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:
+                control.register_write('lenPathSize', curr_path_index, len(lst))
                 subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
                 if switch not in visited:
                     print('--' + str(switch) + '--')
-                    control.table_add('len_primary_path', 'read_len_primary_path', match_keys=[str(curr_path_index)], action_params=[str(curr_path_index)]) #match_keys=[str(0)] -> is.alt == 0, i.e., PRIMARY PATH
+                    control.table_add('len_path_size', 'read_len_path', match_keys=[str(curr_path_index)], action_params=[str(curr_path_index)]) #match_keys=[str(0)] -> is.alt == 0, i.e., PRIMARY PATH
                 visited.append(switch)
 
             print()
@@ -203,17 +222,123 @@ class RerouteController(object):
         paths = {node: data[1] for node, data in dijkstra.items()}
 
         return distances, paths
-
+    
 
 
     def install_rerouting_rules(self, failures=None):
+        #start a mirroring session at the depot (to received cloned packets)
+        control = self.controllers[self.depot]
+        REPORT_MIRROR_SESSION_ID = 500
+        control.mirroring_add(REPORT_MIRROR_SESSION_ID, 7)
+
+        #read cpu counter for the first time
+        control = self.controllers
+        #print(control)
 
         # Compute the shortest paths from switches to hosts.
-        all_shortest_paths = self.dijkstra(failures=failures)[1]
-        print("failures ==>", failures)
-        print("all_shortest_paths ==> ", all_shortest_paths['s1'])
+        #all_shortest_paths = self.dijkstra(failures=failures)[1]
+        #print("failures ==>", failures)
+        #print("all_shortest_paths ==> ", all_shortest_paths['s1'])
 
-                                                                  
+        print()
+        print()
+
+        #get packet fields after sniffing
+        old_count_pkts = 0
+        count_pkts = 0
+        while True:
+            capture = sniff(iface = "s1-cpu-eth1", count = 1)
+            count_pkts = capture[len(capture)-1][PathHops].num_pkts
+            start = datetime.now()
+            
+            #if the older counter is less than the current counter value, there is a new incoming notification (controller packet)
+            if old_count_pkts < count_pkts:
+                old_count_pkts = count_pkts
+                print("num packets ==> ", count_pkts)
+
+                failed_links = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
+                print("failed_links ==> ", failed_links)
+
+                curr_path_index = 0
+                flag_break = 0
+                node1 = 0
+                node2 = 0
+                for path in self.primary_paths:
+                    for idx_path, sw_path in enumerate(path):
+                        #print("curr_path_index ==> " + str(curr_path_index))
+
+                        # install route rules at the registers            
+                        if idx_path + 1 < len(path):
+                            curr_sw_path = path[idx_path]
+                            next_sw_path = path[idx_path+1]
+                            print("link_path ","(",curr_sw_path, "Next ->", next_sw_path, ")")
+
+                            for idx_failure, sw_failure in enumerate(failed_links):
+                                curr_sw_failure = str(sw_failure[0])
+                                next_sw_failure = str(sw_failure[1])
+
+                                print("failure_link ","(",curr_sw_failure, "Next ->", next_sw_failure, ")")
+
+                                if curr_sw_path == curr_sw_failure and next_sw_path == next_sw_failure:
+                                    print("It's a match!")
+
+                                    #get the path indexes where the failure occurred
+                                    #print("idx_path 0: ", idx_path)
+                                    #print("idx_path 1: ", idx_path+1)
+                                    node1 = idx_path
+                                    node2 = idx_path + 1
+
+                                    #Start the path recomutation for affected link (node1, node2)
+                                    #k_shortest_paths = self.dijkstra(failures=failed_links)[1]
+                                    #print("topo: ", self.topo.get_p4switches())
+                                    #print("path[node1]: ", path[node1])
+                                    #print("path[node2]: ", path[node2])
+                                    k_shortest_paths = list(shortest_simple_paths(self.topo, path[node1], path[node2])) # it is already ordered
+                                    
+                                    #iterate the k_shortest path and get the smallest (ignoring the trivial "(node1, node2)")
+                                    size_link = 2
+                                    k_path = []
+                                    for k in k_shortest_paths:
+                                        if len(k) > size_link:
+                                            k_path = k
+                                            break
+
+                                    print("chosen path: ", k_path)
+
+                                    #then, alter the primary path accordingly
+                                    #TODO
+                                    print("before: ", path)
+                                    path.pop(node1)
+                                    path.pop(node1)
+                                    print("after pop: ", path)
+                                    for k in reversed(k_path):
+                                        path.insert(node1, k)
+                                    print("after insert", path)
+
+                                    #install primary routes again
+                                    self.install_primary_entries()
+
+                                    #flag_break = 1
+                                    #break
+
+                                #else:
+                                    #flag_break = 1
+                                    #break
+
+                            #if flag_break == 1:
+                                #flag_break = 0
+                                #break
+            end = datetime.now()
+            print("start: ", start.microsecond, "us")
+            print("end: ", end.microsecond, "us")
+            elapsed_time = end - start
+            print("time elapse: ", elapsed_time.microseconds, "us")
+
+                    
+
+
+
+                                                
 
     def failure_notification(self, failures):
         """Called if a link fails.
@@ -223,6 +348,7 @@ class RerouteController(object):
         for sw_name, controller in self.controllers.items():
             self.controllers[sw_name].table_clear("ipv4_lpm")
         self.route(failures)  
+
 
 
     def get_host_net(self, host):
@@ -274,6 +400,18 @@ class RerouteController(object):
         #self.update_linkstate(link, "down")
 
 
+    def check_all_links(self):
+        """Check the state for all link interfaces."""
+        failed_links = []
+        switchgraph = self.controller.topo.subgraph(
+            list(self.controller.controllers.keys())
+        )
+        for link in switchgraph.edges:
+            if1, if2 = self.get_interfaces(link)
+            if not (self.if_up(if1) and self.if_up(if2)):
+                failed_links.append(link)
+        return failed_links
+
     # this function will be held by the CLI later...
     def update_interfaces(self, link, state):
         """Set both interfaces on link to state (up or down)."""
@@ -322,6 +460,13 @@ class RerouteController(object):
         print("Set interface '%s' to '%s'." % (interface, state))
         cmd = ["sudo", "ip", "link", "set", "dev", interface, state]
         subprocess.check_call(cmd)
+
+
+def handle_pkt(pkt):
+        print("got a packet")
+        #pkt.show2()
+        pkt[PathHops]
+        sys.stdout.flush()
 
 if __name__ == "__main__":
     controller = RerouteController()  # pylint: disable=invalid-name

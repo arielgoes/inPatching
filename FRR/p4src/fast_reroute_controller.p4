@@ -112,7 +112,7 @@ control MyIngress(inout headers hdr,
             read_len_primary_path;
             NoAction();
         }
-        size = 512;
+        size = N_PATHS;
         default_action = NoAction();
     }
 
@@ -124,7 +124,7 @@ control MyIngress(inout headers hdr,
             read_len_alternative_path;
             NoAction();
         }
-        size = 512;
+        size = N_PATHS;
         default_action = NoAction();
     }
 
@@ -234,7 +234,6 @@ control MyIngress(inout headers hdr,
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
                     }
 
-
                     path_id_1_path_reg.read(swIdTry, path_id_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
                     whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
@@ -254,6 +253,7 @@ control MyIngress(inout headers hdr,
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);
             }
 
+            //update last seen packet
             last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
             last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
 

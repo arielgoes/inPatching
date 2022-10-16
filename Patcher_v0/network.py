@@ -118,13 +118,12 @@ net.mixed()
 #net.l3()
 
 
-#Instead of switch table entries, these entries will be held by a controller (e.g., controller.py)
-#
-#
-#
 
 # Nodes general options
+#net.enableCpuPortAll() #enables a special interface to a controller for all switches
+net.enableCpuPort('s1') #enables a special interface to cpu/controller for a single switch
 net.disablePcapDumpAll()
 net.enableLogAll()
 net.enableCli()
 net.startNetwork()
+
