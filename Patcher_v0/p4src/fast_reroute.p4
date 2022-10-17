@@ -106,7 +106,6 @@ control MyIngress(inout headers hdr,
             //get current timestamp
             bit<48> curr_time;
             curr_time = standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register)
-            time_control_plane.write(0, curr_time);
 
             //get depot id
             bit<N_SW_ID> depotId;
