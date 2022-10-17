@@ -1288,9 +1288,10 @@ control MyIngress(inout headers hdr,
             }
 
             //update last seen packet
-            last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-            last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+            }
 
             //force the packet to keep using the alternative path as long as a "new" timeout occurs, then it selects the next candidate switch in round-robin fashion
             if(swId == depotId && isAltVar > 0){

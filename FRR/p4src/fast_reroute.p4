@@ -28,6 +28,8 @@ control MyIngress(inout headers hdr,
     //time management
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
+    register<bit<48>>(1) temporario1_experimento_Reg;
+    register<bit<48>>(1) temporario2_experimento_Reg;
 
     // Registers to look up the port of the default next hop.
     //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
@@ -180,6 +182,7 @@ control MyIngress(inout headers hdr,
                 if(last_seen == 0){
                     last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                     last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
                 hdr.pathHops.has_visited_depot = 1;
             }else{ //at other hops, insert timestamp anyways
@@ -194,6 +197,7 @@ control MyIngress(inout headers hdr,
 
             //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && hdr.pathHops.which_alt_switch == 0 && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
+                temporario2_experimento_Reg.write(0, curr_time); //(utilizado em experimentos)
                 if(hdr.pathHops.path_id == 0){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -254,9 +258,10 @@ control MyIngress(inout headers hdr,
             }
 
             //update last seen packet
-            last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-            last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
+            }
 
             //force the packet to keep using the alternative path as long as a "new" timeout occurs, then it selects the next candidate switch in round-robin fashion
             if(swId == depotId && isAltVar > 0){

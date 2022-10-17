@@ -15,9 +15,28 @@ from p4utils.utils.topology import *
 from p4utils.utils.sswitch_thrift_API import SimpleSwitchThriftAPI
 from collections import defaultdict
 
+from time import sleep
+
+from scapy.all import Packet
+from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr, bind_layers
+from scapy.all import Packet, IPOption
+from scapy.all import IP, UDP, Raw, Ether
+from scapy.layers.inet import _IPOption_HDR
+from scapy.fields import *
+
 # this function will be held by the CLI later...
 import subprocess
 
+class PathHops(Packet):
+    fields_desc = [IntField("numHop", 0),
+                   BitField("pkt_timestamp", 0, 48),
+                   IntField("path_id", 0),
+                   BitField("which_alt_switch", 0, 32), #tells at which hop the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
+                   ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
+                   BitField("num_times_curr_switch", 0, 64), # 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one)
+                   BitField("is_alt", 0, 8), #force packet to go by the alternative paths
+                   BitField("is_tracker", 0, 8)] #every 'X' time interval, we send a probe tracker at the primary path to see if is alive again. If so, force other incoming packets in the given flow to use its primary path. 
+bind_layers(IP, PathHops, proto=0x45)
 
 
 class RerouteController(object):
@@ -35,7 +54,7 @@ class RerouteController(object):
 
         #link failure order: [[s1-s2], [s2-s3], ...]
         self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
-        self.maxTimeOut = 2000000 #2000000us = 2000ms = 2sec
+        self.maxTimeOut = 1000000 #100000us = 100ms = 0.1sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
         #print("depot ==>", self.depot)
@@ -46,18 +65,23 @@ class RerouteController(object):
         self.reset_states()
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        self.failed_links = [['s1', 's2'], ['s2', 's3']]
-        print("=======================> ALTERNATIVE ENTRIES <=======================")
-        self.install_alternative_entries(failed_links=self.failed_links)
-        
+        self.failed_links = [['s3', 's4']]
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
-        self.do_reset(line="s1 s2")
-        self.do_reset(line="s2 s3")
+        #self.do_reset(line="s3 s4")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
-        #self.do_fail(line="s2 s3")
+        self.do_fail(line="s1 s2")
+        self.do_fail(line="s2 s3")
+        self.do_fail(line="s3 s4")
+        self.do_fail(line="s4 s5")
+        self.do_fail(line="s5 s1")
+
+        print("=======================> ALTERNATIVE ENTRIES <=======================")
+        self.install_alternative_entries()
+        
+
+        
 
 
     #def do_reset(self, line=""):  # pylint: disable=unused-argument
@@ -215,9 +239,11 @@ class RerouteController(object):
 
 
 
-    def install_alternative_entries(self, failed_links):
+    def install_alternative_entries(self):
+
         curr_path_index = 0
         for lst in self.primary_paths:
+            print("-------------------- Path " + str(curr_path_index) + " --------------------")
             for index, switch in enumerate(lst):
                 if index + 1 < len(lst):
                     print("--------------------------------"+str(switch)+" entries--------------------------------")
@@ -225,13 +251,13 @@ class RerouteController(object):
                     neighbor_port = self.topo.node_to_node_port_num(switch, self.alternative_hops[curr_path_index][index])
                     control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
                     control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
-                    #print("index ==> " + str(index))
-                    #print("alt ==> " + str(self.alternative_hops[curr_path_index][index]))
+                    print("(" + switch + " => " + str(self.alternative_hops[curr_path_index][index]) + ")")
             print()
             curr_path_index += 1
         
         curr_path_index = 0
         for lst in self.alternative_hops:
+            print("-------------------- Path " + str(curr_path_index) + " --------------------")
             for index, switch in enumerate(lst):
                 #if index + 1 < len(lst):
                 print("--------------------------------"+str(switch)+" entries--------------------------------")
@@ -241,7 +267,7 @@ class RerouteController(object):
                 control.register_write("primaryNH_2", curr_path_index, neighbor_port)
                 control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
                 control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
-                #print("target ==> " + str(self.primary_paths[curr_path_index][index+1]))
+                print("(" + switch + " => " + str(self.primary_paths[curr_path_index][index+1]) + ")")
 
                 swId=switch[1:]
                 print('swId ==> ' + swId)
@@ -249,6 +275,16 @@ class RerouteController(object):
             print()
             curr_path_index += 1
         curr_path_index = 0
+
+
+        #input("Press Enter to continue...")
+        control = self.controllers[self.depot]
+        start = control.register_read('temporario1_experimento_Reg', 0)
+        end = control.register_read('temporario2_experimento_Reg', 0)
+        total = end - start
+        print("start: ", start)
+        print("end: ", end)
+        print("Total time: ", total, "us")
 
 
     def get_host_net(self, host):
