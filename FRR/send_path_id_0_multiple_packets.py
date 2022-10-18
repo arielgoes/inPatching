@@ -39,7 +39,7 @@ def main():
     while True:
         pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops(path_id=0)
         sendp(pkt, iface=iface, verbose=False)
-        #sleep(0.5)
+        sleep(0.2)
 
 if __name__ == '__main__':
     main()

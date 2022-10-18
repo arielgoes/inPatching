@@ -54,7 +54,7 @@ class RerouteController(object):
 
         #link failure order: [[s1-s2], [s2-s3], ...]
         self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
-        self.maxTimeOut = 1000000 #100000us = 100ms = 0.1sec
+        self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
         #print("depot ==>", self.depot)
@@ -65,16 +65,19 @@ class RerouteController(object):
         self.reset_states()
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        self.failed_links = [['s3', 's4']]
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
-        #self.do_reset(line="s3 s4")
+        self.do_reset(line="s1 s2")
+        self.do_reset(line="s2 s3")
+        self.do_reset(line="s3 s4")
+        self.do_reset(line="s4 s5")
+        self.do_reset(line="s5 s1")
 
         #Fail link
-        self.do_fail(line="s1 s2")
-        self.do_fail(line="s2 s3")
-        self.do_fail(line="s3 s4")
-        self.do_fail(line="s4 s5")
+        #self.do_fail(line="s1 s2")
+        #self.do_fail(line="s2 s3")
+        #self.do_fail(line="s3 s4")
+        #self.do_fail(line="s4 s5")
         self.do_fail(line="s5 s1")
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
