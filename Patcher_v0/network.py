@@ -118,9 +118,9 @@ net.mixed()
 #net.l3()
 
 #set link delays
-net.addP4Switch('s111')
-net.addLink('s1', 's111')
-net.setDelay('s1', 's111', 1000)
+#net.addP4Switch('s111')
+#net.addLink('s1', 's111')
+#net.setDelay('s1', 's111', 100)
 net.setDelay('s1', 's2', 5)
 net.setDelay('s2', 's3', 5)
 net.setDelay('s3', 's4', 5)

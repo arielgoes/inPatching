@@ -53,7 +53,7 @@ class RerouteController(object):
         self.topo = load_topo('topology.json')
         self.controllers = {}
         self.connect_to_switches()
-        #self.reset_states()
+        self.reset_states()
         self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
@@ -68,11 +68,11 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
+        self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        self.do_fail(line="s5 s1")
+        #self.do_fail(line="s5 s1")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
         #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
@@ -107,7 +107,7 @@ class RerouteController(object):
     def install_primary_entries(self):
 
         #reset states (resgisters, tables, etc.)
-        #self.reset_states()
+        self.reset_states()
         
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -240,26 +240,17 @@ class RerouteController(object):
         REPORT_MIRROR_SESSION_ID = 500
         control.mirroring_add(REPORT_MIRROR_SESSION_ID, 7)
 
-        #read cpu counter for the first time
-        control = self.controllers
-        #print(control)
-
-        # Compute the shortest paths from switches to hosts.
-        #all_shortest_paths = self.dijkstra(failures=failures)[1]
-        #print("failures ==>", failures)
-        #print("all_shortest_paths ==> ", all_shortest_paths['s1'])
-
-        print()
         print()
 
         #get packet fields after sniffing
         old_count_pkts = 0
         count_pkts = 0
         while True:
-            #capture = sniff(iface = "s1-cpu-eth1", count = 1)
-            capture = sniff(iface = "s111-eth1", count = 1)
+            capture = sniff(iface = "s1-cpu-eth1", count = 1)
+            #capture = sniff(iface = "s111-eth1", count = 1)
+            print("got it!")
             count_pkts = capture[len(capture)-1][PathHops].num_pkts
-            start = datetime.now()
+            start_cp = datetime.now()
             
             #if the older counter is less than the current counter value, there is a new incoming notification (controller packet)
             if old_count_pkts < count_pkts:
@@ -333,11 +324,18 @@ class RerouteController(object):
                             #if flag_break == 1:
                                 #flag_break = 0
                                 #break
-            end = datetime.now()
-            print("start: ", start.microsecond, "us")
-            print("end: ", end.microsecond, "us")
-            elapsed_time = end - start
-            print("time elapse: ", elapsed_time.microseconds, "us")
+            end_cp = datetime.now()
+            print("start_cp: ", start_cp.microsecond)
+            print("end_cp: ", end_cp.microsecond)
+            total_cp = end_cp - start_cp
+            print("Total time CP: ", total_cp.microseconds, "us")
+
+            control = self.controllers[self.depot]
+            total_dp = control.register_read('tempo_experimento_Reg', 0)
+            int(str(total_cp.microseconds))
+            print("Total time DP: ", total_dp, "us")
+            #total = total_dp + total_cp
+            #print("Total time DP + CP: ", total)
 
                     
 

@@ -35,9 +35,8 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
 
-    register<bit<48>>(1) tempo1_experimento;
-    register<bit<48>>(1) tempo2_experimento;
-    register<bit<1>>(1) isFirstPacket;
+    register<bit<48>>(1) tempo_experimento_Reg;
+    register<bit<1>>(1) isFirstPacket_Reg;
     //teste
 
     // Register to look up the port of the default next hop.
@@ -122,11 +121,10 @@ control MyIngress(inout headers hdr,
             bit<48> threshold;
             maxTimeOutDepotReg.read(threshold, 0);
 
-
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 if(last_seen == 0){
-                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                    tempo_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
             }
 
@@ -137,13 +135,17 @@ control MyIngress(inout headers hdr,
             len_path_size.apply(); //sets the "meta.lenPath"
 
             //If the packet timed out, send it to the control plane
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
+                bit<1> isFirstVar;
+                bit<48> oldTimeStamp;
+                tempo_experimento_Reg.read(oldTimeStamp, 0);
+                isFirstPacket_Reg.read(isFirstVar, 0);
+                if(isFirstVar == (bit<1>) 0){
+                    tempo_experimento_Reg.write(0, curr_time - oldTimeStamp);
+                    isFirstPacket_Reg.write(0, 1);
+                }
                 clone_packet_i2e();
             }
-
-            //update last seen packet
-            last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-            last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
 
             //read the next hop
             NH.read(meta.nextHop, hdr.pathHops.path_id);
@@ -184,7 +186,7 @@ control MyEgress(inout headers hdr,
     register<bit<64>>(1) cpu_counter;
 
     action change_egress_port() {
-        standard_metadata.egress_spec = (bit<9>) 7; //set last port as the controller port
+        standard_metadata.egress_spec = (bit<9>) 7; //set the controller port
         hdr.ipv4.tos = PKT_INSTANCE_TYPE_INGRESS_CLONE; //set type of service
     }
 
@@ -198,11 +200,10 @@ control MyEgress(inout headers hdr,
 
     apply {
         //In case the "instance type" is a cloned packet, modify its headers
-        //Otherwise, do not further process
+        //Otherwise, do no further process
         if(standard_metadata.instance_type == PKT_INSTANCE_TYPE_INGRESS_CLONE){
             change_egress_port();
             increment_counter();
-            //hdr.pathHops.setInvalid(); //don't need to use pathHops header
         }
     }
 
