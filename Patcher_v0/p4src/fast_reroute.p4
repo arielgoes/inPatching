@@ -35,6 +35,11 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
 
+    register<bit<48>>(1) tempo1_experimento;
+    register<bit<48>>(1) tempo2_experimento;
+    register<bit<1>>(1) isFirstPacket;
+    //teste
+
     // Register to look up the port of the default next hop.
     register<bit<PORT_WIDTH>>(N_PATHS) NH; //When a failure occurs, rewrite the next hop positions in this register
 
@@ -46,7 +51,6 @@ control MyIngress(inout headers hdr,
 
     //Contains the depot id (populated by the control plane)
     register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
-
 
     action drop() {
         mark_to_drop(standard_metadata);
@@ -98,7 +102,6 @@ control MyIngress(inout headers hdr,
 
             numHopDebugReg.write(0, hdr.pathHops.numHop);
 
-
             //get switch id
             bit<8> swId;
             swIdReg.read(swId, 0);
@@ -122,15 +125,13 @@ control MyIngress(inout headers hdr,
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                hdr.pathHops.pkt_timestamp = curr_time;
                 if(last_seen == 0){
-                    last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                    last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
-                hdr.pathHops.has_visited_depot = 1;
-            }else{ //at other hops, insert timestamp anyways
-                hdr.pathHops.pkt_timestamp = curr_time;
             }
+
+            //update packet timestamp
+            hdr.pathHops.pkt_timestamp = curr_time;
 
             //get length of the primary and alternative paths
             len_path_size.apply(); //sets the "meta.lenPath"
@@ -144,12 +145,22 @@ control MyIngress(inout headers hdr,
             last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
             last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
 
-
             //read the next hop
             NH.read(meta.nextHop, hdr.pathHops.path_id);
 
             //Set egress port, based on the next hop
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
+
+            //update last seen packet
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
+            }
+
+            //mark as visited (at the depot)
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
+                hdr.pathHops.has_visited_depot = 1;
+            }
 
 
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
@@ -185,10 +196,9 @@ control MyEgress(inout headers hdr,
         hdr.pathHops.num_pkts = counter_var;
     }
 
-
     apply {
-        // In case the "instance type" is a cloned packet, modify its headers
-        // Otherwise, do not further process
+        //In case the "instance type" is a cloned packet, modify its headers
+        //Otherwise, do not further process
         if(standard_metadata.instance_type == PKT_INSTANCE_TYPE_INGRESS_CLONE){
             change_egress_port();
             increment_counter();

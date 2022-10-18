@@ -77,8 +77,8 @@ class RerouteController(object):
         #self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
-        #self.do_fail(line="s4 s5")
-        self.do_fail(line="s5 s1")
+        self.do_fail(line="s4 s5")
+        #self.do_fail(line="s5 s1")
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
         self.install_alternative_entries()
@@ -280,7 +280,7 @@ class RerouteController(object):
         curr_path_index = 0
 
 
-        #input("Press Enter to continue...")
+        input("Press Enter to continue...")
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)
         end = control.register_read('temporario2_experimento_Reg', 0)

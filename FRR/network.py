@@ -117,11 +117,13 @@ net.setIntfPort('s51', 's5', 2)
 net.mixed()
 #net.l3()
 
+#set link delays
+net.setDelay('s1', 's2', 5)
+net.setDelay('s2', 's3', 5)
+net.setDelay('s3', 's4', 5)
+net.setDelay('s4', 's5', 5)
+net.setDelay('s5', 's1', 5)
 
-#Instead of switch table entries, these entries will be held by a controller (e.g., controller.py)
-#
-#
-#
 
 # Nodes general options
 net.disablePcapDumpAll()

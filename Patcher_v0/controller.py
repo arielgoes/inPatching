@@ -53,18 +53,26 @@ class RerouteController(object):
         self.topo = load_topo('topology.json')
         self.controllers = {}
         self.connect_to_switches()
-        self.reset_states()
-        self.maxTimeOut = 1000000 #1000000us = 1000ms = 1sec
+        #self.reset_states()
+        self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
         #self.failed_links = [('s3', 's4')]
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
+        self.do_reset(line="s1 s2")
+        self.do_reset(line="s2 s3")
         self.do_reset(line="s3 s4")
-        
+        self.do_reset(line="s4 s5")
+        self.do_reset(line="s5 s1")
+
         #Fail link
-        self.do_fail(line="s3 s4")
+        #self.do_fail(line="s1 s2")
+        #self.do_fail(line="s2 s3")
+        #self.do_fail(line="s3 s4")
+        #self.do_fail(line="s4 s5")
+        self.do_fail(line="s5 s1")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
         #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
@@ -91,6 +99,7 @@ class RerouteController(object):
 
     def reset_states(self):
         """Resets registers, tables, etc."""
+        #print("controllers: ", self.controllers.values())
         for control in self.controllers.values():
             control.reset_state()
 
@@ -98,7 +107,7 @@ class RerouteController(object):
     def install_primary_entries(self):
 
         #reset states (resgisters, tables, etc.)
-        self.reset_states()
+        #self.reset_states()
         
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -247,7 +256,8 @@ class RerouteController(object):
         old_count_pkts = 0
         count_pkts = 0
         while True:
-            capture = sniff(iface = "s1-cpu-eth1", count = 1)
+            #capture = sniff(iface = "s1-cpu-eth1", count = 1)
+            capture = sniff(iface = "s111-eth1", count = 1)
             count_pkts = capture[len(capture)-1][PathHops].num_pkts
             start = datetime.now()
             
@@ -288,11 +298,6 @@ class RerouteController(object):
                                     node1 = idx_path
                                     node2 = idx_path + 1
 
-                                    #Start the path recomutation for affected link (node1, node2)
-                                    #k_shortest_paths = self.dijkstra(failures=failed_links)[1]
-                                    #print("topo: ", self.topo.get_p4switches())
-                                    #print("path[node1]: ", path[node1])
-                                    #print("path[node2]: ", path[node2])
                                     k_shortest_paths = list(shortest_simple_paths(self.topo, path[node1], path[node2])) # it is already ordered
                                     
                                     #iterate the k_shortest path and get the smallest (ignoring the trivial "(node1, node2)")

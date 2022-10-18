@@ -55,9 +55,9 @@ net.addLink('s5', 's51')
 net.addLink('s51', 's1')
 
 
-#set interface port numbers
+#set interface port numbers...
 
-#at hosts
+#...at hosts
 net.setIntfPort('h1', 's1', 1)  # Set the number of the port on h1 facing s1
 net.setIntfPort('h2', 's1', 1)  # Set the number of the port on h2 facing s1
 
@@ -116,6 +116,16 @@ net.setIntfPort('s51', 's5', 2)
 #set IPs - e.g., using 'net.l2()', which is an automated strategy
 net.mixed()
 #net.l3()
+
+#set link delays
+net.addP4Switch('s111')
+net.addLink('s1', 's111')
+net.setDelay('s1', 's111', 1000)
+net.setDelay('s1', 's2', 5)
+net.setDelay('s2', 's3', 5)
+net.setDelay('s3', 's4', 5)
+net.setDelay('s4', 's5', 5)
+net.setDelay('s5', 's1', 5)
 
 
 
