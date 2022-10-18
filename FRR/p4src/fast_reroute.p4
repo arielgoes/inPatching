@@ -30,6 +30,7 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
     register<bit<48>>(1) temporario1_experimento_Reg;
     register<bit<48>>(1) temporario2_experimento_Reg;
+    //teste comentario (apagar depois)
 
     // Registers to look up the port of the default next hop.
     //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
