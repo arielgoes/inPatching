@@ -13,7 +13,10 @@
 
 //Contains the switch id (populated by the control plane)
 register<bit<N_SW_ID>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
-
+register<bit<48>>(1) tempo1_experimento_Reg;
+register<bit<48>>(1) tempo2_experimento_Reg;
+register<bit<1>>(1) isFirstResponsePacket_Reg;
+register<bit<64>>(1) global_pkt_counter;
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -35,9 +38,7 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
 
-    register<bit<48>>(1) tempo_experimento_Reg;
-    register<bit<1>>(1) isFirstPacket_Reg;
-    //teste
+
 
     // Register to look up the port of the default next hop.
     register<bit<PORT_WIDTH>>(N_PATHS) NH; //When a failure occurs, rewrite the next hop positions in this register
@@ -90,16 +91,13 @@ control MyIngress(inout headers hdr,
         size = N_PATHS;
         default_action = NoAction();
     }
-    
-    register<bit<32>>(1) numHopDebugReg; //(debug) 
+     
 
     apply {
         if (hdr.ipv4.isValid()){
 
             //update hop counter
             update_curr_path_size();
-
-            numHopDebugReg.write(0, hdr.pathHops.numHop);
 
             //get switch id
             bit<8> swId;
@@ -121,12 +119,21 @@ control MyIngress(inout headers hdr,
             bit<48> threshold;
             maxTimeOutDepotReg.read(threshold, 0);
 
+            //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
+            bit<64> num_pkts;
+            
+
+
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                if(last_seen == 0){
-                    tempo_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                if(last_seen == 0 && num_pkts == (bit<64>)0){
+                    tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
             }
+
+            global_pkt_counter.write(0, num_pkts + 1); //update packet counter
+
+            
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
@@ -136,14 +143,6 @@ control MyIngress(inout headers hdr,
 
             //If the packet timed out, send it to the control plane
             if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
-                bit<1> isFirstVar;
-                bit<48> oldTimeStamp;
-                tempo_experimento_Reg.read(oldTimeStamp, 0);
-                isFirstPacket_Reg.read(isFirstVar, 0);
-                if(isFirstVar == (bit<1>) 0){
-                    tempo_experimento_Reg.write(0, curr_time - oldTimeStamp);
-                    isFirstPacket_Reg.write(0, 1);
-                }
                 clone_packet_i2e();
             }
 
@@ -172,6 +171,19 @@ control MyIngress(inout headers hdr,
                 //Reset curr path size
                 reset_curr_path_size();
             }
+
+            //receive response from control plane
+            bit<1> isFirstResponseVar;
+            isFirstResponsePacket_Reg.read(isFirstResponseVar, 0);
+            if(swId == depotId && hdr.ipv4.ttl == (bit<8>)128 && isFirstResponseVar == (bit<1>)0){
+                tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp);
+                read_depot_port();
+                standard_metadata.egress_spec = (bit<9>) meta.depotPort;
+                isFirstResponsePacket_Reg.write(0, 1);
+            }
+
+            global_pkt_counter.read(num_pkts, 0);
+
         }
     }
 }

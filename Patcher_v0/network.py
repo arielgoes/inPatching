@@ -113,19 +113,28 @@ net.setIntfPort('s45', 's5', 2)
 net.setIntfPort('s51', 's1', 1)
 net.setIntfPort('s51', 's5', 2)
 
+
+#set link delays
+#net.addHost('h3')
+#net.addP4Switch('s60')
+#net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
+#net.addLink('s60', 'h3')
+#net.setIntfPort('s60', 's1', 1)
+#net.setIntfPort('s1', 's60', 7)
+#net.setDelay('s1', 's60', 5)
+
+#net.setDelay('s1', 's2', 5)
+#net.setDelay('s2', 's3', 5)
+#net.setDelay('s3', 's4', 5)
+#net.setDelay('s4', 's5', 5)
+#net.setDelay('s5', 's1', 5)
+
 #set IPs - e.g., using 'net.l2()', which is an automated strategy
 net.mixed()
 #net.l3()
 
-#set link delays
-#net.addP4Switch('s111')
-#net.addLink('s1', 's111')
-#net.setDelay('s1', 's111', 100)
-net.setDelay('s1', 's2', 5)
-net.setDelay('s2', 's3', 5)
-net.setDelay('s3', 's4', 5)
-net.setDelay('s4', 's5', 5)
-net.setDelay('s5', 's1', 5)
+
+
 
 
 

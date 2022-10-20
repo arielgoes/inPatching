@@ -16,6 +16,7 @@ from scapy.all import Packet, IPOption
 from scapy.all import IP, UDP, Raw, Ether
 from scapy.layers.inet import _IPOption_HDR
 from scapy.fields import *
+from time import sleep
 
 #time elapse
 from datetime import datetime
@@ -245,9 +246,10 @@ class RerouteController(object):
         #get packet fields after sniffing
         old_count_pkts = 0
         count_pkts = 0
+        iface = "s1-cpu-eth1"
+        #iface = "s60-eth1"
         while True:
-            capture = sniff(iface = "s1-cpu-eth1", count = 1)
-            #capture = sniff(iface = "s111-eth1", count = 1)
+            capture = sniff(iface = iface, count = 1)
             print("got it!")
             count_pkts = capture[len(capture)-1][PathHops].num_pkts
             start_cp = datetime.now()
@@ -258,7 +260,7 @@ class RerouteController(object):
                 print("num packets ==> ", count_pkts)
 
                 failed_links = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
-                print("failed_links ==> ", failed_links)
+                #print("failed_links ==> ", failed_links)
 
                 curr_path_index = 0
                 flag_break = 0
@@ -331,8 +333,19 @@ class RerouteController(object):
             print("Total time CP: ", total_cp.microseconds, "us")
 
             control = self.controllers[self.depot]
-            total_dp = control.register_read('tempo_experimento_Reg', 0)
-            int(str(total_cp.microseconds))
+            start_dp = control.register_read('tempo1_experimento_Reg', 0)
+            print("start_dp: ", start_dp, "us")
+
+
+            #send response to data plane and get end_dp
+            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0)
+            sendp(pkt, iface=iface, verbose=False)
+
+            sleep(2)
+            end_dp = control.register_read('tempo2_experimento_Reg', 0)
+
+            print("end_dp: ", end_dp, "us")
+            total_dp = end_dp - start_dp
             print("Total time DP: ", total_dp, "us")
             #total = total_dp + total_cp
             #print("Total time DP + CP: ", total)
