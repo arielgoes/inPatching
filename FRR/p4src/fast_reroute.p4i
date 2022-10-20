@@ -1041,7 +1041,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
 # 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
 
 
-
+register<bit<64>>(1) global_pkt_counter;
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -1166,8 +1166,10 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
 
-    //register<bit<32>>(1) debugReg; //(debug)
-    //register<bit<32>>(1) numHopDebugReg; //(debug)  
+    register<bit<48>>(1) temp; //(debug)
+    register<bit<48>>(1) temp2; //(debug)
+    register<bit<48>>(1) curr_time_Reg; //(debug)
+
 
 
     apply {
@@ -1176,6 +1178,11 @@ control MyIngress(inout headers hdr,
             //update hop counter
             update_curr_path_size();
             //numHopDebugReg.write(0, hdr.pathHops.numHop);
+
+            //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
+            bit<64> num_pkts;
+            global_pkt_counter.read(num_pkts, 0);
+            global_pkt_counter.write(0, num_pkts + 1);
 
             //get switch id
             bit<8> swId;
@@ -1191,6 +1198,7 @@ control MyIngress(inout headers hdr,
             //get current timestamp
             bit<48> curr_time;
             curr_time = standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register)
+            curr_time_Reg.write(0, curr_time);
 
             //get depot id
             bit<8> depotId;
@@ -1199,6 +1207,7 @@ control MyIngress(inout headers hdr,
             //last seen timestamp
             bit<48> last_seen;
             last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+
 
             //read max time out (e.g., 300ms) into a variable before 
             bit<48> threshold;
@@ -1209,18 +1218,22 @@ control MyIngress(inout headers hdr,
             forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id);
 
             //once a alternative path is take, maintain it until a tracker packet or a "new" timeout occurs
-            bit<8> isAltVar = 0;
+            bit<8> isAltVar;
             isAltReg.read(isAltVar, hdr.pathHops.path_id);
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                if(last_seen == 0){
+                if(last_seen == 0 && num_pkts == (bit<64>)0){
                     temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                    //last_seen_pkt_timestamp.write(0, curr_time);
+                    //last_seen_pkt_timestamp.read(last_seen, 0);
                 }
             }
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
+
+            temp.write(0, standard_metadata.ingress_global_timestamp - last_seen);
 
             //get length of the primary and alternative paths
             len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
@@ -1229,7 +1242,7 @@ control MyIngress(inout headers hdr,
 
 
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
+            if(swId == depotId && (bit<48>)hdr.pathHops.pkt_timestamp - (bit<48>)last_seen >= threshold && hdr.pathHops.has_visited_depot == 0 && num_pkts > 0){
                 if(hdr.pathHops.path_id == 0){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -1246,7 +1259,6 @@ control MyIngress(inout headers hdr,
                         path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
                     }
-
 
                     path_id_0_path_reg.read(swIdTry, path_id_pointer_var);
                     hdr.pathHops.which_alt_switch = swIdTry;
@@ -1282,12 +1294,31 @@ control MyIngress(inout headers hdr,
             }else if(swId == depotId && hdr.pathHops.is_tracker > 0 && hdr.pathHops.has_visited_depot > 0){ //special case (is_tracker) probe
                 isAltReg.write(hdr.pathHops.path_id, 0); //reset isAltReg
                 isAltReg.read(isAltVar, hdr.pathHops.path_id);
-                //path_id_pointer_reg.write(hdr.pathHops.path_id, 0);
+                hdr.pathHops.is_alt = 0;
+                path_id_pointer_reg.write(hdr.pathHops.path_id, 0);
                 whichSwitchAltReg.write(hdr.pathHops.path_id, 0);
                 hdr.pathHops.which_alt_switch = 0;
 
                 //force packets to use the primary path
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);
+            }
+
+            //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
+            if(isAltVar > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold){
+                hdr.pathHops.is_alt = 1;
+                forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
+                path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
+                hdr.pathHops.which_alt_switch = swIdTry;
+                whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
+                hdr.pathHops.which_alt_switch = swIdTry;
+
+                //used for experiments only 
+                bit<1> x;
+                flagFirstAltReg.read(x, 0);
+                if(x == (bit<1>) 0){
+                    temporario2_experimento_Reg.write(0, curr_time); //(end timestamp)
+                    flagFirstAltReg.write(0, 1);
+                }
             }
 
 
@@ -1300,6 +1331,8 @@ control MyIngress(inout headers hdr,
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
                     hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 }
+                hdr.pathHops.which_alt_switch = 0;
+                hdr.pathHops.is_alt = 0;
             }
             //alternative path cases
             else if(hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch){ //this line may overflow
@@ -1310,45 +1343,37 @@ control MyIngress(inout headers hdr,
                     alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id);
                     hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 }
-                hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.    
+                hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.
+                hdr.pathHops.is_alt = 1; //is using alternative hop    
             }
             //default
             else{
                 hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                hdr.pathHops.is_alt = 0;
                 if((meta.nextHop == 9999)){
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                }if(meta.nextHop == 9999){
+                    hdr.pathHops.is_alt = 0;
+                }/*if(meta.nextHop == 9999){ //if I let this commented, it will timeout until it finds "that" next hop working again.
                     alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                    hdr.pathHops.is_alt = 1;
                 }else{
                     alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                }
+                    hdr.pathHops.is_alt = 1;
+                }*/
             }
 
-            //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold){
-                forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
-                path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
-                hdr.pathHops.which_alt_switch = swIdTry;
-                whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
-                hdr.pathHops.which_alt_switch = swIdTry;
+            //place holder...
 
-                //used for experiments only
-                //temporario2_experimento_Reg.write(0, curr_time);
-                bit<1> x;
-                flagFirstAltReg.read(x, 0);
-                if(x == (bit<1>) 0){
-                    temporario2_experimento_Reg.write(0, curr_time);
-                    flagFirstAltReg.write(0, 1);
-                }
-            }
 
             forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id);
             if(hdr.pathHops.is_tracker > 0 || forcePrimaryPathVar > 0){ //if is_tracker: it is a special probe (is_tracker), force it into the primary path
                 hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
+                hdr.pathHops.is_alt = 0;
                 if((meta.nextHop == 9999)){
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
+                    hdr.pathHops.is_alt = 0;
                 }
             }
 
@@ -1358,9 +1383,11 @@ control MyIngress(inout headers hdr,
 
             //update last seen packet
             if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
             }
+
+            temp2.write(0, hdr.pathHops.pkt_timestamp - last_seen);
 
             //mark as visited (at the depot)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){

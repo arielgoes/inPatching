@@ -118,11 +118,11 @@ net.mixed()
 #net.l3()
 
 #set link delays
-net.setDelay('s1', 's2', 5)
-net.setDelay('s2', 's3', 5)
-net.setDelay('s3', 's4', 5)
-net.setDelay('s4', 's5', 5)
-net.setDelay('s5', 's1', 5)
+#net.setDelay('s1', 's2', 5)
+#net.setDelay('s2', 's3', 5)
+#net.setDelay('s3', 's4', 5)
+#net.setDelay('s4', 's5', 5)
+#net.setDelay('s5', 's1', 5)
 
 
 # Nodes general options

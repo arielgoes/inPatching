@@ -82,9 +82,6 @@ class RerouteController(object):
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
         self.install_alternative_entries()
-        
-
-        
 
 
     #def do_reset(self, line=""):  # pylint: disable=unused-argument
@@ -112,6 +109,7 @@ class RerouteController(object):
 
     def install_primary_entries(self):
         """Install the mapping from prefix to nexthop ids for all switches."""
+        #self.reset_states()
 
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -243,7 +241,6 @@ class RerouteController(object):
 
 
     def install_alternative_entries(self):
-
         curr_path_index = 0
         for lst in self.primary_paths:
             print("-------------------- Path " + str(curr_path_index) + " --------------------")
@@ -262,7 +259,6 @@ class RerouteController(object):
         for lst in self.alternative_hops:
             print("-------------------- Path " + str(curr_path_index) + " --------------------")
             for index, switch in enumerate(lst):
-                #if index + 1 < len(lst):
                 print("--------------------------------"+str(switch)+" entries--------------------------------")
                 control = self.controllers[switch]
                 neighbor_port = self.topo.node_to_node_port_num(switch, self.primary_paths[curr_path_index][index+1])
@@ -279,15 +275,16 @@ class RerouteController(object):
             curr_path_index += 1
         curr_path_index = 0
 
-
         input("Press Enter to continue...")
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)
         end = control.register_read('temporario2_experimento_Reg', 0)
+        counter = control.register_read('counter_test', 0)
         total = end - start
         print("start: ", start)
         print("end: ", end)
         print("Total time: ", total, "us")
+        print("counter_test: ", counter)
 
 
     def get_host_net(self, host):
