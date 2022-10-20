@@ -121,8 +121,7 @@ control MyIngress(inout headers hdr,
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
             bit<64> num_pkts;
-            
-
+            global_pkt_counter.read(num_pkts, 0);
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
@@ -130,7 +129,6 @@ control MyIngress(inout headers hdr,
                     tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
             }
-
             global_pkt_counter.write(0, num_pkts + 1); //update packet counter
 
             
@@ -181,8 +179,6 @@ control MyIngress(inout headers hdr,
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 isFirstResponsePacket_Reg.write(0, 1);
             }
-
-            global_pkt_counter.read(num_pkts, 0);
 
         }
     }

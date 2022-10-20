@@ -249,7 +249,7 @@ class RerouteController(object):
         iface = "s1-cpu-eth1"
         #iface = "s60-eth1"
         while True:
-            capture = sniff(iface = iface, count = 1)
+            capture = sniff(iface=iface, count=1)
             print("got it!")
             count_pkts = capture[len(capture)-1][PathHops].num_pkts
             start_cp = datetime.now()
@@ -335,7 +335,6 @@ class RerouteController(object):
             control = self.controllers[self.depot]
             start_dp = control.register_read('tempo1_experimento_Reg', 0)
             print("start_dp: ", start_dp, "us")
-
 
             #send response to data plane and get end_dp
             pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0)
