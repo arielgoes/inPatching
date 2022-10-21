@@ -79,7 +79,6 @@ control MyIngress(inout headers hdr,
         clone(CloneType.I2E, REPORT_MIRROR_SESSION_ID);
     }
 
-
     table len_path_size {
         key = {
             hdr.pathHops.path_id: exact;
@@ -91,14 +90,10 @@ control MyIngress(inout headers hdr,
         size = N_PATHS;
         default_action = NoAction();
     }
-
-
-    register<bit<48>>(1) diffTempoReg; //(debugging)
-    register<bit<32>>(1) numFirstReg; //(debug)
-
-     
+ 
 
     apply {
+        //@atomic{
         if (hdr.ipv4.isValid()){
 
             //update hop counter
@@ -125,19 +120,20 @@ control MyIngress(inout headers hdr,
             maxTimeOutDepotReg.read(threshold, 0);
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
-            bit<64> num_pkts;
-            global_pkt_counter.read(num_pkts, 0);
-
-            //The packet enters the depot switch for the first time (beggining of the cycle)
-            if(swId == depotId && num_pkts == (bit<64>)0){
-                tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                bit<32> temp;
-                numFirstReg.read(temp, 0);
-                numFirstReg.write(0, temp + 1);
-            }
+            //bit<64> num_pkts;
+            global_pkt_counter.read(meta.num_pkts, 0);
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
+
+            //The packet enters the depot switch for the first time (beggining of the cycle)
+            
+            if(swId == depotId && meta.num_pkts == (bit<64>)0){
+                //tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                hdr.pathHops.pkt_timestamp = curr_time;
+            }
+
+            
 
             //get length of the primary and alternative paths
             len_path_size.apply(); //sets the "meta.lenPath"
@@ -146,8 +142,6 @@ control MyIngress(inout headers hdr,
             if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
                 clone_packet_i2e();
             }
-
-            diffTempoReg.write(0, hdr.pathHops.pkt_timestamp - last_seen); //(debugging)
 
             //read the next hop
             NH.read(meta.nextHop, hdr.pathHops.path_id);
@@ -185,9 +179,10 @@ control MyIngress(inout headers hdr,
                 isFirstResponsePacket_Reg.write(0, 1);
             }
 
-            global_pkt_counter.write(0, num_pkts + 1); //update packet counter
+            global_pkt_counter.write(0, meta.num_pkts + 1); //update packet counter
 
         }
+    //}
     }
 }
 /*************************************************************************
@@ -213,13 +208,17 @@ control MyEgress(inout headers hdr,
         hdr.pathHops.num_pkts = counter_var;
     }
 
+    action get_timestamp(){
+        hdr.pathHops.pkt_timestamp = standard_metadata.egress_global_timestamp;
+    }
+
     apply {
         //In case the "instance type" is a cloned packet, modify its headers
         //Otherwise, do no further process
         if(standard_metadata.instance_type == PKT_INSTANCE_TYPE_INGRESS_CLONE){
             change_egress_port();
             increment_counter();
-            hdr.pathHops.pkt_timestamp = standard_metadata.ingress_global_timestamp;
+            get_timestamp();
         }
     }
 

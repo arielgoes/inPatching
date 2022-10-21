@@ -60,6 +60,8 @@ struct metadata {
     bit<32> depotPort; //universal (for now)
     bit<32> nextHop; //next hop of the current path
     bit<32> lenPathSize; //length of the provided primary path (by the control plane)
+    bit<64> num_pkts;
+    bit<48> curr_time;
 }
 
 struct headers {

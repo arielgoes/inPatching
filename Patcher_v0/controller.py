@@ -69,11 +69,11 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
+        self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        self.do_fail(line="s5 s1")
+        #self.do_fail(line="s5 s1")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
         #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
@@ -327,10 +327,6 @@ class RerouteController(object):
                     print("nope: ", failures)
                     self.apply_alternative_rules(failed_links=failures)
 
-
-
-
-
             end_cp = datetime.now()
             print("start_cp: ", start_cp.microsecond)
             print("end_cp: ", end_cp.microsecond)
@@ -338,18 +334,20 @@ class RerouteController(object):
             print("Total time CP: ", total_cp.microseconds, "us")
 
             control = self.controllers[self.depot]
-            start_dp = control.register_read('tempo1_experimento_Reg', 0)
+            #start_dp = control.register_read('tempo1_experimento_Reg', 0)
+            start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
             print("start_dp: ", start_dp, "us")
 
             #send response to data plane and get end_dp
-            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0)
+            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_timestamp=pkt_time)
             sendp(pkt, iface=iface, verbose=False)
 
             sleep(2)
             end_dp = control.register_read('tempo2_experimento_Reg', 0)
 
             print("end_dp: ", end_dp, "us")
-            total_dp = end_dp - start_dp
+            #total_dp = end_dp - start_dp
+            total_dp = control.register_read('tempoDiff_experimento_Reg', 0)
             print("Total time DP: ", total_dp, "us")
             #total = total_dp + total_cp
             #print("Total time DP + CP: ", total)
