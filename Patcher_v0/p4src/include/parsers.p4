@@ -8,13 +8,10 @@ parser MyParser(packet_in packet,
                 inout standard_metadata_t standard_metadata) {
 
     state start {
-
         transition parse_ethernet;
-
     }
 
     state parse_ethernet {
-
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType){
             TYPE_IPV4: parse_ipv4;

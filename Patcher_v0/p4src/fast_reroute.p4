@@ -13,10 +13,7 @@
 
 //Contains the switch id (populated by the control plane)
 register<bit<N_SW_ID>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
-register<bit<48>>(1) tempo1_experimento_Reg;
-register<bit<48>>(1) tempo2_experimento_Reg;
-register<bit<1>>(1) isFirstResponsePacket_Reg;
-register<bit<64>>(1) global_pkt_counter;
+
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -38,8 +35,6 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
 
-
-
     // Register to look up the port of the default next hop.
     register<bit<PORT_WIDTH>>(N_PATHS) NH; //When a failure occurs, rewrite the next hop positions in this register
 
@@ -51,6 +46,11 @@ control MyIngress(inout headers hdr,
 
     //Contains the depot id (populated by the control plane)
     register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
+
+    register<bit<1>>(1) isFirstResponsePacket_Reg;
+    register<bit<48>>(1) tempo1_experimento_Reg;
+    register<bit<48>>(1) tempo2_experimento_Reg;
+    register<bit<64>>(1) global_pkt_counter;
 
     action drop() {
         mark_to_drop(standard_metadata);
@@ -91,6 +91,11 @@ control MyIngress(inout headers hdr,
         size = N_PATHS;
         default_action = NoAction();
     }
+
+
+    register<bit<48>>(1) diffTempoReg; //(debugging)
+    register<bit<32>>(1) numFirstReg; //(debug)
+
      
 
     apply {
@@ -124,14 +129,12 @@ control MyIngress(inout headers hdr,
             global_pkt_counter.read(num_pkts, 0);
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                if(last_seen == 0 && num_pkts == (bit<64>)0){
-                    tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                }
+            if(swId == depotId && num_pkts == (bit<64>)0){
+                tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                bit<32> temp;
+                numFirstReg.read(temp, 0);
+                numFirstReg.write(0, temp + 1);
             }
-            global_pkt_counter.write(0, num_pkts + 1); //update packet counter
-
-            
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
@@ -143,6 +146,8 @@ control MyIngress(inout headers hdr,
             if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
                 clone_packet_i2e();
             }
+
+            diffTempoReg.write(0, hdr.pathHops.pkt_timestamp - last_seen); //(debugging)
 
             //read the next hop
             NH.read(meta.nextHop, hdr.pathHops.path_id);
@@ -173,12 +178,14 @@ control MyIngress(inout headers hdr,
             //receive response from control plane
             bit<1> isFirstResponseVar;
             isFirstResponsePacket_Reg.read(isFirstResponseVar, 0);
-            if(swId == depotId && hdr.ipv4.ttl == (bit<8>)128 && isFirstResponseVar == (bit<1>)0){
+            if(hdr.ipv4.ttl == (bit<8>)128 && isFirstResponseVar == (bit<1>)0 && hdr.pathHops.pkt_timestamp - last_seen < threshold){
                 tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp);
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 isFirstResponsePacket_Reg.write(0, 1);
             }
+
+            global_pkt_counter.write(0, num_pkts + 1); //update packet counter
 
         }
     }
@@ -212,6 +219,7 @@ control MyEgress(inout headers hdr,
         if(standard_metadata.instance_type == PKT_INSTANCE_TYPE_INGRESS_CLONE){
             change_egress_port();
             increment_counter();
+            hdr.pathHops.pkt_timestamp = standard_metadata.ingress_global_timestamp;
         }
     }
 

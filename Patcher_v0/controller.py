@@ -69,15 +69,15 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        self.do_fail(line="s1 s2")
+        #self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        #self.do_fail(line="s5 s1")
+        self.do_fail(line="s5 s1")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
         #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
-        self.install_rerouting_rules(failures=None) #calculate new routes on the control plane
+        self.install_rerouting_rules() #calculate new routes on the control plane
 
 
 
@@ -107,7 +107,7 @@ class RerouteController(object):
 
     def install_primary_entries(self):
 
-        #reset states (resgisters, tables, etc.)
+        #reset states (registers, tables, etc.)
         self.reset_states()
         
         #save the depot switch id into a register for further operations
@@ -232,16 +232,75 @@ class RerouteController(object):
         paths = {node: data[1] for node, data in dijkstra.items()}
 
         return distances, paths
-    
 
 
-    def install_rerouting_rules(self, failures=None):
+    def apply_alternative_rules(self, failed_links=None):
+        #failed_links = [('s5', 's1')] #TODO - if it finds 's1-s5' incorrectly, force it to return the opposite: 's5-s1' - for example.
+        print("failed_links ==> ", failed_links)
+
+        curr_path_index = 0
+        found = False
+        node1 = 0
+        node2 = 0
+        for path in self.primary_paths:
+            for idx_path, sw_path in enumerate(path):
+                #print("curr_path_index ==> " + str(curr_path_index))
+
+                # install route rules at the registers            
+                if idx_path + 1 < len(path):
+                    curr_sw_path = path[idx_path]
+                    next_sw_path = path[idx_path+1]
+                    print("link_path ","(",curr_sw_path, "Next ->", next_sw_path, ")")
+
+                    for idx_failure, sw_failure in enumerate(failed_links):
+                        curr_sw_failure = str(sw_failure[0])
+                        next_sw_failure = str(sw_failure[1])
+
+                        print("failure_link ","(",curr_sw_failure, "Next ->", next_sw_failure, ")")
+
+                        if curr_sw_path == curr_sw_failure and next_sw_path == next_sw_failure:
+                            print("It's a match!")
+                            found = True
+
+                            #get the path indexes where the failure occurred
+                            #print("idx_path 0: ", idx_path)
+                            #print("idx_path 1: ", idx_path+1)
+                            node1 = idx_path
+                            node2 = idx_path + 1
+
+                            k_shortest_paths = list(shortest_simple_paths(self.topo, path[node1], path[node2])) # it is already ordered
+                            
+                            #iterate the k_shortest path and get the smallest (ignoring the trivial "(node1, node2)")
+                            size_link = 2
+                            k_path = []
+                            for k in k_shortest_paths:
+                                if len(k) > size_link:
+                                    k_path = k
+                                    break
+
+                            print("chosen path: ", k_path)
+
+                            #then, alter the primary path accordingly
+                            #TODO
+                            print("before: ", path)
+                            path.pop(node1)
+                            path.pop(node1)
+                            print("after pop: ", path)
+                            for k in reversed(k_path):
+                                path.insert(node1, k)
+                            print("after insert", path)
+
+                            #install primary routes again
+                            self.install_primary_entries()
+        return found
+
+
+
+    def install_rerouting_rules(self):
         #start a mirroring session at the depot (to received cloned packets)
         control = self.controllers[self.depot]
         REPORT_MIRROR_SESSION_ID = 500
         control.mirroring_add(REPORT_MIRROR_SESSION_ID, 7)
-
-        print()
 
         #get packet fields after sniffing
         old_count_pkts = 0
@@ -259,73 +318,19 @@ class RerouteController(object):
                 old_count_pkts = count_pkts
                 print("num packets ==> ", count_pkts)
 
-                failed_links = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
-                #print("failed_links ==> ", failed_links)
+                failures = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
+                is_a_match = self.apply_alternative_rules(failed_links=failures)
+                if is_a_match:
+                    print("yeap")
+                else:
+                    failures = [(t[1], t[0]) for t in failures]
+                    print("nope: ", failures)
+                    self.apply_alternative_rules(failed_links=failures)
 
-                curr_path_index = 0
-                flag_break = 0
-                node1 = 0
-                node2 = 0
-                for path in self.primary_paths:
-                    for idx_path, sw_path in enumerate(path):
-                        #print("curr_path_index ==> " + str(curr_path_index))
 
-                        # install route rules at the registers            
-                        if idx_path + 1 < len(path):
-                            curr_sw_path = path[idx_path]
-                            next_sw_path = path[idx_path+1]
-                            print("link_path ","(",curr_sw_path, "Next ->", next_sw_path, ")")
 
-                            for idx_failure, sw_failure in enumerate(failed_links):
-                                curr_sw_failure = str(sw_failure[0])
-                                next_sw_failure = str(sw_failure[1])
 
-                                print("failure_link ","(",curr_sw_failure, "Next ->", next_sw_failure, ")")
 
-                                if curr_sw_path == curr_sw_failure and next_sw_path == next_sw_failure:
-                                    print("It's a match!")
-
-                                    #get the path indexes where the failure occurred
-                                    #print("idx_path 0: ", idx_path)
-                                    #print("idx_path 1: ", idx_path+1)
-                                    node1 = idx_path
-                                    node2 = idx_path + 1
-
-                                    k_shortest_paths = list(shortest_simple_paths(self.topo, path[node1], path[node2])) # it is already ordered
-                                    
-                                    #iterate the k_shortest path and get the smallest (ignoring the trivial "(node1, node2)")
-                                    size_link = 2
-                                    k_path = []
-                                    for k in k_shortest_paths:
-                                        if len(k) > size_link:
-                                            k_path = k
-                                            break
-
-                                    print("chosen path: ", k_path)
-
-                                    #then, alter the primary path accordingly
-                                    #TODO
-                                    print("before: ", path)
-                                    path.pop(node1)
-                                    path.pop(node1)
-                                    print("after pop: ", path)
-                                    for k in reversed(k_path):
-                                        path.insert(node1, k)
-                                    print("after insert", path)
-
-                                    #install primary routes again
-                                    self.install_primary_entries()
-
-                                    #flag_break = 1
-                                    #break
-
-                                #else:
-                                    #flag_break = 1
-                                    #break
-
-                            #if flag_break == 1:
-                                #flag_break = 0
-                                #break
             end_cp = datetime.now()
             print("start_cp: ", start_cp.microsecond)
             print("end_cp: ", end_cp.microsecond)
