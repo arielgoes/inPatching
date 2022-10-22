@@ -28,7 +28,8 @@ from scapy.fields import *
 import subprocess
 
 class PathHops(Packet):
-    fields_desc = [IntField("numHop", 0),
+    fields_desc = [BitField("pkt_id", 0, 64),
+                   IntField("numHop", 0),
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0),
                    BitField("which_alt_switch", 0, 32), #tells at which hop the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
@@ -74,10 +75,10 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
+        self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
-        self.do_fail(line="s4 s5")
+        #self.do_fail(line="s4 s5")
         #self.do_fail(line="s5 s1")
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
@@ -278,13 +279,13 @@ class RerouteController(object):
         input("Press Enter to continue...")
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)
+        start2 = control.register_read('temp1_experimento_Reg', 0)
         end = control.register_read('temporario2_experimento_Reg', 0)
-        counter = control.register_read('counter_test', 0)
         total = end - start
         print("start: ", start)
+        print("start2: ", start2)
         print("end: ", end)
         print("Total time: ", total, "us")
-        print("counter_test: ", counter)
 
 
     def get_host_net(self, host):

@@ -12,10 +12,9 @@ from scapy.fields import *
 from time import sleep
 
 
-# path_id == 0 <-> path 0 (first path). Each path has a primary NH and alternative NH
-#BitField("name", default_value, size)
 class PathHops(Packet):
-    fields_desc = [IntField("numHop", 0),
+    fields_desc = [BitField("pkt_id", 0, 64),
+                   IntField("numHop", 0),
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0),
                    BitField("which_alt_switch", 0, 32), #tells at which hop the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.

@@ -25,10 +25,9 @@ from datetime import timedelta
 # this function will be held by the CLI later...
 import subprocess
 
-# path_id == 0 <-> path 0 (first path). Each path has a primary NH and alternative NH
-#BitField("name", default_value, size)
 class PathHops(Packet):
-    fields_desc = [IntField("numHop", 0),
+    fields_desc = [BitField("pkt_id", 0, 64),
+                   IntField("numHop", 0),
                    BitField("num_pkts", 0, 64),
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0),
@@ -54,7 +53,7 @@ class RerouteController(object):
         self.topo = load_topo('topology.json')
         self.controllers = {}
         self.connect_to_switches()
-        self.reset_states()
+        #self.reset_states()
         self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
@@ -94,6 +93,7 @@ class RerouteController(object):
     def connect_to_switches(self):
         """Connects to all the switches in the topology."""
         for p4switch in self.topo.get_p4switches():
+            print("p4switch: ", p4switch)
             thrift_port = self.topo.get_thrift_port(p4switch)
             self.controllers[p4switch] = SimpleSwitchThriftAPI(thrift_port)
 
@@ -108,7 +108,7 @@ class RerouteController(object):
     def install_primary_entries(self):
 
         #reset states (registers, tables, etc.)
-        self.reset_states()
+        #self.reset_states()
         
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -305,8 +305,8 @@ class RerouteController(object):
         #get packet fields after sniffing
         old_count_pkts = 0
         count_pkts = 0
-        iface = "s1-cpu-eth1"
-        #iface = "s60-eth1"
+        #iface = "s1-cpu-eth1"
+        iface = "s60-eth1"
         while True:
             capture = sniff(iface=iface, count=1)
             print("got it!")
@@ -339,15 +339,14 @@ class RerouteController(object):
             print("start_dp: ", start_dp, "us")
 
             #send response to data plane and get end_dp
-            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_timestamp=pkt_time)
+            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=-1)
             sendp(pkt, iface=iface, verbose=False)
 
             sleep(2)
             end_dp = control.register_read('tempo2_experimento_Reg', 0)
 
             print("end_dp: ", end_dp, "us")
-            #total_dp = end_dp - start_dp
-            total_dp = control.register_read('tempoDiff_experimento_Reg', 0)
+            total_dp = end_dp - start_dp
             print("Total time DP: ", total_dp, "us")
             #total = total_dp + total_cp
             #print("Total time DP + CP: ", total)

@@ -47,6 +47,7 @@ header ipv4_t {
 }
 
 header pathHops_t{
+    bit<64> pkt_id;
     bit<32> numHop;
     bit<64> num_pkts;
     bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
@@ -61,7 +62,7 @@ struct metadata {
     bit<32> nextHop; //next hop of the current path
     bit<32> lenPathSize; //length of the provided primary path (by the control plane)
     bit<64> num_pkts;
-    bit<48> curr_time;
+    bit<48> ingress_timestamp;
 }
 
 struct headers {

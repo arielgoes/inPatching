@@ -2,6 +2,7 @@ from p4utils.mininetlib.network_API import NetworkAPI
 
 net = NetworkAPI()
 net.setLogLevel('info')
+#net.disableLogAll()
 
 #add P4 switches
 #net.addP4Switch('s1', cli_input='s1-commands.txt')

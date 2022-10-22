@@ -1,8 +1,8 @@
 from p4utils.mininetlib.network_API import NetworkAPI
 
 net = NetworkAPI()
-#net.setLogLevel('info')
-net.disableLogAll()
+net.setLogLevel('info')
+#net.disableLogAll()
 
 #add P4 switches
 #net.addP4Switch('s1', cli_input='s1-commands.txt')
@@ -116,13 +116,11 @@ net.setIntfPort('s51', 's5', 2)
 
 
 #set link delays
-#net.addHost('h3')
-#net.addP4Switch('s60')
-#net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
-#net.addLink('s60', 'h3')
-#net.setIntfPort('s60', 's1', 1)
-#net.setIntfPort('s1', 's60', 7)
-#net.setDelay('s1', 's60', 5)
+net.addP4Switch('s60')
+net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
+net.setIntfPort('s60', 's1', 1)
+net.setIntfPort('s1', 's60', 7)
+net.setDelay('s1', 's60', 50)
 
 #net.setDelay('s1', 's2', 5)
 #net.setDelay('s2', 's3', 5)
