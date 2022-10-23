@@ -32,10 +32,12 @@ def main():
     print("sending on interface %s to %s" % (iface, str(addr)))
 
     #for _ in range(1): #number of random packets
-    #while True:
-    pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops(path_id=0)
-    sendp(pkt, iface=iface, verbose=False)
-    #sleep(0.5)
+    pkt_id = 1
+    while True:
+        pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops(path_id=0, pkt_id=pkt_id)
+        sendp(pkt, iface=iface, verbose=False)
+        pkt_id += 1
+        input("Press Enter to send another packet...")
 
 if __name__ == '__main__':
     main()

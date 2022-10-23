@@ -136,12 +136,14 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
 
+    register<bit<32>>(1) numHopDebugReg;
+
     apply {
         if (hdr.ipv4.isValid()){
 
             //update hop counter
             update_curr_path_size();
-            //numHopDebugReg.write(0, hdr.pathHops.numHop);
+            numHopDebugReg.write(0, hdr.pathHops.numHop);
 
             //get switch id
             bit<8> swId;
@@ -342,7 +344,7 @@ control MyIngress(inout headers hdr,
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
             //used for experiments only
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.pkt_id > 0){
+            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.pkt_id > 1){
                 bit<48> tempo1;
                 temporario1_experimento_Reg.read(tempo1, 0);
                 bit<1> x;

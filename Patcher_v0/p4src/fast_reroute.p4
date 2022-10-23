@@ -34,7 +34,8 @@ register<bit<32>>(1) depotPortReg;
 
 //Contains the depot id (populated by the control plane)
 register<bit<N_SW_ID>>(1) depotIdReg; //depot switch id (universal)
-
+register<bit<64>>(1) pkt_id_Reg;
+register<bit<48>>(1) curr_time_Reg;
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -91,6 +92,7 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
  
+    register<bit<32>>(1) numHopDebugReg;
 
     apply {
         //@atomic{
@@ -98,15 +100,17 @@ control MyIngress(inout headers hdr,
 
             //update hop counter
             update_curr_path_size();
+            numHopDebugReg.write(0, hdr.pathHops.numHop);
 
             //get switch id
-            bit<8> swId;
+            bit<N_SW_ID> swId;
             swIdReg.read(swId, 0);
 
             //get current timestamp
             bit<48> curr_time;
             curr_time = standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register)
             meta.ingress_timestamp = curr_time;
+            curr_time_Reg.write(0, curr_time);
 
             //get depot id
             bit<N_SW_ID> depotId;
@@ -128,25 +132,21 @@ control MyIngress(inout headers hdr,
             hdr.pathHops.pkt_timestamp = curr_time;
             meta.ingress_timestamp = curr_time;
 
-            //The packet enters the depot switch for the first time (beggining of the cycle)
-            @atomic{    
-                if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                    //if(last_seen == 0 && num_pkts == (bit<64>)0){
-                    if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
-                        tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                        hdr.pathHops.pkt_timestamp = curr_time;
-                    }
+            //The packet enters the depot switch for the first time (beggining of the cycle)   
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
+                //if(last_seen == 0 && num_pkts == (bit<64>)0){
+                if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
+                    tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                    pkt_id_Reg.write(0, hdr.pathHops.pkt_id);
                 }
             }
+
+            bit<48> tempo1;
+            tempo1_experimento_Reg.read(tempo1, 0);
             
 
             //get length of the primary and alternative paths
             len_path_size.apply(); //sets the "meta.lenPath"
-
-            //If the packet timed out, send it to the control plane
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold){
-                clone_packet_i2e();
-            }
 
             //read the next hop
             NH.read(meta.nextHop, hdr.pathHops.path_id);
@@ -154,9 +154,27 @@ control MyIngress(inout headers hdr,
             //Set egress port, based on the next hop
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
+            //If the packet timed out, send it to the control plane
+            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0 && hdr.pathHops.pkt_id >= (bit<64>)1){
+                clone_packet_i2e();
+            }
+
+            //receive response from control plane
+            if(swId == depotId && hdr.ipv4.ttl == (bit<8>)128 && hdr.pathHops.pkt_id == (bit<64>)0 && hdr.pathHops.has_visited_depot > 0){
+                /*bit<1> x;
+                isFirstResponseReg.read(x, 0);
+                if(x < 1){
+                    tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp)
+                    isFirstResponseReg.write(0, 1);
+                }*/
+                tempo2_experimento_Reg.write(0, curr_time); //(end timestamp)
+                /*read_depot_port();
+                standard_metadata.egress_spec = (bit<9>) meta.depotPort;  */
+            }
+
             //update last seen packet
-            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
-                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+            if(swId == depotId && hdr.ipv4.ttl != (bit<8>)128 && hdr.pathHops.has_visited_depot > 0){
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
             }
 
@@ -165,29 +183,12 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.has_visited_depot = 1;
             }
 
-
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
             if(swId == depotId && hdr.pathHops.numHop >= meta.lenPathSize && hdr.pathHops.has_visited_depot > 0){
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 //Reset curr path size
                 reset_curr_path_size();
-            }
-
-            //receive response from control plane
-            if(hdr.ipv4.ttl == (bit<8>)128 && swId == depotId && hdr.pathHops.pkt_id == (bit<64>)0){
-                bit<48> tempo1;
-                tempo1_experimento_Reg.read(tempo1, 0);
-                bit<1> x;
-                isFirstResponseReg.read(x, 0);
-                //if(x == (bit<1>) 0){
-                if(x < 1){
-                    tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp)
-                    isFirstResponseReg.write(0, 1);
-                }
-                //tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp)
-                read_depot_port();
-                standard_metadata.egress_spec = (bit<9>) meta.depotPort;  
             }
 
             global_pkt_counter.write(0, meta.num_pkts + 1); //update packet counter
@@ -234,6 +235,9 @@ control MyEgress(inout headers hdr,
             change_egress_port();
             increment_counter();
             get_timestamp();
+            bit<64> pkt_id_var;
+            pkt_id_Reg.read(pkt_id_var, 0);
+            hdr.pathHops.pkt_id = pkt_id_var;
         }
     }
 

@@ -75,7 +75,7 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        self.do_fail(line="s1 s2")
+        #self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
@@ -166,8 +166,7 @@ class RerouteController(object):
             #store the length of the current path in a register for logic operations (in the P4 code)
             print("..... primary path length:")
             visited = []
-            for dummy, switch in enumerate(lst): #dummy is a filler variable - not used
-                
+            for dummy, switch in enumerate(lst): #dummy is a filler variable - not used  
                 control = self.controllers[switch]
                 control.register_write('lenPrimaryPathSize', curr_path_index, len(lst))
                 # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:

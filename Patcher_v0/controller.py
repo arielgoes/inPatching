@@ -58,7 +58,6 @@ class RerouteController(object):
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
-        #self.failed_links = [('s3', 's4')]
 
         #reseting every link state (e.g., link states that are currently 'down' become 'up' once again.)
         self.do_reset(line="s1 s2")
@@ -131,14 +130,6 @@ class RerouteController(object):
         curr_path_index = 0
         for lst in self.primary_paths:
             print("-------------------- Path " + str(curr_path_index) + " --------------------")
-            #print("curr_path_index ==> ", curr_path_index)
-            #print("len curr path ==> ", len(lst))
-
-            #print("..... clear len path table")
-            #for dummy, switch in enumerate(lst):
-                #control = self.controllers[switch]
-                #control.table_clear('len_path_size')
-
 
             #store the length of the current path in a register for logic operations (in the P4 code)
             print("..... primary path length:")
@@ -334,27 +325,27 @@ class RerouteController(object):
             print("Total time CP: ", total_cp.microseconds, "us")
 
             control = self.controllers[self.depot]
+            capture[len(capture)-1].show2()
             #start_dp = control.register_read('tempo1_experimento_Reg', 0)
             start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
             print("start_dp: ", start_dp, "us")
-            start_dp2 = control.register_read('tempo1_experimento_Reg', 0)
-            print("start_dp2: ", start_dp2, "us")
-            #capture[len(capture)-1].show2()
+            #start_dp2 = control.register_read('tempo1_experimento_Reg', 0)
+            #print("start_dp2: ", start_dp2, "us")
 
             #send response to data plane and get end_dp
-            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0)
+            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=0)
             sendp(pkt, iface=iface, verbose=False)
 
-            sleep(2)
+            sleep(1)
             end_dp = control.register_read('tempo2_experimento_Reg', 0)
 
             print("end_dp: ", end_dp, "us")
             total_dp = end_dp - start_dp
-            total_dp2 = end_dp - start_dp2
+            #total_dp2 = end_dp - start_dp2
             print("Total time DP: ", total_dp, "us")
-            print("Total time DP2: ", total_dp2, "us")
-            isFirst = control.register_read('isFirstResponseReg', 0)
-            print("isFirst...: ", isFirst)
+            #print("Total time DP2: ", total_dp2, "us")
+            #isFirst = control.register_read('isFirstResponseReg', 0)
+            #print("isFirst...: ", isFirst)
 
 
                                                 
