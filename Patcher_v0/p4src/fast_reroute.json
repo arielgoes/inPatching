@@ -9,10 +9,10 @@
         ["depotId_0", 8, false],
         ["last_seen_0", 48, false],
         ["threshold_0", 48, false],
-        ["tempo1_0", 48, false],
         ["x_0", 1, false],
         ["tmp_0", 64, false],
         ["counter_var_0", 64, false],
+        ["tempo1_0", 48, false],
         ["userMetadata.indexPath", 32, false],
         ["userMetadata.linkState", 1, false],
         ["userMetadata.depotPort", 32, false],
@@ -240,119 +240,11 @@
   "counter_arrays" : [],
   "register_arrays" : [
     {
-      "name" : "MyIngress.maxTimeOutDepotReg",
+      "name" : "MyEgress.cpu_counter",
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 36,
-        "column" : 25,
-        "source_fragment" : "maxTimeOutDepotReg"
-      },
-      "size" : 1,
-      "bitwidth" : 48
-    },
-    {
-      "name" : "MyIngress.last_seen_pkt_timestamp",
-      "id" : 1,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 37,
-        "column" : 27,
-        "source_fragment" : "last_seen_pkt_timestamp"
-      },
-      "size" : 512,
-      "bitwidth" : 48
-    },
-    {
-      "name" : "MyIngress.NH",
-      "id" : 2,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 40,
-        "column" : 27,
-        "source_fragment" : "NH"
-      },
-      "size" : 512,
-      "bitwidth" : 32
-    },
-    {
-      "name" : "MyIngress.lenPathSize",
-      "id" : 3,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 43,
-        "column" : 27,
-        "source_fragment" : "lenPathSize"
-      },
-      "size" : 512,
-      "bitwidth" : 32
-    },
-    {
-      "name" : "MyIngress.depotPortReg",
-      "id" : 4,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 46,
-        "column" : 25,
-        "source_fragment" : "depotPortReg"
-      },
-      "size" : 1,
-      "bitwidth" : 32
-    },
-    {
-      "name" : "MyIngress.depotIdReg",
-      "id" : 5,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 49,
-        "column" : 24,
-        "source_fragment" : "depotIdReg"
-      },
-      "size" : 1,
-      "bitwidth" : 8
-    },
-    {
-      "name" : "MyIngress.isFirstResponseReg",
-      "id" : 6,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 51,
-        "column" : 24,
-        "source_fragment" : "isFirstResponseReg"
-      },
-      "size" : 1,
-      "bitwidth" : 1
-    },
-    {
-      "name" : "MyIngress.tempo1_experimento_Reg",
-      "id" : 7,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 52,
-        "column" : 25,
-        "source_fragment" : "tempo1_experimento_Reg"
-      },
-      "size" : 1,
-      "bitwidth" : 48
-    },
-    {
-      "name" : "MyIngress.tempo2_experimento_Reg",
-      "id" : 8,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 53,
-        "column" : 25,
-        "source_fragment" : "tempo2_experimento_Reg"
-      },
-      "size" : 1,
-      "bitwidth" : 48
-    },
-    {
-      "name" : "MyEgress.cpu_counter",
-      "id" : 9,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 202,
+        "line" : 207,
         "column" : 25,
         "source_fragment" : "cpu_counter"
       },
@@ -361,7 +253,7 @@
     },
     {
       "name" : "swIdReg",
-      "id" : 10,
+      "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
         "line" : 15,
@@ -373,7 +265,7 @@
     },
     {
       "name" : "global_pkt_counter",
-      "id" : 11,
+      "id" : 2,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
         "line" : 16,
@@ -382,6 +274,114 @@
       },
       "size" : 1,
       "bitwidth" : 64
+    },
+    {
+      "name" : "isFirstResponseReg",
+      "id" : 3,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 18,
+        "column" : 20,
+        "source_fragment" : "isFirstResponseReg"
+      },
+      "size" : 1,
+      "bitwidth" : 1
+    },
+    {
+      "name" : "tempo1_experimento_Reg",
+      "id" : 4,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 19,
+        "column" : 21,
+        "source_fragment" : "tempo1_experimento_Reg"
+      },
+      "size" : 1,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "tempo2_experimento_Reg",
+      "id" : 5,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 20,
+        "column" : 21,
+        "source_fragment" : "tempo2_experimento_Reg"
+      },
+      "size" : 1,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "maxTimeOutDepotReg",
+      "id" : 6,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 23,
+        "column" : 21,
+        "source_fragment" : "maxTimeOutDepotReg"
+      },
+      "size" : 1,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "last_seen_pkt_timestamp",
+      "id" : 7,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 24,
+        "column" : 23,
+        "source_fragment" : "last_seen_pkt_timestamp"
+      },
+      "size" : 512,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "NH",
+      "id" : 8,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 27,
+        "column" : 23,
+        "source_fragment" : "NH"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "lenPathSize",
+      "id" : 9,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 30,
+        "column" : 23,
+        "source_fragment" : "lenPathSize"
+      },
+      "size" : 512,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "depotPortReg",
+      "id" : 10,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 33,
+        "column" : 21,
+        "source_fragment" : "depotPortReg"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "depotIdReg",
+      "id" : 11,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+        "line" : 36,
+        "column" : 20,
+        "source_fragment" : "depotIdReg"
+      },
+      "size" : 1,
+      "bitwidth" : 8
     }
   ],
   "calculations" : [
@@ -390,7 +390,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 240,
+        "line" : 248,
         "column" : 4,
         "source_fragment" : "update_checksum( ..."
       },
@@ -489,7 +489,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.lenPathSize"
+              "value" : "lenPathSize"
             },
             {
               "type" : "runtime_data",
@@ -594,7 +594,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.depotPortReg"
+              "value" : "depotPortReg"
             },
             {
               "type" : "hexstr",
@@ -624,7 +624,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.depotPortReg"
+              "value" : "depotPortReg"
             },
             {
               "type" : "hexstr",
@@ -667,7 +667,7 @@
       ]
     },
     {
-      "name" : "fast_reroute135",
+      "name" : "fast_reroute136",
       "id" : 7,
       "runtime_data" : [],
       "primitives" : [
@@ -676,7 +676,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "MyIngress.tempo1_experimento_Reg"
+              "value" : "tempo1_experimento_Reg"
             },
             {
               "type" : "hexstr",
@@ -689,9 +689,28 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 135,
-            "column" : 20,
+            "line" : 136,
+            "column" : 24,
             "source_fragment" : "tempo1_experimento_Reg.write(0, curr_time)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["pathHops", "pkt_timestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+            "line" : 108,
+            "column" : 24,
+            "source_fragment" : "standard_metadata.ingress_global_timestamp; //for more flows, this should be an array (register) ..."
           }
         }
       ]
@@ -733,7 +752,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.depotIdReg"
+              "value" : "depotIdReg"
             },
             {
               "type" : "hexstr",
@@ -756,7 +775,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.last_seen_pkt_timestamp"
+              "value" : "last_seen_pkt_timestamp"
             },
             {
               "type" : "field",
@@ -779,7 +798,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.maxTimeOutDepotReg"
+              "value" : "maxTimeOutDepotReg"
             },
             {
               "type" : "hexstr",
@@ -857,7 +876,7 @@
       ]
     },
     {
-      "name" : "fast_reroute156",
+      "name" : "fast_reroute159",
       "id" : 9,
       "runtime_data" : [],
       "primitives" : [
@@ -866,7 +885,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "MyIngress.last_seen_pkt_timestamp"
+              "value" : "last_seen_pkt_timestamp"
             },
             {
               "type" : "field",
@@ -879,7 +898,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 156,
+            "line" : 159,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -887,7 +906,7 @@
       ]
     },
     {
-      "name" : "fast_reroute149",
+      "name" : "fast_reroute152",
       "id" : 10,
       "runtime_data" : [],
       "primitives" : [
@@ -900,7 +919,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.NH"
+              "value" : "NH"
             },
             {
               "type" : "field",
@@ -909,7 +928,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 149,
+            "line" : 152,
             "column" : 12,
             "source_fragment" : "NH.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -941,7 +960,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 152,
+            "line" : 155,
             "column" : 12,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
           }
@@ -949,7 +968,7 @@
       ]
     },
     {
-      "name" : "fast_reroute162",
+      "name" : "fast_reroute165",
       "id" : 11,
       "runtime_data" : [],
       "primitives" : [
@@ -967,7 +986,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 162,
+            "line" : 165,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.has_visited_depot = 1"
           }
@@ -975,7 +994,7 @@
       ]
     },
     {
-      "name" : "fast_reroute169",
+      "name" : "fast_reroute172",
       "id" : 12,
       "runtime_data" : [],
       "primitives" : [
@@ -1006,7 +1025,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 169,
+            "line" : 172,
             "column" : 16,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
           }
@@ -1014,7 +1033,7 @@
       ]
     },
     {
-      "name" : "fast_reroute181",
+      "name" : "fast_reroute185",
       "id" : 13,
       "runtime_data" : [],
       "primitives" : [
@@ -1023,7 +1042,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "MyIngress.tempo2_experimento_Reg"
+              "value" : "tempo2_experimento_Reg"
             },
             {
               "type" : "hexstr",
@@ -1036,9 +1055,9 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 181,
+            "line" : 185,
             "column" : 20,
-            "source_fragment" : "tempo2_experimento_Reg.write(0, curr_time)"
+            "source_fragment" : "tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp)"
           }
         },
         {
@@ -1046,7 +1065,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "MyIngress.isFirstResponseReg"
+              "value" : "isFirstResponseReg"
             },
             {
               "type" : "hexstr",
@@ -1059,7 +1078,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 182,
+            "line" : 186,
             "column" : 20,
             "source_fragment" : "isFirstResponseReg.write(0, 1)"
           }
@@ -1067,33 +1086,10 @@
       ]
     },
     {
-      "name" : "fast_reroute177",
+      "name" : "fast_reroute182",
       "id" : 14,
       "runtime_data" : [],
       "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "tempo1_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.tempo1_experimento_Reg"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 177,
-            "column" : 16,
-            "source_fragment" : "tempo1_experimento_Reg.read(tempo1, 0)"
-          }
-        },
         {
           "op" : "register_read",
           "parameters" : [
@@ -1103,7 +1099,7 @@
             },
             {
               "type" : "register_array",
-              "value" : "MyIngress.isFirstResponseReg"
+              "value" : "isFirstResponseReg"
             },
             {
               "type" : "hexstr",
@@ -1112,7 +1108,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 179,
+            "line" : 182,
             "column" : 16,
             "source_fragment" : "isFirstResponseReg.read(x, 0)"
           }
@@ -1120,7 +1116,7 @@
       ]
     },
     {
-      "name" : "fast_reroute185",
+      "name" : "fast_reroute190",
       "id" : 15,
       "runtime_data" : [],
       "primitives" : [
@@ -1151,7 +1147,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 185,
+            "line" : 190,
             "column" : 16,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
           }
@@ -1159,7 +1155,7 @@
       ]
     },
     {
-      "name" : "fast_reroute188",
+      "name" : "fast_reroute193",
       "id" : 16,
       "runtime_data" : [],
       "primitives" : [
@@ -1200,7 +1196,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 188,
+            "line" : 193,
             "column" : 40,
             "source_fragment" : "meta.num_pkts + 1"
           }
@@ -1223,7 +1219,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 188,
+            "line" : 193,
             "column" : 12,
             "source_fragment" : "global_pkt_counter.write(0, meta.num_pkts + 1)"
           }
@@ -1249,7 +1245,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 205,
+            "line" : 210,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) 7"
           }
@@ -1268,7 +1264,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 206,
+            "line" : 211,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.tos = 1"
           }
@@ -1298,7 +1294,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 211,
+            "line" : 216,
             "column" : 8,
             "source_fragment" : "cpu_counter.read(counter_var, 0)"
           }
@@ -1340,7 +1336,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 212,
+            "line" : 217,
             "column" : 29,
             "source_fragment" : "counter_var + 1"
           }
@@ -1363,7 +1359,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 212,
+            "line" : 217,
             "column" : 8,
             "source_fragment" : "cpu_counter.write(0, counter_var + 1)"
           }
@@ -1386,7 +1382,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 213,
+            "line" : 218,
             "column" : 8,
             "source_fragment" : "cpu_counter.read(counter_var, 0)"
           }
@@ -1405,7 +1401,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 214,
+            "line" : 219,
             "column" : 8,
             "source_fragment" : "hdr.pathHops.num_pkts = counter_var"
           }
@@ -1418,6 +1414,29 @@
       "runtime_data" : [],
       "primitives" : [
         {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tempo1_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "tempo1_experimento_Reg"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
+            "line" : 226,
+            "column" : 8,
+            "source_fragment" : "tempo1_experimento_Reg.read(tempo1, 0)"
+          }
+        },
+        {
           "op" : "assign",
           "parameters" : [
             {
@@ -1426,14 +1445,14 @@
             },
             {
               "type" : "field",
-              "value" : ["standard_metadata", "egress_global_timestamp"]
+              "value" : ["scalars", "tempo1_0"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 218,
+            "line" : 227,
             "column" : 8,
-            "source_fragment" : "hdr.pathHops.pkt_timestamp = standard_metadata.egress_global_timestamp"
+            "source_fragment" : "hdr.pathHops.pkt_timestamp = tempo1"
           }
         }
       ]
@@ -1445,7 +1464,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 31,
+        "line" : 51,
         "column" : 8,
         "source_fragment" : "MyIngress"
       },
@@ -1510,13 +1529,13 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute135",
+          "name" : "tbl_fast_reroute136",
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 135,
-            "column" : 20,
-            "source_fragment" : "tempo1_experimento_Reg.write(0, curr_time)"
+            "line" : 136,
+            "column" : 24,
+            "source_fragment" : "tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos) ..."
           },
           "key" : [],
           "match_type" : "exact",
@@ -1526,10 +1545,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [7],
-          "actions" : ["fast_reroute135"],
+          "actions" : ["fast_reroute136"],
           "base_default_next" : "MyIngress.len_path_size",
           "next_tables" : {
-            "fast_reroute135" : "MyIngress.len_path_size"
+            "fast_reroute136" : "MyIngress.len_path_size"
           },
           "default_entry" : {
             "action_id" : 7,
@@ -1580,7 +1599,7 @@
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 145,
+            "line" : 148,
             "column" : 16,
             "source_fragment" : "clone_packet_i2e()"
           },
@@ -1593,9 +1612,9 @@
           "direct_meters" : null,
           "action_ids" : [6],
           "actions" : ["MyIngress.clone_packet_i2e"],
-          "base_default_next" : "tbl_fast_reroute149",
+          "base_default_next" : "tbl_fast_reroute152",
           "next_tables" : {
-            "MyIngress.clone_packet_i2e" : "tbl_fast_reroute149"
+            "MyIngress.clone_packet_i2e" : "tbl_fast_reroute152"
           },
           "default_entry" : {
             "action_id" : 6,
@@ -1605,11 +1624,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute149",
+          "name" : "tbl_fast_reroute152",
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 149,
+            "line" : 152,
             "column" : 12,
             "source_fragment" : "NH.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -1621,10 +1640,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [10],
-          "actions" : ["fast_reroute149"],
+          "actions" : ["fast_reroute152"],
           "base_default_next" : "node_12",
           "next_tables" : {
-            "fast_reroute149" : "node_12"
+            "fast_reroute152" : "node_12"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -1634,11 +1653,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute156",
+          "name" : "tbl_fast_reroute159",
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 156,
+            "line" : 159,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
           },
@@ -1650,10 +1669,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [9],
-          "actions" : ["fast_reroute156"],
+          "actions" : ["fast_reroute159"],
           "base_default_next" : "node_14",
           "next_tables" : {
-            "fast_reroute156" : "node_14"
+            "fast_reroute159" : "node_14"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -1663,11 +1682,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute162",
+          "name" : "tbl_fast_reroute165",
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 162,
+            "line" : 165,
             "column" : 47,
             "source_fragment" : "="
           },
@@ -1679,10 +1698,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [11],
-          "actions" : ["fast_reroute162"],
+          "actions" : ["fast_reroute165"],
           "base_default_next" : "node_16",
           "next_tables" : {
-            "fast_reroute162" : "node_16"
+            "fast_reroute165" : "node_16"
           },
           "default_entry" : {
             "action_id" : 11,
@@ -1696,7 +1715,7 @@
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 168,
+            "line" : 171,
             "column" : 16,
             "source_fragment" : "read_depot_port()"
           },
@@ -1709,9 +1728,9 @@
           "direct_meters" : null,
           "action_ids" : [4],
           "actions" : ["MyIngress.read_depot_port"],
-          "base_default_next" : "tbl_fast_reroute169",
+          "base_default_next" : "tbl_fast_reroute172",
           "next_tables" : {
-            "MyIngress.read_depot_port" : "tbl_fast_reroute169"
+            "MyIngress.read_depot_port" : "tbl_fast_reroute172"
           },
           "default_entry" : {
             "action_id" : 4,
@@ -1721,11 +1740,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute169",
+          "name" : "tbl_fast_reroute172",
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 169,
+            "line" : 172,
             "column" : 46,
             "source_fragment" : "="
           },
@@ -1737,10 +1756,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [12],
-          "actions" : ["fast_reroute169"],
+          "actions" : ["fast_reroute172"],
           "base_default_next" : "tbl_reset_curr_path_size",
           "next_tables" : {
-            "fast_reroute169" : "tbl_reset_curr_path_size"
+            "fast_reroute172" : "tbl_reset_curr_path_size"
           },
           "default_entry" : {
             "action_id" : 12,
@@ -1754,7 +1773,7 @@
           "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 171,
+            "line" : 174,
             "column" : 16,
             "source_fragment" : "reset_curr_path_size()"
           },
@@ -1779,13 +1798,13 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute177",
+          "name" : "tbl_fast_reroute182",
           "id" : 11,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 177,
+            "line" : 182,
             "column" : 16,
-            "source_fragment" : "tempo1_experimento_Reg.read(tempo1, 0); ..."
+            "source_fragment" : "isFirstResponseReg.read(x, 0)"
           },
           "key" : [],
           "match_type" : "exact",
@@ -1795,10 +1814,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [14],
-          "actions" : ["fast_reroute177"],
+          "actions" : ["fast_reroute182"],
           "base_default_next" : "node_22",
           "next_tables" : {
-            "fast_reroute177" : "node_22"
+            "fast_reroute182" : "node_22"
           },
           "default_entry" : {
             "action_id" : 14,
@@ -1808,13 +1827,13 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute181",
+          "name" : "tbl_fast_reroute185",
           "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 181,
+            "line" : 185,
             "column" : 20,
-            "source_fragment" : "tempo2_experimento_Reg.write(0, curr_time); //(end timestamp) ..."
+            "source_fragment" : "tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp) ..."
           },
           "key" : [],
           "match_type" : "exact",
@@ -1824,10 +1843,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [13],
-          "actions" : ["fast_reroute181"],
+          "actions" : ["fast_reroute185"],
           "base_default_next" : "tbl_read_depot_port_0",
           "next_tables" : {
-            "fast_reroute181" : "tbl_read_depot_port_0"
+            "fast_reroute185" : "tbl_read_depot_port_0"
           },
           "default_entry" : {
             "action_id" : 13,
@@ -1841,7 +1860,7 @@
           "id" : 13,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 184,
+            "line" : 189,
             "column" : 16,
             "source_fragment" : "read_depot_port()"
           },
@@ -1854,9 +1873,9 @@
           "direct_meters" : null,
           "action_ids" : [5],
           "actions" : ["MyIngress.read_depot_port"],
-          "base_default_next" : "tbl_fast_reroute185",
+          "base_default_next" : "tbl_fast_reroute190",
           "next_tables" : {
-            "MyIngress.read_depot_port" : "tbl_fast_reroute185"
+            "MyIngress.read_depot_port" : "tbl_fast_reroute190"
           },
           "default_entry" : {
             "action_id" : 5,
@@ -1866,11 +1885,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute185",
+          "name" : "tbl_fast_reroute190",
           "id" : 14,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 185,
+            "line" : 190,
             "column" : 46,
             "source_fragment" : "="
           },
@@ -1882,10 +1901,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [15],
-          "actions" : ["fast_reroute185"],
-          "base_default_next" : "tbl_fast_reroute188",
+          "actions" : ["fast_reroute190"],
+          "base_default_next" : "tbl_fast_reroute193",
           "next_tables" : {
-            "fast_reroute185" : "tbl_fast_reroute188"
+            "fast_reroute190" : "tbl_fast_reroute193"
           },
           "default_entry" : {
             "action_id" : 15,
@@ -1895,11 +1914,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute188",
+          "name" : "tbl_fast_reroute193",
           "id" : 15,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 188,
+            "line" : 193,
             "column" : 12,
             "source_fragment" : "global_pkt_counter.write(0, meta.num_pkts + 1)"
           },
@@ -1911,10 +1930,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [16],
-          "actions" : ["fast_reroute188"],
+          "actions" : ["fast_reroute193"],
           "base_default_next" : null,
           "next_tables" : {
-            "fast_reroute188" : null
+            "fast_reroute193" : null
           },
           "default_entry" : {
             "action_id" : 16,
@@ -1954,8 +1973,8 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 132,
-            "column" : 15,
+            "line" : 133,
+            "column" : 19,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
           },
           "expression" : {
@@ -2000,25 +2019,45 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 134,
-            "column" : 19,
-            "source_fragment" : "hdr.pathHops.pkt_id == 0"
+            "line" : 135,
+            "column" : 23,
+            "source_fragment" : "last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "==",
+              "op" : "and",
               "left" : {
-                "type" : "field",
-                "value" : ["pathHops", "pkt_id"]
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "last_seen_0"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x000000000000"
+                  }
+                }
               },
               "right" : {
-                "type" : "hexstr",
-                "value" : "0x0000000000000000"
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["pathHops", "pkt_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x0000000000000001"
+                  }
+                }
               }
             }
           },
-          "true_next" : "tbl_fast_reroute135",
+          "true_next" : "tbl_fast_reroute136",
           "false_next" : "MyIngress.len_path_size"
         },
         {
@@ -2026,7 +2065,7 @@
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 144,
+            "line" : 147,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold"
           },
@@ -2085,14 +2124,14 @@
             }
           },
           "true_next" : "tbl_clone_packet_i2e",
-          "false_next" : "tbl_fast_reroute149"
+          "false_next" : "tbl_fast_reroute152"
         },
         {
           "name" : "node_12",
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 155,
+            "line" : 158,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0"
           },
@@ -2130,7 +2169,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute156",
+          "true_next" : "tbl_fast_reroute159",
           "false_next" : "node_14"
         },
         {
@@ -2138,7 +2177,7 @@
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 161,
+            "line" : 164,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
           },
@@ -2176,7 +2215,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute162",
+          "true_next" : "tbl_fast_reroute165",
           "false_next" : "node_16"
         },
         {
@@ -2184,7 +2223,7 @@
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 167,
+            "line" : 170,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.numHop >= meta.lenPathSize && hdr.pathHops.has_visited_depot > 0"
           },
@@ -2250,9 +2289,9 @@
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 175,
+            "line" : 178,
             "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.pkt_id > 0 && hdr.ipv4.ttl == (bit<8>)128"
+            "source_fragment" : "hdr.ipv4.ttl == (bit<8>)128 && swId == depotId && hdr.pathHops.pkt_id == (bit<64>)0"
           },
           "expression" : {
             "type" : "expression",
@@ -2268,6 +2307,20 @@
                       "op" : "==",
                       "left" : {
                         "type" : "field",
+                        "value" : ["ipv4", "ttl"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x80"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "field",
                         "value" : ["scalars", "swId_0"]
                       },
                       "right" : {
@@ -2275,20 +2328,6 @@
                         "value" : ["scalars", "depotId_0"]
                       }
                     }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "pkt_id"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x0000000000000000"
-                      }
-                    }
                   }
                 }
               },
@@ -2298,83 +2337,43 @@
                   "op" : "==",
                   "left" : {
                     "type" : "field",
-                    "value" : ["ipv4", "ttl"]
+                    "value" : ["pathHops", "pkt_id"]
                   },
                   "right" : {
                     "type" : "hexstr",
-                    "value" : "0x80"
+                    "value" : "0x0000000000000000"
                   }
                 }
               }
             }
           },
-          "true_next" : "tbl_fast_reroute177",
-          "false_next" : "tbl_fast_reroute188"
+          "true_next" : "tbl_fast_reroute182",
+          "false_next" : "tbl_fast_reroute193"
         },
         {
           "name" : "node_22",
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 180,
+            "line" : 184,
             "column" : 19,
-            "source_fragment" : "curr_time - tempo1 >= threshold && x == (bit<1>) 0"
+            "source_fragment" : "x < 1"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "and",
+              "op" : "<",
               "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">=",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "-",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["standard_metadata", "ingress_global_timestamp"]
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "tempo1_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffff"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "threshold_0"]
-                  }
-                }
+                "type" : "field",
+                "value" : ["scalars", "x_0"]
               },
               "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "x_0"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00"
-                  }
-                }
+                "type" : "hexstr",
+                "value" : "0x01"
               }
             }
           },
-          "true_next" : "tbl_fast_reroute181",
+          "true_next" : "tbl_fast_reroute185",
           "false_next" : "tbl_read_depot_port_0"
         }
       ]
@@ -2384,7 +2383,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 198,
+        "line" : 203,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -2395,7 +2394,7 @@
           "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 226,
+            "line" : 234,
             "column" : 12,
             "source_fragment" : "change_egress_port()"
           },
@@ -2424,7 +2423,7 @@
           "id" : 17,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 227,
+            "line" : 235,
             "column" : 12,
             "source_fragment" : "increment_counter()"
           },
@@ -2453,7 +2452,7 @@
           "id" : 18,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 228,
+            "line" : 236,
             "column" : 12,
             "source_fragment" : "get_timestamp()"
           },
@@ -2485,7 +2484,7 @@
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-            "line" : 225,
+            "line" : 233,
             "column" : 11,
             "source_fragment" : "standard_metadata.instance_type == 1"
           },
@@ -2515,7 +2514,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/Patcher_v0/p4src/fast_reroute.p4",
-        "line" : 240,
+        "line" : 248,
         "column" : 4,
         "source_fragment" : "update_checksum( ..."
       },

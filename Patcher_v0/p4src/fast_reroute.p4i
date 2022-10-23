@@ -1055,6 +1055,26 @@ control MyDeparser(packet_out packet, in headers hdr) {
 register<bit<8>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
 register<bit<64>>(1) global_pkt_counter;
 
+register<bit<1>>(1) isFirstResponseReg;
+register<bit<48>>(1) tempo1_experimento_Reg;
+register<bit<48>>(1) tempo2_experimento_Reg;
+
+//time management
+register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
+register<bit<48>>(512) last_seen_pkt_timestamp;
+
+// Register to look up the port of the default next hop.
+register<bit<32>>(512) NH; //When a failure occurs, rewrite the next hop positions in this register
+
+//This register is used to mantain the size of each path - used to compare whether the current size is equal to the max size
+register<bit<32>>(512) lenPathSize;
+
+//Stores the depot port to host (special case - last hop no failures - i.e., max timestamp not exceeded)
+register<bit<32>>(1) depotPortReg;
+
+//Contains the depot id (populated by the control plane)
+register<bit<8>>(1) depotIdReg; //depot switch id (universal)
+
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -1071,26 +1091,6 @@ control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
 control MyIngress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
-
-    //time management
-    register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
-    register<bit<48>>(512) last_seen_pkt_timestamp;
-
-    // Register to look up the port of the default next hop.
-    register<bit<32>>(512) NH; //When a failure occurs, rewrite the next hop positions in this register
-
-    //This register is used to mantain the size of each path - used to compare whether the current size is equal to the max size
-    register<bit<32>>(512) lenPathSize;
-
-    //Stores the depot port to host (special case - last hop no failures - i.e., max timestamp not exceeded)
-    register<bit<32>>(1) depotPortReg;
-
-    //Contains the depot id (populated by the control plane)
-    register<bit<8>>(1) depotIdReg; //depot switch id (universal)
-
-    register<bit<1>>(1) isFirstResponseReg;
-    register<bit<48>>(1) tempo1_experimento_Reg;
-    register<bit<48>>(1) tempo2_experimento_Reg;
 
     action drop() {
         mark_to_drop(standard_metadata);
@@ -1169,10 +1169,13 @@ control MyIngress(inout headers hdr,
             meta.ingress_timestamp = curr_time;
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                //if(last_seen == 0 && num_pkts == (bit<64>)0){
-                if(hdr.pathHops.pkt_id == 0){
-                    tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+            @atomic{
+                if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
+                    //if(last_seen == 0 && num_pkts == (bit<64>)0){
+                    if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
+                        tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                        hdr.pathHops.pkt_timestamp = curr_time;
+                    }
                 }
             }
 
@@ -1212,15 +1215,17 @@ control MyIngress(inout headers hdr,
             }
 
             //receive response from control plane
-            if(swId == depotId && hdr.pathHops.pkt_id > 0 && hdr.ipv4.ttl == (bit<8>)128){
+            if(hdr.ipv4.ttl == (bit<8>)128 && swId == depotId && hdr.pathHops.pkt_id == (bit<64>)0){
                 bit<48> tempo1;
                 tempo1_experimento_Reg.read(tempo1, 0);
                 bit<1> x;
                 isFirstResponseReg.read(x, 0);
-                if(curr_time - tempo1 >= threshold && x == (bit<1>) 0){
-                    tempo2_experimento_Reg.write(0, curr_time); //(end timestamp)
+                //if(x == (bit<1>) 0){
+                if(x < 1){
+                    tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp)
                     isFirstResponseReg.write(0, 1);
                 }
+                //tempo2_experimento_Reg.write(0, standard_metadata.ingress_global_timestamp); //(end timestamp)
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
             }
@@ -1255,8 +1260,11 @@ control MyEgress(inout headers hdr,
     }
 
     action get_timestamp(){
-        hdr.pathHops.pkt_timestamp = standard_metadata.egress_global_timestamp;
+        //hdr.pathHops.pkt_timestamp = standard_metadata.egress_global_timestamp;
         //hdr.pathHops.pkt_timestamp = meta.ingress_timestamp;
+        bit<48> tempo1;
+        tempo1_experimento_Reg.read(tempo1, 0);
+        hdr.pathHops.pkt_timestamp = tempo1;
     }
 
     apply {

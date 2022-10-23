@@ -337,9 +337,12 @@ class RerouteController(object):
             #start_dp = control.register_read('tempo1_experimento_Reg', 0)
             start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
             print("start_dp: ", start_dp, "us")
+            start_dp2 = control.register_read('tempo1_experimento_Reg', 0)
+            print("start_dp2: ", start_dp2, "us")
+            #capture[len(capture)-1].show2()
 
             #send response to data plane and get end_dp
-            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=-1)
+            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0)
             sendp(pkt, iface=iface, verbose=False)
 
             sleep(2)
@@ -347,12 +350,11 @@ class RerouteController(object):
 
             print("end_dp: ", end_dp, "us")
             total_dp = end_dp - start_dp
+            total_dp2 = end_dp - start_dp2
             print("Total time DP: ", total_dp, "us")
-            #total = total_dp + total_cp
-            #print("Total time DP + CP: ", total)
-
-                    
-
+            print("Total time DP2: ", total_dp2, "us")
+            isFirst = control.register_read('isFirstResponseReg', 0)
+            print("isFirst...: ", isFirst)
 
 
                                                 

@@ -120,7 +120,7 @@ net.addP4Switch('s60')
 net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
 net.setIntfPort('s60', 's1', 1)
 net.setIntfPort('s1', 's60', 7)
-net.setDelay('s1', 's60', 50)
+#net.setDelay('s1', 's60', 50)
 
 #net.setDelay('s1', 's2', 5)
 #net.setDelay('s2', 's3', 5)
@@ -136,7 +136,7 @@ net.mixed()
 
 # Nodes general options
 #net.enableCpuPortAll() #enables a special interface to a controller for all switches
-net.enableCpuPort('s1') #enables a special interface to cpu/controller for a single switch
+#net.enableCpuPort('s1') #enables a special interface to cpu/controller for a single switch
 net.disablePcapDumpAll()
 net.enableLogAll()
 net.enableCli()
