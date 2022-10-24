@@ -55,7 +55,7 @@ class RerouteController(object):
 
         #link failure order: [[s1-s2], [s2-s3], ...]
         self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
-        self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
+        self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
         #print("depot ==>", self.depot)

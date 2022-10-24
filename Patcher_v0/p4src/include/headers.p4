@@ -53,6 +53,7 @@ header pathHops_t{
     bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
     bit<32> path_id; //same as "meta.indexPath"
     bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)
+    bit<48> last_seen_temp; //temporary debug field
 }
 
 struct metadata {

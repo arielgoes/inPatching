@@ -186,19 +186,20 @@ control MyIngress(inout headers hdr,
             global_pkt_counter.read(num_pkts, 0);
 
             //The packet enters the depot switch for the first time (beggining of the cycle)
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
-                //if(last_seen == 0 && num_pkts == (bit<64>)0){
-                if(hdr.pathHops.pkt_id == 0){
+            /*if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
+                if(hdr.pathHops.pkt_id == (bit<64>)1){
                     temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                 }
-            }
-
-            /*if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                if(last_seen == 0 && num_pkts == (bit<64>)0){
-                //if(last_seen == 0 && hdr.pathHops.pkt_id == 1){
-                    temp1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                }
             }*/
+
+            //The packet enters the depot switch for the first time (beggining of the cycle)   
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
+                if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
+                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
+                    last_seen_pkt_timestamp.write(0, curr_time);
+                    last_seen_pkt_timestamp.read(last_seen, 0);
+                }
+            }
 
             tempo_i2e_depot.write(0, curr_time); //(debug)
 
@@ -212,7 +213,7 @@ control MyIngress(inout headers hdr,
 
 
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0 && num_pkts > 0){
+            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
                 if(hdr.pathHops.path_id == 0){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -344,7 +345,7 @@ control MyIngress(inout headers hdr,
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
             //used for experiments only
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.pkt_id > 1){
+            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0 /*&& hdr.pathHops.pkt_id > 1*/){
                 bit<48> tempo1;
                 temporario1_experimento_Reg.read(tempo1, 0);
                 bit<1> x;

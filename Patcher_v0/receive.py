@@ -14,7 +14,8 @@ class PathHops(Packet):
                    BitField("num_pkts", 0, 64),
                    BitField("pkt_timestamp", 0, 48),
                    IntField("path_id", 0),
-                   ByteField("has_visited_depot", 0)] #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
+                   ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
+                   BitField("last_seen_temp", 0, 48)]
 bind_layers(IP, PathHops, proto=0x45)
 
 def handle_pkt(pkt):
