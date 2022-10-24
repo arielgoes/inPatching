@@ -1,5 +1,7 @@
 from p4utils.mininetlib.network_API import NetworkAPI
 
+CONTROLLER_DELAY_MS=200
+
 net = NetworkAPI()
 net.setLogLevel('info')
 #net.disableLogAll()
@@ -120,7 +122,11 @@ net.addP4Switch('s60')
 net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
 net.setIntfPort('s60', 's1', 1)
 net.setIntfPort('s1', 's60', 7)
-net.setDelay('s1', 's60', 1)
+net.setDelay('s1', 's60', CONTROLLER_DELAY_MS)
+#net.setDelay('s1', 's60', 1)
+
+with open('CONTROLLER_DELAY_MS.txt', 'w') as control_delay:
+	control_delay.write(str(CONTROLLER_DELAY_MS))
 
 #net.setDelay('s1', 's2', 5)
 #net.setDelay('s2', 's3', 5)

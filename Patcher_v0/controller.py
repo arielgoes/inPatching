@@ -55,7 +55,7 @@ class RerouteController(object):
         self.controllers = {}
         self.connect_to_switches()
         #self.reset_states()
-        self.maxTimeOut = 300000 #300000us = 300ms = 0.3sec
+        self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
@@ -344,9 +344,13 @@ class RerouteController(object):
             total_dp = end_dp - start_dp
             #total_dp2 = end_dp - start_dp2
             print("Total time DP: ", total_dp, "us")
-            #print("Total time DP2: ", total_dp2, "us")
-            #isFirst = control.register_read('isFirstResponseReg', 0)
-            #print("isFirst...: ", isFirst)
+
+            with open('CONTROLLER_DELAY_MS.txt', 'r') as cp_delay:
+                control_delay = cp_delay.read()
+
+            with open('Patcher_v0_time.txt', 'a') as sys.stdout:
+                failed_links = self.check_all_links()
+                print(total_dp, self.maxTimeOut, control_delay, failed_links[0][0], failed_links[0][1])
 
 
                                                 

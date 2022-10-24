@@ -40,8 +40,6 @@ control MyIngress(inout headers hdr,
     register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH_2;
 
     register<bit<1>>(1) isFirstResponseReg;
-
-
     register<bit<64>>(1) global_pkt_counter;
 
     //The flow logic to access/update alternative paths: path_id_X_pointer_reg -> whichAltSwitchReg -> path_id_X_path_reg

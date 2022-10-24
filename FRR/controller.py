@@ -75,7 +75,7 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        #self.do_fail(line="s1 s2")
+        self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
@@ -110,7 +110,7 @@ class RerouteController(object):
 
     def install_primary_entries(self):
         """Install the mapping from prefix to nexthop ids for all switches."""
-        #self.reset_states()
+        self.reset_states()
 
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -278,13 +278,17 @@ class RerouteController(object):
         input("Press Enter to continue...")
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)
-        start2 = control.register_read('temp1_experimento_Reg', 0)
+        #start2 = control.register_read('temp1_experimento_Reg', 0)
         end = control.register_read('temporario2_experimento_Reg', 0)
         total = end - start
-        print("start: ", start)
-        print("start2: ", start2)
-        print("end: ", end)
-        print("Total time: ", total, "us")
+
+        with open('FRR_time.txt', 'a') as sys.stdout:
+            #print("start: ", start)
+            #print("start2: ", start2)
+            #print("end: ", end)
+            #print("Total time: ", total, "us")
+            failed_links = self.check_all_links()
+            print(total, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1])
 
 
     def get_host_net(self, host):
