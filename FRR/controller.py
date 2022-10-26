@@ -75,11 +75,11 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        self.do_fail(line="s1 s2")
+        #self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        #self.do_fail(line="s5 s1")
+        self.do_fail(line="s5 s1")
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
         self.install_alternative_entries()
@@ -275,20 +275,17 @@ class RerouteController(object):
             curr_path_index += 1
         curr_path_index = 0
 
-        input("Press Enter to continue...")
+        #input("Press Enter to continue...")
+        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
+        sleep(2)
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)
-        #start2 = control.register_read('temp1_experimento_Reg', 0)
         end = control.register_read('temporario2_experimento_Reg', 0)
         total = end - start
+        failed_links = self.check_all_links()
 
-        with open('FRR_time.txt', 'a') as sys.stdout:
-            #print("start: ", start)
-            #print("start2: ", start2)
-            #print("end: ", end)
-            #print("Total time: ", total, "us")
-            failed_links = self.check_all_links()
-            print(total, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1])
+        with open('FRR_time_no-sleep_'+str(failed_links[0][0])+'-'+str(failed_links[0][1])+'.txt', 'a+', 0o777) as sys.stdout:
+            print(total, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1], 0)
 
 
     def get_host_net(self, host):

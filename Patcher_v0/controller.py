@@ -327,7 +327,7 @@ class RerouteController(object):
         print("Total time CP: ", total_cp.microseconds, "us")
 
         control = self.controllers[self.depot]
-        capture[len(capture)-1].show2()
+        #capture[len(capture)-1].show2()
         #start_dp = control.register_read('tempo1_experimento_Reg', 0)
         start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
         print("start_dp: ", start_dp, "us")
