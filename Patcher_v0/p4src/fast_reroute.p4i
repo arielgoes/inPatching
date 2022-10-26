@@ -1054,7 +1054,6 @@ control MyDeparser(packet_out packet, in headers hdr) {
 
 //Contains the switch id (populated by the control plane)
 register<bit<8>>(1) swIdReg; //switch id [1, topology size] - e.g., s1,s2,s3,s4,s5,s6,s7. # of switches = 7
-register<bit<64>>(1) global_pkt_counter;
 
 register<bit<1>>(1) isFirstResponseReg;
 register<bit<48>>(1) tempo1_experimento_Reg;
@@ -1168,8 +1167,6 @@ control MyIngress(inout headers hdr,
             maxTimeOutDepotReg.read(threshold, 0);
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
-            //bit<64> num_pkts;
-            global_pkt_counter.read(meta.num_pkts, 0);
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
@@ -1177,7 +1174,6 @@ control MyIngress(inout headers hdr,
 
             //The packet enters the depot switch for the first time (beggining of the cycle)   
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
-                //if(last_seen == 0 && num_pkts == (bit<64>)0){
                 if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
                     tempo1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
                     pkt_id_Reg.write(0, hdr.pathHops.pkt_id);
@@ -1239,8 +1235,6 @@ control MyIngress(inout headers hdr,
                 //Reset curr path size
                 reset_curr_path_size();
             }
-
-            global_pkt_counter.write(0, meta.num_pkts + 1); //update packet counter
 
         }
     //}

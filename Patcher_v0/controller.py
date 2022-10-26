@@ -54,7 +54,7 @@ class RerouteController(object):
         self.topo = load_topo('topology.json')
         self.controllers = {}
         self.connect_to_switches()
-        #self.reset_states()
+        self.reset_states()
         self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
@@ -100,7 +100,6 @@ class RerouteController(object):
 
     def reset_states(self):
         """Resets registers, tables, etc."""
-        #print("controllers: ", self.controllers.values())
         for control in self.controllers.values():
             control.reset_state()
 
@@ -108,7 +107,7 @@ class RerouteController(object):
     def install_primary_entries(self):
 
         #reset states (registers, tables, etc.)
-        #self.reset_states()
+        self.reset_states()
         
         #save the depot switch id into a register for further operations
         control = self.controllers[self.depot]
@@ -294,66 +293,68 @@ class RerouteController(object):
         REPORT_MIRROR_SESSION_ID = 500
         control.mirroring_add(REPORT_MIRROR_SESSION_ID, 7)
 
+        with open('CONTROLLER_DELAY_MS.txt', 'r+', 0o777) as cp_delay:
+            control_delay = cp_delay.read()
+
         #get packet fields after sniffing
         old_count_pkts = 0
         count_pkts = 0
         #iface = "s1-cpu-eth1"
         iface = "s60-eth1"
-        while True:
-            capture = sniff(iface=iface, count=1)
-            print("got it!")
-            count_pkts = capture[len(capture)-1][PathHops].num_pkts
-            start_cp = datetime.now()
-            
-            #if the older counter is less than the current counter value, there is a new incoming notification (controller packet)
-            if old_count_pkts < count_pkts:
-                old_count_pkts = count_pkts
-                print("num packets ==> ", count_pkts)
+        #while True:
+        capture = sniff(iface=iface, count=1)
+        print("got it!")
+        count_pkts = capture[len(capture)-1][PathHops].num_pkts
+        start_cp = datetime.now()
+        
+        #if the older counter is less than the current counter value, there is a new incoming notification (controller packet)
+        if old_count_pkts < count_pkts:
+            old_count_pkts = count_pkts
+            print("num packets ==> ", count_pkts)
+            failures = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
+            is_a_match = self.apply_alternative_rules(failed_links=failures)
+            if is_a_match:
+                print("yeap")
+            else:
+                failures = [(t[1], t[0]) for t in failures]
+                print("nope: ", failures)
+                self.apply_alternative_rules(failed_links=failures)
 
-                failures = self.check_all_links() #Returns a lst(tuple(str, str)) of DOWN links - if any...
-                is_a_match = self.apply_alternative_rules(failed_links=failures)
-                if is_a_match:
-                    print("yeap")
-                else:
-                    failures = [(t[1], t[0]) for t in failures]
-                    print("nope: ", failures)
-                    self.apply_alternative_rules(failed_links=failures)
+        end_cp = datetime.now()
+        print("start_cp: ", start_cp.microsecond)
+        print("end_cp: ", end_cp.microsecond)
+        total_cp = end_cp - start_cp
+        print("Total time CP: ", total_cp.microseconds, "us")
 
-            end_cp = datetime.now()
-            print("start_cp: ", start_cp.microsecond)
-            print("end_cp: ", end_cp.microsecond)
-            total_cp = end_cp - start_cp
-            print("Total time CP: ", total_cp.microseconds, "us")
+        control = self.controllers[self.depot]
+        capture[len(capture)-1].show2()
+        #start_dp = control.register_read('tempo1_experimento_Reg', 0)
+        start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
+        print("start_dp: ", start_dp, "us")
+        #start_dp2 = control.register_read('tempo1_experimento_Reg', 0)
+        #print("start_dp2: ", start_dp2, "us")
 
-            control = self.controllers[self.depot]
-            capture[len(capture)-1].show2()
-            #start_dp = control.register_read('tempo1_experimento_Reg', 0)
-            start_dp = capture[len(capture)-1][PathHops].pkt_timestamp
-            print("start_dp: ", start_dp, "us")
-            #start_dp2 = control.register_read('tempo1_experimento_Reg', 0)
-            #print("start_dp2: ", start_dp2, "us")
+        #send response to data plane and get end_dp
+        pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=0)
+        sendp(pkt, iface=iface, verbose=False)
 
-            #send response to data plane and get end_dp
-            pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=0)
-            sendp(pkt, iface=iface, verbose=False)
+        sleep(1.5)
+        end_dp = control.register_read('tempo2_experimento_Reg', 0)
 
-            sleep(1)
-            end_dp = control.register_read('tempo2_experimento_Reg', 0)
+        print("end_dp: ", end_dp, "us")
+        total_dp = end_dp - start_dp
+        #total_dp2 = end_dp - start_dp2
+        print("Total time DP: ", total_dp, "us")
 
-            print("end_dp: ", end_dp, "us")
-            total_dp = end_dp - start_dp
-            #total_dp2 = end_dp - start_dp2
-            print("Total time DP: ", total_dp, "us")
+        #os.umask(0)
 
-            with open('CONTROLLER_DELAY_MS.txt', 'r') as cp_delay:
-                control_delay = cp_delay.read()
-
-            with open('Patcher_v0_time.txt', 'a') as sys.stdout:
-                failed_links = self.check_all_links()
-                print(total_dp, self.maxTimeOut, control_delay, failed_links[0][0], failed_links[0][1])
+        with open('Patcher_v0_time_no-sleep_'+str(control_delay)+'ms.txt', 'a+', 0o777) as sys.stdout:
+            failed_links = self.check_all_links()
+            print(total_dp, self.maxTimeOut, control_delay, failed_links[0][0], failed_links[0][1], total_cp.microseconds)
+        sys.stdout = sys.__stdout__ # reset stout to its original flow
 
 
-                                                
+                                        
 
     def failure_notification(self, failures):
         """Called if a link fails.

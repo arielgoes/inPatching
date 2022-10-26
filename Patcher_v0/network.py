@@ -1,6 +1,8 @@
 from p4utils.mininetlib.network_API import NetworkAPI
+#import sys
 
-CONTROLLER_DELAY_MS=200
+#sys.argv[1]
+CONTROLLER_DELAY_MS=15
 
 net = NetworkAPI()
 net.setLogLevel('info')
@@ -28,6 +30,8 @@ net.addP4Switch('s23')
 net.addP4Switch('s34')
 net.addP4Switch('s45')
 net.addP4Switch('s51')
+
+net.addP4Switch('s60')
 
 #add hosts
 net.addHost('h1')
@@ -118,14 +122,12 @@ net.setIntfPort('s51', 's5', 2)
 
 
 #set link delays
-net.addP4Switch('s60')
 net.addLink('s1', 's60', weight=1000) #a high weight to make it less "attractive" to Dijkstra's shortest path algorithm
 net.setIntfPort('s60', 's1', 1)
 net.setIntfPort('s1', 's60', 7)
 net.setDelay('s1', 's60', CONTROLLER_DELAY_MS)
-#net.setDelay('s1', 's60', 1)
 
-with open('CONTROLLER_DELAY_MS.txt', 'w') as control_delay:
+with open('CONTROLLER_DELAY_MS.txt', 'w+', 0o777) as control_delay: #read and write mode - no append
 	control_delay.write(str(CONTROLLER_DELAY_MS))
 
 #net.setDelay('s1', 's2', 5)
@@ -144,7 +146,8 @@ net.mixed()
 #net.enableCpuPortAll() #enables a special interface to a controller for all switches
 #net.enableCpuPort('s1') #enables a special interface to cpu/controller for a single switch
 net.disablePcapDumpAll()
-net.enableLogAll()
+#net.enableLogAll()
 net.enableCli()
+#net.disableCli()
 net.startNetwork()
 
