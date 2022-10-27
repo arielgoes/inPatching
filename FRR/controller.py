@@ -252,6 +252,12 @@ class RerouteController(object):
                     control.register_write("alternativeNH_1", curr_path_index, neighbor_port)
                     control.register_write("alternativeNH_2", curr_path_index, neighbor_port)
                     print("(" + switch + " => " + str(self.alternative_hops[curr_path_index][index]) + ")")
+            
+            #assuming there is only a single failure (for now), the alternative path size is the primary path size + 1...
+            control = self.controllers[self.depot]
+            alt_path_size = control.register_read('lenPrimaryPathSize', curr_path_index)
+            control.register_write('lenAlternativePathSize', curr_path_index, alt_path_size+1)
+            
             print()
             curr_path_index += 1
         
@@ -275,8 +281,9 @@ class RerouteController(object):
             curr_path_index += 1
         curr_path_index = 0
 
-        #input("Press Enter to continue...")
-        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
+
+        input("Press Enter to continue...")
+        #print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
         sleep(2)
         control = self.controllers[self.depot]
         start = control.register_read('temporario1_experimento_Reg', 0)

@@ -39,7 +39,7 @@ header ipv4_t {
 }
 
 header pathHops_t{
-    bit<64> pkt_id;
+    bit<64> pkt_id; //each packet in each flow is uniquely identified
     bit<32> numHop; //counts the current hop position (switch by switch)
     bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
     bit<32> path_id; //same as "meta.indexPath"

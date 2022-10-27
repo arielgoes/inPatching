@@ -6,11 +6,8 @@
 #include "include/headers.p4"
 #include "include/parsers.p4"
 
-register<bit<48>>(1) temporario1_experimento_Reg;
-register<bit<48>>(1) temp1_experimento_Reg;
-register<bit<48>>(1) temporario2_experimento_Reg;
-
-register<bit<48>>(1) tempo_i2e_depot;
+register<bit<48>>(N_PATHS) temporario1_experimento_Reg;
+register<bit<48>>(N_PATHS) temporario2_experimento_Reg;
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -39,8 +36,8 @@ control MyIngress(inout headers hdr,
     register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH_1;
     register<bit<PORT_WIDTH>>(N_PATHS) alternativeNH_2;
 
-    register<bit<1>>(1) isFirstResponseReg;
-    register<bit<64>>(1) global_pkt_counter;
+    //this register guarantees I'm setting the end_time (temporario2) only once.
+    register<bit<1>>(N_PATHS) isFirstResponseReg;
 
     //The flow logic to access/update alternative paths: path_id_X_pointer_reg -> whichAltSwitchReg -> path_id_X_path_reg
 
@@ -134,14 +131,11 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
 
-    register<bit<32>>(1) numHopDebugReg;
-
     apply {
         if (hdr.ipv4.isValid()){
 
             //update hop counter
             update_curr_path_size();
-            numHopDebugReg.write(0, hdr.pathHops.numHop);
 
             //get switch id
             bit<8> swId;
@@ -152,7 +146,6 @@ control MyIngress(inout headers hdr,
             //shift-left idea... (testing)
             bit<64> mask = 1; //00000000000000000000000000000001 (first position is just a filler) - IT IS ACTUALLY INDEXING "N_SW_ID - 1"
             mask = mask << swId; //shift operations are limited to variables of size up to 8 bits (bit<8>)
-            //debugReg.write(0, mask); //(debugging)
 
             //get current timestamp
             bit<48> curr_time;
@@ -165,7 +158,6 @@ control MyIngress(inout headers hdr,
             //last seen timestamp
             bit<48> last_seen;
             last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-
 
             //read max time out (e.g., 300ms) into a variable before 
             bit<48> threshold;
@@ -180,26 +172,14 @@ control MyIngress(inout headers hdr,
             isAltReg.read(isAltVar, hdr.pathHops.path_id);
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
-            bit<64> num_pkts;
-            global_pkt_counter.read(num_pkts, 0);
-
-            //The packet enters the depot switch for the first time (beggining of the cycle)
-            /*if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
-                if(hdr.pathHops.pkt_id == (bit<64>)1){
-                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                }
-            }*/
-
             //The packet enters the depot switch for the first time (beggining of the cycle)   
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
                 if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
-                    temporario1_experimento_Reg.write(0, curr_time); //(utilizado para experimentos)
-                    last_seen_pkt_timestamp.write(0, curr_time);
-                    last_seen_pkt_timestamp.read(last_seen, 0);
+                    temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos)
+                    last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                    last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
                 }
             }
-
-            tempo_i2e_depot.write(0, curr_time); //(debug)
 
             //update packet timestamp
             hdr.pathHops.pkt_timestamp = curr_time;
@@ -207,8 +187,7 @@ control MyIngress(inout headers hdr,
             //get length of the primary and alternative paths
             len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
-            lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, 0);
-
+            lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
             //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
@@ -282,7 +261,6 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.which_alt_switch = swIdTry;
             }
 
-
             //primary path cases
             if(hdr.pathHops.which_alt_switch == 0){
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
@@ -317,8 +295,8 @@ control MyIngress(inout headers hdr,
                     hdr.pathHops.is_alt = 0;
                 }
 
-                //if I let this commented, it will timeout until it finds "that" next hop working again. (Uncomment it for debugging)
-                /*if(meta.nextHop == 9999){ 
+                //if I let this commented, it will always work, but it is unrealistic. (Used for debugging)
+                /*if(meta.nextHop == 9999){
                     alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id);
                     hdr.pathHops.is_alt = 1;
                 }else{
@@ -326,7 +304,6 @@ control MyIngress(inout headers hdr,
                     hdr.pathHops.is_alt = 1;
                 }*/
             }
-
 
             forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id);
             if(hdr.pathHops.is_tracker > 0 || forcePrimaryPathVar > 0){ //if is_tracker: it is a special probe (is_tracker), force it into the primary path
@@ -345,22 +322,20 @@ control MyIngress(inout headers hdr,
             //used for experiments only
             if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0){
                 bit<48> tempo1;
-                temporario1_experimento_Reg.read(tempo1, 0);
+                temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;
-                isFirstResponseReg.read(x, 0);
+                isFirstResponseReg.read(x, hdr.pathHops.path_id);
                 if(curr_time - tempo1 >= threshold && x == (bit<1>) 0){
-                    temporario2_experimento_Reg.write(0, curr_time); //(end timestamp)
-                    isFirstResponseReg.write(0, 1);    
+                    temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
+                    isFirstResponseReg.write(hdr.pathHops.path_id, 1);    
                 }    
             }
             
-
             //update last seen packet
             if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
             }
-            
 
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
             if(swId == depotId && hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
@@ -370,14 +345,10 @@ control MyIngress(inout headers hdr,
                 reset_curr_path_size();
             }
 
-            //update packet counter
-            global_pkt_counter.write(0, num_pkts + 1); 
-
             //mark as visited (at the depot)
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 hdr.pathHops.has_visited_depot = 1;
             }
-
         }
     }
 }
@@ -388,11 +359,8 @@ control MyIngress(inout headers hdr,
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
-
     apply {
-        bit<48> temp;
-        tempo_i2e_depot.read(temp, 0);
-        tempo_i2e_depot.write(0, standard_metadata.egress_global_timestamp - temp); //(debug)
+
     }
 
 }
