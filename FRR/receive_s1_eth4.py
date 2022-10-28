@@ -17,7 +17,8 @@ class PathHops(Packet):
                    ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
                    BitField("num_times_curr_switch", 0, 64), # 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one)
                    BitField("is_alt", 0, 8), #force packet to go by the alternative paths
-                   BitField("is_tracker", 0, 8)] #every 'X' time interval, we send a probe tracker at the primary path to see if is alive again. If so, force other incoming packets in the given flow to use its primary path. 
+                   BitField("is_tracker", 0, 8), #every 'X' time interval, we send a probe tracker at the primary path to see if is alive again. If so, force other incoming packets in the given flow to use its primary path. 
+                   BitField("sw_overlap", 0, 32)] 
 bind_layers(IP, PathHops, proto=0x45)
 
 def handle_pkt(pkt):

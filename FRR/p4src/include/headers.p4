@@ -48,6 +48,7 @@ header pathHops_t{
     bit<64> num_times_curr_switch; // 63 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one).
     bit<8> is_alt; //force the probe to stay in the alternative path
     bit<8> is_tracker; //special probe to force a packet at every X time interval into the primary path
+    bit<32> sw_overlap; //special field to speedup failure recovery on cycles overlapping hops/switches
 }
 
 struct metadata {

@@ -1,7 +1,7 @@
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4"
 /* -*- P4_16 -*- */
 # 1 "/usr/local/share/p4c/p4include/core.p4" 1
 /*
@@ -86,7 +86,7 @@ match_kind {
     /// Longest-prefix match.
     lpm
 }
-# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -865,7 +865,7 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4" 2
 
 //My includes
 # 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/headers.p4" 1
@@ -994,7 +994,7 @@ struct headers {
     ipv4_t ipv4;
     pathHops_t pathHops;
 }
-# 7 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 7 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4" 2
 # 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/parsers.p4" 1
 /*************************************************************************
 *********************** P A R S E R  *******************************
@@ -1040,7 +1040,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
         packet.emit(hdr.pathHops);
     }
 }
-# 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute.p4" 2
+# 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart.p4" 2
 
 register<bit<48>>(128) temporario1_experimento_Reg;
 register<bit<48>>(128) temporario2_experimento_Reg;
@@ -1074,6 +1074,9 @@ control MyIngress(inout headers hdr,
 
     //this register guarantees I'm setting the end_time (temporario2) only once.
     register<bit<1>>(128) isFirstResponseReg;
+
+    //stores the switch failure overlapping more than a cycle to speedup the recovery process - i.e., reduce threshold overhead for cycles farther to the failure location
+    register<bit<32>>(128) overlappingSwIds;
 
     //The flow logic to access/update alternative paths: path_id_X_pointer_reg -> whichAltSwitchReg -> path_id_X_path_reg
 
@@ -1177,6 +1180,9 @@ control MyIngress(inout headers hdr,
             bit<8> swId;
             swIdReg.read(swId, 0);
 
+            //used to get/set hop/switch overlap - if any
+            bit<32> sw_overlap_var;
+
             bit<32> swIdTry = 0;
 
             //shift-left idea... (testing)
@@ -1200,6 +1206,8 @@ control MyIngress(inout headers hdr,
             maxTimeOutDepotReg.read(threshold, 0);
 
             bit<32> path_id_pointer_var = 0;
+            //path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
+
             bit<8> forcePrimaryPathVar = 0;
             forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id);
 
@@ -1207,9 +1215,9 @@ control MyIngress(inout headers hdr,
             bit<8> isAltVar;
             isAltReg.read(isAltVar, hdr.pathHops.path_id);
 
-            //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
+            //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps (path id = 0)
             //The packet enters the depot switch for the first time (beggining of the cycle)   
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
                     temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos)
                     last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
@@ -1235,7 +1243,7 @@ control MyIngress(inout headers hdr,
                     if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
                         path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
-                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize){
+                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){
                         path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
                     }else{ //path_id_pointer_var == meta.lenPrimaryPath
@@ -1251,6 +1259,15 @@ control MyIngress(inout headers hdr,
                     isAltReg.write(hdr.pathHops.path_id, 1);
                     isAltReg.read(isAltVar, hdr.pathHops.path_id);
                     forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
+
+                    //check overlapping existance - only for path 0 (for now)... (HARDCODED)
+                    overlappingSwIds.read(sw_overlap_var, hdr.pathHops.path_id);
+                    if(sw_overlap_var > 0){
+                        whichSwitchAltReg.write(hdr.pathHops.path_id, sw_overlap_var);
+                        hdr.pathHops.sw_overlap = sw_overlap_var;
+                        hdr.pathHops.which_alt_switch = sw_overlap_var;
+                    }
+
                 }else if(hdr.pathHops.path_id == 1){ //second flow
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -1259,7 +1276,7 @@ control MyIngress(inout headers hdr,
                     if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
                         path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
-                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize){
+                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){
                         path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
                     }else{ //path_id_pointer_var == meta.lenPrimaryPath
@@ -1295,6 +1312,16 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.which_alt_switch = swIdTry;
                 whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
                 hdr.pathHops.which_alt_switch = swIdTry;
+
+                //set overlap to be used by path 0
+                if(hdr.pathHops.path_id == (bit<32>)1){
+                    bit<32> pointer;
+                    path_id_pointer_reg.read(pointer, hdr.pathHops.path_id);
+                    pointer = pointer + 1; // It is not safe boundary! Need to check for full version
+                    path_id_1_path_reg.read(sw_overlap_var, pointer); // It is not safe boundary! Need to check for full versions
+                    overlappingSwIds.write(0, sw_overlap_var);
+                    overlappingSwIds.read(sw_overlap_var, 0);
+                }
             }
 
             //primary path cases
@@ -1319,7 +1346,7 @@ control MyIngress(inout headers hdr,
                     hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 }
                 hdr.pathHops.which_alt_switch = 0; //after performing a deviation, return to the original path hops.
-                hdr.pathHops.is_alt = 1; //is using alternative hop    
+                hdr.pathHops.is_alt = 1; //is using alternative hop   
             }
             //default
             else{
@@ -1361,7 +1388,7 @@ control MyIngress(inout headers hdr,
                 temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;
                 isFirstResponseReg.read(x, hdr.pathHops.path_id);
-                if(curr_time - tempo1 >= threshold && x == (bit<1>) 0){
+                if(curr_time - tempo1 >= threshold && x == (bit<1>) 0){ // path id = 0
                     temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
                     isFirstResponseReg.write(hdr.pathHops.path_id, 1);
                 }

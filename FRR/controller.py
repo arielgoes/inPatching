@@ -27,18 +27,6 @@ from scapy.fields import *
 # this function will be held by the CLI later...
 import subprocess
 
-class PathHops(Packet):
-    fields_desc = [BitField("pkt_id", 0, 64),
-                   IntField("numHop", 0),
-                   BitField("pkt_timestamp", 0, 48),
-                   IntField("path_id", 0),
-                   BitField("which_alt_switch", 0, 32), #tells at which hop the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
-                   ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8
-                   BitField("num_times_curr_switch", 0, 64), # 31 switches + 1 filler (ease indexation). last switch ID is the leftmost bit (the most significant one)
-                   BitField("is_alt", 0, 8), #force packet to go by the alternative paths
-                   BitField("is_tracker", 0, 8)] #every 'X' time interval, we send a probe tracker at the primary path to see if is alive again. If so, force other incoming packets in the given flow to use its primary path. 
-bind_layers(IP, PathHops, proto=0x45)
-
 
 class RerouteController(object):
     """Controller for the fast rerouting exercise."""
@@ -50,12 +38,17 @@ class RerouteController(object):
             print("Could not find topology object!\n")
             raise Exception
 
+        if len(sys.argv) < 4:
+            print("Invalid arguments!")
+            sys.exit()
+
         # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
         self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1'], ['s1', 's5', 's4', 's3', 's2', 's1']]
 
         #link failure order: [[s1-s2], [s2-s3], ...]
         self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
         self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
+        self.maxTimeOut = int(sys.argv[1])
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
         #print("depot ==>", self.depot)
@@ -79,7 +72,13 @@ class RerouteController(object):
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        self.do_fail(line="s5 s1")
+        #self.do_fail(line="s5 s1")
+        failure = str(sys.argv[2]) + " " + str(sys.argv[3])
+        self.do_fail(line=failure)
+
+        print("argv 1:", sys.argv[1])
+        print("argv 2:", sys.argv[2])
+        print("argv 3:", sys.argv[3])
 
         print("=======================> ALTERNATIVE ENTRIES <=======================")
         self.install_alternative_entries()
@@ -282,17 +281,21 @@ class RerouteController(object):
         curr_path_index = 0
 
 
-        input("Press Enter to continue...")
-        #print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
+        #input("Press Enter to continue...")
+        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
         sleep(2)
         control = self.controllers[self.depot]
-        start = control.register_read('temporario1_experimento_Reg', 0)
-        end = control.register_read('temporario2_experimento_Reg', 0)
-        total = end - start
+        start_path_0 = control.register_read('temporario1_experimento_Reg', 0)
+        end_path_0 = control.register_read('temporario2_experimento_Reg', 0)
+        total_path_0 = end_path_0 - start_path_0
+        start_path_1 = control.register_read('temporario1_experimento_Reg', 1)
+        end_path_1 = control.register_read('temporario2_experimento_Reg', 1)
+        total_path_1 = end_path_1 - start_path_1
         failed_links = self.check_all_links()
 
-        with open('FRR_time_no-sleep_'+str(failed_links[0][0])+'-'+str(failed_links[0][1])+'.txt', 'a+', 0o777) as sys.stdout:
-            print(total, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1], 0)
+        with open('FRR_time_no-sleep_'+str(failed_links[0][0])+'-'+str(failed_links[0][1])+'_'+str(self.maxTimeOut)+'us'+'.txt', 'a+', 0o777) as sys.stdout:
+            print(total_path_0, total_path_1, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1], 0)
+            #NOTICE: the print above has more arguments than others (Gnuplot old scripts may not work!)
 
 
     def get_host_net(self, host):

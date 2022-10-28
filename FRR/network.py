@@ -32,7 +32,8 @@ net.addHost('h1')
 net.addHost('h2')
 
 #add P4 source file into the P4 switches
-net.setP4SourceAll('p4src/fast_reroute.p4')
+#net.setP4SourceAll('p4src/fast_reroute_round_robin.p4')
+net.setP4SourceAll('p4src/fast_reroute_smart.p4')
 
 #set the primary links
 net.addLink('h1', 's1')
@@ -128,6 +129,6 @@ net.mixed()
 
 # Nodes general options
 net.disablePcapDumpAll()
-net.enableLogAll()
+#net.enableLogAll()
 net.enableCli()
 net.startNetwork()
