@@ -181,16 +181,13 @@ control MyIngress(inout headers hdr,
                 }
             }
 
-            //update packet timestamp
-            hdr.pathHops.pkt_timestamp = curr_time;
-
             //get length of the primary and alternative paths
             len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
+            if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
                 if(hdr.pathHops.path_id == 0){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -252,7 +249,7 @@ control MyIngress(inout headers hdr,
             }
 
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold){
+            if(swId == depotId && isAltVar > 0 && curr_time - last_seen < threshold){
                 hdr.pathHops.is_alt = 1;
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
                 path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);

@@ -39,7 +39,7 @@ class RerouteController(object):
             raise Exception
 
         if len(sys.argv) < 4:
-            print("Invalid arguments!")
+            print("Invalid arguments! Please insert as follow: <maxTimeOut> <node1> <node2>")
             sys.exit()
 
         # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
@@ -47,7 +47,6 @@ class RerouteController(object):
 
         #link failure order: [[s1-s2], [s2-s3], ...]
         self.alternative_hops = [['s12', 's23', 's34', 's45', 's51'], ['s51', 's45', 's34', 's23', 's12']] #fix 'curr_path_index' to zero
-        self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
         self.maxTimeOut = int(sys.argv[1])
         self.depot = self.primary_paths[0][0]
         self.max_num_repeated_switch_hops = 2
@@ -170,10 +169,10 @@ class RerouteController(object):
                 control.register_write('lenPrimaryPathSize', curr_path_index, len(lst))
                 # I also need to add a table entry because I have a metadata I use for other cases (meta.indexPath) - for now:
                 subnet = self.get_host_net('h2') #depot (static code - may need to be changed later - in the case of more hosts are added)
-                if switch not in visited:
+                '''if switch not in visited:
                     print('--' + str(switch) + '--')
                     control.table_add('len_primary_path', 'read_len_primary_path', match_keys=[str(curr_path_index)], action_params=[str(curr_path_index)]) #match_keys=[str(0)] -> is.alt == 0, i.e., PRIMARY PATH
-                visited.append(switch)
+                visited.append(switch)'''
 
                 #reset all 'primaryNH_' entries to 9999 (because 0 may be used for loop ports and we don't want this misunderstanding)
                 for i in range(self.max_num_repeated_switch_hops):
@@ -281,7 +280,7 @@ class RerouteController(object):
         curr_path_index = 0
 
 
-        #input("Press Enter to continue...")
+        input("Press Enter to continue...")
         print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
         sleep(2)
         control = self.controllers[self.depot]

@@ -1,8 +1,4 @@
 #!/bin/bash
 
-A=('s1' 's2' 's3' 's4' 's5')
-for ((j=0; j<${#A[@]}-1; j++)); do
-	echo ${A[j]}
-	echo ${A[j+1]}
-	echo 
-done
+sudo /home/p4/mininet/util/m h1 python send_path_id_0_multiple_packets.py &
+sudo /home/p4/mininet/util/m h1 python send_path_id_1_multiple_packets.py &

@@ -84,16 +84,6 @@ control MyIngress(inout headers hdr,
 
     action drop() {
         mark_to_drop(standard_metadata);
-    }    
-
-    action read_len_primary_path(bit<32> indexPath){
-        meta.indexPath = indexPath;
-        lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath);
-    }
-
-    action read_len_alternative_path(bit<32> indexPath){
-        meta.indexPath = indexPath;
-        lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath);
     }
 
     action update_curr_path_size(){
@@ -107,31 +97,6 @@ control MyIngress(inout headers hdr,
     action read_depot_port(){
         //Stores the depot port to host (global, for now)
         depotPortReg.read(meta.depotPort, 0);
-    }
-
-
-    table len_primary_path {
-        key = {
-            hdr.pathHops.path_id: exact;
-        }
-        actions = {
-            read_len_primary_path;
-            NoAction();
-        }
-        size = N_PATHS;
-        default_action = NoAction();
-    }
-
-    table len_alternative_path {
-        key = {
-            hdr.pathHops.path_id: exact;
-        }
-        actions = {
-            read_len_alternative_path;
-            NoAction();
-        }
-        size = N_PATHS;
-        default_action = NoAction();
     }
 
     apply {
@@ -189,74 +154,78 @@ control MyIngress(inout headers hdr,
                 }
             }
 
-            //update packet timestamp
-            hdr.pathHops.pkt_timestamp = curr_time;
-
             //get length of the primary and alternative paths
-            len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
-            len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
+            lenPrimaryPathSize.read(meta.lenPrimaryPathSize, hdr.pathHops.path_id);
+            lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath);
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
-            //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && hdr.pathHops.pkt_timestamp - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
-                if(hdr.pathHops.path_id == 0){ //first flow...
-                    //gets the index into a variable
-                    path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
+            //check overlapping existance - only for path 0 (for now)... (HARDCODED)
+            overlappingSwIds.read(sw_overlap_var, hdr.pathHops.path_id);
+            if(swId == depotId && sw_overlap_var > 0 && hdr.pathHops.path_id == (bit<32>)0 && hdr.pathHops.has_visited_depot == 0){
+                whichSwitchAltReg.write(hdr.pathHops.path_id, sw_overlap_var);
+                hdr.pathHops.sw_overlap = sw_overlap_var;
+                hdr.pathHops.which_alt_switch = sw_overlap_var;
+                hdr.pathHops.is_alt = 1;
+                isAltReg.write(hdr.pathHops.path_id, 1);
+                isAltReg.read(isAltVar, hdr.pathHops.path_id);
+                forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
+            }else{
+                //FRR control (all the decisions are made at the depot/starting node)
+                if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
+                    if(hdr.pathHops.path_id == (bit<32>)0){ //first flow...
+                        //gets the index into a variable
+                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
 
-                    //rotate index of the next switch attemptive (swIdTry)
-                    if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
-                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){ 
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
-                    }else{ //path_id_pointer_var == meta.lenPrimaryPath
-                        //path_id_pointer_reg.write(hdr.pathHops.path_id, 0);
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
+                        //rotate index of the next switch attemptive (swIdTry)
+                        if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
+                        }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){ 
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
+                        }else{ //path_id_pointer_var == meta.lenPrimaryPath
+                            //path_id_pointer_reg.write(hdr.pathHops.path_id, 0);
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
+                        }
+
+                        path_id_0_path_reg.read(swIdTry, path_id_pointer_var);
+                        hdr.pathHops.which_alt_switch = swIdTry;
+                        whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
+                        hdr.pathHops.is_alt = 1;
+                        isAltReg.write(hdr.pathHops.path_id, 1);
+                        isAltReg.read(isAltVar, hdr.pathHops.path_id);
+                        forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
+
+                    }else if(hdr.pathHops.path_id == (bit<32>)1){ //second flow
+                        //gets the index into a variable
+                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
+
+                        //rotate index of the next switch attemptive (swIdTry)
+                        if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
+                        }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){ 
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
+                        }else{ //path_id_pointer_var == meta.lenPrimaryPath
+                            path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1
+                            path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
+                        }
+
+                        path_id_1_path_reg.read(swIdTry, path_id_pointer_var);
+                        hdr.pathHops.which_alt_switch = swIdTry;
+                        whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
+                        hdr.pathHops.is_alt = 1;
+                        isAltReg.write(hdr.pathHops.path_id, 1);
+                        isAltReg.read(isAltVar, hdr.pathHops.path_id);
+                        forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
                     }
-
-                    path_id_0_path_reg.read(swIdTry, path_id_pointer_var);
-                    hdr.pathHops.which_alt_switch = swIdTry;
-                    whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
-                    hdr.pathHops.is_alt = 1;
-                    isAltReg.write(hdr.pathHops.path_id, 1);
-                    isAltReg.read(isAltVar, hdr.pathHops.path_id);
-                    forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
-
-                    //check overlapping existance - only for path 0 (for now)... (HARDCODED)
-                    overlappingSwIds.read(sw_overlap_var, hdr.pathHops.path_id);
-                    if(sw_overlap_var > 0){
-                        whichSwitchAltReg.write(hdr.pathHops.path_id, sw_overlap_var);
-                        hdr.pathHops.sw_overlap = sw_overlap_var;
-                        hdr.pathHops.which_alt_switch = sw_overlap_var;
-                    }
-
-                }else if(hdr.pathHops.path_id == 1){ //second flow
-                    //gets the index into a variable
-                    path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
-
-                    //rotate index of the next switch attemptive (swIdTry)
-                    if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
-                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){ 
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
-                    }else{ //path_id_pointer_var == meta.lenPrimaryPath
-                        path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1
-                        path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
-                    }
-
-                    path_id_1_path_reg.read(swIdTry, path_id_pointer_var);
-                    hdr.pathHops.which_alt_switch = swIdTry;
-                    whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry);
-                    hdr.pathHops.is_alt = 1;
-                    isAltReg.write(hdr.pathHops.path_id, 1);
-                    isAltReg.read(isAltVar, hdr.pathHops.path_id);
-                    forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
                 }
-            }else if(swId == depotId && hdr.pathHops.is_tracker > 0 && hdr.pathHops.has_visited_depot > 0){ //special case (is_tracker) probe
+            }
+
+            
+            if(swId == depotId && hdr.pathHops.is_tracker > 0 && hdr.pathHops.has_visited_depot > 0){ //special case (is_tracker) probe
                 isAltReg.write(hdr.pathHops.path_id, 0); //reset isAltReg
                 isAltReg.read(isAltVar, hdr.pathHops.path_id);
                 hdr.pathHops.is_alt = 0;
@@ -269,7 +238,7 @@ control MyIngress(inout headers hdr,
             }
 
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.pkt_timestamp - last_seen < threshold){
+            if(swId == depotId && isAltVar > 0 && curr_time - last_seen < threshold){
                 hdr.pathHops.is_alt = 1;
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
                 path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -281,7 +250,11 @@ control MyIngress(inout headers hdr,
                 if(hdr.pathHops.path_id == (bit<32>)1){
                     bit<32> pointer;
                     path_id_pointer_reg.read(pointer, hdr.pathHops.path_id);
-                    pointer = pointer + 1; // It is not safe boundary! Need to check for full version
+                    if(pointer + 1 > meta.lenHashPrimaryPathSize - 1){
+                        pointer = 1;
+                    }else{
+                        pointer = pointer + 1;
+                    }
                     path_id_1_path_reg.read(sw_overlap_var, pointer); // It is not safe boundary! Need to check for full versions
                     overlappingSwIds.write(0, sw_overlap_var);
                     overlappingSwIds.read(sw_overlap_var, 0);
@@ -365,7 +338,7 @@ control MyIngress(inout headers hdr,
             }
 
             //Now, we check if this is a special case: the last cycle hop and force to send the package to the host insted of "next switch" (either primary or alternative port)
-            if(swId == depotId && hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && (bit<32>)hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0){
                 read_depot_port();
                 standard_metadata.egress_spec = (bit<9>) meta.depotPort;
                 //Reset curr path size

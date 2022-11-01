@@ -40,8 +40,7 @@ header ipv4_t {
 
 header pathHops_t{
     bit<64> pkt_id; //each packet in each flow is uniquely identified
-    bit<32> numHop; //counts the current hop position (switch by switch)
-    bit<48> pkt_timestamp; //the instant of time the packet ingressed the depot switch
+    bit<8> numHop; //counts the current hop position (switch by switch)
     bit<32> path_id; //same as "meta.indexPath"
     bit<32> which_alt_switch; //tells at which switch ID the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
     bit<8> has_visited_depot; //whether it is the first time visiting the depot switch: (0 = NO; 1 = YES)

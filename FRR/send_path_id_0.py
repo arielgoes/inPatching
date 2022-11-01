@@ -14,8 +14,7 @@ from time import sleep
 
 class PathHops(Packet):
     fields_desc = [BitField("pkt_id", 0, 64),
-                   IntField("numHop", 0),
-                   BitField("pkt_timestamp", 0, 48),
+                   BitField("numHop", 0, 8),
                    IntField("path_id", 0),
                    BitField("which_alt_switch", 0, 32), #tells at which hop the depot will try to deviate from the primary path at a single hop. NOTE: value zero is reserved for primary path - i.e., no deviation at any hop.
                    ByteField("has_visited_depot", 0), #00000000 (0) OR 11111111 (1). I'm using 8 bits because P4 does not accept headers which are not multiple of 8

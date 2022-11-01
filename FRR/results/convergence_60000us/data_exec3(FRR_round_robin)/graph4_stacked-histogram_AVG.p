@@ -22,5 +22,5 @@ set lt 6 lc rgb 'blue'
 set lt 7 lc rgb 'dark-blue'
 set lt 8 lc rgb 'violet'
 
-plot 'FRR_time_no-sleep_AVG.txt' using 2:xtic(1) t 'Threshold (us)', \
+plot 'FRR_time_no-sleep_STACKED_AVG.txt' using 2:xtic(1) t 'Threshold (us)', \
 '' using 3 t 'Data Plane (us)'
