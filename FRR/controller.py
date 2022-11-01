@@ -281,7 +281,7 @@ class RerouteController(object):
 
 
         input("Press Enter to continue...")
-        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
+        print("Sleeping for 2 secondss to read final time registers... ZzZzZz")
         sleep(2)
         control = self.controllers[self.depot]
         start_path_0 = control.register_read('temporario1_experimento_Reg', 0)

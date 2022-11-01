@@ -3,14 +3,13 @@ set output 'graph3_STACKED_AVG.eps'
 
 set style data histograms
 set style histogram rowstacked
-set key above
+set key above width -8 vertical maxrows 2
 set grid y
 set xlabel 'Controller Delay (ms)'
-set ylabel 'Time (us)'
+set ylabel 'Time (ms)'
 #set style histogram cluster gap 1
 #set style fill pattern border -1
 set style fill solid 1.0 border -1
-set yrange[150000:*]
 
 
 set lt 1 lc rgb 'red'
@@ -22,6 +21,6 @@ set lt 6 lc rgb 'blue'
 set lt 7 lc rgb 'dark-blue'
 set lt 8 lc rgb 'violet'
 
-plot 'Patcher_v0_time_no-sleep_stacked_AVG.txt' using 3 t 'Controller Delay (us)', \
-'' using 4 title 'Overhead', \
-'' using 2:xtic(1) title 'Threshold (us)'
+plot 'Patcher_v0_time_no-sleep_stacked_AVG.txt' using ($3/1000) t 'Control plane processing time' fs pattern 2 lt -1, \
+'' using ($4/1000) title 'Communication time' fs pattern 4 lt -1, \
+'' using ($2/1000):xtic(1) title 'Reaction time (time out)' fs pattern 6 lt -1
