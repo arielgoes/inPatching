@@ -1947,6 +1947,29 @@
           "parameters" : [
             {
               "type" : "field",
+              "value" : ["scalars", "path_id_pointer_var_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.path_id_pointer_reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 255,
+            "column" : 16,
+            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
               "value" : ["scalars", "swIdTry_0"]
             },
             {
@@ -5387,7 +5410,7 @@
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
             "line" : 325,
             "column" : 19,
-            "source_fragment" : "curr_time - tempo1 >= threshold && x == (bit<1>) 0"
+            "source_fragment" : "curr_time - tempo1 >= threshold * (bit<48>)path_id_pointer_var && x == (bit<1>)0"
           },
           "expression" : {
             "type" : "expression",
@@ -5422,8 +5445,38 @@
                     }
                   },
                   "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "threshold_0"]
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "*",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "threshold_0"]
+                          },
+                          "right" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["scalars", "path_id_pointer_var_0"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffffffffffff"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffffffff"
+                      }
+                    }
                   }
                 }
               },

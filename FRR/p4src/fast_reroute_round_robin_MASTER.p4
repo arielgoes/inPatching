@@ -322,10 +322,10 @@ control MyIngress(inout headers hdr,
                 temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;
                 isFirstResponseReg.read(x, hdr.pathHops.path_id);
-                if(curr_time - tempo1 >= threshold && x == (bit<1>) 0){
+                if(curr_time - tempo1 >= threshold * (bit<48>)path_id_pointer_var && x == (bit<1>)0){
                     temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
                     isFirstResponseReg.write(hdr.pathHops.path_id, 1);    
-                }    
+                }
             }
             
             //update last seen packet
