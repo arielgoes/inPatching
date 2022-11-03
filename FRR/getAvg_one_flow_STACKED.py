@@ -12,7 +12,6 @@ with open('FRR_time_no-sleep_'+str(node1)+'-'+str(node2)+'.txt', 'r', 0o777) as 
 	n_samples=0
 	for line in file:
 		line = line.split()
-		print(line[0])
 		sum_col_1_avg += int(line[1])
 		sum_col_6_avg += (int(line[0]) - int(line[1]))
 		n_samples += 1

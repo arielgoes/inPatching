@@ -14,7 +14,6 @@ with open('FRR_time_no-sleep_'+str(node1)+'-'+str(node2)+'_'+str(maxTimeOut)+'us
 	n_samples=0
 	for line in file:
 		line = line.split()
-		print(line[0])
 		sum_col_2_avg += int(line[2])
 		sum_col_7_avg += (int(line[0]) - int(line[2]))
 		sum_col_8_avg += (int(line[1]) - int(line[2]))

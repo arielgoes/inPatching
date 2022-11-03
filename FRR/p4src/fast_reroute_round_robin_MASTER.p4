@@ -28,6 +28,7 @@ control MyIngress(inout headers hdr,
     //time management
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
+    register<bit<48>>(1) threshold_offset;
 
     // Registers to look up the port of the default next hop.
     //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
@@ -286,10 +287,8 @@ control MyIngress(inout headers hdr,
             else{
                 hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
                 primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id);
-                hdr.pathHops.is_alt = 0;
                 if((meta.nextHop == 9999)){
                     primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id);
-                    hdr.pathHops.is_alt = 0;
                 }
 
                 //if I let this commented, it will always work, but it is unrealistic. (Used for debugging)
@@ -322,7 +321,9 @@ control MyIngress(inout headers hdr,
                 temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;
                 isFirstResponseReg.read(x, hdr.pathHops.path_id);
-                if(curr_time - tempo1 >= threshold * (bit<48>)path_id_pointer_var && x == (bit<1>)0){
+                bit<48> offset;
+                threshold_offset.read(offset, 0);
+                if(curr_time - tempo1 >= threshold * offset && x == (bit<1>)0){
                     temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
                     isFirstResponseReg.write(hdr.pathHops.path_id, 1);    
                 }

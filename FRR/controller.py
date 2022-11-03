@@ -279,18 +279,36 @@ class RerouteController(object):
             curr_path_index += 1
         curr_path_index = 0
 
-
-        input("Press Enter to continue...")
-        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
-        #sleep(5)
         control = self.controllers[self.depot]
+        failed_links = self.check_all_links()
+
+        #####(HARDCODED_start)
+        if( (str(failed_links[0][0]) == 's1' or str(failed_links[0][0]) == 's2') and 
+            ((str(failed_links[0][1]) == 's1') or str(failed_links[0][1]) == 's2') ):
+            control.register_write('threshold_offset', 0, 1);
+        elif( (str(failed_links[0][0]) == 's2' or str(failed_links[0][0]) == 's3') and 
+            ((str(failed_links[0][1]) == 's2') or str(failed_links[0][1]) == 's3') ):
+            control.register_write('threshold_offset', 0, 2);
+        elif( (str(failed_links[0][0]) == 's3' or str(failed_links[0][0]) == 's4') and 
+            ((str(failed_links[0][1]) == 's3') or str(failed_links[0][1]) == 's4') ):
+            control.register_write('threshold_offset', 0, 3);
+        elif( (str(failed_links[0][0]) == 's4' or str(failed_links[0][0]) == 's5') and 
+            ((str(failed_links[0][1]) == 's4') or str(failed_links[0][1]) == 's5') ):
+            control.register_write('threshold_offset', 0, 4);
+        elif( (str(failed_links[0][0]) == 's5' or str(failed_links[0][0]) == 's1') and 
+            ((str(failed_links[0][1]) == 's5') or str(failed_links[0][1]) == 's1') ):
+            control.register_write('threshold_offset', 0, 5);
+        #####(HARDCODED_end)
+
+        #input("Press Enter to continue...")
+        print("Sleeping for 2 seconds to read final time registers... ZzZzZz")
+        sleep(5)
         start_path_0 = control.register_read('temporario1_experimento_Reg', 0)
         end_path_0 = control.register_read('temporario2_experimento_Reg', 0)
         total_path_0 = end_path_0 - start_path_0
         start_path_1 = control.register_read('temporario1_experimento_Reg', 1)
         end_path_1 = control.register_read('temporario2_experimento_Reg', 1)
         total_path_1 = end_path_1 - start_path_1
-        failed_links = self.check_all_links()
 
         with open('FRR_time_no-sleep_'+str(failed_links[0][0])+'-'+str(failed_links[0][1])+'_'+str(self.maxTimeOut)+'us'+'.txt', 'a+', 0o777) as sys.stdout:
             print(total_path_0, total_path_1, self.maxTimeOut, 1, failed_links[0][0], failed_links[0][1], 0)
