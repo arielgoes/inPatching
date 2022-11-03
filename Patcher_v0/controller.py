@@ -55,7 +55,7 @@ class RerouteController(object):
         self.controllers = {}
         self.connect_to_switches()
         self.reset_states()
-        self.maxTimeOut = 60000 #300000us = 300ms = 0.3sec
+        self.maxTimeOut = 10000 #300000us = 300ms = 0.3sec
         self.max_num_repeated_switch_hops = 2
         print("=======================> PRIMARY ENTRIES <=======================")
         self.install_primary_entries()
@@ -68,11 +68,11 @@ class RerouteController(object):
         self.do_reset(line="s5 s1")
 
         #Fail link
-        self.do_fail(line="s1 s2")
+        #self.do_fail(line="s1 s2")
         #self.do_fail(line="s2 s3")
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
-        #self.do_fail(line="s5 s1")
+        self.do_fail(line="s5 s1")
 
         print("=======================> CONTROL PLANE REROUTE ENTRIES <=======================")
         #self.install_rerouting_rules(failures=self.failed_links) #calculate new routes on the control plane
@@ -93,7 +93,6 @@ class RerouteController(object):
     def connect_to_switches(self):
         """Connects to all the switches in the topology."""
         for p4switch in self.topo.get_p4switches():
-            print("p4switch: ", p4switch)
             thrift_port = self.topo.get_thrift_port(p4switch)
             self.controllers[p4switch] = SimpleSwitchThriftAPI(thrift_port)
 
@@ -338,15 +337,14 @@ class RerouteController(object):
         pkt = Ether() / IP(proto=0x45, ttl=128) / PathHops(path_id=0, pkt_id=0)
         sendp(pkt, iface=iface, verbose=False)
 
-        sleep(1.5)
+        print("Sleeping for 5 seconds...")
+        sleep(5)
         end_dp = control.register_read('tempo2_experimento_Reg', 0)
 
         print("end_dp: ", end_dp, "us")
         total_dp = end_dp - start_dp
         #total_dp2 = end_dp - start_dp2
         print("Total time DP: ", total_dp, "us")
-
-        #os.umask(0)
 
         with open('Patcher_v0_time_no-sleep_'+str(control_delay)+'ms.txt', 'a+', 0o777) as sys.stdout:
             failed_links = self.check_all_links()

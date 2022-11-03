@@ -270,10 +270,10 @@
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
         "line" : 31,
-        "column" : 25,
+        "column" : 27,
         "source_fragment" : "threshold_offset"
       },
-      "size" : 1,
+      "size" : 128,
       "bitwidth" : 48
     },
     {
@@ -3197,15 +3197,15 @@
               "value" : "MyIngress.threshold_offset"
             },
             {
-              "type" : "hexstr",
-              "value" : "0x00000000"
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
             "line" : 325,
             "column" : 16,
-            "source_fragment" : "threshold_offset.read(offset, 0)"
+            "source_fragment" : "threshold_offset.read(offset, hdr.pathHops.path_id)"
           }
         }
       ]

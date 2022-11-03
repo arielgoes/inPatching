@@ -5,6 +5,8 @@ SINGLE_OR_TWO_FLOWS="single-flow"
 FRR_VERSION="FRR_round_robin"
 LINES_OR_OTHER="LINES"
 B=('s1' 's2' 's3' 's4' 's5' 's1')
+A=('s1' 's2' 's3' 's4' 's5')
+C=('s1' 's5')
 TIME_OUTS="10000 20000 30000 40000 50000 60000 70000 80000 90000 100000"
 
 #<<comentario
@@ -57,4 +59,23 @@ if [[ ${LINES_OR_OTHER} == "LINES" ]]; then
 fi
 
 
+#get stats from gnuplot and write into a file "STATS_..."
+for threshold in $TIME_OUTS; do
+    for ((j=0; j<${#B[@]}-1; j++)); do
+        echo "node 1: ${B[j]}, node 2: ${B[j+1]}"
+        if [[ ${B[j]} == 's5' && ${B[j+1]} == 's1' ]]; then
+            gnuplot -persist <<-EOFMarker
+                set print "results/scapy_socket/convergence_${threshold}us/data_exec${VERSION_EXEC}(FRR_round_robin)/aux/STATS_${B[j+1]}-${B[j]}_${threshold}us.txt"
+                stats "results/scapy_socket/convergence_${threshold}us/data_exec${VERSION_EXEC}(FRR_round_robin)/aux/FRR_time_no-sleep_${B[j+1]}-${B[j]}_${threshold}us.txt" u (\$1/1000) name "STATS"
+EOFMarker
+        else
+            gnuplot -persist <<-EOFMarker
+                set print "/home/p4/git/master_degree_p4_unipampa/FRR/results/scapy_socket/convergence_${threshold}us/data_exec${VERSION_EXEC}(FRR_round_robin)/aux/STATS_${B[j]}-${B[j+1]}_${threshold}us.txt"
+                stats "/home/p4/git/master_degree_p4_unipampa/FRR/results/scapy_socket/convergence_${threshold}us/data_exec${VERSION_EXEC}(FRR_round_robin)/aux/FRR_time_no-sleep_${B[j]}-${B[j+1]}_${threshold}us.txt" u (\$1/1000) name "STATS"
+EOFMarker
+        fi
+    done
+done
+# rest of script, after gnuplot exits
 
+echo "RUNNING..."

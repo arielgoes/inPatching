@@ -28,7 +28,7 @@ control MyIngress(inout headers hdr,
     //time management
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
-    register<bit<48>>(1) threshold_offset;
+    register<bit<48>>(N_PATHS) threshold_offset;
 
     // Registers to look up the port of the default next hop.
     //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
@@ -322,7 +322,7 @@ control MyIngress(inout headers hdr,
                 bit<1> x;
                 isFirstResponseReg.read(x, hdr.pathHops.path_id);
                 bit<48> offset;
-                threshold_offset.read(offset, 0);
+                threshold_offset.read(offset, hdr.pathHops.path_id);
                 if(curr_time - tempo1 >= threshold * offset && x == (bit<1>)0){
                     temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
                     isFirstResponseReg.write(hdr.pathHops.path_id, 1);    

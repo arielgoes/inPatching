@@ -283,6 +283,8 @@ class RerouteController(object):
         failed_links = self.check_all_links()
 
         #####(HARDCODED_start)
+
+        #path 0
         if( (str(failed_links[0][0]) == 's1' or str(failed_links[0][0]) == 's2') and 
             ((str(failed_links[0][1]) == 's1') or str(failed_links[0][1]) == 's2') ):
             control.register_write('threshold_offset', 0, 1);
@@ -298,6 +300,26 @@ class RerouteController(object):
         elif( (str(failed_links[0][0]) == 's5' or str(failed_links[0][0]) == 's1') and 
             ((str(failed_links[0][1]) == 's5') or str(failed_links[0][1]) == 's1') ):
             control.register_write('threshold_offset', 0, 5);
+
+        #path 1
+        if( (str(failed_links[0][0]) == 's1' or str(failed_links[0][0]) == 's2') and 
+            ((str(failed_links[0][1]) == 's1') or str(failed_links[0][1]) == 's2') ):
+            control.register_write('threshold_offset', 1, 5);
+        elif( (str(failed_links[0][0]) == 's2' or str(failed_links[0][0]) == 's3') and 
+            ((str(failed_links[0][1]) == 's2') or str(failed_links[0][1]) == 's3') ):
+            control.register_write('threshold_offset', 1, 4);
+        elif( (str(failed_links[0][0]) == 's3' or str(failed_links[0][0]) == 's4') and 
+            ((str(failed_links[0][1]) == 's3') or str(failed_links[0][1]) == 's4') ):
+            control.register_write('threshold_offset', 1, 3);
+        elif( (str(failed_links[0][0]) == 's4' or str(failed_links[0][0]) == 's5') and 
+            ((str(failed_links[0][1]) == 's4') or str(failed_links[0][1]) == 's5') ):
+            control.register_write('threshold_offset', 1, 2);
+        elif( (str(failed_links[0][0]) == 's5' or str(failed_links[0][0]) == 's1') and 
+            ((str(failed_links[0][1]) == 's5') or str(failed_links[0][1]) == 's1') ):
+            control.register_write('threshold_offset', 1, 1);
+
+
+
         #####(HARDCODED_end)
 
         #input("Press Enter to continue...")
