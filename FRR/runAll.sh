@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAX_ITER=3
+MAX_ITER=30
 echo "Killing PREVIOUS controller terminal..."
 sudo pkill -f controller.py
 echo "Killing PREVIOUS packet injection..."
@@ -25,7 +25,7 @@ for k in $TIME_OUTS; do
 			sudo /home/p4/mininet/util/m h1 python snd-rcv_scripts/send_socket_path_id_0_multiple_packets.py &
 			#sudo /home/p4/mininet/util/m h1 python snd-rcv_scripts/send_socket_path_id_1_multiple_packets.py &
 			echo "----------------------------------------ITERATION $i/$MAX_ITER----------------------------------------"
-			sleep 8
+			sleep 7
 			echo "Killing packet injection..."
 			sudo pkill -f send_socket_path_id_0_multiple_packets.py
 			sudo pkill -f send_socket_path_id_1_multiple_packets.py
@@ -54,7 +54,7 @@ for k in $TIME_OUTS; do
 			sudo /home/p4/mininet/util/m h1 python snd-rcv_scripts/send_socket_path_id_0_multiple_packets.py &
 			#sudo /home/p4/mininet/util/m h1 python snd-rcv_scripts/send_socket_path_id_1_multiple_packets.py &
 			echo "----------------------------------------ITERATION $i/$MAX_ITER----------------------------------------"
-			sleep 8
+			sleep 7
 			echo "Killing packet injection..."
 			sudo pkill -f send_socket_path_id_0_multiple_packets.py
 			sudo pkill -f send_socket_path_id_1_multiple_packets.py

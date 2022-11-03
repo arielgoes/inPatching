@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION_EXEC=2
+VERSION_EXEC=3
 SINGLE_OR_TWO_FLOWS="single-flow"
 FRR_VERSION="FRR_round_robin"
 LINES_OR_OTHER="LINES"
