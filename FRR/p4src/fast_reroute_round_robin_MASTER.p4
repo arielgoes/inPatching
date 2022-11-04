@@ -174,11 +174,11 @@ control MyIngress(inout headers hdr,
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
             //The packet enters the depot switch for the first time (beggining of the cycle)   
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && path_id_pointer_var == 0){
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
                     temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos)
-                    last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
-                    last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+                    //last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                    //last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
                 }
             }
 
@@ -188,7 +188,7 @@ control MyIngress(inout headers hdr,
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == 0){
+            if(swId == depotId && curr_time - last_seen >= threshold /*&& hdr.pathHops.pkt_id > (bit<64>)1*/){
                 if(hdr.pathHops.path_id == 0){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -250,7 +250,7 @@ control MyIngress(inout headers hdr,
             }
 
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
-            if(swId == depotId && isAltVar > 0 && curr_time - last_seen < threshold){
+            if(swId == depotId && isAltVar > 0 && curr_time - last_seen < threshold && hdr.pathHops.which_alt_switch > 0){
                 hdr.pathHops.is_alt = 1;
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
                 path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -316,21 +316,43 @@ control MyIngress(inout headers hdr,
             standard_metadata.egress_spec = (bit<9>) meta.nextHop;
 
             //used for experiments only
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0){
+            //path 0
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 0){
                 bit<48> tempo1;
                 temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;
                 isFirstResponseReg.read(x, hdr.pathHops.path_id);
-                bit<48> offset;
-                threshold_offset.read(offset, hdr.pathHops.path_id);
-                if(curr_time - tempo1 >= threshold * offset && x == (bit<1>)0){
+                //bit<48> offset;
+                //threshold_offset.read(offset, hdr.pathHops.path_id);
+                //if(curr_time - tempo1 >= threshold * offset && x == (bit<1>)0){
+                if(curr_time - tempo1 >= threshold && x == (bit<1>)0){
+                    temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
+                    isFirstResponseReg.write(hdr.pathHops.path_id, 1);    
+                }
+            }
+            //path 1
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 1){
+                bit<48> tempo1;
+                temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
+                bit<1> x;
+                isFirstResponseReg.read(x, hdr.pathHops.path_id);
+                //bit<48> offset;
+                //threshold_offset.read(offset, hdr.pathHops.path_id);
+                //if(curr_time - tempo1 >= threshold * offset && x == (bit<1>)0){
+                if(curr_time - tempo1 >= threshold && x == (bit<1>)0){
                     temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp)
                     isFirstResponseReg.write(hdr.pathHops.path_id, 1);    
                 }
             }
             
             //update last seen packet
-            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
+            //path 0
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 0){
+                last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
+                last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
+            }
+            //path 1
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 1){
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);    
             }
