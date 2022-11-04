@@ -147,7 +147,7 @@ net.mixed()
 #net.enableCpuPort('s1') #enables a special interface to cpu/controller for a single switch
 net.disablePcapDumpAll()
 #net.enableLogAll()
-#net.enableCli()
-net.disableCli()
+net.enableCli()
+#net.disableCli()
 net.startNetwork()
 

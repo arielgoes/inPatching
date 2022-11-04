@@ -1,10 +1,8 @@
 #!/bin/bash
 
+screen -S ariel
+sudo python network.py
 
-parallel ::: "sudo python network.py" "bash runAll.sh"
+wait
 
-#gnome-terminal -- bash runAll.sh
-
-echo "out..."
-sleep 3
-sudo mn -c
+echo "OUT"

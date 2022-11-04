@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAX_ITER=5
+MAX_ITER=30
 echo "Killing PREVIOUS controller terminal..."
 sudo pkill -f controller.py
 echo "Killing PREVIOUS packet injection..."
