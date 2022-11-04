@@ -9,7 +9,7 @@ A=('s1' 's2' 's3' 's4' 's5')
 C=('s1' 's5')
 TIME_OUTS="10000 20000 30000 40000 50000 60000 70000 80000 90000 100000"
 
-#<<comentario
+<<comentario
 #create dirs
 for threshold in $TIME_OUTS; do
 	echo "Create data exec version directory - if it does not exists..."
@@ -46,8 +46,6 @@ for threshold in $TIME_OUTS; do
 	cd /home/p4/git/master_degree_p4_unipampa/FRR
 done
 
-#comentario
-
 #create convergence all dir for the execution
 if [[ ${LINES_OR_OTHER} == "LINES" ]]; then
 	echo "Copying aggregated files to convergence_all"
@@ -57,7 +55,7 @@ if [[ ${LINES_OR_OTHER} == "LINES" ]]; then
 		/home/p4/git/master_degree_p4_unipampa/FRR/results/scapy_socket/convergence_all/data_exec${VERSION_EXEC}\(${FRR_VERSION}\)/
 	done
 fi
-
+comentario
 
 #get stats from gnuplot and write into a file "STATS_..."
 for threshold in $TIME_OUTS; do
