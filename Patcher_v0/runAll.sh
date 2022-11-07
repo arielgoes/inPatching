@@ -11,12 +11,12 @@ for (( i=1; i <=$MAX_ITER; i++ )); do
 	echo "Run controller in backgroud..."
 	sudo /home/p4/mininet/util/m s60 python controller.py &
 	echo "----------------------------------------ITERATION $i/$MAX_ITER----------------------------------------"
-	sleep 1
+	sleep 2
 	echo "Inject packets..."
 	#sudo /home/p4/mininet/util/m h1 python send_path_id_0_multiple_packets.py &
 	sudo /home/p4/mininet/util/m h1 python send_socket_path_id_0_multiple_packets.py & 
 	echo "----------------------------------------ITERATION $i/$MAX_ITER----------------------------------------"
-	sleep 7
+	sleep 8
 	echo "Killing controller terminal..."
 	sudo pkill -f controller.py
 	echo "Killing packet injection..."
