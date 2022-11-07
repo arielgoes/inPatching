@@ -2,7 +2,7 @@ from p4utils.mininetlib.network_API import NetworkAPI
 #import sys
 
 #sys.argv[1]
-CONTROLLER_DELAY_MS=5
+CONTROLLER_DELAY_MS=1
 
 net = NetworkAPI()
 net.setLogLevel('info')
