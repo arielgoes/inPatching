@@ -41,6 +41,10 @@ class RerouteController(object):
         if len(sys.argv) < 4:
             print("Invalid arguments! Please insert as follow: <maxTimeOut> <node1> <node2>")
             sys.exit()
+            
+        print("argv 1:", sys.argv[1])
+        print("argv 2:", sys.argv[2])
+        print("argv 3:", sys.argv[3])
 
         # manual path for now... (matching ports by numHops - i.e., the current number of the hop according to the path size)
         self.primary_paths = [['s1', 's2', 's3', 's4', 's5', 's1'], ['s1', 's5', 's4', 's3', 's2', 's1']]
@@ -72,15 +76,14 @@ class RerouteController(object):
         #self.do_fail(line="s3 s4")
         #self.do_fail(line="s4 s5")
         #self.do_fail(line="s5 s1")
-        failure = str(sys.argv[2]) + " " + str(sys.argv[3])
-        self.do_fail(line=failure)
 
-        print("argv 1:", sys.argv[1])
-        print("argv 2:", sys.argv[2])
-        print("argv 3:", sys.argv[3])
+        if sys.argv[2] != "null" or sys.argv[3] != "null":
+            failure = str(sys.argv[2]) + " " + str(sys.argv[3])
+            self.do_fail(line=failure)
+            print("=======================> ALTERNATIVE ENTRIES <=======================")
+            self.install_alternative_entries()
 
-        print("=======================> ALTERNATIVE ENTRIES <=======================")
-        self.install_alternative_entries()
+        
 
 
     #def do_reset(self, line=""):  # pylint: disable=unused-argument
@@ -222,6 +225,7 @@ class RerouteController(object):
                         #print('register_name ==> ' + str(register_name))
                         #control.register_write('primaryNH', curr_path_index, neighbor_port)
                         control.register_write(register_name, curr_path_index, neighbor_port)
+                        control.register_write("primaryNH_2", curr_path_index, neighbor_port)
                         
                 # set switch id register
                 control = self.controllers[curr_switch]

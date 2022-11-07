@@ -4,7 +4,7 @@
       "name" : "scalars_0",
       "id" : 0,
       "fields" : [
-        ["tmp", 32, false],
+        ["tmp", 48, false],
         ["tmp_0", 32, false],
         ["swId_0", 8, false],
         ["swIdTry_0", 32, false],
@@ -14,17 +14,14 @@
         ["path_id_pointer_var_0", 32, false],
         ["forcePrimaryPathVar_0", 8, false],
         ["isAltVar_0", 8, false],
-        ["tempo1_0", 48, false],
         ["x_0", 1, false],
-        ["tempo1_1", 48, false],
-        ["x_1", 1, false],
         ["userMetadata.indexPath", 32, false],
         ["userMetadata.depotPort", 32, false],
         ["userMetadata.nextHop", 32, false],
         ["userMetadata.lenPrimaryPathSize", 32, false],
         ["userMetadata.lenAlternativePathSize", 32, false],
         ["userMetadata.lenHashPrimaryPathSize", 32, false],
-        ["_padding_0", 6, false]
+        ["_padding_0", 7, false]
       ]
     },
     {
@@ -246,7 +243,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 29,
+        "line" : 26,
         "column" : 25,
         "source_fragment" : "maxTimeOutDepotReg"
       },
@@ -258,7 +255,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 30,
+        "line" : 27,
         "column" : 27,
         "source_fragment" : "last_seen_pkt_timestamp"
       },
@@ -270,7 +267,7 @@
       "id" : 2,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 31,
+        "line" : 28,
         "column" : 27,
         "source_fragment" : "threshold_offset"
       },
@@ -278,11 +275,47 @@
       "bitwidth" : 48
     },
     {
-      "name" : "MyIngress.primaryNH_1",
+      "name" : "MyIngress.temporario1_experimento_Reg",
       "id" : 3,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+        "line" : 30,
+        "column" : 27,
+        "source_fragment" : "temporario1_experimento_Reg"
+      },
+      "size" : 128,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "MyIngress.temporario2_experimento_Reg",
+      "id" : 4,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+        "line" : 31,
+        "column" : 27,
+        "source_fragment" : "temporario2_experimento_Reg"
+      },
+      "size" : 128,
+      "bitwidth" : 48
+    },
+    {
+      "name" : "MyIngress.last_seen_pkt_id",
+      "id" : 5,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
         "line" : 35,
+        "column" : 27,
+        "source_fragment" : "last_seen_pkt_id"
+      },
+      "size" : 128,
+      "bitwidth" : 64
+    },
+    {
+      "name" : "MyIngress.primaryNH_1",
+      "id" : 6,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+        "line" : 39,
         "column" : 27,
         "source_fragment" : "primaryNH_1"
       },
@@ -291,10 +324,10 @@
     },
     {
       "name" : "MyIngress.primaryNH_2",
-      "id" : 4,
+      "id" : 7,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 36,
+        "line" : 40,
         "column" : 27,
         "source_fragment" : "primaryNH_2"
       },
@@ -303,10 +336,10 @@
     },
     {
       "name" : "MyIngress.alternativeNH_1",
-      "id" : 5,
+      "id" : 8,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 37,
+        "line" : 41,
         "column" : 27,
         "source_fragment" : "alternativeNH_1"
       },
@@ -315,10 +348,10 @@
     },
     {
       "name" : "MyIngress.alternativeNH_2",
-      "id" : 6,
+      "id" : 9,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 38,
+        "line" : 42,
         "column" : 27,
         "source_fragment" : "alternativeNH_2"
       },
@@ -327,10 +360,10 @@
     },
     {
       "name" : "MyIngress.isFirstResponseReg",
-      "id" : 7,
+      "id" : 10,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 41,
+        "line" : 45,
         "column" : 26,
         "source_fragment" : "isFirstResponseReg"
       },
@@ -339,10 +372,10 @@
     },
     {
       "name" : "MyIngress.whichSwitchAltReg",
-      "id" : 8,
+      "id" : 11,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 46,
+        "line" : 50,
         "column" : 27,
         "source_fragment" : "whichSwitchAltReg"
       },
@@ -351,10 +384,10 @@
     },
     {
       "name" : "MyIngress.path_id_pointer_reg",
-      "id" : 9,
+      "id" : 12,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 48,
+        "line" : 52,
         "column" : 27,
         "source_fragment" : "path_id_pointer_reg"
       },
@@ -363,10 +396,10 @@
     },
     {
       "name" : "MyIngress.path_id_0_path_reg",
-      "id" : 10,
+      "id" : 13,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 51,
+        "line" : 55,
         "column" : 27,
         "source_fragment" : "path_id_0_path_reg"
       },
@@ -375,10 +408,10 @@
     },
     {
       "name" : "MyIngress.path_id_1_path_reg",
-      "id" : 11,
+      "id" : 14,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 55,
+        "line" : 59,
         "column" : 27,
         "source_fragment" : "path_id_1_path_reg"
       },
@@ -387,10 +420,10 @@
     },
     {
       "name" : "MyIngress.lenPrimaryPathSize",
-      "id" : 12,
+      "id" : 15,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 62,
+        "line" : 66,
         "column" : 27,
         "source_fragment" : "lenPrimaryPathSize"
       },
@@ -399,10 +432,10 @@
     },
     {
       "name" : "MyIngress.lenAlternativePathSize",
-      "id" : 13,
+      "id" : 16,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 63,
+        "line" : 67,
         "column" : 27,
         "source_fragment" : "lenAlternativePathSize"
       },
@@ -411,10 +444,10 @@
     },
     {
       "name" : "MyIngress.lenHashPrimaryPathSize",
-      "id" : 14,
+      "id" : 17,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 66,
+        "line" : 70,
         "column" : 27,
         "source_fragment" : "lenHashPrimaryPathSize"
       },
@@ -423,10 +456,10 @@
     },
     {
       "name" : "MyIngress.depotPortReg",
-      "id" : 15,
+      "id" : 18,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 69,
+        "line" : 73,
         "column" : 25,
         "source_fragment" : "depotPortReg"
       },
@@ -435,10 +468,10 @@
     },
     {
       "name" : "MyIngress.swIdReg",
-      "id" : 16,
+      "id" : 19,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 72,
+        "line" : 76,
         "column" : 24,
         "source_fragment" : "swIdReg"
       },
@@ -447,10 +480,10 @@
     },
     {
       "name" : "MyIngress.depotIdReg",
-      "id" : 17,
+      "id" : 20,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 75,
+        "line" : 79,
         "column" : 24,
         "source_fragment" : "depotIdReg"
       },
@@ -459,10 +492,10 @@
     },
     {
       "name" : "MyIngress.isAltReg",
-      "id" : 18,
+      "id" : 21,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 77,
+        "line" : 81,
         "column" : 26,
         "source_fragment" : "isAltReg"
       },
@@ -471,10 +504,10 @@
     },
     {
       "name" : "MyIngress.forcePrimaryPathReg",
-      "id" : 19,
+      "id" : 22,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 80,
+        "line" : 84,
         "column" : 26,
         "source_fragment" : "forcePrimaryPathReg"
       },
@@ -482,27 +515,15 @@
       "bitwidth" : 8
     },
     {
-      "name" : "temporario1_experimento_Reg",
-      "id" : 20,
+      "name" : "MyIngress.diff_time_reg",
+      "id" : 23,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 9,
-        "column" : 23,
-        "source_fragment" : "temporario1_experimento_Reg"
+        "line" : 88,
+        "column" : 25,
+        "source_fragment" : "diff_time_reg"
       },
-      "size" : 128,
-      "bitwidth" : 48
-    },
-    {
-      "name" : "temporario2_experimento_Reg",
-      "id" : 21,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 10,
-        "column" : 23,
-        "source_fragment" : "temporario2_experimento_Reg"
-      },
-      "size" : 128,
+      "size" : 1,
       "bitwidth" : 48
     }
   ],
@@ -512,7 +533,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 394,
+        "line" : 387,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },
@@ -607,7 +628,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 88,
+            "line" : 95,
             "column" : 8,
             "source_fragment" : "meta.indexPath = indexPath"
           }
@@ -630,7 +651,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 89,
+            "line" : 96,
             "column" : 8,
             "source_fragment" : "lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)"
           }
@@ -661,7 +682,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 93,
+            "line" : 100,
             "column" : 8,
             "source_fragment" : "meta.indexPath = indexPath"
           }
@@ -684,7 +705,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 94,
+            "line" : 101,
             "column" : 8,
             "source_fragment" : "lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath)"
           }
@@ -733,7 +754,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 98,
+            "line" : 105,
             "column" : 8,
             "source_fragment" : "hdr.pathHops.numHop = hdr.pathHops.numHop + 1"
           }
@@ -759,7 +780,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 102,
+            "line" : 109,
             "column" : 8,
             "source_fragment" : "hdr.pathHops.numHop = 0"
           }
@@ -789,7 +810,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 107,
+            "line" : 114,
             "column" : 8,
             "source_fragment" : "depotPortReg.read(meta.depotPort, 0)"
           }
@@ -797,7 +818,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER179",
+      "name" : "fast_reroute_round_robin_MASTER195",
       "id" : 7,
       "runtime_data" : [],
       "primitives" : [
@@ -806,7 +827,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "temporario1_experimento_Reg"
+              "value" : "MyIngress.temporario1_experimento_Reg"
             },
             {
               "type" : "field",
@@ -819,15 +840,61 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 179,
+            "line" : 195,
             "column" : 20,
             "source_fragment" : "temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.last_seen_pkt_timestamp"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 196,
+            "column" : 20,
+            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "last_seen_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.last_seen_pkt_timestamp"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 197,
+            "column" : 20,
+            "source_fragment" : "last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER143",
+      "name" : "fast_reroute_round_robin_MASTER150",
       "id" : 8,
       "runtime_data" : [],
       "primitives" : [
@@ -849,7 +916,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 143,
+            "line" : 150,
             "column" : 12,
             "source_fragment" : "swIdReg.read(swId, 0)"
           }
@@ -872,7 +939,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 157,
+            "line" : 167,
             "column" : 12,
             "source_fragment" : "depotIdReg.read(depotId, 0)"
           }
@@ -895,7 +962,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 161,
+            "line" : 171,
             "column" : 12,
             "source_fragment" : "last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id)"
           }
@@ -918,7 +985,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 165,
+            "line" : 175,
             "column" : 12,
             "source_fragment" : "maxTimeOutDepotReg.read(threshold, 0)"
           }
@@ -941,15 +1008,80 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 173,
+            "line" : 183,
             "column" : 12,
             "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["standard_metadata", "ingress_global_timestamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "last_seen_0"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 186,
+            "column" : 35,
+            "source_fragment" : "curr_time - last_seen"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.diff_time_reg"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 186,
+            "column" : 12,
+            "source_fragment" : "diff_time_reg.write(0, curr_time - last_seen)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER198",
+      "name" : "fast_reroute_round_robin_MASTER216",
       "id" : 9,
       "runtime_data" : [],
       "primitives" : [
@@ -971,8 +1103,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 198,
-            "column" : 24,
+            "line" : 216,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
         },
@@ -994,15 +1126,15 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 199,
-            "column" : 24,
+            "line" : 217,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER201",
+      "name" : "fast_reroute_round_robin_MASTER219",
       "id" : 10,
       "runtime_data" : [],
       "primitives" : [
@@ -1011,7 +1143,7 @@
           "parameters" : [
             {
               "type" : "field",
-              "value" : ["scalars", "tmp"]
+              "value" : ["scalars", "tmp_0"]
             },
             {
               "type" : "expression",
@@ -1043,8 +1175,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 201,
-            "column" : 72,
+            "line" : 219,
+            "column" : 76,
             "source_fragment" : "path_id_pointer_var + 1"
           }
         },
@@ -1061,13 +1193,13 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "tmp"]
+              "value" : ["scalars", "tmp_0"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 201,
-            "column" : 24,
+            "line" : 219,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1)"
           }
         },
@@ -1089,15 +1221,15 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 202,
-            "column" : 24,
+            "line" : 220,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER205",
+      "name" : "fast_reroute_round_robin_MASTER223",
       "id" : 11,
       "runtime_data" : [],
       "primitives" : [
@@ -1119,8 +1251,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 205,
-            "column" : 24,
+            "line" : 223,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
         },
@@ -1142,15 +1274,15 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 206,
-            "column" : 24,
+            "line" : 224,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER194",
+      "name" : "fast_reroute_round_robin_MASTER211",
       "id" : 12,
       "runtime_data" : [],
       "primitives" : [
@@ -1172,7 +1304,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 194,
+            "line" : 211,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1180,7 +1312,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER209",
+      "name" : "fast_reroute_round_robin_MASTER227",
       "id" : 13,
       "runtime_data" : [],
       "primitives" : [
@@ -1202,8 +1334,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 209,
-            "column" : 20,
+            "line" : 227,
+            "column" : 24,
             "source_fragment" : "path_id_0_path_reg.read(swIdTry, path_id_pointer_var)"
           }
         },
@@ -1221,8 +1353,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 210,
-            "column" : 20,
+            "line" : 228,
+            "column" : 24,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
           }
         },
@@ -1240,403 +1372,12 @@
             {
               "type" : "field",
               "value" : ["scalars", "swIdTry_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 211,
-            "column" : 20,
-            "source_fragment" : "whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "is_alt"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x01"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 212,
-            "column" : 20,
-            "source_fragment" : "hdr.pathHops.is_alt = 1"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x01"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 213,
-            "column" : 20,
-            "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 1)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "isAltVar_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 214,
-            "column" : 20,
-            "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.forcePrimaryPathReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 215,
-            "column" : 20,
-            "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER222",
-      "id" : 14,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000001"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 222,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "path_id_pointer_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 223,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER225",
-      "id" : 15,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "tmp_0"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "+",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "path_id_pointer_var_0"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00000001"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 225,
-            "column" : 72,
-            "source_fragment" : "path_id_pointer_var + 1"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "tmp_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 225,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "path_id_pointer_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 226,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER228",
-      "id" : 16,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000001"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 228,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "path_id_pointer_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
             "line" : 229,
             "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER218",
-      "id" : 17,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "path_id_pointer_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 218,
-            "column" : 20,
-            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER232",
-      "id" : 18,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "swIdTry_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_1_path_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "path_id_pointer_var_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 232,
-            "column" : 20,
-            "source_fragment" : "path_id_1_path_reg.read(swIdTry, path_id_pointer_var)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "which_alt_switch"]
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "swIdTry_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 233,
-            "column" : 20,
-            "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.whichSwitchAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "swIdTry_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 234,
-            "column" : 20,
             "source_fragment" : "whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry)"
           }
         },
@@ -1654,8 +1395,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 235,
-            "column" : 20,
+            "line" : 230,
+            "column" : 24,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
         },
@@ -1677,8 +1418,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 236,
-            "column" : 20,
+            "line" : 231,
+            "column" : 24,
             "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 1)"
           }
         },
@@ -1700,8 +1441,8 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 237,
-            "column" : 20,
+            "line" : 232,
+            "column" : 24,
             "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
           }
         },
@@ -1723,176 +1464,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 238,
-            "column" : 20,
+            "line" : 233,
+            "column" : 24,
             "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER241",
-      "id" : 19,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 241,
-            "column" : 16,
-            "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 0)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "isAltVar_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 242,
-            "column" : 16,
-            "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "is_alt"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 243,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.is_alt = 0"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 244,
-            "column" : 16,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 0)"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.whichSwitchAltReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 245,
-            "column" : 16,
-            "source_fragment" : "whichSwitchAltReg.write(hdr.pathHops.path_id, 0)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "which_alt_switch"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 246,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.which_alt_switch = 0"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.forcePrimaryPathReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x01"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 249,
-            "column" : 16,
-            "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 1)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER188",
-      "id" : 20,
+      "name" : "fast_reroute_round_robin_MASTER204",
+      "id" : 14,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -1913,7 +1494,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 188,
+            "line" : 204,
             "column" : 12,
             "source_fragment" : "lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id)"
           }
@@ -1921,8 +1502,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER254",
-      "id" : 21,
+      "name" : "fast_reroute_round_robin_MASTER276",
+      "id" : 15,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -1939,7 +1520,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 254,
+            "line" : 276,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -1962,7 +1543,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 255,
+            "line" : 277,
             "column" : 16,
             "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
           }
@@ -1985,7 +1566,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 258,
+            "line" : 280,
             "column" : 16,
             "source_fragment" : "whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id)"
           }
@@ -2004,7 +1585,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 259,
+            "line" : 281,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
           }
@@ -2012,8 +1593,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER266",
-      "id" : 22,
+      "name" : "fast_reroute_round_robin_MASTER293",
+      "id" : 16,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2110,7 +1691,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 266,
+            "line" : 293,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2118,318 +1699,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER268",
-      "id" : 23,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "userMetadata.nextHop"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.primaryNH_2"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 268,
-            "column" : 20,
-            "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "num_times_curr_switch"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "|",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "num_times_curr_switch"]
-                      },
-                      "right" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "&",
-                          "left" : {
-                            "type" : "expression",
-                            "value" : {
-                              "op" : "~",
-                              "left" : null,
-                              "right" : {
-                                "type" : "expression",
-                                "value" : {
-                                  "op" : "&",
-                                  "left" : {
-                                    "type" : "expression",
-                                    "value" : {
-                                      "op" : "<<",
-                                      "left" : {
-                                        "type" : "hexstr",
-                                        "value" : "0x0000000000000001"
-                                      },
-                                      "right" : {
-                                        "type" : "field",
-                                        "value" : ["scalars", "swId_0"]
-                                      }
-                                    }
-                                  },
-                                  "right" : {
-                                    "type" : "hexstr",
-                                    "value" : "0xffffffffffffffff"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0xffffffffffffffff"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "<<",
-                          "left" : {
-                            "type" : "hexstr",
-                            "value" : "0x0000000000000001"
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "swId_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffffffff"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 269,
-            "column" : 20,
-            "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER264",
-      "id" : 24,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "userMetadata.nextHop"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.primaryNH_1"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 264,
-            "column" : 16,
-            "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER271",
-      "id" : 25,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "which_alt_switch"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 271,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.which_alt_switch = 0"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "is_alt"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 272,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.is_alt = 0"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER278",
-      "id" : 26,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "num_times_curr_switch"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "|",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "num_times_curr_switch"]
-                      },
-                      "right" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "&",
-                          "left" : {
-                            "type" : "expression",
-                            "value" : {
-                              "op" : "~",
-                              "left" : null,
-                              "right" : {
-                                "type" : "expression",
-                                "value" : {
-                                  "op" : "&",
-                                  "left" : {
-                                    "type" : "expression",
-                                    "value" : {
-                                      "op" : "<<",
-                                      "left" : {
-                                        "type" : "hexstr",
-                                        "value" : "0x0000000000000001"
-                                      },
-                                      "right" : {
-                                        "type" : "field",
-                                        "value" : ["scalars", "swId_0"]
-                                      }
-                                    }
-                                  },
-                                  "right" : {
-                                    "type" : "hexstr",
-                                    "value" : "0xffffffffffffffff"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0xffffffffffffffff"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "<<",
-                          "left" : {
-                            "type" : "hexstr",
-                            "value" : "0x0000000000000001"
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "swId_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffffffff"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 278,
-            "column" : 20,
-            "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER280",
-      "id" : 27,
+      "name" : "fast_reroute_round_robin_MASTER295",
+      "id" : 17,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2450,7 +1721,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 280,
+            "line" : 295,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2549,7 +1820,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 281,
+            "line" : 296,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2557,8 +1828,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER276",
-      "id" : 28,
+      "name" : "fast_reroute_round_robin_MASTER291",
+      "id" : 18,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2579,7 +1850,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 276,
+            "line" : 291,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2587,29 +1858,10 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER283",
-      "id" : 29,
+      "name" : "fast_reroute_round_robin_MASTER298",
+      "id" : 19,
       "runtime_data" : [],
       "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "which_alt_switch"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 283,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.which_alt_switch = 0"
-          }
-        },
         {
           "op" : "assign",
           "parameters" : [
@@ -2624,7 +1876,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 284,
+            "line" : 298,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -2632,8 +1884,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER291",
-      "id" : 30,
+      "name" : "fast_reroute_round_robin_MASTER305",
+      "id" : 20,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2654,7 +1906,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 291,
+            "line" : 305,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2662,8 +1914,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER288",
-      "id" : 31,
+      "name" : "fast_reroute_round_robin_MASTER302",
+      "id" : 21,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2760,7 +2012,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 288,
+            "line" : 302,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2783,7 +2035,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 289,
+            "line" : 303,
             "column" : 16,
             "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2791,8 +2043,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER310",
-      "id" : 32,
+      "name" : "fast_reroute_round_robin_MASTER324",
+      "id" : 22,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2813,7 +2065,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 310,
+            "line" : 324,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2832,7 +2084,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 311,
+            "line" : 325,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.is_alt = 0"
           }
@@ -2840,8 +2092,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER306",
-      "id" : 33,
+      "name" : "fast_reroute_round_robin_MASTER320",
+      "id" : 23,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2938,7 +2190,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 306,
+            "line" : 320,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2961,7 +2213,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 307,
+            "line" : 321,
             "column" : 16,
             "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2980,7 +2232,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 308,
+            "line" : 322,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 0"
           }
@@ -2988,8 +2240,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER304",
-      "id" : 34,
+      "name" : "fast_reroute_round_robin_MASTER318",
+      "id" : 24,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3010,7 +2262,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 304,
+            "line" : 318,
             "column" : 12,
             "source_fragment" : "forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id)"
           }
@@ -3018,8 +2270,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER329",
-      "id" : 35,
+      "name" : "fast_reroute_round_robin_MASTER341",
+      "id" : 25,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3027,7 +2279,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "temporario2_experimento_Reg"
+              "value" : "MyIngress.temporario2_experimento_Reg"
             },
             {
               "type" : "field",
@@ -3040,7 +2292,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 329,
+            "line" : 341,
             "column" : 20,
             "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -3063,7 +2315,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 330,
+            "line" : 342,
             "column" : 20,
             "source_fragment" : "isFirstResponseReg.write(hdr.pathHops.path_id, 1)"
           }
@@ -3071,31 +2323,54 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER322",
-      "id" : 36,
+      "name" : "fast_reroute_round_robin_MASTER332",
+      "id" : 26,
       "runtime_data" : [],
       "primitives" : [
         {
-          "op" : "register_read",
+          "op" : "register_write",
           "parameters" : [
             {
-              "type" : "field",
-              "value" : ["scalars", "tempo1_0"]
-            },
-            {
               "type" : "register_array",
-              "value" : "temporario1_experimento_Reg"
+              "value" : "MyIngress.last_seen_pkt_timestamp"
             },
             {
               "type" : "field",
               "value" : ["pathHops", "path_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 322,
+            "line" : 332,
             "column" : 16,
-            "source_fragment" : "temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id)"
+            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.last_seen_pkt_id"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "pkt_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 336,
+            "column" : 16,
+            "source_fragment" : "last_seen_pkt_id.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id)"
           }
         },
         {
@@ -3116,221 +2391,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 324,
+            "line" : 339,
             "column" : 16,
             "source_fragment" : "isFirstResponseReg.read(x, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER316",
-      "id" : 37,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "egress_spec"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "userMetadata.nextHop"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x01ff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 316,
-            "column" : 12,
-            "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER343",
-      "id" : 38,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "temporario2_experimento_Reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "ingress_global_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 343,
-            "column" : 20,
-            "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isFirstResponseReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x01"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 344,
-            "column" : 20,
-            "source_fragment" : "isFirstResponseReg.write(hdr.pathHops.path_id, 1)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER336",
-      "id" : 39,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "tempo1_1"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "temporario1_experimento_Reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 336,
-            "column" : 16,
-            "source_fragment" : "temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "x_1"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.isFirstResponseReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 338,
-            "column" : 16,
-            "source_fragment" : "isFirstResponseReg.read(x, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER351",
-      "id" : 40,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.last_seen_pkt_timestamp"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "ingress_global_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 351,
-            "column" : 16,
-            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
           }
         }
       ]
     },
     {
       "name" : "fast_reroute_round_robin_MASTER356",
-      "id" : 41,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.last_seen_pkt_timestamp"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "ingress_global_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 356,
-            "column" : 16,
-            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_MASTER363",
-      "id" : 42,
+      "id" : 27,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3360,7 +2430,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 363,
+            "line" : 356,
             "column" : 16,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
           }
@@ -3368,8 +2438,47 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_MASTER370",
-      "id" : 43,
+      "name" : "fast_reroute_round_robin_MASTER351",
+      "id" : 28,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "userMetadata.nextHop"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01ff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 351,
+            "column" : 12,
+            "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_round_robin_MASTER363",
+      "id" : 29,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3386,7 +2495,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 370,
+            "line" : 363,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.has_visited_depot = 1"
           }
@@ -3400,7 +2509,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 24,
+        "line" : 21,
         "column" : 8,
         "source_fragment" : "MyIngress"
       },
@@ -3411,7 +2520,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 139,
+            "line" : 146,
             "column" : 12,
             "source_fragment" : "update_curr_path_size()"
           },
@@ -3424,9 +2533,9 @@
           "direct_meters" : null,
           "action_ids" : [4],
           "actions" : ["MyIngress.update_curr_path_size"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER143",
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER150",
           "next_tables" : {
-            "MyIngress.update_curr_path_size" : "tbl_fast_reroute_round_robin_MASTER143"
+            "MyIngress.update_curr_path_size" : "tbl_fast_reroute_round_robin_MASTER150"
           },
           "default_entry" : {
             "action_id" : 4,
@@ -3436,11 +2545,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER143",
+          "name" : "tbl_fast_reroute_round_robin_MASTER150",
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 143,
+            "line" : 150,
             "column" : 12,
             "source_fragment" : "swIdReg.read(swId, 0); ..."
           },
@@ -3452,10 +2561,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [8],
-          "actions" : ["fast_reroute_round_robin_MASTER143"],
+          "actions" : ["fast_reroute_round_robin_MASTER150"],
           "base_default_next" : "node_5",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER143" : "node_5"
+            "fast_reroute_round_robin_MASTER150" : "node_5"
           },
           "default_entry" : {
             "action_id" : 8,
@@ -3465,13 +2574,13 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER179",
+          "name" : "tbl_fast_reroute_round_robin_MASTER195",
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 179,
+            "line" : 195,
             "column" : 20,
-            "source_fragment" : "temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
+            "source_fragment" : "temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos) ..."
           },
           "key" : [],
           "match_type" : "exact",
@@ -3481,10 +2590,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [7],
-          "actions" : ["fast_reroute_round_robin_MASTER179"],
+          "actions" : ["fast_reroute_round_robin_MASTER195"],
           "base_default_next" : "MyIngress.len_primary_path",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER179" : "MyIngress.len_primary_path"
+            "fast_reroute_round_robin_MASTER195" : "MyIngress.len_primary_path"
           },
           "default_entry" : {
             "action_id" : 7,
@@ -3498,7 +2607,7 @@
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 111,
+            "line" : 118,
             "column" : 10,
             "source_fragment" : "len_primary_path"
           },
@@ -3535,7 +2644,7 @@
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 123,
+            "line" : 130,
             "column" : 10,
             "source_fragment" : "len_alternative_path"
           },
@@ -3555,10 +2664,10 @@
           "direct_meters" : null,
           "action_ids" : [3, 1],
           "actions" : ["MyIngress.read_len_alternative_path", "NoAction"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER188",
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER204",
           "next_tables" : {
-            "MyIngress.read_len_alternative_path" : "tbl_fast_reroute_round_robin_MASTER188",
-            "NoAction" : "tbl_fast_reroute_round_robin_MASTER188"
+            "MyIngress.read_len_alternative_path" : "tbl_fast_reroute_round_robin_MASTER204",
+            "NoAction" : "tbl_fast_reroute_round_robin_MASTER204"
           },
           "default_entry" : {
             "action_id" : 1,
@@ -3568,11 +2677,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER188",
+          "name" : "tbl_fast_reroute_round_robin_MASTER204",
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 188,
+            "line" : 204,
             "column" : 12,
             "source_fragment" : "lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id)"
           },
@@ -3583,25 +2692,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [20],
-          "actions" : ["fast_reroute_round_robin_MASTER188"],
+          "action_ids" : [14],
+          "actions" : ["fast_reroute_round_robin_MASTER204"],
           "base_default_next" : "node_11",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER188" : "node_11"
+            "fast_reroute_round_robin_MASTER204" : "node_11"
           },
           "default_entry" : {
-            "action_id" : 20,
+            "action_id" : 14,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER194",
+          "name" : "tbl_fast_reroute_round_robin_MASTER211",
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 194,
+            "line" : 211,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           },
@@ -3613,10 +2722,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [12],
-          "actions" : ["fast_reroute_round_robin_MASTER194"],
+          "actions" : ["fast_reroute_round_robin_MASTER211"],
           "base_default_next" : "node_14",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER194" : "node_14"
+            "fast_reroute_round_robin_MASTER211" : "node_14"
           },
           "default_entry" : {
             "action_id" : 12,
@@ -3626,12 +2735,12 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER198",
+          "name" : "tbl_fast_reroute_round_robin_MASTER216",
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 198,
-            "column" : 24,
+            "line" : 216,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path... ..."
           },
           "key" : [],
@@ -3642,10 +2751,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [9],
-          "actions" : ["fast_reroute_round_robin_MASTER198"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER209",
+          "actions" : ["fast_reroute_round_robin_MASTER216"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER227",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER198" : "tbl_fast_reroute_round_robin_MASTER209"
+            "fast_reroute_round_robin_MASTER216" : "tbl_fast_reroute_round_robin_MASTER227"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -3655,12 +2764,12 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER201",
+          "name" : "tbl_fast_reroute_round_robin_MASTER219",
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 201,
-            "column" : 24,
+            "line" : 219,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally... ..."
           },
           "key" : [],
@@ -3671,10 +2780,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [10],
-          "actions" : ["fast_reroute_round_robin_MASTER201"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER209",
+          "actions" : ["fast_reroute_round_robin_MASTER219"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER227",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER201" : "tbl_fast_reroute_round_robin_MASTER209"
+            "fast_reroute_round_robin_MASTER219" : "tbl_fast_reroute_round_robin_MASTER227"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -3684,12 +2793,12 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER205",
+          "name" : "tbl_fast_reroute_round_robin_MASTER223",
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 205,
-            "column" : 24,
+            "line" : 223,
+            "column" : 28,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1 ..."
           },
           "key" : [],
@@ -3700,10 +2809,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [11],
-          "actions" : ["fast_reroute_round_robin_MASTER205"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER209",
+          "actions" : ["fast_reroute_round_robin_MASTER223"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER227",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER205" : "tbl_fast_reroute_round_robin_MASTER209"
+            "fast_reroute_round_robin_MASTER223" : "tbl_fast_reroute_round_robin_MASTER227"
           },
           "default_entry" : {
             "action_id" : 11,
@@ -3713,12 +2822,12 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER209",
+          "name" : "tbl_fast_reroute_round_robin_MASTER227",
           "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 209,
-            "column" : 20,
+            "line" : 227,
+            "column" : 24,
             "source_fragment" : "path_id_0_path_reg.read(swIdTry, path_id_pointer_var); ..."
           },
           "key" : [],
@@ -3729,10 +2838,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [13],
-          "actions" : ["fast_reroute_round_robin_MASTER209"],
-          "base_default_next" : "node_30",
+          "actions" : ["fast_reroute_round_robin_MASTER227"],
+          "base_default_next" : "node_20",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER209" : "node_30"
+            "fast_reroute_round_robin_MASTER227" : "node_20"
           },
           "default_entry" : {
             "action_id" : 13,
@@ -3742,185 +2851,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER218",
+          "name" : "tbl_fast_reroute_round_robin_MASTER276",
           "id" : 11,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 218,
-            "column" : 20,
-            "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [17],
-          "actions" : ["fast_reroute_round_robin_MASTER218"],
-          "base_default_next" : "node_22",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER218" : "node_22"
-          },
-          "default_entry" : {
-            "action_id" : 17,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER222",
-          "id" : 12,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 222,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path... ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [14],
-          "actions" : ["fast_reroute_round_robin_MASTER222"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER232",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER222" : "tbl_fast_reroute_round_robin_MASTER232"
-          },
-          "default_entry" : {
-            "action_id" : 14,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER225",
-          "id" : 13,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 225,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally... ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [15],
-          "actions" : ["fast_reroute_round_robin_MASTER225"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER232",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER225" : "tbl_fast_reroute_round_robin_MASTER232"
-          },
-          "default_entry" : {
-            "action_id" : 15,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER228",
-          "id" : 14,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 228,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1 ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [16],
-          "actions" : ["fast_reroute_round_robin_MASTER228"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER232",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER228" : "tbl_fast_reroute_round_robin_MASTER232"
-          },
-          "default_entry" : {
-            "action_id" : 16,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER232",
-          "id" : 15,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 232,
-            "column" : 20,
-            "source_fragment" : "path_id_1_path_reg.read(swIdTry, path_id_pointer_var); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [18],
-          "actions" : ["fast_reroute_round_robin_MASTER232"],
-          "base_default_next" : "node_30",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER232" : "node_30"
-          },
-          "default_entry" : {
-            "action_id" : 18,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER241",
-          "id" : 16,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 241,
-            "column" : 16,
-            "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 0); //reset isAltReg ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [19],
-          "actions" : ["fast_reroute_round_robin_MASTER241"],
-          "base_default_next" : "node_30",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER241" : "node_30"
-          },
-          "default_entry" : {
-            "action_id" : 19,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER254",
-          "id" : 17,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 254,
+            "line" : 276,
             "column" : 36,
             "source_fragment" : "= 1; ..."
           },
@@ -3931,141 +2866,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [21],
-          "actions" : ["fast_reroute_round_robin_MASTER254"],
-          "base_default_next" : "node_32",
+          "action_ids" : [15],
+          "actions" : ["fast_reroute_round_robin_MASTER276"],
+          "base_default_next" : "node_22",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER254" : "node_32"
+            "fast_reroute_round_robin_MASTER276" : "node_22"
           },
           "default_entry" : {
-            "action_id" : 21,
+            "action_id" : 15,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER264",
-          "id" : 18,
+          "name" : "tbl_fast_reroute_round_robin_MASTER291",
+          "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 264,
-            "column" : 16,
-            "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [24],
-          "actions" : ["fast_reroute_round_robin_MASTER264"],
-          "base_default_next" : "node_34",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER264" : "node_34"
-          },
-          "default_entry" : {
-            "action_id" : 24,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER266",
-          "id" : 19,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 266,
-            "column" : 55,
-            "source_fragment" : "="
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [22],
-          "actions" : ["fast_reroute_round_robin_MASTER266"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER271",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER266" : "tbl_fast_reroute_round_robin_MASTER271"
-          },
-          "default_entry" : {
-            "action_id" : 22,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER268",
-          "id" : 20,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 268,
-            "column" : 20,
-            "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [23],
-          "actions" : ["fast_reroute_round_robin_MASTER268"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER271",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER268" : "tbl_fast_reroute_round_robin_MASTER271"
-          },
-          "default_entry" : {
-            "action_id" : 23,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER271",
-          "id" : 21,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 271,
-            "column" : 46,
-            "source_fragment" : "= 0; ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [25],
-          "actions" : ["fast_reroute_round_robin_MASTER271"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER304",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER271" : "tbl_fast_reroute_round_robin_MASTER304"
-          },
-          "default_entry" : {
-            "action_id" : 25,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER276",
-          "id" : 22,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 276,
+            "line" : 291,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -4076,25 +2895,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [28],
-          "actions" : ["fast_reroute_round_robin_MASTER276"],
-          "base_default_next" : "node_40",
+          "action_ids" : [18],
+          "actions" : ["fast_reroute_round_robin_MASTER291"],
+          "base_default_next" : "node_24",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER276" : "node_40"
+            "fast_reroute_round_robin_MASTER291" : "node_24"
           },
           "default_entry" : {
-            "action_id" : 28,
+            "action_id" : 18,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER278",
-          "id" : 23,
+          "name" : "tbl_fast_reroute_round_robin_MASTER293",
+          "id" : 13,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 278,
+            "line" : 293,
             "column" : 55,
             "source_fragment" : "="
           },
@@ -4105,25 +2924,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [26],
-          "actions" : ["fast_reroute_round_robin_MASTER278"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER283",
+          "action_ids" : [16],
+          "actions" : ["fast_reroute_round_robin_MASTER293"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER298",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER278" : "tbl_fast_reroute_round_robin_MASTER283"
+            "fast_reroute_round_robin_MASTER293" : "tbl_fast_reroute_round_robin_MASTER298"
           },
           "default_entry" : {
-            "action_id" : 26,
+            "action_id" : 16,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER280",
-          "id" : 24,
+          "name" : "tbl_fast_reroute_round_robin_MASTER295",
+          "id" : 14,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 280,
+            "line" : 295,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -4134,27 +2953,27 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [27],
-          "actions" : ["fast_reroute_round_robin_MASTER280"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER283",
+          "action_ids" : [17],
+          "actions" : ["fast_reroute_round_robin_MASTER295"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER298",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER280" : "tbl_fast_reroute_round_robin_MASTER283"
+            "fast_reroute_round_robin_MASTER295" : "tbl_fast_reroute_round_robin_MASTER298"
           },
           "default_entry" : {
-            "action_id" : 27,
+            "action_id" : 17,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER283",
-          "id" : 25,
+          "name" : "tbl_fast_reroute_round_robin_MASTER298",
+          "id" : 15,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 283,
-            "column" : 46,
-            "source_fragment" : "= 0; //after performing a deviation, return to the original path hops. ..."
+            "line" : 298,
+            "column" : 36,
+            "source_fragment" : "="
           },
           "key" : [],
           "match_type" : "exact",
@@ -4163,25 +2982,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [29],
-          "actions" : ["fast_reroute_round_robin_MASTER283"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER304",
+          "action_ids" : [19],
+          "actions" : ["fast_reroute_round_robin_MASTER298"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER318",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER283" : "tbl_fast_reroute_round_robin_MASTER304"
+            "fast_reroute_round_robin_MASTER298" : "tbl_fast_reroute_round_robin_MASTER318"
           },
           "default_entry" : {
-            "action_id" : 29,
+            "action_id" : 19,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER288",
-          "id" : 26,
+          "name" : "tbl_fast_reroute_round_robin_MASTER302",
+          "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 288,
+            "line" : 302,
             "column" : 51,
             "source_fragment" : "= (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); ..."
           },
@@ -4192,25 +3011,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [31],
-          "actions" : ["fast_reroute_round_robin_MASTER288"],
-          "base_default_next" : "node_45",
+          "action_ids" : [21],
+          "actions" : ["fast_reroute_round_robin_MASTER302"],
+          "base_default_next" : "node_29",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER288" : "node_45"
+            "fast_reroute_round_robin_MASTER302" : "node_29"
           },
           "default_entry" : {
-            "action_id" : 31,
+            "action_id" : 21,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER291",
-          "id" : 27,
+          "name" : "tbl_fast_reroute_round_robin_MASTER305",
+          "id" : 17,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 291,
+            "line" : 305,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -4221,25 +3040,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [30],
-          "actions" : ["fast_reroute_round_robin_MASTER291"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER304",
+          "action_ids" : [20],
+          "actions" : ["fast_reroute_round_robin_MASTER305"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER318",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER291" : "tbl_fast_reroute_round_robin_MASTER304"
+            "fast_reroute_round_robin_MASTER305" : "tbl_fast_reroute_round_robin_MASTER318"
           },
           "default_entry" : {
-            "action_id" : 30,
+            "action_id" : 20,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER304",
-          "id" : 28,
+          "name" : "tbl_fast_reroute_round_robin_MASTER318",
+          "id" : 18,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 304,
+            "line" : 318,
             "column" : 12,
             "source_fragment" : "forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id)"
           },
@@ -4250,25 +3069,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [34],
-          "actions" : ["fast_reroute_round_robin_MASTER304"],
-          "base_default_next" : "node_48",
+          "action_ids" : [24],
+          "actions" : ["fast_reroute_round_robin_MASTER318"],
+          "base_default_next" : "node_32",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER304" : "node_48"
+            "fast_reroute_round_robin_MASTER318" : "node_32"
           },
           "default_entry" : {
-            "action_id" : 34,
+            "action_id" : 24,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER306",
-          "id" : 29,
+          "name" : "tbl_fast_reroute_round_robin_MASTER320",
+          "id" : 19,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 306,
+            "line" : 320,
             "column" : 51,
             "source_fragment" : "= (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); ..."
           },
@@ -4279,25 +3098,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [33],
-          "actions" : ["fast_reroute_round_robin_MASTER306"],
-          "base_default_next" : "node_50",
+          "action_ids" : [23],
+          "actions" : ["fast_reroute_round_robin_MASTER320"],
+          "base_default_next" : "node_34",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER306" : "node_50"
+            "fast_reroute_round_robin_MASTER320" : "node_34"
           },
           "default_entry" : {
-            "action_id" : 33,
+            "action_id" : 23,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER310",
-          "id" : 30,
+          "name" : "tbl_fast_reroute_round_robin_MASTER324",
+          "id" : 20,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 310,
+            "line" : 324,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -4308,25 +3127,83 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [32],
-          "actions" : ["fast_reroute_round_robin_MASTER310"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER316",
+          "action_ids" : [22],
+          "actions" : ["fast_reroute_round_robin_MASTER324"],
+          "base_default_next" : "node_36",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER310" : "tbl_fast_reroute_round_robin_MASTER316"
+            "fast_reroute_round_robin_MASTER324" : "node_36"
           },
           "default_entry" : {
-            "action_id" : 32,
+            "action_id" : 22,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER316",
-          "id" : 31,
+          "name" : "tbl_fast_reroute_round_robin_MASTER332",
+          "id" : 21,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 316,
+            "line" : 332,
+            "column" : 16,
+            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [26],
+          "actions" : ["fast_reroute_round_robin_MASTER332"],
+          "base_default_next" : "node_38",
+          "next_tables" : {
+            "fast_reroute_round_robin_MASTER332" : "node_38"
+          },
+          "default_entry" : {
+            "action_id" : 26,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute_round_robin_MASTER341",
+          "id" : 22,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 341,
+            "column" : 20,
+            "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp) ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [25],
+          "actions" : ["fast_reroute_round_robin_MASTER341"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER351",
+          "next_tables" : {
+            "fast_reroute_round_robin_MASTER341" : "tbl_fast_reroute_round_robin_MASTER351"
+          },
+          "default_entry" : {
+            "action_id" : 25,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute_round_robin_MASTER351",
+          "id" : 23,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 351,
             "column" : 42,
             "source_fragment" : "="
           },
@@ -4337,188 +3214,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [37],
-          "actions" : ["fast_reroute_round_robin_MASTER316"],
-          "base_default_next" : "node_53",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER316" : "node_53"
-          },
-          "default_entry" : {
-            "action_id" : 37,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER322",
-          "id" : 32,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 322,
-            "column" : 16,
-            "source_fragment" : "temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [36],
-          "actions" : ["fast_reroute_round_robin_MASTER322"],
-          "base_default_next" : "node_55",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER322" : "node_55"
-          },
-          "default_entry" : {
-            "action_id" : 36,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER329",
-          "id" : 33,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 329,
-            "column" : 20,
-            "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp) ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [35],
-          "actions" : ["fast_reroute_round_robin_MASTER329"],
-          "base_default_next" : "node_57",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER329" : "node_57"
-          },
-          "default_entry" : {
-            "action_id" : 35,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER336",
-          "id" : 34,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 336,
-            "column" : 16,
-            "source_fragment" : "temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [39],
-          "actions" : ["fast_reroute_round_robin_MASTER336"],
-          "base_default_next" : "node_59",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER336" : "node_59"
-          },
-          "default_entry" : {
-            "action_id" : 39,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER343",
-          "id" : 35,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 343,
-            "column" : 20,
-            "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp) ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [38],
-          "actions" : ["fast_reroute_round_robin_MASTER343"],
-          "base_default_next" : "node_61",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER343" : "node_61"
-          },
-          "default_entry" : {
-            "action_id" : 38,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER351",
-          "id" : 36,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 351,
-            "column" : 16,
-            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [40],
+          "action_ids" : [28],
           "actions" : ["fast_reroute_round_robin_MASTER351"],
-          "base_default_next" : "node_63",
+          "base_default_next" : "node_41",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER351" : "node_63"
+            "fast_reroute_round_robin_MASTER351" : "node_41"
           },
           "default_entry" : {
-            "action_id" : 40,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_MASTER356",
-          "id" : 37,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 356,
-            "column" : 16,
-            "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [41],
-          "actions" : ["fast_reroute_round_robin_MASTER356"],
-          "base_default_next" : "node_65",
-          "next_tables" : {
-            "fast_reroute_round_robin_MASTER356" : "node_65"
-          },
-          "default_entry" : {
-            "action_id" : 41,
+            "action_id" : 28,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4526,10 +3229,10 @@
         },
         {
           "name" : "tbl_read_depot_port",
-          "id" : 38,
+          "id" : 24,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 362,
+            "line" : 355,
             "column" : 16,
             "source_fragment" : "read_depot_port()"
           },
@@ -4542,9 +3245,9 @@
           "direct_meters" : null,
           "action_ids" : [6],
           "actions" : ["MyIngress.read_depot_port"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER363",
+          "base_default_next" : "tbl_fast_reroute_round_robin_MASTER356",
           "next_tables" : {
-            "MyIngress.read_depot_port" : "tbl_fast_reroute_round_robin_MASTER363"
+            "MyIngress.read_depot_port" : "tbl_fast_reroute_round_robin_MASTER356"
           },
           "default_entry" : {
             "action_id" : 6,
@@ -4554,11 +3257,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER363",
-          "id" : 39,
+          "name" : "tbl_fast_reroute_round_robin_MASTER356",
+          "id" : 25,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 363,
+            "line" : 356,
             "column" : 46,
             "source_fragment" : "="
           },
@@ -4569,14 +3272,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [42],
-          "actions" : ["fast_reroute_round_robin_MASTER363"],
+          "action_ids" : [27],
+          "actions" : ["fast_reroute_round_robin_MASTER356"],
           "base_default_next" : "tbl_reset_curr_path_size",
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER363" : "tbl_reset_curr_path_size"
+            "fast_reroute_round_robin_MASTER356" : "tbl_reset_curr_path_size"
           },
           "default_entry" : {
-            "action_id" : 42,
+            "action_id" : 27,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4584,10 +3287,10 @@
         },
         {
           "name" : "tbl_reset_curr_path_size",
-          "id" : 40,
+          "id" : 26,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 365,
+            "line" : 358,
             "column" : 16,
             "source_fragment" : "reset_curr_path_size()"
           },
@@ -4600,9 +3303,9 @@
           "direct_meters" : null,
           "action_ids" : [5],
           "actions" : ["MyIngress.reset_curr_path_size"],
-          "base_default_next" : "node_69",
+          "base_default_next" : "node_45",
           "next_tables" : {
-            "MyIngress.reset_curr_path_size" : "node_69"
+            "MyIngress.reset_curr_path_size" : "node_45"
           },
           "default_entry" : {
             "action_id" : 5,
@@ -4612,11 +3315,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_MASTER370",
-          "id" : 41,
+          "name" : "tbl_fast_reroute_round_robin_MASTER363",
+          "id" : 27,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 370,
+            "line" : 363,
             "column" : 47,
             "source_fragment" : "="
           },
@@ -4627,14 +3330,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [43],
-          "actions" : ["fast_reroute_round_robin_MASTER370"],
+          "action_ids" : [29],
+          "actions" : ["fast_reroute_round_robin_MASTER363"],
           "base_default_next" : null,
           "next_tables" : {
-            "fast_reroute_round_robin_MASTER370" : null
+            "fast_reroute_round_robin_MASTER363" : null
           },
           "default_entry" : {
-            "action_id" : 43,
+            "action_id" : 29,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4648,7 +3351,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 136,
+            "line" : 143,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid()"
           },
@@ -4671,7 +3374,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 177,
+            "line" : 193,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
           },
@@ -4717,45 +3420,25 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 178,
+            "line" : 194,
             "column" : 19,
-            "source_fragment" : "last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1"
+            "source_fragment" : "hdr.pathHops.pkt_id == (bit<64>)1"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "and",
+              "op" : "==",
               "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "last_seen_0"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x000000000000"
-                  }
-                }
+                "type" : "field",
+                "value" : ["pathHops", "pkt_id"]
               },
               "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "pkt_id"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x0000000000000001"
-                  }
-                }
+                "type" : "hexstr",
+                "value" : "0x0000000000000001"
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER179",
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER195",
           "false_next" : "MyIngress.len_primary_path"
         },
         {
@@ -4763,271 +3446,9 @@
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 191,
+            "line" : 207,
             "column" : 15,
-            "source_fragment" : "swId == depotId && curr_time - last_seen >= threshold"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "swId_0"]
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "depotId_0"]
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">=",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "-",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["standard_metadata", "ingress_global_timestamp"]
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "last_seen_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffff"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "threshold_0"]
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "node_12",
-          "false_next" : "node_28"
-        },
-        {
-          "name" : "node_12",
-          "id" : 4,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 192,
-            "column" : 19,
-            "source_fragment" : "hdr.pathHops.path_id == 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["pathHops", "path_id"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00000000"
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER194",
-          "false_next" : "node_20"
-        },
-        {
-          "name" : "node_14",
-          "id" : 5,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 197,
-            "column" : 23,
-            "source_fragment" : "path_id_pointer_var == 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["scalars", "path_id_pointer_var_0"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00000000"
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER198",
-          "false_next" : "node_16"
-        },
-        {
-          "name" : "node_16",
-          "id" : 6,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 200,
-            "column" : 29,
-            "source_fragment" : "path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "path_id_pointer_var_0"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000000"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "<",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "path_id_pointer_var_0"]
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "userMetadata.lenHashPrimaryPathSize"]
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER201",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER205"
-        },
-        {
-          "name" : "node_20",
-          "id" : 7,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 216,
-            "column" : 25,
-            "source_fragment" : "hdr.pathHops.path_id == 1"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["pathHops", "path_id"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00000001"
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER218",
-          "false_next" : "node_30"
-        },
-        {
-          "name" : "node_22",
-          "id" : 8,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 221,
-            "column" : 23,
-            "source_fragment" : "path_id_pointer_var == 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["scalars", "path_id_pointer_var_0"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00000000"
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER222",
-          "false_next" : "node_24"
-        },
-        {
-          "name" : "node_24",
-          "id" : 9,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 224,
-            "column" : 29,
-            "source_fragment" : "path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "path_id_pointer_var_0"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000000"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "<",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "path_id_pointer_var_0"]
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "userMetadata.lenHashPrimaryPathSize"]
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER225",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER228"
-        },
-        {
-          "name" : "node_28",
-          "id" : 10,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 240,
-            "column" : 21,
-            "source_fragment" : "swId == depotId && hdr.pathHops.is_tracker > 0 && hdr.pathHops.has_visited_depot > 0"
+            "source_fragment" : "swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0"
           },
           "expression" : {
             "type" : "expression",
@@ -5054,93 +3475,7 @@
                   "right" : {
                     "type" : "expression",
                     "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "is_tracker"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "has_visited_depot"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER241",
-          "false_next" : "node_30"
-        },
-        {
-          "name" : "node_30",
-          "id" : 11,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 253,
-            "column" : 15,
-            "source_fragment" : "swId == depotId && isAltVar > 0 && curr_time - last_seen < threshold && hdr.pathHops.which_alt_switch > 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "and",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "and",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "==",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["scalars", "swId_0"]
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "depotId_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : ">",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["scalars", "isAltVar_0"]
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0x00"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "<",
+                      "op" : ">=",
                       "left" : {
                         "type" : "expression",
                         "value" : {
@@ -5176,30 +3511,30 @@
               "right" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : ">",
+                  "op" : "==",
                   "left" : {
                     "type" : "field",
-                    "value" : ["pathHops", "which_alt_switch"]
+                    "value" : ["pathHops", "has_visited_depot"]
                   },
                   "right" : {
                     "type" : "hexstr",
-                    "value" : "0x00000000"
+                    "value" : "0x00"
                   }
                 }
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER254",
-          "false_next" : "node_32"
+          "true_next" : "node_12",
+          "false_next" : "node_20"
         },
         {
-          "name" : "node_32",
-          "id" : 12,
+          "name" : "node_12",
+          "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 263,
-            "column" : 15,
-            "source_fragment" : "hdr.pathHops.which_alt_switch == 0"
+            "line" : 209,
+            "column" : 19,
+            "source_fragment" : "hdr.pathHops.path_id == 0"
           },
           "expression" : {
             "type" : "expression",
@@ -5207,7 +3542,7 @@
               "op" : "==",
               "left" : {
                 "type" : "field",
-                "value" : ["pathHops", "which_alt_switch"]
+                "value" : ["pathHops", "path_id"]
               },
               "right" : {
                 "type" : "hexstr",
@@ -5215,17 +3550,43 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER264",
-          "false_next" : "node_38"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER211",
+          "false_next" : "node_20"
         },
         {
-          "name" : "node_34",
-          "id" : 13,
+          "name" : "node_14",
+          "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 265,
-            "column" : 19,
-            "source_fragment" : "(hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)"
+            "line" : 215,
+            "column" : 27,
+            "source_fragment" : "path_id_pointer_var == 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "path_id_pointer_var_0"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00000000"
+              }
+            }
+          },
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER216",
+          "false_next" : "node_16"
+        },
+        {
+          "name" : "node_16",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 218,
+            "column" : 33,
+            "source_fragment" : "path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1"
           },
           "expression" : {
             "type" : "expression",
@@ -5234,73 +3595,169 @@
               "left" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "==",
+                  "op" : ">",
                   "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "num_times_curr_switch"]
-                      },
-                      "right" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "&",
-                          "left" : {
-                            "type" : "expression",
-                            "value" : {
-                              "op" : "<<",
-                              "left" : {
-                                "type" : "hexstr",
-                                "value" : "0x0000000000000001"
-                              },
-                              "right" : {
-                                "type" : "field",
-                                "value" : ["scalars", "swId_0"]
-                              }
-                            }
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0xffffffffffffffff"
-                          }
-                        }
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "path_id_pointer_var_0"]
                   },
                   "right" : {
                     "type" : "hexstr",
-                    "value" : "0x0000000000000000"
+                    "value" : "0x00000000"
                   }
                 }
               },
               "right" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "!=",
+                  "op" : "<",
                   "left" : {
                     "type" : "field",
-                    "value" : ["scalars", "userMetadata.nextHop"]
+                    "value" : ["scalars", "path_id_pointer_var_0"]
                   },
                   "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x0000270f"
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "+",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "userMetadata.lenHashPrimaryPathSize"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffff"
+                      }
+                    }
                   }
                 }
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER266",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER268"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER219",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER223"
         },
         {
-          "name" : "node_38",
-          "id" : 14,
+          "name" : "node_20",
+          "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
             "line" : 275,
-            "column" : 20,
+            "column" : 15,
+            "source_fragment" : "swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || hdr.pathHops.has_visited_depot > 0)"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "and",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "swId_0"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "depotId_0"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "isAltVar_0"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00"
+                      }
+                    }
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "or",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "<",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "-",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["standard_metadata", "ingress_global_timestamp"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "last_seen_0"]
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "threshold_0"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["pathHops", "has_visited_depot"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER276",
+          "false_next" : "node_22"
+        },
+        {
+          "name" : "node_22",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
+            "line" : 290,
+            "column" : 15,
             "source_fragment" : "hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch"
           },
           "expression" : {
@@ -5347,15 +3804,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER276",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER288"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER291",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER302"
         },
         {
-          "name" : "node_40",
-          "id" : 15,
+          "name" : "node_24",
+          "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 277,
+            "line" : 292,
             "column" : 19,
             "source_fragment" : "(hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)"
           },
@@ -5423,15 +3880,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER278",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER280"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER293",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER295"
         },
         {
-          "name" : "node_45",
-          "id" : 16,
+          "name" : "node_29",
+          "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 290,
+            "line" : 304,
             "column" : 20,
             "source_fragment" : "meta.nextHop == 9999"
           },
@@ -5449,15 +3906,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER291",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER304"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER305",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER318"
         },
         {
-          "name" : "node_48",
-          "id" : 17,
+          "name" : "node_32",
+          "id" : 11,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 305,
+            "line" : 319,
             "column" : 15,
             "source_fragment" : "hdr.pathHops.is_tracker > 0 || forcePrimaryPathVar > 0"
           },
@@ -5495,15 +3952,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER306",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER316"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER320",
+          "false_next" : "node_36"
         },
         {
-          "name" : "node_50",
-          "id" : 18,
+          "name" : "node_34",
+          "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 309,
+            "line" : 323,
             "column" : 20,
             "source_fragment" : "meta.nextHop == 9999"
           },
@@ -5521,17 +3978,17 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER310",
-          "false_next" : "tbl_fast_reroute_round_robin_MASTER316"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER324",
+          "false_next" : "node_36"
         },
         {
-          "name" : "node_53",
-          "id" : 19,
+          "name" : "node_36",
+          "id" : 13,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 320,
+            "line" : 331,
             "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 0"
+            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0"
           },
           "expression" : {
             "type" : "expression",
@@ -5540,110 +3997,24 @@
               "left" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "and",
+                  "op" : "==",
                   "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "swId_0"]
                   },
                   "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "has_visited_depot"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "depotId_0"]
                   }
                 }
               },
               "right" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "==",
+                  "op" : ">",
                   "left" : {
                     "type" : "field",
-                    "value" : ["pathHops", "path_id"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000000"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER322",
-          "false_next" : "node_57"
-        },
-        {
-          "name" : "node_55",
-          "id" : 20,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 328,
-            "column" : 19,
-            "source_fragment" : "curr_time - tempo1 >= threshold && x == (bit<1>)0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">=",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "-",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["standard_metadata", "ingress_global_timestamp"]
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "tempo1_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffff"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "threshold_0"]
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "x_0"]
+                    "value" : ["pathHops", "has_visited_depot"]
                   },
                   "right" : {
                     "type" : "hexstr",
@@ -5653,279 +4024,41 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER329",
-          "false_next" : "node_57"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER332",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER351"
         },
         {
-          "name" : "node_57",
-          "id" : 21,
+          "name" : "node_38",
+          "id" : 14,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 334,
-            "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 1"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "and",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "has_visited_depot"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "path_id"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000001"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER336",
-          "false_next" : "node_61"
-        },
-        {
-          "name" : "node_59",
-          "id" : 22,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 342,
+            "line" : 340,
             "column" : 19,
-            "source_fragment" : "curr_time - tempo1 >= threshold && x == (bit<1>)0"
+            "source_fragment" : "x == (bit<1>)0"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "and",
+              "op" : "==",
               "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">=",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "-",
-                          "left" : {
-                            "type" : "field",
-                            "value" : ["standard_metadata", "ingress_global_timestamp"]
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "tempo1_1"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffff"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "field",
-                    "value" : ["scalars", "threshold_0"]
-                  }
-                }
+                "type" : "field",
+                "value" : ["scalars", "x_0"]
               },
               "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "x_1"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00"
-                  }
-                }
+                "type" : "hexstr",
+                "value" : "0x00"
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER343",
-          "false_next" : "node_61"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER341",
+          "false_next" : "tbl_fast_reroute_round_robin_MASTER351"
         },
         {
-          "name" : "node_61",
-          "id" : 23,
+          "name" : "node_41",
+          "id" : 15,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 350,
-            "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "and",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "has_visited_depot"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "path_id"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000000"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER351",
-          "false_next" : "node_63"
-        },
-        {
-          "name" : "node_63",
-          "id" : 24,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 355,
-            "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0 && hdr.pathHops.path_id == 1"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "and",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "and",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "has_visited_depot"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "==",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "path_id"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00000001"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER356",
-          "false_next" : "node_65"
-        },
-        {
-          "name" : "node_65",
-          "id" : 25,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 361,
+            "line" : 354,
             "column" : 15,
             "source_fragment" : "swId == depotId && (bit<32>)hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0"
           },
@@ -5994,16 +4127,16 @@
             }
           },
           "true_next" : "tbl_read_depot_port",
-          "false_next" : "node_69"
+          "false_next" : "node_45"
         },
         {
-          "name" : "node_69",
-          "id" : 26,
+          "name" : "node_45",
+          "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-            "line" : 369,
+            "line" : 362,
             "column" : 15,
-            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
+            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == (bit<8>)0"
           },
           "expression" : {
             "type" : "expression",
@@ -6040,7 +4173,7 @@
             }
           },
           "false_next" : null,
-          "true_next" : "tbl_fast_reroute_round_robin_MASTER370"
+          "true_next" : "tbl_fast_reroute_round_robin_MASTER363"
         }
       ]
     },
@@ -6049,7 +4182,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 379,
+        "line" : 372,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -6065,7 +4198,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4",
-        "line" : 394,
+        "line" : 387,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },

@@ -30,7 +30,7 @@ def handle_pkt(pkt):
 def main():
     #iface = 'h1-eth1'
     #iface = 'h2-eth5'
-    iface = 's3-eth1'
+    iface = 's5-eth4'
     print("sniffing on %s" % iface)
     sys.stdout.flush()
     sniff(iface = iface,

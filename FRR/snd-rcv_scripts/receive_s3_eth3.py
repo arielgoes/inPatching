@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-import argparse
 import sys
-import socket
-import random
 import struct
-from time import sleep
-from scapy.all import *
+
+from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr, bind_layers
+from scapy.all import Packet, IPOption
+from scapy.all import IP, UDP, Raw, Ether
+from scapy.layers.inet import _IPOption_HDR
+from scapy.fields import *
 
 class PathHops(Packet):
     fields_desc = [BitField("pkt_id", 0, 64),
@@ -19,23 +20,23 @@ class PathHops(Packet):
                    BitField("sw_overlap", 0, 32)] 
 bind_layers(IP, PathHops, proto=0x45)
 
+def handle_pkt(pkt):
+    print("got a packet")
+    pkt.show2()
+#    hexdump(pkt)
+    sys.stdout.flush()
+
+
 def main():
-    #addr = "10.1.1.2" # l3 - 1 host
-    #addr = "10.1.2.2" # l3 - 2 hosts
-    addr = "10.0.1.2" # mixed - 2 hosts
-    #addr = "10.0.1.1" # mixed - 1 host
-    iface = "h1-eth1"
-    s = conf.L2socket(iface=iface)
-    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #iface = 'h1-eth1'
+    #iface = 'h2-eth5'
+    iface = 's3-eth3'
+    print("sniffing on %s" % iface)
+    sys.stdout.flush()
+    sniff(iface = iface,
+          prn = lambda x: handle_pkt(x))
 
-    #sleep(0.5)
-    print("sending on interface %s to %s" % (iface, str(addr)))
 
-    #for _ in range(1): #number of random packets
-    pkt_id = 1
-    while True:
-        pkt = Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff') / IP(dst=addr, proto=0x45) / PathHops(path_id=0, pkt_id=pkt_id)
-        s.send(pkt)
-        pkt_id += 1
 if __name__ == '__main__':
     main()
+
