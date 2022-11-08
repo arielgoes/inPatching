@@ -9,9 +9,9 @@ sudo pkill -f send_socket_path_id_1_multiple_packets.py
 sudo pkill -f receive.py
 
 #A=('s1' 's2' 's3' 's4' 's5' 's1')
-A=('s4' 's5')
+A=('s3' 's4')
 #TIME_OUTS="10000 20000 30000 40000 50000 60000 70000 80000 90000 100000"
-TIME_OUTS="50000"
+TIME_OUTS="10000"
 #TIME_OUTS="50000"
 
 for k in $TIME_OUTS; do

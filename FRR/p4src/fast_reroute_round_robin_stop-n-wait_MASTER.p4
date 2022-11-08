@@ -197,12 +197,14 @@ control MyIngress(inout headers hdr,
             }
 
             bit<64> token_pkt_id;
+            token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
             bit<48> last_entry;
+            last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
             if(swId == depotId && token_pkt_id == (bit<64>)0){
                 last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                 last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
-                token_pkt_id = hdr.pathHops.pkt_id;
+                token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
             }
             else if(swId == depotId && curr_time - last_entry >= token_threshold){
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
