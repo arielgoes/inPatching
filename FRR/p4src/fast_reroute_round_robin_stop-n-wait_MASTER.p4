@@ -25,7 +25,7 @@ control MyIngress(inout headers hdr,
     //time management
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(N_PATHS) last_seen_pkt_timestamp;
-    register<bit<48>>(N_PATHS) threshold_offset;
+    register<bit<48>>(N_PATHS) last_entry_pkt_timestamp;
 
     register<bit<48>>(N_PATHS) temporario1_experimento_Reg;
     register<bit<48>>(N_PATHS) temporario2_experimento_Reg;
@@ -39,6 +39,10 @@ control MyIngress(inout headers hdr,
 
     //this register guarantees I'm setting the end_time (temporario2) only once.
     register<bit<1>>(N_PATHS) isFirstResponseReg;
+
+    register<bit<64>>(N_PATHS) token_pkt_id;
+    register<bit<48>>(N_PATHS) token_threshold;
+    register<bit<64>>(N_PATHS) token_pkt_id_Reg;
 
     //The flow logic to access/update alternative paths: path_id_X_pointer_reg -> whichAltSwitchReg -> path_id_X_path_reg
 
@@ -168,7 +172,9 @@ control MyIngress(inout headers hdr,
 
             //read max time out (e.g., 300ms) into a variable before 
             bit<48> threshold;
+            bit<48> token_threshold;
             maxTimeOutDepotReg.read(threshold, 0);
+            token_threshold = threshold;
 
             bit<32> path_id_pointer_var = 0;
             bit<8> forcePrimaryPathVar = 0;
@@ -190,6 +196,21 @@ control MyIngress(inout headers hdr,
                 }
             }
 
+            bit<64> token_pkt_id;
+            bit<48> last_entry;
+            if(swId == depotId && token_pkt_id == (bit<64>)0){
+                last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
+                token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
+                token_pkt_id = hdr.pathHops.pkt_id;
+            }
+            else if(swId == depotId && curr_time - last_entry >= token_threshold){
+                token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
+                token_pkt_id = hdr.pathHops.pkt_id;
+                last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
+            }
+
             //get length of the primary and alternative paths
             len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
@@ -198,7 +219,8 @@ control MyIngress(inout headers hdr,
             
             //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0){
-                if(hdr.pathHops.path_id == 0){ //first flow...
+
+                if(hdr.pathHops.path_id == 0 && hdr.pathHops.pkt_id == token_pkt_id){ //first flow...
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
 
@@ -223,7 +245,7 @@ control MyIngress(inout headers hdr,
                     isAltReg.read(isAltVar, hdr.pathHops.path_id);
                     forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing packets using primary path in a given flow
 
-                }else if(hdr.pathHops.path_id == 1){ //second flow
+                }else if(hdr.pathHops.path_id == 1 && hdr.pathHops.pkt_id == token_pkt_id){ //second flow
                     //gets the index into a variable
                     path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
 

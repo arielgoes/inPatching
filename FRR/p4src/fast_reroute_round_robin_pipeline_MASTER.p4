@@ -258,7 +258,6 @@ control MyIngress(inout headers hdr,
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);                
             }*/
 
-
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in a round-robin fashion
             if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || hdr.pathHops.has_visited_depot > 0)){
                 hdr.pathHops.is_alt = 1;
