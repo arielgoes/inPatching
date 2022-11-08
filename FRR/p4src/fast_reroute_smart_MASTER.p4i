@@ -1063,6 +1063,7 @@ control MyIngress(inout headers hdr,
     //time management
     register<bit<48>>(1) maxTimeOutDepotReg; //e.g., max amount of time until the depot consider the packet dropped
     register<bit<48>>(128) last_seen_pkt_timestamp;
+    register<bit<48>>(128) last_entry_pkt_timestamp;
 
     // Registers to look up the port of the default next hop.
     //Nomenclature: primary/alternativeNH_<first/second time visiting the hop>_<link failure - e.g., s1-s2>
@@ -1073,6 +1074,9 @@ control MyIngress(inout headers hdr,
 
     //this register guarantees I'm setting the end_time (temporario2) only once.
     register<bit<1>>(128) isFirstResponseReg;
+
+    register<bit<48>>(128) token_threshold;
+    register<bit<64>>(128) token_pkt_id_Reg;
 
     //stores the switch failure overlapping more than a cycle to speedup the recovery process - i.e., reduce threshold overhead for cycles farther to the failure location
     register<bit<32>>(128) overlappingSwIds;
@@ -1167,7 +1171,9 @@ control MyIngress(inout headers hdr,
 
             //read max time out (e.g., 300ms) into a variable before 
             bit<48> threshold;
+            bit<48> token_threshold;
             maxTimeOutDepotReg.read(threshold, 0);
+            token_threshold = threshold;
 
             bit<32> path_id_pointer_var = 0;
             //path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
@@ -1187,6 +1193,24 @@ control MyIngress(inout headers hdr,
                     last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                     last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
                 }
+            }
+
+            //force upcoming packets to forward through the same alternative hop choice
+            bit<64> token_pkt_id;
+            token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
+            bit<48> last_entry;
+            last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
+            if(swId == depotId && token_pkt_id == (bit<64>)0){
+                last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
+                token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
+                token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
+            }
+            else if(swId == depotId && curr_time - last_entry >= token_threshold){
+                token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
+                token_pkt_id = hdr.pathHops.pkt_id;
+                last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
+                last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id);
             }
 
             //get length of the primary and alternative paths

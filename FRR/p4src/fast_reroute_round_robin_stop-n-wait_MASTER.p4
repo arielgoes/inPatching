@@ -40,7 +40,6 @@ control MyIngress(inout headers hdr,
     //this register guarantees I'm setting the end_time (temporario2) only once.
     register<bit<1>>(N_PATHS) isFirstResponseReg;
 
-    register<bit<64>>(N_PATHS) token_pkt_id;
     register<bit<48>>(N_PATHS) token_threshold;
     register<bit<64>>(N_PATHS) token_pkt_id_Reg;
 
@@ -196,6 +195,7 @@ control MyIngress(inout headers hdr,
                 }
             }
 
+            //force upcoming packets to forward through the same alternative hop choice
             bit<64> token_pkt_id;
             token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
             bit<48> last_entry;
