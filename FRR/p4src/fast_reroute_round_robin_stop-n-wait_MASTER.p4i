@@ -1,7 +1,7 @@
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4"
+# 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4"
 /* -*- P4_16 -*- */
 # 1 "/usr/local/share/p4c/p4include/core.p4" 1
 /*
@@ -86,7 +86,7 @@ match_kind {
     /// Longest-prefix match.
     lpm
 }
-# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4" 2
+# 3 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -865,7 +865,7 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4" 2
+# 4 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4" 2
 
 //My includes
 # 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/headers.p4" 1
@@ -993,7 +993,7 @@ struct headers {
     ipv4_t ipv4;
     pathHops_t pathHops;
 }
-# 7 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4" 2
+# 7 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4" 2
 # 1 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/include/parsers.p4" 1
 /*************************************************************************
 *********************** P A R S E R  *******************************
@@ -1039,7 +1039,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
         packet.emit(hdr.pathHops);
     }
 }
-# 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_MASTER.p4" 2
+# 8 "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4" 2
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
@@ -1230,6 +1230,7 @@ control MyIngress(inout headers hdr,
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
+
             //FRR control (all the decisions are made at the depot/starting node)
             if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0){
                 if(hdr.pathHops.path_id == 0){ //first flow...
@@ -1293,7 +1294,6 @@ control MyIngress(inout headers hdr,
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);                
             }*/
 
-
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in a round-robin fashion
             if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || hdr.pathHops.has_visited_depot > 0)){
                 hdr.pathHops.is_alt = 1;
@@ -1303,6 +1303,7 @@ control MyIngress(inout headers hdr,
                 whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
                 hdr.pathHops.which_alt_switch = swIdTry;
             }
+
 
 
             //alternative path cases
