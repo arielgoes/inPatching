@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAX_ITER=3
+MAX_ITER=1
 echo "Killing PREVIOUS controller terminal..."
 sudo pkill -f controller.py
 echo "Killing PREVIOUS packet injection..."
@@ -12,7 +12,7 @@ sudo pkill -f receive.py
 A=('s5' 's1')
 #TIME_OUTS="10000 20000 30000 40000 50000 60000 70000 80000 90000 100000"
 #TIME_OUTS="10000"
-TIME_OUTS="50000"
+TIME_OUTS="20000"
 
 for k in $TIME_OUTS; do
 	for ((j=0; j<${#A[@]}-1; j++)); do

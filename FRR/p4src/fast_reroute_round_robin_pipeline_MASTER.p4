@@ -268,6 +268,7 @@ control MyIngress(inout headers hdr,
                 }
                 hdr.pathHops.is_alt = 1; //is using alternative hop    
             }
+            
             //default (primary path case)
             else{
                 hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId);
