@@ -12,8 +12,8 @@
         ["depotId_0", 8, false],
         ["last_seen_0", 48, false],
         ["threshold_0", 48, false],
+        ["boolean_received_0", 1, false],
         ["path_id_pointer_var_0", 32, false],
-        ["forcePrimaryPathVar_0", 8, false],
         ["isAltVar_0", 8, false],
         ["token_pkt_id_0", 64, false],
         ["last_entry_0", 48, false],
@@ -24,7 +24,7 @@
         ["userMetadata.lenPrimaryPathSize", 32, false],
         ["userMetadata.lenAlternativePathSize", 32, false],
         ["userMetadata.lenHashPrimaryPathSize", 32, false],
-        ["_padding_0", 7, false]
+        ["_padding_0", 6, false]
       ]
     },
     {
@@ -362,23 +362,11 @@
       "bitwidth" : 1
     },
     {
-      "name" : "MyIngress.token_pkt_id",
+      "name" : "MyIngress.token_threshold",
       "id" : 10,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
         "line" : 43,
-        "column" : 27,
-        "source_fragment" : "token_pkt_id"
-      },
-      "size" : 128,
-      "bitwidth" : 64
-    },
-    {
-      "name" : "MyIngress.token_threshold",
-      "id" : 11,
-      "source_info" : {
-        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 44,
         "column" : 27,
         "source_fragment" : "token_threshold"
       },
@@ -387,10 +375,10 @@
     },
     {
       "name" : "MyIngress.token_pkt_id_Reg",
-      "id" : 12,
+      "id" : 11,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 45,
+        "line" : 44,
         "column" : 27,
         "source_fragment" : "token_pkt_id_Reg"
       },
@@ -398,11 +386,23 @@
       "bitwidth" : 64
     },
     {
+      "name" : "MyIngress.boolean_received_Reg",
+      "id" : 12,
+      "source_info" : {
+        "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
+        "line" : 46,
+        "column" : 26,
+        "source_fragment" : "boolean_received_Reg"
+      },
+      "size" : 128,
+      "bitwidth" : 1
+    },
+    {
       "name" : "MyIngress.whichSwitchAltReg",
       "id" : 13,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 50,
+        "line" : 51,
         "column" : 27,
         "source_fragment" : "whichSwitchAltReg"
       },
@@ -414,7 +414,7 @@
       "id" : 14,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 52,
+        "line" : 53,
         "column" : 27,
         "source_fragment" : "path_id_pointer_reg"
       },
@@ -426,7 +426,7 @@
       "id" : 15,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 55,
+        "line" : 56,
         "column" : 27,
         "source_fragment" : "path_id_0_path_reg"
       },
@@ -438,7 +438,7 @@
       "id" : 16,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 59,
+        "line" : 60,
         "column" : 27,
         "source_fragment" : "path_id_1_path_reg"
       },
@@ -450,7 +450,7 @@
       "id" : 17,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 66,
+        "line" : 67,
         "column" : 27,
         "source_fragment" : "lenPrimaryPathSize"
       },
@@ -462,7 +462,7 @@
       "id" : 18,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 67,
+        "line" : 68,
         "column" : 27,
         "source_fragment" : "lenAlternativePathSize"
       },
@@ -474,7 +474,7 @@
       "id" : 19,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 70,
+        "line" : 71,
         "column" : 27,
         "source_fragment" : "lenHashPrimaryPathSize"
       },
@@ -486,7 +486,7 @@
       "id" : 20,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 73,
+        "line" : 74,
         "column" : 25,
         "source_fragment" : "depotPortReg"
       },
@@ -498,7 +498,7 @@
       "id" : 21,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 76,
+        "line" : 77,
         "column" : 24,
         "source_fragment" : "swIdReg"
       },
@@ -510,7 +510,7 @@
       "id" : 22,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 79,
+        "line" : 80,
         "column" : 24,
         "source_fragment" : "depotIdReg"
       },
@@ -522,7 +522,7 @@
       "id" : 23,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 81,
+        "line" : 82,
         "column" : 26,
         "source_fragment" : "isAltReg"
       },
@@ -534,7 +534,7 @@
       "id" : 24,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 84,
+        "line" : 85,
         "column" : 26,
         "source_fragment" : "forcePrimaryPathReg"
       },
@@ -546,7 +546,7 @@
       "id" : 25,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 88,
+        "line" : 89,
         "column" : 25,
         "source_fragment" : "diff_time_reg"
       },
@@ -560,7 +560,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 393,
+        "line" : 400,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },
@@ -655,7 +655,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 95,
+            "line" : 96,
             "column" : 8,
             "source_fragment" : "meta.indexPath = indexPath"
           }
@@ -678,7 +678,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 96,
+            "line" : 97,
             "column" : 8,
             "source_fragment" : "lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath)"
           }
@@ -709,7 +709,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 100,
+            "line" : 101,
             "column" : 8,
             "source_fragment" : "meta.indexPath = indexPath"
           }
@@ -732,7 +732,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 101,
+            "line" : 102,
             "column" : 8,
             "source_fragment" : "lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath)"
           }
@@ -781,7 +781,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 105,
+            "line" : 106,
             "column" : 8,
             "source_fragment" : "hdr.pathHops.numHop = hdr.pathHops.numHop + 1"
           }
@@ -807,7 +807,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 109,
+            "line" : 110,
             "column" : 8,
             "source_fragment" : "hdr.pathHops.numHop = 0"
           }
@@ -837,7 +837,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 114,
+            "line" : 115,
             "column" : 8,
             "source_fragment" : "depotPortReg.read(meta.depotPort, 0)"
           }
@@ -845,7 +845,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER193",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER197",
       "id" : 7,
       "runtime_data" : [],
       "primitives" : [
@@ -867,7 +867,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 193,
+            "line" : 197,
             "column" : 20,
             "source_fragment" : "temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -890,7 +890,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 194,
+            "line" : 198,
             "column" : 20,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -913,7 +913,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 195,
+            "line" : 199,
             "column" : 20,
             "source_fragment" : "last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id)"
           }
@@ -921,7 +921,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER150",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER151",
       "id" : 8,
       "runtime_data" : [],
       "primitives" : [
@@ -943,7 +943,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 150,
+            "line" : 151,
             "column" : 12,
             "source_fragment" : "swIdReg.read(swId, 0)"
           }
@@ -966,7 +966,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 167,
+            "line" : 168,
             "column" : 12,
             "source_fragment" : "depotIdReg.read(depotId, 0)"
           }
@@ -989,7 +989,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 171,
+            "line" : 172,
             "column" : 12,
             "source_fragment" : "last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id)"
           }
@@ -1012,9 +1012,32 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 176,
+            "line" : 177,
             "column" : 12,
             "source_fragment" : "maxTimeOutDepotReg.read(threshold, 0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "boolean_received_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.boolean_received_Reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
+            "line" : 181,
+            "column" : 12,
+            "source_fragment" : "boolean_received_Reg.read(boolean_received, hdr.pathHops.path_id)"
           }
         },
         {
@@ -1035,7 +1058,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 185,
+            "line" : 189,
             "column" : 12,
             "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
           }
@@ -1077,7 +1100,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 187,
+            "line" : 191,
             "column" : 35,
             "source_fragment" : "curr_time - last_seen"
           }
@@ -1100,7 +1123,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 187,
+            "line" : 191,
             "column" : 12,
             "source_fragment" : "diff_time_reg.write(0, curr_time - last_seen)"
           }
@@ -1108,7 +1131,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER204",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER209",
       "id" : 9,
       "runtime_data" : [],
       "primitives" : [
@@ -1130,7 +1153,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 204,
+            "line" : 209,
             "column" : 16,
             "source_fragment" : "last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -1153,7 +1176,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 206,
+            "line" : 211,
             "column" : 16,
             "source_fragment" : "token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id)"
           }
@@ -1176,7 +1199,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 207,
+            "line" : 212,
             "column" : 16,
             "source_fragment" : "token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id)"
           }
@@ -1184,7 +1207,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER210",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER215",
       "id" : 10,
       "runtime_data" : [],
       "primitives" : [
@@ -1206,7 +1229,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 210,
+            "line" : 215,
             "column" : 16,
             "source_fragment" : "token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id)"
           }
@@ -1225,7 +1248,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 211,
+            "line" : 216,
             "column" : 16,
             "source_fragment" : "token_pkt_id = hdr.pathHops.pkt_id"
           }
@@ -1248,7 +1271,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 212,
+            "line" : 217,
             "column" : 16,
             "source_fragment" : "last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -1256,7 +1279,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER200",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER205",
       "id" : 11,
       "runtime_data" : [],
       "primitives" : [
@@ -1278,7 +1301,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 200,
+            "line" : 205,
             "column" : 12,
             "source_fragment" : "token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id)"
           }
@@ -1301,7 +1324,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 202,
+            "line" : 207,
             "column" : 12,
             "source_fragment" : "last_entry_pkt_timestamp.read(last_entry, hdr.pathHops.path_id)"
           }
@@ -1309,7 +1332,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER231",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER236",
       "id" : 12,
       "runtime_data" : [],
       "primitives" : [
@@ -1331,7 +1354,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 231,
+            "line" : 236,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
@@ -1354,7 +1377,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 232,
+            "line" : 237,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1362,7 +1385,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER234",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER239",
       "id" : 13,
       "runtime_data" : [],
       "primitives" : [
@@ -1403,7 +1426,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 234,
+            "line" : 239,
             "column" : 72,
             "source_fragment" : "path_id_pointer_var + 1"
           }
@@ -1426,7 +1449,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 234,
+            "line" : 239,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1)"
           }
@@ -1449,7 +1472,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 235,
+            "line" : 240,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1457,7 +1480,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER238",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER243",
       "id" : 14,
       "runtime_data" : [],
       "primitives" : [
@@ -1479,7 +1502,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 238,
+            "line" : 243,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
@@ -1502,7 +1525,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 239,
+            "line" : 244,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1510,7 +1533,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER227",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER232",
       "id" : 15,
       "runtime_data" : [],
       "primitives" : [
@@ -1532,7 +1555,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 227,
+            "line" : 232,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1540,7 +1563,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER242",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER247",
       "id" : 16,
       "runtime_data" : [],
       "primitives" : [
@@ -1562,7 +1585,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 242,
+            "line" : 247,
             "column" : 20,
             "source_fragment" : "path_id_0_path_reg.read(swIdTry, path_id_pointer_var)"
           }
@@ -1581,7 +1604,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 243,
+            "line" : 248,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
           }
@@ -1604,7 +1627,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 244,
+            "line" : 249,
             "column" : 20,
             "source_fragment" : "whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry)"
           }
@@ -1623,7 +1646,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 245,
+            "line" : 250,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -1646,7 +1669,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 246,
+            "line" : 251,
             "column" : 20,
             "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 1)"
           }
@@ -1669,7 +1692,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 247,
+            "line" : 252,
             "column" : 20,
             "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
           }
@@ -1692,7 +1715,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 248,
+            "line" : 253,
             "column" : 20,
             "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
           }
@@ -1700,7 +1723,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER256",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER261",
       "id" : 17,
       "runtime_data" : [],
       "primitives" : [
@@ -1722,7 +1745,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 256,
+            "line" : 261,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
@@ -1745,7 +1768,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 257,
+            "line" : 262,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1753,7 +1776,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER259",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER264",
       "id" : 18,
       "runtime_data" : [],
       "primitives" : [
@@ -1794,7 +1817,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 259,
+            "line" : 264,
             "column" : 72,
             "source_fragment" : "path_id_pointer_var + 1"
           }
@@ -1817,7 +1840,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 259,
+            "line" : 264,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1)"
           }
@@ -1840,7 +1863,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 260,
+            "line" : 265,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1848,7 +1871,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER262",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER267",
       "id" : 19,
       "runtime_data" : [],
       "primitives" : [
@@ -1870,7 +1893,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 262,
+            "line" : 267,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1)"
           }
@@ -1893,7 +1916,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 263,
+            "line" : 268,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1901,7 +1924,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER252",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER257",
       "id" : 20,
       "runtime_data" : [],
       "primitives" : [
@@ -1923,7 +1946,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 252,
+            "line" : 257,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           }
@@ -1931,7 +1954,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER266",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER271",
       "id" : 21,
       "runtime_data" : [],
       "primitives" : [
@@ -1953,7 +1976,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 266,
+            "line" : 271,
             "column" : 20,
             "source_fragment" : "path_id_1_path_reg.read(swIdTry, path_id_pointer_var)"
           }
@@ -1976,7 +1999,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 267,
+            "line" : 272,
             "column" : 20,
             "source_fragment" : "whichSwitchAltReg.write(hdr.pathHops.path_id, swIdTry)"
           }
@@ -1995,7 +2018,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 268,
+            "line" : 273,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
           }
@@ -2014,7 +2037,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 269,
+            "line" : 274,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -2037,7 +2060,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 270,
+            "line" : 275,
             "column" : 20,
             "source_fragment" : "isAltReg.write(hdr.pathHops.path_id, 1)"
           }
@@ -2060,7 +2083,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 271,
+            "line" : 276,
             "column" : 20,
             "source_fragment" : "isAltReg.read(isAltVar, hdr.pathHops.path_id)"
           }
@@ -2083,7 +2106,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 272,
+            "line" : 277,
             "column" : 20,
             "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
           }
@@ -2091,7 +2114,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER219",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER224",
       "id" : 22,
       "runtime_data" : [],
       "primitives" : [
@@ -2113,7 +2136,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 219,
+            "line" : 224,
             "column" : 12,
             "source_fragment" : "lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id)"
           }
@@ -2121,7 +2144,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER288",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER292",
       "id" : 23,
       "runtime_data" : [],
       "primitives" : [
@@ -2139,7 +2162,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 288,
+            "line" : 292,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -2162,7 +2185,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 289,
+            "line" : 293,
             "column" : 16,
             "source_fragment" : "forcePrimaryPathReg.write(hdr.pathHops.path_id, 0)"
           }
@@ -2185,7 +2208,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 292,
+            "line" : 296,
             "column" : 16,
             "source_fragment" : "whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id)"
           }
@@ -2204,7 +2227,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 293,
+            "line" : 297,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
           }
@@ -2212,8 +2235,38 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER302",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER299",
       "id" : 24,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.boolean_received_Reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
+            "line" : 299,
+            "column" : 16,
+            "source_fragment" : "boolean_received_Reg.write(hdr.pathHops.path_id, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER307",
+      "id" : 25,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2310,7 +2363,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 302,
+            "line" : 307,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2318,8 +2371,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER304",
-      "id" : 25,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER309",
+      "id" : 26,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2340,7 +2393,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 304,
+            "line" : 309,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2439,7 +2492,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 305,
+            "line" : 310,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2447,8 +2500,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER300",
-      "id" : 26,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER305",
+      "id" : 27,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2469,7 +2522,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 300,
+            "line" : 305,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2477,8 +2530,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER307",
-      "id" : 27,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER312",
+      "id" : 28,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2495,7 +2548,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 307,
+            "line" : 312,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -2503,170 +2556,11 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER314",
-      "id" : 28,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "userMetadata.nextHop"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.primaryNH_2"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 314,
-            "column" : 20,
-            "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER311",
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER319",
       "id" : 29,
       "runtime_data" : [],
       "primitives" : [
         {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "num_times_curr_switch"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "|",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["pathHops", "num_times_curr_switch"]
-                      },
-                      "right" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "&",
-                          "left" : {
-                            "type" : "expression",
-                            "value" : {
-                              "op" : "~",
-                              "left" : null,
-                              "right" : {
-                                "type" : "expression",
-                                "value" : {
-                                  "op" : "&",
-                                  "left" : {
-                                    "type" : "expression",
-                                    "value" : {
-                                      "op" : "<<",
-                                      "left" : {
-                                        "type" : "hexstr",
-                                        "value" : "0x0000000000000001"
-                                      },
-                                      "right" : {
-                                        "type" : "field",
-                                        "value" : ["scalars", "swId_0"]
-                                      }
-                                    }
-                                  },
-                                  "right" : {
-                                    "type" : "hexstr",
-                                    "value" : "0xffffffffffffffff"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0xffffffffffffffff"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "&",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "<<",
-                          "left" : {
-                            "type" : "hexstr",
-                            "value" : "0x0000000000000001"
-                          },
-                          "right" : {
-                            "type" : "field",
-                            "value" : ["scalars", "swId_0"]
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0xffffffffffffffff"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 311,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "userMetadata.nextHop"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.primaryNH_1"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 312,
-            "column" : 16,
-            "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER333",
-      "id" : 30,
-      "runtime_data" : [],
-      "primitives" : [
-        {
           "op" : "register_read",
           "parameters" : [
             {
@@ -2684,35 +2578,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 333,
+            "line" : 319,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "is_alt"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 334,
-            "column" : 20,
-            "source_fragment" : "hdr.pathHops.is_alt = 0"
           }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER329",
-      "id" : 31,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER316",
+      "id" : 30,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2809,7 +2684,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 329,
+            "line" : 316,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2832,65 +2707,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 330,
+            "line" : 317,
             "column" : 16,
             "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["pathHops", "is_alt"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 331,
-            "column" : 16,
-            "source_fragment" : "hdr.pathHops.is_alt = 0"
-          }
         }
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER327",
-      "id" : 32,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "forcePrimaryPathVar_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.forcePrimaryPathReg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 327,
-            "column" : 12,
-            "source_fragment" : "forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER350",
-      "id" : 33,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER357",
+      "id" : 31,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2911,7 +2737,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 350,
+            "line" : 357,
             "column" : 20,
             "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -2934,7 +2760,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 351,
+            "line" : 358,
             "column" : 20,
             "source_fragment" : "isFirstResponseReg.write(hdr.pathHops.path_id, 1)"
           }
@@ -2942,8 +2768,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER341",
-      "id" : 34,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER346",
+      "id" : 32,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -2964,9 +2790,32 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 341,
+            "line" : 346,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.boolean_received_Reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
+            "line" : 349,
+            "column" : 16,
+            "source_fragment" : "boolean_received_Reg.write(hdr.pathHops.path_id, 1)"
           }
         },
         {
@@ -2987,7 +2836,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 348,
+            "line" : 355,
             "column" : 16,
             "source_fragment" : "isFirstResponseReg.read(x, hdr.pathHops.path_id)"
           }
@@ -2995,8 +2844,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER362",
-      "id" : 35,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER369",
+      "id" : 33,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3026,7 +2875,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 362,
+            "line" : 369,
             "column" : 16,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
           }
@@ -3034,8 +2883,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER357",
-      "id" : 36,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER364",
+      "id" : 34,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3065,7 +2914,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 357,
+            "line" : 364,
             "column" : 12,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
           }
@@ -3073,8 +2922,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_round_robin_stopnwait_MASTER369",
-      "id" : 37,
+      "name" : "fast_reroute_round_robin_stopnwait_MASTER376",
+      "id" : 35,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -3091,7 +2940,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 369,
+            "line" : 376,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.has_visited_depot = 1"
           }
@@ -3116,7 +2965,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 146,
+            "line" : 147,
             "column" : 12,
             "source_fragment" : "update_curr_path_size()"
           },
@@ -3129,9 +2978,9 @@
           "direct_meters" : null,
           "action_ids" : [4],
           "actions" : ["MyIngress.update_curr_path_size"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER150",
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER151",
           "next_tables" : {
-            "MyIngress.update_curr_path_size" : "tbl_fast_reroute_round_robin_stopnwait_MASTER150"
+            "MyIngress.update_curr_path_size" : "tbl_fast_reroute_round_robin_stopnwait_MASTER151"
           },
           "default_entry" : {
             "action_id" : 4,
@@ -3141,11 +2990,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER150",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER151",
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 150,
+            "line" : 151,
             "column" : 12,
             "source_fragment" : "swIdReg.read(swId, 0); ..."
           },
@@ -3157,10 +3006,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [8],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER150"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER151"],
           "base_default_next" : "node_5",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER150" : "node_5"
+            "fast_reroute_round_robin_stopnwait_MASTER151" : "node_5"
           },
           "default_entry" : {
             "action_id" : 8,
@@ -3170,11 +3019,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER193",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER197",
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 193,
+            "line" : 197,
             "column" : 20,
             "source_fragment" : "temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos) ..."
           },
@@ -3186,10 +3035,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [7],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER193"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER200",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER197"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER205",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER193" : "tbl_fast_reroute_round_robin_stopnwait_MASTER200"
+            "fast_reroute_round_robin_stopnwait_MASTER197" : "tbl_fast_reroute_round_robin_stopnwait_MASTER205"
           },
           "default_entry" : {
             "action_id" : 7,
@@ -3199,11 +3048,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER200",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER205",
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 200,
+            "line" : 205,
             "column" : 12,
             "source_fragment" : "token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id); ..."
           },
@@ -3215,10 +3064,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [11],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER200"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER205"],
           "base_default_next" : "node_9",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER200" : "node_9"
+            "fast_reroute_round_robin_stopnwait_MASTER205" : "node_9"
           },
           "default_entry" : {
             "action_id" : 11,
@@ -3228,11 +3077,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER204",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER209",
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 204,
+            "line" : 209,
             "column" : 16,
             "source_fragment" : "last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time); ..."
           },
@@ -3244,10 +3093,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [9],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER204"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER209"],
           "base_default_next" : "MyIngress.len_primary_path",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER204" : "MyIngress.len_primary_path"
+            "fast_reroute_round_robin_stopnwait_MASTER209" : "MyIngress.len_primary_path"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -3257,11 +3106,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER210",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER215",
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 210,
+            "line" : 215,
             "column" : 16,
             "source_fragment" : "token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id); ..."
           },
@@ -3273,10 +3122,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [10],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER210"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER215"],
           "base_default_next" : "MyIngress.len_primary_path",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER210" : "MyIngress.len_primary_path"
+            "fast_reroute_round_robin_stopnwait_MASTER215" : "MyIngress.len_primary_path"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -3290,7 +3139,7 @@
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 118,
+            "line" : 119,
             "column" : 10,
             "source_fragment" : "len_primary_path"
           },
@@ -3327,7 +3176,7 @@
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 130,
+            "line" : 131,
             "column" : 10,
             "source_fragment" : "len_alternative_path"
           },
@@ -3347,10 +3196,10 @@
           "direct_meters" : null,
           "action_ids" : [3, 1],
           "actions" : ["MyIngress.read_len_alternative_path", "NoAction"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER219",
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER224",
           "next_tables" : {
-            "MyIngress.read_len_alternative_path" : "tbl_fast_reroute_round_robin_stopnwait_MASTER219",
-            "NoAction" : "tbl_fast_reroute_round_robin_stopnwait_MASTER219"
+            "MyIngress.read_len_alternative_path" : "tbl_fast_reroute_round_robin_stopnwait_MASTER224",
+            "NoAction" : "tbl_fast_reroute_round_robin_stopnwait_MASTER224"
           },
           "default_entry" : {
             "action_id" : 1,
@@ -3360,11 +3209,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER219",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER224",
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 219,
+            "line" : 224,
             "column" : 12,
             "source_fragment" : "lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id)"
           },
@@ -3376,10 +3225,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [22],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER219"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER224"],
           "base_default_next" : "node_16",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER219" : "node_16"
+            "fast_reroute_round_robin_stopnwait_MASTER224" : "node_16"
           },
           "default_entry" : {
             "action_id" : 22,
@@ -3389,11 +3238,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER227",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER232",
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 227,
+            "line" : 232,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           },
@@ -3405,10 +3254,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [15],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER227"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER232"],
           "base_default_next" : "node_19",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER227" : "node_19"
+            "fast_reroute_round_robin_stopnwait_MASTER232" : "node_19"
           },
           "default_entry" : {
             "action_id" : 15,
@@ -3418,11 +3267,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER231",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER236",
           "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 231,
+            "line" : 236,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path... ..."
           },
@@ -3434,10 +3283,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [12],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER231"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER236"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER231" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242"
+            "fast_reroute_round_robin_stopnwait_MASTER236" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247"
           },
           "default_entry" : {
             "action_id" : 12,
@@ -3447,11 +3296,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER234",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER239",
           "id" : 11,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 234,
+            "line" : 239,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally... ..."
           },
@@ -3463,10 +3312,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [13],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER234"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER239"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER234" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242"
+            "fast_reroute_round_robin_stopnwait_MASTER239" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247"
           },
           "default_entry" : {
             "action_id" : 13,
@@ -3476,11 +3325,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER238",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER243",
           "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 238,
+            "line" : 243,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1 ..."
           },
@@ -3492,10 +3341,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [14],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER238"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER243"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER238" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242"
+            "fast_reroute_round_robin_stopnwait_MASTER243" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247"
           },
           "default_entry" : {
             "action_id" : 14,
@@ -3505,11 +3354,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER242",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER247",
           "id" : 13,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 242,
+            "line" : 247,
             "column" : 20,
             "source_fragment" : "path_id_0_path_reg.read(swIdTry, path_id_pointer_var); ..."
           },
@@ -3521,10 +3370,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [16],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER242"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER247"],
           "base_default_next" : "node_33",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER242" : "node_33"
+            "fast_reroute_round_robin_stopnwait_MASTER247" : "node_33"
           },
           "default_entry" : {
             "action_id" : 16,
@@ -3534,11 +3383,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER252",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER257",
           "id" : 14,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 252,
+            "line" : 257,
             "column" : 20,
             "source_fragment" : "path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id)"
           },
@@ -3550,10 +3399,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [20],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER252"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER257"],
           "base_default_next" : "node_27",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER252" : "node_27"
+            "fast_reroute_round_robin_stopnwait_MASTER257" : "node_27"
           },
           "default_entry" : {
             "action_id" : 20,
@@ -3563,11 +3412,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER256",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER261",
           "id" : 15,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 256,
+            "line" : 261,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path... ..."
           },
@@ -3579,10 +3428,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [17],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER256"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER261"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER256" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266"
+            "fast_reroute_round_robin_stopnwait_MASTER261" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271"
           },
           "default_entry" : {
             "action_id" : 17,
@@ -3592,11 +3441,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER259",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER264",
           "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 259,
+            "line" : 264,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally... ..."
           },
@@ -3608,10 +3457,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [18],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER259"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER264"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER259" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266"
+            "fast_reroute_round_robin_stopnwait_MASTER264" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271"
           },
           "default_entry" : {
             "action_id" : 18,
@@ -3621,11 +3470,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER262",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER267",
           "id" : 17,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 262,
+            "line" : 267,
             "column" : 24,
             "source_fragment" : "path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...reset it to 1 ..."
           },
@@ -3637,10 +3486,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [19],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER262"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER267"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER262" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266"
+            "fast_reroute_round_robin_stopnwait_MASTER267" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271"
           },
           "default_entry" : {
             "action_id" : 19,
@@ -3650,11 +3499,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER266",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER271",
           "id" : 18,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 266,
+            "line" : 271,
             "column" : 20,
             "source_fragment" : "path_id_1_path_reg.read(swIdTry, path_id_pointer_var); ..."
           },
@@ -3666,10 +3515,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [21],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER266"],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER271"],
           "base_default_next" : "node_33",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER266" : "node_33"
+            "fast_reroute_round_robin_stopnwait_MASTER271" : "node_33"
           },
           "default_entry" : {
             "action_id" : 21,
@@ -3679,11 +3528,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER288",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER292",
           "id" : 19,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 288,
+            "line" : 292,
             "column" : 36,
             "source_fragment" : "= 1; ..."
           },
@@ -3695,10 +3544,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [23],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER288"],
-          "base_default_next" : "node_35",
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER292"],
+          "base_default_next" : "node_36",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER288" : "node_35"
+            "fast_reroute_round_robin_stopnwait_MASTER292" : "node_36"
           },
           "default_entry" : {
             "action_id" : 23,
@@ -3708,11 +3557,40 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER300",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER299",
           "id" : 20,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 300,
+            "line" : 299,
+            "column" : 16,
+            "source_fragment" : "boolean_received_Reg.write(hdr.pathHops.path_id, 0)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [24],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER299"],
+          "base_default_next" : "node_36",
+          "next_tables" : {
+            "fast_reroute_round_robin_stopnwait_MASTER299" : "node_36"
+          },
+          "default_entry" : {
+            "action_id" : 24,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER305",
+          "id" : 21,
+          "source_info" : {
+            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
+            "line" : 305,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -3723,25 +3601,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [26],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER300"],
-          "base_default_next" : "node_37",
+          "action_ids" : [27],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER305"],
+          "base_default_next" : "node_38",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER300" : "node_37"
+            "fast_reroute_round_robin_stopnwait_MASTER305" : "node_38"
           },
           "default_entry" : {
-            "action_id" : 26,
+            "action_id" : 27,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER302",
-          "id" : 21,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307",
+          "id" : 22,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 302,
+            "line" : 307,
             "column" : 55,
             "source_fragment" : "="
           },
@@ -3752,25 +3630,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [24],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER302"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307",
+          "action_ids" : [25],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER307"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER312",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER302" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307"
+            "fast_reroute_round_robin_stopnwait_MASTER307" : "tbl_fast_reroute_round_robin_stopnwait_MASTER312"
           },
           "default_entry" : {
-            "action_id" : 24,
+            "action_id" : 25,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER304",
-          "id" : 22,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER309",
+          "id" : 23,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 304,
+            "line" : 309,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -3781,25 +3659,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [25],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER304"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307",
+          "action_ids" : [26],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER309"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER312",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER304" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307"
+            "fast_reroute_round_robin_stopnwait_MASTER309" : "tbl_fast_reroute_round_robin_stopnwait_MASTER312"
           },
           "default_entry" : {
-            "action_id" : 25,
+            "action_id" : 26,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307",
-          "id" : 23,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER312",
+          "id" : 24,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 307,
+            "line" : 312,
             "column" : 36,
             "source_fragment" : "="
           },
@@ -3810,25 +3688,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [27],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER307"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327",
+          "action_ids" : [28],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER312"],
+          "base_default_next" : "node_45",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER307" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327"
+            "fast_reroute_round_robin_stopnwait_MASTER312" : "node_45"
           },
           "default_entry" : {
-            "action_id" : 27,
+            "action_id" : 28,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER311",
-          "id" : 24,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER316",
+          "id" : 25,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 311,
+            "line" : 316,
             "column" : 51,
             "source_fragment" : "= (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); ..."
           },
@@ -3839,25 +3717,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [29],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER311"],
-          "base_default_next" : "node_42",
+          "action_ids" : [30],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER316"],
+          "base_default_next" : "node_43",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER311" : "node_42"
+            "fast_reroute_round_robin_stopnwait_MASTER316" : "node_43"
           },
           "default_entry" : {
-            "action_id" : 29,
+            "action_id" : 30,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER314",
-          "id" : 25,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER319",
+          "id" : 26,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 314,
+            "line" : 319,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -3868,112 +3746,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [28],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER314"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327",
-          "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER314" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327"
-          },
-          "default_entry" : {
-            "action_id" : 28,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327",
-          "id" : 26,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 327,
-            "column" : 12,
-            "source_fragment" : "forcePrimaryPathReg.read(forcePrimaryPathVar, hdr.pathHops.path_id)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [32],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER327"],
+          "action_ids" : [29],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER319"],
           "base_default_next" : "node_45",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER327" : "node_45"
+            "fast_reroute_round_robin_stopnwait_MASTER319" : "node_45"
           },
           "default_entry" : {
-            "action_id" : 32,
+            "action_id" : 29,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER329",
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER346",
           "id" : 27,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 329,
-            "column" : 51,
-            "source_fragment" : "= (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [31],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER329"],
-          "base_default_next" : "node_47",
-          "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER329" : "node_47"
-          },
-          "default_entry" : {
-            "action_id" : 31,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER333",
-          "id" : 28,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 333,
-            "column" : 20,
-            "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [30],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER333"],
-          "base_default_next" : "node_49",
-          "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER333" : "node_49"
-          },
-          "default_entry" : {
-            "action_id" : 30,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER341",
-          "id" : 29,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 341,
+            "line" : 346,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp); ..."
           },
@@ -3984,25 +3775,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [34],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER341"],
-          "base_default_next" : "node_51",
+          "action_ids" : [32],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER346"],
+          "base_default_next" : "node_47",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER341" : "node_51"
+            "fast_reroute_round_robin_stopnwait_MASTER346" : "node_47"
           },
           "default_entry" : {
-            "action_id" : 34,
+            "action_id" : 32,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER350",
-          "id" : 30,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357",
+          "id" : 28,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 350,
+            "line" : 357,
             "column" : 20,
             "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp) ..."
           },
@@ -4013,25 +3804,25 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [33],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER350"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357",
+          "action_ids" : [31],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER357"],
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER364",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER350" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357"
+            "fast_reroute_round_robin_stopnwait_MASTER357" : "tbl_fast_reroute_round_robin_stopnwait_MASTER364"
           },
           "default_entry" : {
-            "action_id" : 33,
+            "action_id" : 31,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357",
-          "id" : 31,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER364",
+          "id" : 29,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 357,
+            "line" : 364,
             "column" : 42,
             "source_fragment" : "="
           },
@@ -4042,14 +3833,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [36],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER357"],
-          "base_default_next" : "node_54",
+          "action_ids" : [34],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER364"],
+          "base_default_next" : "node_50",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER357" : "node_54"
+            "fast_reroute_round_robin_stopnwait_MASTER364" : "node_50"
           },
           "default_entry" : {
-            "action_id" : 36,
+            "action_id" : 34,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4057,10 +3848,10 @@
         },
         {
           "name" : "tbl_read_depot_port",
-          "id" : 32,
+          "id" : 30,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 361,
+            "line" : 368,
             "column" : 16,
             "source_fragment" : "read_depot_port()"
           },
@@ -4073,9 +3864,9 @@
           "direct_meters" : null,
           "action_ids" : [6],
           "actions" : ["MyIngress.read_depot_port"],
-          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER362",
+          "base_default_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER369",
           "next_tables" : {
-            "MyIngress.read_depot_port" : "tbl_fast_reroute_round_robin_stopnwait_MASTER362"
+            "MyIngress.read_depot_port" : "tbl_fast_reroute_round_robin_stopnwait_MASTER369"
           },
           "default_entry" : {
             "action_id" : 6,
@@ -4085,11 +3876,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER362",
-          "id" : 33,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER369",
+          "id" : 31,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 362,
+            "line" : 369,
             "column" : 46,
             "source_fragment" : "="
           },
@@ -4100,14 +3891,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [35],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER362"],
+          "action_ids" : [33],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER369"],
           "base_default_next" : "tbl_reset_curr_path_size",
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER362" : "tbl_reset_curr_path_size"
+            "fast_reroute_round_robin_stopnwait_MASTER369" : "tbl_reset_curr_path_size"
           },
           "default_entry" : {
-            "action_id" : 35,
+            "action_id" : 33,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4115,10 +3906,10 @@
         },
         {
           "name" : "tbl_reset_curr_path_size",
-          "id" : 34,
+          "id" : 32,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 364,
+            "line" : 371,
             "column" : 16,
             "source_fragment" : "reset_curr_path_size()"
           },
@@ -4131,9 +3922,9 @@
           "direct_meters" : null,
           "action_ids" : [5],
           "actions" : ["MyIngress.reset_curr_path_size"],
-          "base_default_next" : "node_58",
+          "base_default_next" : "node_54",
           "next_tables" : {
-            "MyIngress.reset_curr_path_size" : "node_58"
+            "MyIngress.reset_curr_path_size" : "node_54"
           },
           "default_entry" : {
             "action_id" : 5,
@@ -4143,11 +3934,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER369",
-          "id" : 35,
+          "name" : "tbl_fast_reroute_round_robin_stopnwait_MASTER376",
+          "id" : 33,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 369,
+            "line" : 376,
             "column" : 47,
             "source_fragment" : "="
           },
@@ -4158,14 +3949,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [37],
-          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER369"],
+          "action_ids" : [35],
+          "actions" : ["fast_reroute_round_robin_stopnwait_MASTER376"],
           "base_default_next" : null,
           "next_tables" : {
-            "fast_reroute_round_robin_stopnwait_MASTER369" : null
+            "fast_reroute_round_robin_stopnwait_MASTER376" : null
           },
           "default_entry" : {
-            "action_id" : 37,
+            "action_id" : 35,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4179,7 +3970,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 143,
+            "line" : 144,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid()"
           },
@@ -4202,7 +3993,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 191,
+            "line" : 195,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
           },
@@ -4241,14 +4032,14 @@
             }
           },
           "true_next" : "node_6",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER200"
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER205"
         },
         {
           "name" : "node_6",
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 192,
+            "line" : 196,
             "column" : 19,
             "source_fragment" : "hdr.pathHops.pkt_id == (bit<64>)1"
           },
@@ -4266,15 +4057,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER193",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER200"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER197",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER205"
         },
         {
           "name" : "node_9",
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 203,
+            "line" : 208,
             "column" : 15,
             "source_fragment" : "swId == depotId && token_pkt_id == (bit<64>)0"
           },
@@ -4312,7 +4103,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER204",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER209",
           "false_next" : "node_11"
         },
         {
@@ -4320,7 +4111,7 @@
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 209,
+            "line" : 214,
             "column" : 20,
             "source_fragment" : "swId == depotId && curr_time - last_entry >= token_threshold"
           },
@@ -4378,7 +4169,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER210",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER215",
           "false_next" : "MyIngress.len_primary_path"
         },
         {
@@ -4386,7 +4177,7 @@
           "id" : 5,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 223,
+            "line" : 228,
             "column" : 15,
             "source_fragment" : "swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0"
           },
@@ -4472,7 +4263,7 @@
           "id" : 6,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 225,
+            "line" : 230,
             "column" : 19,
             "source_fragment" : "hdr.pathHops.path_id == 0 && hdr.pathHops.pkt_id == token_pkt_id"
           },
@@ -4510,7 +4301,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER227",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER232",
           "false_next" : "node_25"
         },
         {
@@ -4518,7 +4309,7 @@
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 230,
+            "line" : 235,
             "column" : 23,
             "source_fragment" : "path_id_pointer_var == 0"
           },
@@ -4536,7 +4327,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER231",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER236",
           "false_next" : "node_21"
         },
         {
@@ -4544,7 +4335,7 @@
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 233,
+            "line" : 238,
             "column" : 29,
             "source_fragment" : "path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1"
           },
@@ -4602,15 +4393,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER234",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER238"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER239",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER243"
         },
         {
           "name" : "node_25",
           "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 250,
+            "line" : 255,
             "column" : 25,
             "source_fragment" : "hdr.pathHops.path_id == 1 && hdr.pathHops.pkt_id == token_pkt_id"
           },
@@ -4648,7 +4439,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER252",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER257",
           "false_next" : "node_33"
         },
         {
@@ -4656,7 +4447,7 @@
           "id" : 10,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 255,
+            "line" : 260,
             "column" : 23,
             "source_fragment" : "path_id_pointer_var == 0"
           },
@@ -4674,7 +4465,7 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER256",
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER261",
           "false_next" : "node_29"
         },
         {
@@ -4682,7 +4473,7 @@
           "id" : 11,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 258,
+            "line" : 263,
             "column" : 29,
             "source_fragment" : "path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize"
           },
@@ -4720,17 +4511,17 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER259",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER262"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER264",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER267"
         },
         {
           "name" : "node_33",
           "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 287,
+            "line" : 291,
             "column" : 15,
-            "source_fragment" : "swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || hdr.pathHops.has_visited_depot > 0)"
+            "source_fragment" : "swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)"
           },
           "expression" : {
             "type" : "expression",
@@ -4814,7 +4605,7 @@
                       "op" : ">",
                       "left" : {
                         "type" : "field",
-                        "value" : ["pathHops", "has_visited_depot"]
+                        "value" : ["scalars", "boolean_received_0"]
                       },
                       "right" : {
                         "type" : "hexstr",
@@ -4826,15 +4617,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER288",
-          "false_next" : "node_35"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER292",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER299"
         },
         {
-          "name" : "node_35",
+          "name" : "node_36",
           "id" : 13,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 299,
+            "line" : 304,
             "column" : 15,
             "source_fragment" : "hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch"
           },
@@ -4882,15 +4673,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER300",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER311"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER305",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER316"
         },
         {
-          "name" : "node_37",
+          "name" : "node_38",
           "id" : 14,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 301,
+            "line" : 306,
             "column" : 19,
             "source_fragment" : "(hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)"
           },
@@ -4958,15 +4749,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER302",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER304"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER307",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER309"
         },
         {
-          "name" : "node_42",
+          "name" : "node_43",
           "id" : 15,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 313,
+            "line" : 318,
             "column" : 20,
             "source_fragment" : "meta.nextHop == 9999"
           },
@@ -4984,87 +4775,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER314",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER327"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER319",
+          "false_next" : "node_45"
         },
         {
           "name" : "node_45",
           "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 328,
-            "column" : 15,
-            "source_fragment" : "hdr.pathHops.is_tracker > 0 || forcePrimaryPathVar > 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "or",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["pathHops", "is_tracker"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : ">",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "forcePrimaryPathVar_0"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x00"
-                  }
-                }
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER329",
-          "false_next" : "node_49"
-        },
-        {
-          "name" : "node_47",
-          "id" : 17,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 332,
-            "column" : 20,
-            "source_fragment" : "meta.nextHop == 9999"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["scalars", "userMetadata.nextHop"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x0000270f"
-              }
-            }
-          },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER333",
-          "false_next" : "node_49"
-        },
-        {
-          "name" : "node_49",
-          "id" : 18,
-          "source_info" : {
-            "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 340,
+            "line" : 345,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0"
           },
@@ -5102,15 +4821,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER341",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER346",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER364"
         },
         {
-          "name" : "node_51",
-          "id" : 19,
+          "name" : "node_47",
+          "id" : 17,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 349,
+            "line" : 356,
             "column" : 19,
             "source_fragment" : "x == (bit<1>)0"
           },
@@ -5128,15 +4847,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER350",
-          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER357",
+          "false_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER364"
         },
         {
-          "name" : "node_54",
-          "id" : 20,
+          "name" : "node_50",
+          "id" : 18,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 360,
+            "line" : 367,
             "column" : 15,
             "source_fragment" : "swId == depotId && (bit<32>)hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0"
           },
@@ -5205,14 +4924,14 @@
             }
           },
           "true_next" : "tbl_read_depot_port",
-          "false_next" : "node_58"
+          "false_next" : "node_54"
         },
         {
-          "name" : "node_58",
-          "id" : 21,
+          "name" : "node_54",
+          "id" : 19,
           "source_info" : {
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-            "line" : 368,
+            "line" : 375,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == (bit<8>)0"
           },
@@ -5251,7 +4970,7 @@
             }
           },
           "false_next" : null,
-          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER369"
+          "true_next" : "tbl_fast_reroute_round_robin_stopnwait_MASTER376"
         }
       ]
     },
@@ -5260,7 +4979,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 378,
+        "line" : 385,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -5276,7 +4995,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_round_robin_stop-n-wait_MASTER.p4",
-        "line" : 393,
+        "line" : 400,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },
