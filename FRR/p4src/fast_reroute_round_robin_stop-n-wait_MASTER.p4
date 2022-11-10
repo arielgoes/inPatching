@@ -141,6 +141,7 @@ control MyIngress(inout headers hdr,
     }
 
     apply {
+    @atomic{
         if (hdr.ipv4.isValid()){
 
             //update hop counter
@@ -211,7 +212,7 @@ control MyIngress(inout headers hdr,
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
                 token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
             }
-            else if(swId == depotId && curr_time - last_entry >= token_threshold){
+            else if(swId == depotId && curr_time - last_entry >= token_threshold && boolean_received == (bit<1>)0){
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
                 token_pkt_id = hdr.pathHops.pkt_id;
                 last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
@@ -292,9 +293,9 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.is_alt = 1;
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
                 path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
-                hdr.pathHops.which_alt_switch = swIdTry;
+                hdr.pathHops.which_alt_switch = path_id_pointer_var;
                 whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
-                hdr.pathHops.which_alt_switch = swIdTry;
+                //hdr.pathHops.which_alt_switch = swIdTry;
             }else{
                 boolean_received_Reg.write(hdr.pathHops.path_id, 0);
                 boolean_received_Reg.read(boolean_received, hdr.pathHops.path_id);
@@ -376,6 +377,7 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.has_visited_depot = 1;
             }
         }
+    }
     }
 }
 /*************************************************************************

@@ -22,7 +22,7 @@ bind_layers(IP, PathHops, proto=0x45)
 
 
 def handle_pkt(pkt):
-    print("got a packet")
+    #print("got a packet")
     pkt.show2()
 #    hexdump(pkt)
     sys.stdout.flush()

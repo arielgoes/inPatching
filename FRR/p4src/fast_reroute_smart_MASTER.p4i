@@ -1078,7 +1078,6 @@ control MyIngress(inout headers hdr,
 
     //this register guarantees I'm setting the end_time (temporario2) only once.
     register<bit<1>>(128) isFirstResponseReg;
-    register<bit<1>>(1) isFirstGlobal;
 
     register<bit<48>>(128) token_threshold;
     register<bit<64>>(128) token_pkt_id_Reg;
@@ -1191,17 +1190,13 @@ control MyIngress(inout headers hdr,
             isAltReg.read(isAltVar, hdr.pathHops.path_id);
 
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps (path id = 0)
-            //The packet enters the depot switch for the first time (beggining of the cycle)
-            bit<1> w;
-            isFirstGlobal.read(w, 0);
-
-            if(swId == depotId && hdr.pathHops.has_visited_depot == 0 && w == (bit<1>)0 ){
+            //The packet enters the depot switch for the first time (beggining of the cycle)   
+            if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
                 if(last_seen == 0 && hdr.pathHops.pkt_id == (bit<64>)1){
-                    temporario1_experimento_Reg.write(1, curr_time); //(utilizado para experimentos)
-                    temporario1_experimento_Reg.write(0, curr_time);
+                    temporario1_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(utilizado para experimentos)
+
                     last_seen_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
                     last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
-                    isFirstGlobal.write(0, 1);
                 }
             }
 
