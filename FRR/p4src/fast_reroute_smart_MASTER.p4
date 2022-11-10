@@ -333,7 +333,7 @@ control MyIngress(inout headers hdr,
             
             
             //used for experiments only
-            if(swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0){
+            if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
                 bit<48> tempo1;
                 temporario1_experimento_Reg.read(tempo1, hdr.pathHops.path_id);
                 bit<1> x;

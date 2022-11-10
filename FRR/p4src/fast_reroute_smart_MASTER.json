@@ -5689,7 +5689,7 @@
             "filename" : "/home/p4/git/master_degree_p4_unipampa/FRR/p4src/fast_reroute_smart_MASTER.p4",
             "line" : 336,
             "column" : 15,
-            "source_fragment" : "swId == depotId && isAltVar > 0 && hdr.pathHops.has_visited_depot > 0"
+            "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0"
           },
           "expression" : {
             "type" : "expression",
@@ -5698,34 +5698,14 @@
               "left" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "and",
+                  "op" : "==",
                   "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "swId_0"]
                   },
                   "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "isAltVar_0"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "depotId_0"]
                   }
                 }
               },
