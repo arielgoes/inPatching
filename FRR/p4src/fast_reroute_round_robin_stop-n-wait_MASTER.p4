@@ -141,7 +141,6 @@ control MyIngress(inout headers hdr,
     }
 
     apply {
-    @atomic{
         if (hdr.ipv4.isValid()){
 
             //update hop counter
@@ -212,7 +211,7 @@ control MyIngress(inout headers hdr,
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
                 token_pkt_id_Reg.read(token_pkt_id, hdr.pathHops.path_id);
             }
-            else if(swId == depotId && curr_time - last_entry >= token_threshold && boolean_received == (bit<1>)0){
+            else if(swId == depotId && curr_time - last_entry >= token_threshold){
                 token_pkt_id_Reg.write(hdr.pathHops.path_id, hdr.pathHops.pkt_id);
                 token_pkt_id = hdr.pathHops.pkt_id;
                 last_entry_pkt_timestamp.write(hdr.pathHops.path_id, curr_time);
@@ -224,9 +223,19 @@ control MyIngress(inout headers hdr,
             len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
+            if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){
+                hdr.pathHops.is_alt = 1;
+                forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
+                path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
+                whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
+                hdr.pathHops.which_alt_switch = swIdTry;
+            }/*else{
+                boolean_received_Reg.write(hdr.pathHops.path_id, 0);
+                boolean_received_Reg.read(boolean_received, hdr.pathHops.path_id);
+            }*/
             
             //FRR control (all the decisions are made at the depot/starting node)
-            if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0){
+            else if(swId == depotId && curr_time - last_seen >= threshold && hdr.pathHops.has_visited_depot == (bit<8>)0){
                 
                 if(hdr.pathHops.path_id == 0 && hdr.pathHops.pkt_id == token_pkt_id){ //first flow...
                     //gets the index into a variable
@@ -261,7 +270,7 @@ control MyIngress(inout headers hdr,
                     if(path_id_pointer_var == 0){ //if the pointer is at the first position (index 0), ...
                         path_id_pointer_reg.write(hdr.pathHops.path_id, 1); //...increment it to 1, because it is reserved for the primary path...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //...and read again for the updated pointer value
-                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize){ 
+                    }else if(path_id_pointer_var > 0 && path_id_pointer_var < meta.lenHashPrimaryPathSize - 1){ 
                         path_id_pointer_reg.write(hdr.pathHops.path_id, path_id_pointer_var + 1); //...update it normally...
                         path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id); //... and read again for the updated pointer value
                     }else{ //path_id_pointer_var == meta.lenPrimaryPath
@@ -284,22 +293,11 @@ control MyIngress(inout headers hdr,
                 isAltReg.read(isAltVar, hdr.pathHops.path_id);
                 hdr.pathHops.which_alt_switch = 0;
                 hdr.pathHops.is_alt = 0;
-
                 //force packets to use the primary path
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);                
             }*/
 
-            if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){
-                hdr.pathHops.is_alt = 1;
-                forcePrimaryPathReg.write(hdr.pathHops.path_id, 0); //stop forcing primary path (if it is somehow)
-                path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
-                hdr.pathHops.which_alt_switch = path_id_pointer_var;
-                whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
-                //hdr.pathHops.which_alt_switch = swIdTry;
-            }else{
-                boolean_received_Reg.write(hdr.pathHops.path_id, 0);
-                boolean_received_Reg.read(boolean_received, hdr.pathHops.path_id);
-            }
+            
 
             //alternative path cases
             if(hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch){ //this line may overflow
@@ -377,7 +375,6 @@ control MyIngress(inout headers hdr,
                 hdr.pathHops.has_visited_depot = 1;
             }
         }
-    }
     }
 }
 /*************************************************************************
