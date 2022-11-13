@@ -92,16 +92,6 @@ control MyIngress(inout headers hdr,
         mark_to_drop(standard_metadata);
     }    
 
-    action read_len_primary_path(bit<32> indexPath){
-        meta.indexPath = indexPath;
-        lenPrimaryPathSize.read(meta.lenPrimaryPathSize, meta.indexPath);
-    }
-
-    action read_len_alternative_path(bit<32> indexPath){
-        meta.indexPath = indexPath;
-        lenAlternativePathSize.read(meta.lenAlternativePathSize, meta.indexPath);
-    }
-
     action update_curr_path_size(){
         hdr.pathHops.numHop = hdr.pathHops.numHop + 1;
     }
@@ -115,30 +105,6 @@ control MyIngress(inout headers hdr,
         depotPortReg.read(meta.depotPort, 0);
     }
 
-
-    table len_primary_path {
-        key = {
-            hdr.pathHops.path_id: exact;
-        }
-        actions = {
-            read_len_primary_path;
-            NoAction();
-        }
-        size = N_PATHS;
-        default_action = NoAction();
-    }
-
-    table len_alternative_path {
-        key = {
-            hdr.pathHops.path_id: exact;
-        }
-        actions = {
-            read_len_alternative_path;
-            NoAction();
-        }
-        size = N_PATHS;
-        default_action = NoAction();
-    }
 
     apply {
         if (hdr.ipv4.isValid()){
@@ -219,8 +185,8 @@ control MyIngress(inout headers hdr,
             }
 
             //get length of the primary and alternative paths
-            len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
-            len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
+            lenPrimaryPathSize.read(meta.lenPrimaryPathSize, hdr.pathHops.path_id);
+            lenAlternativePathSize.read(meta.lenAlternativePathSize, hdr.pathHops.path_id);
             lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
             if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){

@@ -1082,6 +1082,8 @@ control MyIngress(inout headers hdr,
     register<bit<48>>(128) token_threshold;
     register<bit<64>>(128) token_pkt_id_Reg;
 
+    register<bit<1>>(128) boolean_received_Reg;
+
     //stores the switch failure overlapping more than a cycle to speedup the recovery process - i.e., reduce threshold overhead for cycles farther to the failure location
     register<bit<32>>(128) overlappingSwIds;
 
@@ -1179,6 +1181,9 @@ control MyIngress(inout headers hdr,
             maxTimeOutDepotReg.read(threshold, 0);
             token_threshold = threshold;
 
+            bit<1> boolean_received;
+            boolean_received_Reg.read(boolean_received, hdr.pathHops.path_id);
+
             bit<32> path_id_pointer_var = 0;
             //path_id_pointer_reg.read(path_id_pointer_var, hdr.pathHops.path_id);
 
@@ -1225,7 +1230,7 @@ control MyIngress(inout headers hdr,
 
             //check overlapping existance - only for path 0 (for now)... (HARDCODED)
             overlappingSwIds.read(sw_overlap_var, hdr.pathHops.path_id);
-            if(swId == depotId && sw_overlap_var > 0 && hdr.pathHops.path_id == (bit<32>)0 && hdr.pathHops.has_visited_depot == 0){
+            if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){
                 whichSwitchAltReg.write(hdr.pathHops.path_id, sw_overlap_var);
                 hdr.pathHops.sw_overlap = sw_overlap_var;
                 hdr.pathHops.which_alt_switch = sw_overlap_var;
@@ -1383,6 +1388,8 @@ control MyIngress(inout headers hdr,
             if(swId == depotId && hdr.pathHops.has_visited_depot > 0){
                 last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp);
                 last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id);
+
+                boolean_received_Reg.write(hdr.pathHops.path_id, 1);
             }
 
 

@@ -77,9 +77,6 @@ EOFMarker
 done
 # rest of script, after gnuplot exits
 
-echo "RUNNING..."
-
-
 
 #stats
 for threshold in $TIME_OUTS; do
