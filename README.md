@@ -19,3 +19,7 @@ PRs are very much appreciated. For bugs/features, consider creating an issue bef
 
 # Documentation
 For further instructions, please read our [wiki](https://github.com/arielgoes/InPatching/wiki).
+
+# Team
+We are members of [LosPampa](https://lospampa.com/)\
+Thanks to all [contributors](https://github.com/arielgoes/InPatching/graphs/contributors)!
