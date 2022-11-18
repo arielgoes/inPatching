@@ -171,6 +171,11 @@ control MyIngress(inout headers hdr,
             bit<8> isAltVar;
             isAltReg.read(isAltVar, hdr.pathHops.path_id);
 
+            //get length of the primary and alternative paths
+            len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
+            len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
+            lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
+
             //To get timestamp for experiments, I need to count the packets to get correct start and end timestamps
             //The packet enters the depot switch for the first time (beggining of the cycle)   
             if(swId == depotId && hdr.pathHops.has_visited_depot == 0){
@@ -181,10 +186,6 @@ control MyIngress(inout headers hdr,
                 }
             }
 
-            //get length of the primary and alternative paths
-            len_primary_path.apply(); //sets the "meta.lenPrimaryPath"
-            len_alternative_path.apply(); //sets the "meta.lenAlternativePath"
-            lenHashPrimaryPathSize.read(meta.lenHashPrimaryPathSize, hdr.pathHops.path_id);
 
             //force the packet to keep using the alternative path as long as a "new" timeout do not occurs, then it selects the next candidate switch in round-robin fashion
             if(swId == depotId && isAltVar > 0 && (curr_time - last_seen < threshold || hdr.pathHops.has_visited_depot > 0)){
