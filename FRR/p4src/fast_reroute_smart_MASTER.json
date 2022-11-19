@@ -588,7 +588,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-        "line" : 402,
+        "line" : 400,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },
@@ -1492,212 +1492,8 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER228",
-      "id" : 9,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "pointer_0"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000001"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 228,
-            "column" : 28,
-            "source_fragment" : "pointer = 1"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_smart_MASTER230",
-      "id" : 10,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "pointer_0"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "+",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "pointer_0"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00000001"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 230,
-            "column" : 28,
-            "source_fragment" : "pointer = pointer + 1"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_smart_MASTER226",
-      "id" : 11,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "pointer_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_pointer_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["pathHops", "path_id"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 226,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.read(pointer, hdr.pathHops.path_id)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "fast_reroute_smart_MASTER232",
-      "id" : 12,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "sw_overlap_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.path_id_1_path_reg"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "pointer_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 232,
-            "column" : 24,
-            "source_fragment" : "path_id_1_path_reg.read(sw_overlap_var, pointer)"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.overlappingSwIds"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "sw_overlap_var_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 233,
-            "column" : 24,
-            "source_fragment" : "overlappingSwIds.write(0, sw_overlap_var)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "sw_overlap_var_0"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.overlappingSwIds"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 234,
-            "column" : 24,
-            "source_fragment" : "overlappingSwIds.read(sw_overlap_var, 0)"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "MyIngress.whichSwitchAltReg"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "sw_overlap_var_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 235,
-            "column" : 24,
-            "source_fragment" : "whichSwitchAltReg.write(0, sw_overlap_var)"
-          }
-        }
-      ]
-    },
-    {
       "name" : "fast_reroute_smart_MASTER216",
-      "id" : 13,
+      "id" : 9,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -1782,6 +1578,210 @@
             "line" : 221,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.which_alt_switch = swIdTry"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_smart_MASTER229",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "pointer_0"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 229,
+            "column" : 24,
+            "source_fragment" : "pointer = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_smart_MASTER231",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "pointer_0"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "pointer_0"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 231,
+            "column" : 24,
+            "source_fragment" : "pointer = pointer + 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_smart_MASTER227",
+      "id" : 12,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "pointer_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.path_id_pointer_reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["pathHops", "path_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 227,
+            "column" : 20,
+            "source_fragment" : "path_id_pointer_reg.read(pointer, hdr.pathHops.path_id)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "fast_reroute_smart_MASTER233",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "sw_overlap_var_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.path_id_1_path_reg"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "pointer_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 233,
+            "column" : 20,
+            "source_fragment" : "path_id_1_path_reg.read(sw_overlap_var, pointer)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.overlappingSwIds"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "sw_overlap_var_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 234,
+            "column" : 20,
+            "source_fragment" : "overlappingSwIds.write(0, sw_overlap_var)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "sw_overlap_var_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.overlappingSwIds"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 235,
+            "column" : 20,
+            "source_fragment" : "overlappingSwIds.read(sw_overlap_var, 0)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "MyIngress.whichSwitchAltReg"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "sw_overlap_var_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 236,
+            "column" : 20,
+            "source_fragment" : "whichSwitchAltReg.write(0, sw_overlap_var)"
           }
         }
       ]
@@ -2553,7 +2553,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER311",
+      "name" : "fast_reroute_smart_MASTER309",
       "id" : 25,
       "runtime_data" : [],
       "primitives" : [
@@ -2651,7 +2651,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 311,
+            "line" : 309,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2659,7 +2659,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER313",
+      "name" : "fast_reroute_smart_MASTER311",
       "id" : 26,
       "runtime_data" : [],
       "primitives" : [
@@ -2681,7 +2681,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 313,
+            "line" : 311,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2780,7 +2780,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 314,
+            "line" : 312,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2788,7 +2788,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER309",
+      "name" : "fast_reroute_smart_MASTER307",
       "id" : 27,
       "runtime_data" : [],
       "primitives" : [
@@ -2810,7 +2810,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 309,
+            "line" : 307,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -2818,7 +2818,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER316",
+      "name" : "fast_reroute_smart_MASTER314",
       "id" : 28,
       "runtime_data" : [],
       "primitives" : [
@@ -2836,7 +2836,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 316,
+            "line" : 314,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.is_alt = 1"
           }
@@ -2844,7 +2844,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER322",
+      "name" : "fast_reroute_smart_MASTER320",
       "id" : 29,
       "runtime_data" : [],
       "primitives" : [
@@ -2942,7 +2942,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 322,
+            "line" : 320,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -2950,7 +2950,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER324",
+      "name" : "fast_reroute_smart_MASTER322",
       "id" : 30,
       "runtime_data" : [],
       "primitives" : [
@@ -2972,7 +2972,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 324,
+            "line" : 322,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -3071,7 +3071,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 325,
+            "line" : 323,
             "column" : 20,
             "source_fragment" : "hdr.pathHops.num_times_curr_switch = (hdr.pathHops.num_times_curr_switch & ~mask) | ((bit<64>)1 << swId)"
           }
@@ -3079,7 +3079,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER320",
+      "name" : "fast_reroute_smart_MASTER318",
       "id" : 31,
       "runtime_data" : [],
       "primitives" : [
@@ -3101,7 +3101,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 320,
+            "line" : 318,
             "column" : 16,
             "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           }
@@ -3109,7 +3109,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER356",
+      "name" : "fast_reroute_smart_MASTER354",
       "id" : 32,
       "runtime_data" : [],
       "primitives" : [
@@ -3131,7 +3131,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 356,
+            "line" : 354,
             "column" : 20,
             "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time)"
           }
@@ -3154,7 +3154,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 357,
+            "line" : 355,
             "column" : 20,
             "source_fragment" : "isFirstResponseReg.write(hdr.pathHops.path_id, 1)"
           }
@@ -3162,7 +3162,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER345",
+      "name" : "fast_reroute_smart_MASTER343",
       "id" : 33,
       "runtime_data" : [],
       "primitives" : [
@@ -3184,7 +3184,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 345,
+            "line" : 343,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp)"
           }
@@ -3207,7 +3207,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 346,
+            "line" : 344,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.read(last_seen, hdr.pathHops.path_id)"
           }
@@ -3230,7 +3230,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 348,
+            "line" : 346,
             "column" : 16,
             "source_fragment" : "boolean_received_Reg.write(hdr.pathHops.path_id, 1)"
           }
@@ -3253,7 +3253,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 354,
+            "line" : 352,
             "column" : 16,
             "source_fragment" : "isFirstResponseReg.read(x, hdr.pathHops.path_id)"
           }
@@ -3261,7 +3261,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER371",
+      "name" : "fast_reroute_smart_MASTER369",
       "id" : 34,
       "runtime_data" : [],
       "primitives" : [
@@ -3292,7 +3292,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 371,
+            "line" : 369,
             "column" : 16,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.depotPort"
           }
@@ -3300,7 +3300,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER361",
+      "name" : "fast_reroute_smart_MASTER359",
       "id" : 35,
       "runtime_data" : [],
       "primitives" : [
@@ -3341,7 +3341,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 361,
+            "line" : 359,
             "column" : 35,
             "source_fragment" : "curr_time - last_entry"
           }
@@ -3364,7 +3364,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 361,
+            "line" : 359,
             "column" : 12,
             "source_fragment" : "diffLastEntry.write(0, curr_time - last_entry)"
           }
@@ -3406,7 +3406,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 362,
+            "line" : 360,
             "column" : 34,
             "source_fragment" : "curr_time - last_seen"
           }
@@ -3429,7 +3429,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 362,
+            "line" : 360,
             "column" : 12,
             "source_fragment" : "diffLastSeen.write(0, curr_time - last_seen)"
           }
@@ -3461,7 +3461,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 365,
+            "line" : 363,
             "column" : 12,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>) meta.nextHop"
           }
@@ -3469,7 +3469,7 @@
       ]
     },
     {
-      "name" : "fast_reroute_smart_MASTER378",
+      "name" : "fast_reroute_smart_MASTER376",
       "id" : 36,
       "runtime_data" : [],
       "primitives" : [
@@ -3487,7 +3487,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 378,
+            "line" : 376,
             "column" : 16,
             "source_fragment" : "hdr.pathHops.has_visited_depot = 1"
           }
@@ -3755,69 +3755,11 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [13],
+          "action_ids" : [9],
           "actions" : ["fast_reroute_smart_MASTER216"],
           "base_default_next" : "node_18",
           "next_tables" : {
             "fast_reroute_smart_MASTER216" : "node_18"
-          },
-          "default_entry" : {
-            "action_id" : 13,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_smart_MASTER226",
-          "id" : 9,
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 226,
-            "column" : 24,
-            "source_fragment" : "path_id_pointer_reg.read(pointer, hdr.pathHops.path_id)"
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [11],
-          "actions" : ["fast_reroute_smart_MASTER226"],
-          "base_default_next" : "node_20",
-          "next_tables" : {
-            "fast_reroute_smart_MASTER226" : "node_20"
-          },
-          "default_entry" : {
-            "action_id" : 11,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "tbl_fast_reroute_smart_MASTER228",
-          "id" : 10,
-          "source_info" : {
-            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 228,
-            "column" : 36,
-            "source_fragment" : "="
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [9],
-          "actions" : ["fast_reroute_smart_MASTER228"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER232",
-          "next_tables" : {
-            "fast_reroute_smart_MASTER228" : "tbl_fast_reroute_smart_MASTER232"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -3827,12 +3769,41 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER230",
-          "id" : 11,
+          "name" : "tbl_fast_reroute_smart_MASTER227",
+          "id" : 9,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 230,
-            "column" : 36,
+            "line" : 227,
+            "column" : 20,
+            "source_fragment" : "path_id_pointer_reg.read(pointer, hdr.pathHops.path_id)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [12],
+          "actions" : ["fast_reroute_smart_MASTER227"],
+          "base_default_next" : "node_20",
+          "next_tables" : {
+            "fast_reroute_smart_MASTER227" : "node_20"
+          },
+          "default_entry" : {
+            "action_id" : 12,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute_smart_MASTER229",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 229,
+            "column" : 32,
             "source_fragment" : "="
           },
           "key" : [],
@@ -3843,10 +3814,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [10],
-          "actions" : ["fast_reroute_smart_MASTER230"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER232",
+          "actions" : ["fast_reroute_smart_MASTER229"],
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER233",
           "next_tables" : {
-            "fast_reroute_smart_MASTER230" : "tbl_fast_reroute_smart_MASTER232"
+            "fast_reroute_smart_MASTER229" : "tbl_fast_reroute_smart_MASTER233"
           },
           "default_entry" : {
             "action_id" : 10,
@@ -3856,12 +3827,41 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER232",
+          "name" : "tbl_fast_reroute_smart_MASTER231",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
+            "line" : 231,
+            "column" : 32,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [11],
+          "actions" : ["fast_reroute_smart_MASTER231"],
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER233",
+          "next_tables" : {
+            "fast_reroute_smart_MASTER231" : "tbl_fast_reroute_smart_MASTER233"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_fast_reroute_smart_MASTER233",
           "id" : 12,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 232,
-            "column" : 24,
+            "line" : 233,
+            "column" : 20,
             "source_fragment" : "path_id_1_path_reg.read(sw_overlap_var, pointer); ..."
           },
           "key" : [],
@@ -3871,14 +3871,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [12],
-          "actions" : ["fast_reroute_smart_MASTER232"],
+          "action_ids" : [13],
+          "actions" : ["fast_reroute_smart_MASTER233"],
           "base_default_next" : "node_41",
           "next_tables" : {
-            "fast_reroute_smart_MASTER232" : "node_41"
+            "fast_reroute_smart_MASTER233" : "node_41"
           },
           "default_entry" : {
-            "action_id" : 12,
+            "action_id" : 13,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -4175,11 +4175,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER309",
+          "name" : "tbl_fast_reroute_smart_MASTER307",
           "id" : 23,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 309,
+            "line" : 307,
             "column" : 16,
             "source_fragment" : "alternativeNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -4191,10 +4191,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [27],
-          "actions" : ["fast_reroute_smart_MASTER309"],
+          "actions" : ["fast_reroute_smart_MASTER307"],
           "base_default_next" : "node_43",
           "next_tables" : {
-            "fast_reroute_smart_MASTER309" : "node_43"
+            "fast_reroute_smart_MASTER307" : "node_43"
           },
           "default_entry" : {
             "action_id" : 27,
@@ -4204,11 +4204,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER311",
+          "name" : "tbl_fast_reroute_smart_MASTER309",
           "id" : 24,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 311,
+            "line" : 309,
             "column" : 55,
             "source_fragment" : "="
           },
@@ -4220,10 +4220,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [25],
-          "actions" : ["fast_reroute_smart_MASTER311"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER316",
+          "actions" : ["fast_reroute_smart_MASTER309"],
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER314",
           "next_tables" : {
-            "fast_reroute_smart_MASTER311" : "tbl_fast_reroute_smart_MASTER316"
+            "fast_reroute_smart_MASTER309" : "tbl_fast_reroute_smart_MASTER314"
           },
           "default_entry" : {
             "action_id" : 25,
@@ -4233,11 +4233,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER313",
+          "name" : "tbl_fast_reroute_smart_MASTER311",
           "id" : 25,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 313,
+            "line" : 311,
             "column" : 20,
             "source_fragment" : "alternativeNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -4249,10 +4249,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [26],
-          "actions" : ["fast_reroute_smart_MASTER313"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER316",
+          "actions" : ["fast_reroute_smart_MASTER311"],
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER314",
           "next_tables" : {
-            "fast_reroute_smart_MASTER313" : "tbl_fast_reroute_smart_MASTER316"
+            "fast_reroute_smart_MASTER311" : "tbl_fast_reroute_smart_MASTER314"
           },
           "default_entry" : {
             "action_id" : 26,
@@ -4262,11 +4262,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER316",
+          "name" : "tbl_fast_reroute_smart_MASTER314",
           "id" : 26,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 316,
+            "line" : 314,
             "column" : 36,
             "source_fragment" : "="
           },
@@ -4278,10 +4278,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [28],
-          "actions" : ["fast_reroute_smart_MASTER316"],
+          "actions" : ["fast_reroute_smart_MASTER314"],
           "base_default_next" : "node_51",
           "next_tables" : {
-            "fast_reroute_smart_MASTER316" : "node_51"
+            "fast_reroute_smart_MASTER314" : "node_51"
           },
           "default_entry" : {
             "action_id" : 28,
@@ -4291,11 +4291,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER320",
+          "name" : "tbl_fast_reroute_smart_MASTER318",
           "id" : 27,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 320,
+            "line" : 318,
             "column" : 16,
             "source_fragment" : "primaryNH_1.read(meta.nextHop, hdr.pathHops.path_id)"
           },
@@ -4307,10 +4307,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [31],
-          "actions" : ["fast_reroute_smart_MASTER320"],
+          "actions" : ["fast_reroute_smart_MASTER318"],
           "base_default_next" : "node_48",
           "next_tables" : {
-            "fast_reroute_smart_MASTER320" : "node_48"
+            "fast_reroute_smart_MASTER318" : "node_48"
           },
           "default_entry" : {
             "action_id" : 31,
@@ -4320,11 +4320,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER322",
+          "name" : "tbl_fast_reroute_smart_MASTER320",
           "id" : 28,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 322,
+            "line" : 320,
             "column" : 55,
             "source_fragment" : "="
           },
@@ -4336,10 +4336,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [29],
-          "actions" : ["fast_reroute_smart_MASTER322"],
+          "actions" : ["fast_reroute_smart_MASTER320"],
           "base_default_next" : "node_51",
           "next_tables" : {
-            "fast_reroute_smart_MASTER322" : "node_51"
+            "fast_reroute_smart_MASTER320" : "node_51"
           },
           "default_entry" : {
             "action_id" : 29,
@@ -4349,11 +4349,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER324",
+          "name" : "tbl_fast_reroute_smart_MASTER322",
           "id" : 29,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 324,
+            "line" : 322,
             "column" : 20,
             "source_fragment" : "primaryNH_2.read(meta.nextHop, hdr.pathHops.path_id); ..."
           },
@@ -4365,10 +4365,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [30],
-          "actions" : ["fast_reroute_smart_MASTER324"],
+          "actions" : ["fast_reroute_smart_MASTER322"],
           "base_default_next" : "node_51",
           "next_tables" : {
-            "fast_reroute_smart_MASTER324" : "node_51"
+            "fast_reroute_smart_MASTER322" : "node_51"
           },
           "default_entry" : {
             "action_id" : 30,
@@ -4378,11 +4378,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER345",
+          "name" : "tbl_fast_reroute_smart_MASTER343",
           "id" : 30,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 345,
+            "line" : 343,
             "column" : 16,
             "source_fragment" : "last_seen_pkt_timestamp.write(hdr.pathHops.path_id, standard_metadata.ingress_global_timestamp); ..."
           },
@@ -4394,10 +4394,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [33],
-          "actions" : ["fast_reroute_smart_MASTER345"],
+          "actions" : ["fast_reroute_smart_MASTER343"],
           "base_default_next" : "node_53",
           "next_tables" : {
-            "fast_reroute_smart_MASTER345" : "node_53"
+            "fast_reroute_smart_MASTER343" : "node_53"
           },
           "default_entry" : {
             "action_id" : 33,
@@ -4407,11 +4407,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER356",
+          "name" : "tbl_fast_reroute_smart_MASTER354",
           "id" : 31,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 356,
+            "line" : 354,
             "column" : 20,
             "source_fragment" : "temporario2_experimento_Reg.write(hdr.pathHops.path_id, curr_time); //(end timestamp) ..."
           },
@@ -4423,10 +4423,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [32],
-          "actions" : ["fast_reroute_smart_MASTER356"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER361",
+          "actions" : ["fast_reroute_smart_MASTER354"],
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER359",
           "next_tables" : {
-            "fast_reroute_smart_MASTER356" : "tbl_fast_reroute_smart_MASTER361"
+            "fast_reroute_smart_MASTER354" : "tbl_fast_reroute_smart_MASTER359"
           },
           "default_entry" : {
             "action_id" : 32,
@@ -4436,11 +4436,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER361",
+          "name" : "tbl_fast_reroute_smart_MASTER359",
           "id" : 32,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 361,
+            "line" : 359,
             "column" : 12,
             "source_fragment" : "diffLastEntry.write(0, curr_time - last_entry); ..."
           },
@@ -4452,10 +4452,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [35],
-          "actions" : ["fast_reroute_smart_MASTER361"],
+          "actions" : ["fast_reroute_smart_MASTER359"],
           "base_default_next" : "node_56",
           "next_tables" : {
-            "fast_reroute_smart_MASTER361" : "node_56"
+            "fast_reroute_smart_MASTER359" : "node_56"
           },
           "default_entry" : {
             "action_id" : 35,
@@ -4469,7 +4469,7 @@
           "id" : 33,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 370,
+            "line" : 368,
             "column" : 16,
             "source_fragment" : "read_depot_port()"
           },
@@ -4482,9 +4482,9 @@
           "direct_meters" : null,
           "action_ids" : [2],
           "actions" : ["MyIngress.read_depot_port"],
-          "base_default_next" : "tbl_fast_reroute_smart_MASTER371",
+          "base_default_next" : "tbl_fast_reroute_smart_MASTER369",
           "next_tables" : {
-            "MyIngress.read_depot_port" : "tbl_fast_reroute_smart_MASTER371"
+            "MyIngress.read_depot_port" : "tbl_fast_reroute_smart_MASTER369"
           },
           "default_entry" : {
             "action_id" : 2,
@@ -4494,11 +4494,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER371",
+          "name" : "tbl_fast_reroute_smart_MASTER369",
           "id" : 34,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 371,
+            "line" : 369,
             "column" : 46,
             "source_fragment" : "="
           },
@@ -4510,10 +4510,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [34],
-          "actions" : ["fast_reroute_smart_MASTER371"],
+          "actions" : ["fast_reroute_smart_MASTER369"],
           "base_default_next" : "tbl_reset_curr_path_size",
           "next_tables" : {
-            "fast_reroute_smart_MASTER371" : "tbl_reset_curr_path_size"
+            "fast_reroute_smart_MASTER369" : "tbl_reset_curr_path_size"
           },
           "default_entry" : {
             "action_id" : 34,
@@ -4527,7 +4527,7 @@
           "id" : 35,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 373,
+            "line" : 371,
             "column" : 16,
             "source_fragment" : "reset_curr_path_size()"
           },
@@ -4552,11 +4552,11 @@
           }
         },
         {
-          "name" : "tbl_fast_reroute_smart_MASTER378",
+          "name" : "tbl_fast_reroute_smart_MASTER376",
           "id" : 36,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 378,
+            "line" : 376,
             "column" : 47,
             "source_fragment" : "="
           },
@@ -4568,10 +4568,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [36],
-          "actions" : ["fast_reroute_smart_MASTER378"],
+          "actions" : ["fast_reroute_smart_MASTER376"],
           "base_default_next" : null,
           "next_tables" : {
-            "fast_reroute_smart_MASTER378" : null
+            "fast_reroute_smart_MASTER376" : null
           },
           "default_entry" : {
             "action_id" : 36,
@@ -4817,7 +4817,7 @@
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
             "line" : 199,
             "column" : 15,
-            "source_fragment" : "swId == depotId && sw_overlap_var > 0 && (curr_time - last_seen < threshold || boolean_received > 0)"
+            "source_fragment" : "swId == depotId && sw_overlap_var > 0"
           },
           "expression" : {
             "type" : "expression",
@@ -4826,88 +4826,28 @@
               "left" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "and",
+                  "op" : "==",
                   "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "==",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "swId_0"]
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "depotId_0"]
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "swId_0"]
                   },
                   "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "sw_overlap_var_0"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00000000"
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "depotId_0"]
                   }
                 }
               },
               "right" : {
                 "type" : "expression",
                 "value" : {
-                  "op" : "or",
+                  "op" : ">",
                   "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "<",
-                      "left" : {
-                        "type" : "expression",
-                        "value" : {
-                          "op" : "&",
-                          "left" : {
-                            "type" : "expression",
-                            "value" : {
-                              "op" : "-",
-                              "left" : {
-                                "type" : "field",
-                                "value" : ["standard_metadata", "ingress_global_timestamp"]
-                              },
-                              "right" : {
-                                "type" : "field",
-                                "value" : ["scalars", "last_seen_0"]
-                              }
-                            }
-                          },
-                          "right" : {
-                            "type" : "hexstr",
-                            "value" : "0xffffffffffff"
-                          }
-                        }
-                      },
-                      "right" : {
-                        "type" : "field",
-                        "value" : ["scalars", "threshold_0"]
-                      }
-                    }
+                    "type" : "field",
+                    "value" : ["scalars", "sw_overlap_var_0"]
                   },
                   "right" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : ">",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "boolean_received_0"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00"
-                      }
-                    }
+                    "type" : "hexstr",
+                    "value" : "0x00000000"
                   }
                 }
               }
@@ -5020,41 +4960,141 @@
             }
           },
           "true_next" : "tbl_fast_reroute_smart_MASTER216",
-          "false_next" : "node_24"
+          "false_next" : "node_18"
         },
         {
           "name" : "node_18",
           "id" : 7,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 224,
-            "column" : 23,
-            "source_fragment" : "hdr.pathHops.path_id == (bit<32>)1"
+            "line" : 225,
+            "column" : 19,
+            "source_fragment" : "swId == depotId && hdr.pathHops.path_id == (bit<32>)1 && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "==",
+              "op" : "and",
               "left" : {
-                "type" : "field",
-                "value" : ["pathHops", "path_id"]
+                "type" : "expression",
+                "value" : {
+                  "op" : "and",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "and",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "==",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "swId_0"]
+                          },
+                          "right" : {
+                            "type" : "field",
+                            "value" : ["scalars", "depotId_0"]
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "==",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["pathHops", "path_id"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x00000001"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "isAltVar_0"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00"
+                      }
+                    }
+                  }
+                }
               },
               "right" : {
-                "type" : "hexstr",
-                "value" : "0x00000001"
+                "type" : "expression",
+                "value" : {
+                  "op" : "or",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "<",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "-",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["standard_metadata", "ingress_global_timestamp"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "last_seen_0"]
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "threshold_0"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : ">",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "boolean_received_0"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00"
+                      }
+                    }
+                  }
+                }
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER226",
-          "false_next" : "node_41"
+          "true_next" : "tbl_fast_reroute_smart_MASTER227",
+          "false_next" : "node_24"
         },
         {
           "name" : "node_20",
           "id" : 8,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 227,
-            "column" : 27,
+            "line" : 228,
+            "column" : 23,
             "source_fragment" : "pointer + 1 > meta.lenHashPrimaryPathSize - 1"
           },
           "expression" : {
@@ -5111,8 +5151,8 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER228",
-          "false_next" : "tbl_fast_reroute_smart_MASTER230"
+          "true_next" : "tbl_fast_reroute_smart_MASTER229",
+          "false_next" : "tbl_fast_reroute_smart_MASTER231"
         },
         {
           "name" : "node_24",
@@ -5481,7 +5521,7 @@
           "id" : 16,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 308,
+            "line" : 306,
             "column" : 15,
             "source_fragment" : "hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch"
           },
@@ -5529,15 +5569,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER309",
-          "false_next" : "tbl_fast_reroute_smart_MASTER320"
+          "true_next" : "tbl_fast_reroute_smart_MASTER307",
+          "false_next" : "tbl_fast_reroute_smart_MASTER318"
         },
         {
           "name" : "node_43",
           "id" : 17,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 310,
+            "line" : 308,
             "column" : 19,
             "source_fragment" : "(hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)"
           },
@@ -5605,15 +5645,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER311",
-          "false_next" : "tbl_fast_reroute_smart_MASTER313"
+          "true_next" : "tbl_fast_reroute_smart_MASTER309",
+          "false_next" : "tbl_fast_reroute_smart_MASTER311"
         },
         {
           "name" : "node_48",
           "id" : 18,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 321,
+            "line" : 319,
             "column" : 19,
             "source_fragment" : "(hdr.pathHops.num_times_curr_switch & mask == 0) && (meta.nextHop != 9999)"
           },
@@ -5681,15 +5721,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER322",
-          "false_next" : "tbl_fast_reroute_smart_MASTER324"
+          "true_next" : "tbl_fast_reroute_smart_MASTER320",
+          "false_next" : "tbl_fast_reroute_smart_MASTER322"
         },
         {
           "name" : "node_51",
           "id" : 19,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 344,
+            "line" : 342,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot > 0"
           },
@@ -5727,15 +5767,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER345",
-          "false_next" : "tbl_fast_reroute_smart_MASTER361"
+          "true_next" : "tbl_fast_reroute_smart_MASTER343",
+          "false_next" : "tbl_fast_reroute_smart_MASTER359"
         },
         {
           "name" : "node_53",
           "id" : 20,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 355,
+            "line" : 353,
             "column" : 19,
             "source_fragment" : "x == (bit<1>)0"
           },
@@ -5753,15 +5793,15 @@
               }
             }
           },
-          "true_next" : "tbl_fast_reroute_smart_MASTER356",
-          "false_next" : "tbl_fast_reroute_smart_MASTER361"
+          "true_next" : "tbl_fast_reroute_smart_MASTER354",
+          "false_next" : "tbl_fast_reroute_smart_MASTER359"
         },
         {
           "name" : "node_56",
           "id" : 21,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 369,
+            "line" : 367,
             "column" : 15,
             "source_fragment" : "swId == depotId && (bit<32>)hdr.pathHops.numHop >= meta.lenPrimaryPathSize && hdr.pathHops.has_visited_depot > 0"
           },
@@ -5837,7 +5877,7 @@
           "id" : 22,
           "source_info" : {
             "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-            "line" : 377,
+            "line" : 375,
             "column" : 15,
             "source_fragment" : "swId == depotId && hdr.pathHops.has_visited_depot == 0"
           },
@@ -5876,7 +5916,7 @@
             }
           },
           "false_next" : null,
-          "true_next" : "tbl_fast_reroute_smart_MASTER378"
+          "true_next" : "tbl_fast_reroute_smart_MASTER376"
         }
       ]
     },
@@ -5885,7 +5925,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-        "line" : 387,
+        "line" : 385,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -5901,7 +5941,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/git/InPatching/FRR/p4src/fast_reroute_smart_MASTER.p4",
-        "line" : 402,
+        "line" : 400,
         "column" : 2,
         "source_fragment" : "update_checksum( ..."
       },

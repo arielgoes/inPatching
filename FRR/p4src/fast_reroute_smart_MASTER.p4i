@@ -1232,7 +1232,7 @@ control MyIngress(inout headers hdr,
 
             //check overlapping existance - only for path 0 (for now)... (HARDCODED)
             overlappingSwIds.read(sw_overlap_var, hdr.pathHops.path_id);
-            if(swId == depotId && sw_overlap_var > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){
+            if(swId == depotId && sw_overlap_var > 0){
                 whichSwitchAltReg.write(hdr.pathHops.path_id, sw_overlap_var);
                 hdr.pathHops.sw_overlap = sw_overlap_var;
                 hdr.pathHops.which_alt_switch = sw_overlap_var;
@@ -1255,21 +1255,21 @@ control MyIngress(inout headers hdr,
                     hdr.pathHops.which_alt_switch = swIdTry;
                     whichSwitchAltReg.read(swIdTry, hdr.pathHops.path_id);
                     hdr.pathHops.which_alt_switch = swIdTry;
+                }
 
-                    //set overlap to be used by path 0
-                    if(hdr.pathHops.path_id == (bit<32>)1){
-                        bit<32> pointer;
-                        path_id_pointer_reg.read(pointer, hdr.pathHops.path_id);
-                        if(pointer + 1 > meta.lenHashPrimaryPathSize - 1){
-                            pointer = 1;
-                        }else{
-                            pointer = pointer + 1;
-                        }
-                        path_id_1_path_reg.read(sw_overlap_var, pointer);
-                        overlappingSwIds.write(0, sw_overlap_var);
-                        overlappingSwIds.read(sw_overlap_var, 0);
-                        whichSwitchAltReg.write(0, sw_overlap_var);
+                //set overlap to be used by path 0
+                if(swId == depotId && hdr.pathHops.path_id == (bit<32>)1 && isAltVar > 0 && (curr_time - last_seen < threshold || boolean_received > 0)){
+                    bit<32> pointer;
+                    path_id_pointer_reg.read(pointer, hdr.pathHops.path_id);
+                    if(pointer + 1 > meta.lenHashPrimaryPathSize - 1){
+                        pointer = 1;
+                    }else{
+                        pointer = pointer + 1;
                     }
+                    path_id_1_path_reg.read(sw_overlap_var, pointer);
+                    overlappingSwIds.write(0, sw_overlap_var);
+                    overlappingSwIds.read(sw_overlap_var, 0);
+                    whichSwitchAltReg.write(0, sw_overlap_var);
                 }
 
                 //FRR control (all the decisions are made at the depot/starting node)
@@ -1337,8 +1337,6 @@ control MyIngress(inout headers hdr,
                 //force packets to use the primary path
                 forcePrimaryPathReg.write(hdr.pathHops.path_id, 1);                
             }*/
-
-            //place-holder
 
             //alternative path cases
             if(hdr.pathHops.which_alt_switch > 0 && swId == (bit<8>)hdr.pathHops.which_alt_switch){ //this line may overflow

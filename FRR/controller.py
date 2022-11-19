@@ -287,8 +287,8 @@ class RerouteController(object):
         failed_links = self.check_all_links()
 
         #input("Press Enter to continue...")
-        print("Sleeping for 7 seconds to read final time registers... ZzZzZz")
-        sleep(7)
+        print("Sleeping for 8 seconds to read final time registers... ZzZzZz")
+        sleep(8)
         start_path_0 = control.register_read('temporario1_experimento_Reg', 0)
         end_path_0 = control.register_read('temporario2_experimento_Reg', 0)
         total_path_0 = end_path_0 - start_path_0
